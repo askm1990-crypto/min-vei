@@ -106,6 +106,17 @@
     flex: 1;
 }
 
+@media (max-width: 600px) {
+    .step__actions {
+        position: sticky;
+        bottom: 0;
+        background: var(--bg-body);
+        padding: var(--space-4) 0;
+        border-top: 1px solid var(--border);
+        z-index: 10;
+    }
+}
+
 /* Selection grid (substances) */
 .selection-grid {
     display: grid;
@@ -425,5 +436,17 @@ textarea.text-input {
 
     .onboarding {
         padding: var(--space-4);
+    }
+
+    .step__title {
+        font-size: 1.2rem;
+    }
+
+    .step__subtitle {
+        font-size: 0.85rem;
+    }
+
+    .radio-group {
+        flex-direction: column;
     }
 }

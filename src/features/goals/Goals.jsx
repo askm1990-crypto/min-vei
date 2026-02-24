@@ -57,6 +57,9 @@ export default function Goals({ onNavigate }) {
                         <span className="empty-icon">🎯</span>
                         <h3>Ingen aktive mål</h3>
                         <p>Sett ditt første SMART-mål for å komme i gang!</p>
+                        <Button variant="primary" onClick={() => setShowWizard(true)}>
+                            🎯 Sett ditt første mål
+                        </Button>
                     </div>
                 ) : (
                     <div className="goals-list">

@@ -152,8 +152,11 @@ export default function EventLog({ onNavigate }) {
                 {events.length === 0 ? (
                     <div className="empty-state">
                         <span className="empty-icon">📝</span>
-                        <h3>Ingen hendelser registrert</h3>
-                        <p>Her vil du se en tidslinje over alle dine registrerte sug og situasjoner.</p>
+                        <h3>Ingen hendelser registrert ennå</h3>
+                        <p>Her vil du se en tidslinje over alle dine registrerte sug og situasjoner. Start med å registrere din første!</p>
+                        <Button variant="primary" onClick={() => onNavigate('event-wizard')}>
+                            ➕ Registrer din første hendelse
+                        </Button>
                     </div>
                 ) : filteredEvents.length === 0 ? (
                     <div className="empty-state">

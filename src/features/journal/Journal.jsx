@@ -85,6 +85,9 @@ export default function Journal({ onNavigate }) {
                         <span className="empty-icon">📓</span>
                         <h3>Din dagbok er tom</h3>
                         <p>Skriv ned tanker, følelser og det du er takknemlig for. Det hjelper å sette ord på ting.</p>
+                        <Button variant="primary" onClick={() => setIsWriting(true)}>
+                            ✍️ Skriv ditt første innlegg
+                        </Button>
                     </div>
                 ) : (
                     Object.entries(groupedEntries).map(([monthYear, monthEntries]) => (
