@@ -1,0 +1,281 @@
+/* Journal main view */
+.journal {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.journal-hero {
+    text-align: center;
+}
+
+.journal-hero .hero-points-hint {
+    margin-top: var(--space-2);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.journal-hero .hero-points-hint strong {
+    color: var(--primary);
+}
+
+/* Streak banner */
+.streak-banner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    background: linear-gradient(135deg, hsl(35, 100%, 95%), hsl(25, 100%, 93%));
+    border: 1px solid hsl(25, 80%, 80%);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+}
+
+[data-theme="dark"] .streak-banner {
+    background: linear-gradient(135deg, hsl(35, 40%, 18%), hsl(25, 40%, 16%));
+    border-color: hsl(25, 40%, 30%);
+}
+
+.streak-icon {
+    font-size: 2rem;
+}
+
+.streak-banner strong {
+    color: hsl(25, 80%, 45%);
+    display: block;
+    margin-bottom: var(--space-1);
+}
+
+.streak-banner p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* Timeline */
+.journal-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.month-entries {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+/* Journal Card */
+.journal-card {
+    cursor: pointer;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.journal-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.journal-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.journal-card-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.journal-mood {
+    font-size: 1.8rem;
+}
+
+.journal-title {
+    display: block;
+    font-size: 1.05rem;
+}
+
+.journal-date {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.journal-preview {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: var(--space-3);
+    line-height: 1.5;
+}
+
+/* Expanded card */
+.journal-expanded {
+    margin-top: var(--space-4);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.journal-body {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    color: var(--text-main);
+}
+
+.journal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.journal-tag {
+    background: var(--primary-light);
+    color: var(--primary);
+    padding: var(--space-1) var(--space-3);
+    border-radius: 99px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.journal-gratitude {
+    background: hsl(45, 100%, 96%);
+    border: 1px solid hsl(45, 80%, 80%);
+    border-radius: var(--radius-md);
+    padding: var(--space-3);
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+}
+
+[data-theme="dark"] .journal-gratitude {
+    background: hsl(45, 30%, 14%);
+    border-color: hsl(45, 30%, 28%);
+}
+
+.gratitude-icon {
+    font-size: 1.2rem;
+}
+
+.journal-gratitude p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+.journal-card-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Journal Editor */
+.journal-editor {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.editor-header h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.editor-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.editor-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.editor-label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-main);
+}
+
+/* Mood selector */
+.mood-selector {
+    display: flex;
+    gap: var(--space-2);
+    justify-content: center;
+}
+
+.mood-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-3);
+    border: 2px solid transparent;
+    border-radius: var(--radius-md);
+    background: var(--bg-body);
+    cursor: pointer;
+    transition: all 0.2s;
+    min-width: 72px;
+}
+
+.mood-btn:hover {
+    border-color: var(--border);
+}
+
+.mood-btn.selected {
+    border-color: var(--primary);
+    background: var(--primary-light);
+    box-shadow: 0 0 0 2px var(--primary);
+}
+
+.mood-emoji {
+    font-size: 1.8rem;
+}
+
+.mood-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.mood-btn.selected .mood-label {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* Tag selector */
+.tag-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.tag-option {
+    padding: var(--space-2) var(--space-3) !important;
+    font-size: 0.85rem !important;
+    border-radius: 99px !important;
+}
+
+/* Editor actions */
+.editor-actions {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: flex-end;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--border);
+}

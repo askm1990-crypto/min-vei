@@ -1,0 +1,203 @@
+/* Sidebar styles */
+.sidebar {
+    width: var(--sidebar-w);
+    min-width: var(--sidebar-w);
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-5) 0 var(--space-6);
+    transition: width var(--transition-slow), min-width var(--transition-slow);
+    z-index: 100;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+body.dark-mode .sidebar {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-right-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Logo */
+.sidebar__logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: 0 var(--space-5) var(--space-6);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: var(--space-4);
+}
+
+.sidebar__logo-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--primary);
+    color: white;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.sidebar__logo-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.sidebar__logo-text {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: -0.03em;
+    color: var(--text-main);
+    white-space: nowrap;
+}
+
+/* Nav */
+.sidebar__nav {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 0 var(--space-3);
+    flex: 1;
+}
+
+.sidebar__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: background var(--transition), color var(--transition), transform var(--transition);
+    white-space: nowrap;
+    user-select: none;
+    position: relative;
+}
+
+.sidebar__item svg {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+}
+
+.sidebar__item:hover {
+    background: var(--bg-hover);
+    color: var(--primary);
+    transform: translateX(2px);
+}
+
+.sidebar__item--active {
+    background: var(--primary-light);
+    color: var(--primary);
+    font-weight: 600;
+    box-shadow: inset 3px 0 0 var(--primary);
+}
+
+body.dark-mode .sidebar__item--active {
+    box-shadow: inset 3px 0 0 var(--primary), 0 0 16px var(--primary-glow);
+}
+
+.sidebar__item--warning {
+    color: var(--danger);
+}
+
+.sidebar__item--warning:hover,
+.sidebar__item--warning.sidebar__item--active {
+    background: var(--danger-light);
+    color: var(--danger);
+    box-shadow: inset 3px 0 0 var(--danger);
+}
+
+/* Disclaimer */
+.sidebar__disclaimer {
+    margin: auto var(--space-4) 0;
+    padding: var(--space-3);
+    background: var(--bg-hover);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    flex-shrink: 0;
+}
+
+.sidebar__disclaimer-content {
+    display: flex;
+    gap: var(--space-3);
+    width: 100%;
+}
+
+.sidebar__disclaimer-content>svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.sidebar__disclaimer-content p {
+    flex: 1;
+}
+
+.sidebar__dismiss {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--danger);
+    cursor: pointer;
+    flex-shrink: 0;
+    border-radius: 4px;
+    transition: background var(--transition);
+}
+
+.sidebar__dismiss:hover {
+    background: var(--danger-light);
+}
+
+.sidebar__dismiss svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .sidebar {
+        width: var(--sidebar-w-mobile);
+        min-width: var(--sidebar-w-mobile);
+        padding: var(--space-3) 0;
+    }
+
+    .sidebar__logo-text,
+    .sidebar__item span,
+    .sidebar__disclaimer {
+        display: none;
+    }
+
+    .sidebar__logo {
+        justify-content: center;
+        padding: 0 0 var(--space-3);
+    }
+
+    .sidebar__item {
+        justify-content: center;
+        padding: var(--space-3);
+    }
+
+    .sidebar__item svg {
+        width: 20px;
+        height: 20px;
+    }
+}

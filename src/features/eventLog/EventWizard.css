@@ -1,0 +1,115 @@
+.event-wizard {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.wizard-header {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: var(--space-4);
+}
+
+.wizard-back-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: var(--space-2);
+}
+
+.wizard-back-btn:hover {
+    color: var(--text-main);
+}
+
+.wizard-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.wizard-progress {
+    margin-bottom: var(--space-6);
+}
+
+.wizard-progress-bar {
+    height: 8px;
+    background: var(--bg-body);
+    border-radius: 99px;
+    overflow: hidden;
+    margin-bottom: var(--space-2);
+}
+
+.wizard-progress-fill {
+    height: 100%;
+    background: var(--primary);
+    border-radius: 99px;
+    transition: width 0.3s ease;
+}
+
+.wizard-step-counter {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-align: center;
+}
+
+.wizard-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.wizard-step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Step specific layout */
+.step-actions {
+    margin-top: auto;
+    padding-top: var(--space-8);
+    display: flex;
+    gap: var(--space-3);
+}
+
+/* Options Grid (Triggers & Feelings) */
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+}
+
+.option-btn {
+    background: var(--bg-body);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-3);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+    color: var(--text-main);
+}
+
+.option-btn:hover {
+    border-color: var(--primary-light);
+}
+
+.option-btn.selected {
+    background: var(--primary-light);
+    border-color: var(--primary);
+    color: var(--primary);
+    font-weight: 600;
+    box-shadow: 0 0 0 1px var(--primary);
+}

@@ -1,0 +1,32 @@
+/* Dark Mode — token overrides */
+body.dark-mode {
+    --primary: #2dd4bf;
+    --primary-light: #0f3d3a;
+    --primary-dark: #14b8a6;
+    --primary-glow: rgba(45, 212, 191, 0.12);
+    --accent: #22d3ee;
+    --accent-light: #0c2e33;
+
+    --bg-body: #0a0e1a;
+    --bg-card: rgba(17, 24, 39, 0.85);
+    --bg-sidebar: rgba(17, 24, 39, 0.92);
+    --bg-input: #1a2332;
+    --bg-hover: #132824;
+
+    --border: #1e293b;
+    --border-focus: #2dd4bf;
+
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --text-light: #475569;
+
+    --success-light: #052e16;
+    --warning-light: #431407;
+    --danger-light: #450a0a;
+    --info-light: #0c1d3a;
+
+    --shadow-card: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.04);
+    --shadow-card-hover: 0 8px 32px rgba(45, 212, 191, 0.12), 0 0 0 1px rgba(45, 212, 191, 0.1);
+
+    background: linear-gradient(160deg, #0a0e1a 0%, #0d1520 50%, #0a1218 100%);
+}

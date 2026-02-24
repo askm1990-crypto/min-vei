@@ -1,0 +1,241 @@
+/* Goals & Goal Wizard */
+.goals-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.goals-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.goals-section-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.goals-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+/* Goal Card */
+.goal-card {
+    transition: transform var(--transition);
+}
+
+.goal-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-3);
+}
+
+.goal-card-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.goal-emoji {
+    font-size: 1.6rem;
+}
+
+.goal-area {
+    display: block;
+    font-size: 1rem;
+}
+
+.goal-timeframe {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.goal-specific {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-main);
+    margin-bottom: var(--space-2);
+}
+
+.goal-measurable {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: var(--space-2);
+}
+
+.goal-description {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: var(--space-3);
+}
+
+.goal-card-actions {
+    display: flex;
+    gap: var(--space-2);
+    justify-content: flex-end;
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border);
+}
+
+/* Completed */
+.goal-card--completed {
+    opacity: 0.7;
+}
+
+.completed-badge {
+    font-size: 1.3rem;
+}
+
+.completed-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    padding: 0;
+    width: 100%;
+}
+
+.completed-toggle:hover .goals-section-title {
+    color: var(--primary);
+}
+
+/* Goal Wizard - Life Area Grid */
+.life-area-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+}
+
+.life-area-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    background: var(--bg-body);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+}
+
+.life-area-btn:hover {
+    border-color: var(--primary-light);
+    transform: translateY(-2px);
+}
+
+.life-area-btn.selected {
+    border-color: var(--primary);
+    background: var(--primary-light);
+    box-shadow: 0 0 0 2px var(--primary);
+}
+
+.la-emoji {
+    font-size: 1.8rem;
+}
+
+.la-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+.la-desc {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    line-height: 1.3;
+}
+
+/* SMART fields */
+.smart-fields {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.smart-field label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: var(--space-2);
+    color: var(--text-main);
+}
+
+.smart-field input {
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    width: 100%;
+    font-size: 1rem;
+    font-family: inherit;
+    background: var(--bg-body);
+    color: var(--text-main);
+}
+
+.timeframe-btns {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+}
+
+/* Goal Summary */
+.goal-summary-card {
+    background: var(--bg-body);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    margin-bottom: var(--space-4);
+}
+
+.goal-summary-header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--border);
+}
+
+.goal-summary-emoji {
+    font-size: 2rem;
+}
+
+.goal-summary-header strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: var(--space-1);
+}
+
+.goal-summary-header p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.goal-summary-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.summary-row {
+    display: flex;
+    gap: var(--space-2);
+    font-size: 0.9rem;
+}
+
+.summary-label {
+    font-weight: 600;
+    white-space: nowrap;
+    min-width: 100px;
+}

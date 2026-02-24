@@ -1,0 +1,236 @@
+/* Progress Page */
+.progress-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.progress-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.progress-subtitle {
+    color: var(--text-muted);
+    margin-top: calc(-1 * var(--space-3));
+}
+
+/* Stats Overview */
+.progress-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-3);
+}
+
+.p-stat {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.p-stat-value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.p-stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Grid */
+.progress-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+}
+
+@media (max-width: 768px) {
+    .progress-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .progress-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Weekly Overview */
+.weekly-bar {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-6);
+    padding: var(--space-4) 0;
+}
+
+.weekly-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.weekly-bar-fill {
+    width: 40px;
+    min-height: 8px;
+    border-radius: var(--radius-md);
+    transition: height 0.5s ease;
+}
+
+.weekly-bar-fill.success {
+    background: hsl(150, 60%, 50%);
+}
+
+.weekly-bar-fill.error {
+    background: hsl(0, 70%, 55%);
+}
+
+.weekly-label {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.weekly-sublabel {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* Trigger Analysis */
+.trigger-analysis {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.trigger-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.trigger-rank {
+    font-weight: 700;
+    color: var(--text-muted);
+    width: 28px;
+    font-size: 0.85rem;
+}
+
+.trigger-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    min-width: 100px;
+}
+
+.trigger-bar-bg {
+    flex: 1;
+    height: 8px;
+    background: var(--bg-body);
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.trigger-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), hsl(var(--primary-hue, 210), 80%, 60%));
+    border-radius: 99px;
+    transition: width 0.5s ease;
+}
+
+.trigger-count {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    width: 30px;
+    text-align: right;
+}
+
+/* Mood Trend */
+.mood-trend-row {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+    padding: var(--space-3) 0;
+}
+
+.mood-dot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.mood-dot-emoji {
+    font-size: 1.3rem;
+}
+
+.mood-dot-date {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+}
+
+/* Badges */
+.badges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: var(--space-3);
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.badge.earned {
+    background: linear-gradient(135deg, hsl(45, 100%, 96%), hsl(35, 100%, 93%));
+    border: 1px solid hsl(45, 80%, 75%);
+}
+
+[data-theme="dark"] .badge.earned {
+    background: linear-gradient(135deg, hsl(45, 30%, 16%), hsl(35, 30%, 14%));
+    border-color: hsl(45, 30%, 30%);
+}
+
+.badge.earned:hover {
+    transform: scale(1.05);
+}
+
+.badge.locked {
+    opacity: 0.4;
+    filter: grayscale(1);
+}
+
+.badge-emoji {
+    font-size: 1.5rem;
+}
+
+.badge-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.badges-card {
+    grid-column: 1 / -1;
+}
+
+.placeholder-text {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-align: center;
+    padding: var(--space-4);
+}

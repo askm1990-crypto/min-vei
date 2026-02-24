@@ -1,0 +1,185 @@
+/* Crisis Page */
+.crisis-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.crisis-hero {
+    text-align: center;
+    padding: var(--space-5);
+    background: linear-gradient(135deg, hsl(0, 60%, 50%), hsl(20, 80%, 50%));
+    border-radius: var(--radius-lg);
+    color: white;
+}
+
+.crisis-hero h2 {
+    font-size: 1.6rem;
+    margin-bottom: var(--space-2);
+}
+
+.crisis-hero p {
+    opacity: 0.9;
+    font-size: 1rem;
+}
+
+/* Emergency List */
+.emergency-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.emergency-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    color: var(--text-main);
+    transition: all 0.2s;
+    flex-wrap: wrap;
+}
+
+.emergency-item:hover {
+    border-color: var(--primary);
+    transform: translateX(4px);
+}
+
+.emergency-item.priority {
+    background: hsl(0, 80%, 97%);
+    border-color: hsl(0, 60%, 80%);
+}
+
+[data-theme="dark"] .emergency-item.priority {
+    background: hsl(0, 30%, 15%);
+    border-color: hsl(0, 30%, 30%);
+}
+
+.emergency-emoji {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+
+.emergency-info {
+    flex: 1;
+    min-width: 150px;
+}
+
+.emergency-info strong {
+    display: block;
+    font-size: 0.9rem;
+}
+
+.emergency-number {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.emergency-call {
+    background: var(--primary);
+    color: white;
+    padding: var(--space-1) var(--space-3);
+    border-radius: 99px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* Quick Tools */
+.quick-tools {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-2);
+}
+
+.quick-tool {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3);
+    background: var(--bg-body);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-main);
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.quick-tool span:first-child {
+    font-size: 1.5rem;
+}
+
+.quick-tool:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+/* Safety Plan */
+.safety-plan-view .sp-field {
+    padding: var(--space-3);
+    border-bottom: 1px solid var(--border);
+}
+
+.safety-plan-view .sp-field:last-child {
+    border-bottom: none;
+}
+
+.safety-plan-view .sp-field strong {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: var(--space-1);
+}
+
+.safety-plan-view .sp-field p {
+    font-size: 0.9rem;
+    margin: 0;
+    white-space: pre-wrap;
+    line-height: 1.6;
+}
+
+/* Safety Plan Edit */
+.safety-plan-edit {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.sp-edit-field label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: var(--space-2);
+}
+
+/* Disclaimer */
+.crisis-disclaimer {
+    background: hsl(45, 100%, 96%);
+    border: 1px solid hsl(45, 80%, 70%);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+}
+
+[data-theme="dark"] .crisis-disclaimer {
+    background: hsl(45, 20%, 14%);
+    border-color: hsl(45, 20%, 30%);
+}
+
+.crisis-disclaimer p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .quick-tools {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
