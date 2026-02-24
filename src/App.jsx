@@ -3,6 +3,7 @@ import Sidebar from './components/layout/Sidebar';
 import Header from './components/layout/Header';
 import Modal from './components/ui/Modal';
 import Button from './components/ui/Button';
+import AppGuide from './components/ui/AppGuide';
 import { ToastContainer, showToast } from './components/ui/Toast';
 import OnboardingWizard from './features/onboarding/OnboardingWizard';
 import Dashboard from './features/dashboard/Dashboard';
@@ -28,6 +29,8 @@ export default function App() {
   const [user, setUser] = useLocalStorage('mv2_user', null);
   const [spending, setSpending] = useLocalStorage('mv2_spending', null);
   const [disclaimerVisible, setDisclaimerVisible] = useLocalStorage('mv2_disclaimer', true);
+  const [guideSeen, setGuideSeen] = useLocalStorage('mv2_guide_seen', false);
+  const [showGuide, setShowGuide] = useState(false);
 
   const greeting = getGreeting(user?.name);
   const subtitle = 'En dag av gangen.';
@@ -66,6 +69,11 @@ export default function App() {
     }
 
     showToast(`Velkommen, ${data.name}! 🎉`, 'success');
+
+    // Show guided tour for new users
+    if (!guideSeen) {
+      setShowGuide(true);
+    }
   };
 
   // Show onboarding for new users (after consent)
@@ -179,6 +187,17 @@ export default function App() {
       </div>
 
       <ToastContainer />
+
+      {/* Guided App Tour */}
+      {showGuide && (
+        <AppGuide
+          onComplete={() => {
+            setShowGuide(false);
+            setGuideSeen(true);
+          }}
+          onNavigateHighlight={(view) => setCurrentView(view)}
+        />
+      )}
     </>
   );
 }

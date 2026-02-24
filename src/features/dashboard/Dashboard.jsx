@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react';
 import { useRecoveryScore, POINTS } from '../../hooks/useRecoveryScore';
 import { useEvents } from '../../hooks/useEvents';
 import { useJournal } from '../../hooks/useJournal';
@@ -20,7 +21,35 @@ export default function Dashboard({ onNavigate }) {
     // Daily challenge state
     const [challengeCompleted, setChallengeCompleted] = useLocalStorage('mv2_challenge_completed_date', null);
 
+    // Track last date sober-day points were awarded
+    const [lastSoberPointDate, setLastSoberPointDate] = useLocalStorage('mv2_last_sober_point_date', null);
+
+    // Track level for level-up celebrations
+    const prevLevelRef = useRef(level);
+    const [showLevelUp, setShowLevelUp] = useState(false);
+
     const todayStr = new Date().toISOString().split('T')[0];
+
+    // Auto-award sober-day points once per day on dashboard load
+    useEffect(() => {
+        if (!user?.startDate) return;
+        const daysSoberNow = daysBetween(user.startDate);
+        if (daysSoberNow > 0 && lastSoberPointDate !== todayStr) {
+            addPoints(POINTS.SOBER_DAY, `Rusfri dag #${daysSoberNow}`);
+            setLastSoberPointDate(todayStr);
+            showToast(`+${POINTS.SOBER_DAY} poeng for en ny rusfri dag! 🌟`, 'success');
+        }
+    }, [todayStr]);
+
+    // Detect level-up
+    useEffect(() => {
+        if (prevLevelRef.current < level) {
+            setShowLevelUp(true);
+            showToast(`🎉 Gratulerer! Du er nå Nivå ${level}: ${title}!`, 'success');
+            setTimeout(() => setShowLevelUp(false), 3000);
+        }
+        prevLevelRef.current = level;
+    }, [level, title]);
 
     // Get user's known triggers from events + custom triggers
     const knownTriggers = [...new Set([
@@ -57,6 +86,17 @@ export default function Dashboard({ onNavigate }) {
 
     return (
         <div className="dashboard">
+            {/* LEVEL-UP CELEBRATION */}
+            {showLevelUp && (
+                <div className="level-up-overlay">
+                    <div className="level-up-content">
+                        <span className="level-up-emoji">🎉</span>
+                        <h2>Nivå {level}!</h2>
+                        <p>{title}</p>
+                    </div>
+                </div>
+            )}
+
             {/* HERO: Gamification progress */}
             <div className="hero-section">
                 <div className="hero-level">
