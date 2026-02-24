@@ -2,13 +2,18 @@ import { useLocalStorage } from './useLocalStorage';
 
 // Level thresholds
 const LEVELS = [
-    { level: 1, title: 'Stifinner', minPoints: 0, maxPoints: 500 },
-    { level: 2, title: 'Vandrer', minPoints: 500, maxPoints: 1500 },
-    { level: 3, title: 'Klatrer', minPoints: 1500, maxPoints: 3000 },
-    { level: 4, title: 'Tindebestiger', minPoints: 3000, maxPoints: 6000 },
-    { level: 5, title: 'Fjellgeit', minPoints: 6000, maxPoints: 12000 },
-    { level: 6, title: 'Ledestjerne', minPoints: 12000, maxPoints: 25000 },
-    { level: 7, title: 'Mester', minPoints: 25000, maxPoints: Infinity }
+    { level: 1, title: 'Stuegris 🛋️', minPoints: 0 },
+    { level: 2, title: 'Garasjeridder 👟', minPoints: 500 },
+    { level: 3, title: "Kaffekoker'n ☕", minPoints: 2000 },
+    { level: 4, title: 'Sukkerjunkie 🍬', minPoints: 5000 },
+    { level: 5, title: 'Bruspulver-entusiast 🥤', minPoints: 10000 },
+    { level: 6, title: 'Pepsi Max-proff 🏁', minPoints: 18000 },
+    { level: 7, title: 'Endorfin-jeger 🏃‍♂️', minPoints: 28000 },
+    { level: 8, title: 'Tåkeløfter 🌫️', minPoints: 40000 },
+    { level: 9, title: 'Våghals i tøfler 🏠', minPoints: 55000 },
+    { level: 10, title: 'Hobby-filosof 🧠', minPoints: 75000 },
+    { level: 11, title: 'Gummistøvel-Zen 🧘', minPoints: 95000 },
+    { level: 12, title: 'Recovery-Legende 👑', minPoints: 120000 }
 ];
 
 // Point values for actions

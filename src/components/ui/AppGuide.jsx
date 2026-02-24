@@ -41,7 +41,7 @@ const GUIDE_STEPS = [
     },
     {
         title: 'Poeng & Nivåer 🏆',
-        text: 'Alt du gjør i appen gir poeng! Jobb deg oppover fra Stifinner til Mester. Din fremgang vises på dashbordet.',
+        text: 'Alt du gjør gir poeng! Jobb deg oppover fra "Stuegris" til "Recovery-Legende". Det tar tid, men humor gjør reisen lettere.',
         icon: '🏆',
         highlight: 'progress'
     },
