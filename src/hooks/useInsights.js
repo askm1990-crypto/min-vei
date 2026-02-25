@@ -9,8 +9,33 @@ export function useInsights({ events = [], journalEntries = [], goals = [], user
     const insights = useMemo(() => {
         const result = [];
 
+        // ── 0. EARLY STAGE / LEARNING PHASE ───────────────────────
+        if (events.length < 5) {
+            result.push({
+                id: 'learning-phase',
+                type: 'info',
+                icon: '🧠',
+                priority: 10,
+                title: 'AI-en lærer dine mønstre',
+                description: 'Du har logget dine første hendelser. Vi ser etter sammenhenger og vil gi deg dypere innsikt når du når 5 logger.',
+                color: 'var(--primary)'
+            });
+
+            if (events.length > 0) {
+                result.push({
+                    id: 'keep-logging',
+                    type: 'info',
+                    icon: '📝',
+                    priority: 9,
+                    title: 'Fortsett den gode vanen',
+                    description: 'Hver logg hjelper oss å forstå dine triggere bedre. Ved 5 hendelser kan vi begynne å se de første trendene.',
+                    color: 'var(--info)'
+                });
+            }
+        }
+
         // ── 1. TIME PATTERN ANALYSIS ────────────────────────────────
-        if (events.length >= 3) {
+        if (events.length >= 5) {
             const dayNames = ['Søndag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag'];
             const dayCounts = new Array(7).fill(0);
             const hourCounts = new Array(24).fill(0);
@@ -21,42 +46,42 @@ export function useInsights({ events = [], journalEntries = [], goals = [], user
                 hourCounts[d.getHours()]++;
             });
 
-            // Find peak day
+            // Find peak day with distinctness check (at least 3 occurrences AND > 40% of total)
             const peakDayIndex = dayCounts.indexOf(Math.max(...dayCounts));
-            const peakDay = dayNames[peakDayIndex];
             const peakDayCount = dayCounts[peakDayIndex];
+            const peakDayRatio = peakDayCount / events.length;
 
-            if (peakDayCount >= 2) {
+            if (peakDayCount >= 3 && peakDayRatio >= 0.4) {
                 result.push({
                     id: 'time-pattern-day',
                     type: 'pattern',
                     icon: '📅',
                     priority: 8,
-                    title: `${peakDay}er er din mest aktive dag`,
-                    description: `Du har logget ${peakDayCount} hendelser på ${peakDay.toLowerCase()}er. Planlegg ekstra mestringsstrategier for denne dagen.`,
+                    title: `${peakDayNames[peakDayIndex]}er skiller seg ut`,
+                    description: `Du har logget ${peakDayCount} hendelser på denne dagen. Vær ekstra oppmerksom på dine rutiner da.`,
                     color: 'var(--info)'
                 });
             }
 
-            // Find peak hour range
+            // Find peak hour range (at least 3 occurrences)
             const peakHour = hourCounts.indexOf(Math.max(...hourCounts));
             const peakHourCount = hourCounts[peakHour];
-            if (peakHourCount >= 2) {
+            if (peakHourCount >= 3) {
                 const timeLabel = peakHour < 12 ? `${peakHour}:00 om morgenen` : peakHour < 18 ? `${peakHour}:00 på ettermiddagen` : `${peakHour}:00 om kvelden`;
                 result.push({
                     id: 'time-pattern-hour',
                     type: 'pattern',
                     icon: '⏰',
                     priority: 7,
-                    title: `Suget er sterkest rundt kl. ${peakHour}:00`,
-                    description: `${peakHourCount} av dine hendelser skjedde rundt ${timeLabel}. Ha en mestringsstrategi klar til da!`,
+                    title: `Mønster rundt kl. ${peakHour}:00`,
+                    description: `${peakHourCount} av dine hendelser har skjedd rundt dette tidspunktet. Ha en plan klar!`,
                     color: 'var(--warning)'
                 });
             }
         }
 
         // ── 2. TRIGGER ANALYSIS ────────────────────────────────────
-        if (events.length >= 2) {
+        if (events.length >= 5) {
             const triggerMap = {};
             events.forEach(ev => {
                 const triggers = ev.triggers || [];
@@ -71,21 +96,26 @@ export function useInsights({ events = [], journalEntries = [], goals = [], user
 
             if (sortedTriggers.length > 0) {
                 const [topTrigger, topData] = sortedTriggers[0];
-                const resistRate = topData.total > 0 ? Math.round((topData.resisted / topData.total) * 100) : 0;
+                const secondTriggerData = sortedTriggers[1]?.[1] || { total: 0 };
 
-                result.push({
-                    id: 'top-trigger',
-                    type: 'trigger',
-                    icon: '⚡',
-                    priority: 9,
-                    title: `"${topTrigger}" er din vanligste trigger`,
-                    description: `Oppstått ${topData.total} ganger. Du har mestret ${resistRate}% av dem. ${resistRate >= 70 ? 'Strålende! 💪' : 'Fokuser på strategier for dette.'}`,
-                    color: resistRate >= 70 ? 'var(--success)' : 'var(--danger)'
-                });
+                // Statistical Distinctness: Must have at least 2 more than the second trigger
+                // OR be the ONLY trigger reported significantly
+                if (topData.total >= 3 && (topData.total - secondTriggerData.total >= 2 || sortedTriggers.length === 1)) {
+                    const resistRate = Math.round((topData.resisted / topData.total) * 100);
+                    result.push({
+                        id: 'top-trigger',
+                        type: 'trigger',
+                        icon: '⚡',
+                        priority: 9,
+                        title: `"${topTrigger}" dukker ofte opp`,
+                        description: `Dette har vært en faktor ${topData.total} ganger. Du har mestret ${resistRate}% av disse situasjonene.`,
+                        color: resistRate >= 70 ? 'var(--success)' : 'var(--danger)'
+                    });
+                }
             }
 
             // Find "best mastered" trigger
-            const mastered = sortedTriggers.find(([, data]) => data.total >= 2 && (data.resisted / data.total) >= 0.8);
+            const mastered = sortedTriggers.find(([, data]) => data.total >= 3 && (data.resisted / data.total) >= 0.8);
             if (mastered) {
                 result.push({
                     id: 'mastered-trigger',
@@ -93,17 +123,17 @@ export function useInsights({ events = [], journalEntries = [], goals = [], user
                     icon: '🏆',
                     priority: 6,
                     title: `Du mestrer "${mastered[0]}" godt!`,
-                    description: `Du har motstått ${Math.round((mastered[1].resisted / mastered[1].total) * 100)}% av gangene. Fortsett slik!`,
+                    description: `Du har motstått ${Math.round((mastered[1].resisted / mastered[1].total) * 100)}% av gangene. Dette er en styrke!`,
                     color: 'var(--success)'
                 });
             }
         }
 
         // ── 3. MOOD TREND ANALYSIS ─────────────────────────────────
-        if (journalEntries.length >= 3) {
+        if (journalEntries.length >= 5) {
             const entriesWithMood = journalEntries.filter(e => e.mood).slice(0, 14);
 
-            if (entriesWithMood.length >= 3) {
+            if (entriesWithMood.length >= 5) {
                 const recentAvg = entriesWithMood.slice(0, Math.ceil(entriesWithMood.length / 2))
                     .reduce((sum, e) => sum + e.mood, 0) / Math.ceil(entriesWithMood.length / 2);
                 const olderAvg = entriesWithMood.slice(Math.ceil(entriesWithMood.length / 2))
@@ -118,7 +148,7 @@ export function useInsights({ events = [], journalEntries = [], goals = [], user
                         icon: '📈',
                         priority: 7,
                         title: 'Humøret ditt er på vei opp!',
-                        description: `Gjennomsnittlig humør har økt fra ${olderAvg.toFixed(1)} til ${recentAvg.toFixed(1)}. Det du gjør fungerer! 🌟`,
+                        description: `Gjennomsnittlig humør har økt den siste tiden. Det du gjør fungerer! 🌟`,
                         color: 'var(--success)'
                     });
                 } else if (diff < -0.5) {
@@ -128,7 +158,7 @@ export function useInsights({ events = [], journalEntries = [], goals = [], user
                         icon: '📉',
                         priority: 10,
                         title: 'Vi ser et lite dipp i humøret',
-                        description: `Gjennomsnittlig humør har gått ned fra ${olderAvg.toFixed(1)} til ${recentAvg.toFixed(1)}. Det er helt normalt med oppturer og nedturer. Husk pusteøvelsene! 🧘`,
+                        description: `Husk at det er helt normalt med svingninger. Ta vare på deg selv litt ekstra i dag. 🧘`,
                         color: 'var(--warning)'
                     });
                 }
@@ -136,12 +166,12 @@ export function useInsights({ events = [], journalEntries = [], goals = [], user
         }
 
         // ── 4. MASTERY RATE ────────────────────────────────────────
-        if (events.length >= 3) {
+        if (events.length >= 5) {
             const resisted = events.filter(ev => ev.outcome === 'resisted').length;
             const used = events.filter(ev => ev.outcome === 'used').length;
             const total = resisted + used;
 
-            if (total >= 3) {
+            if (total >= 5) {
                 const rate = Math.round((resisted / total) * 100);
 
                 result.push({
@@ -150,7 +180,7 @@ export function useInsights({ events = [], journalEntries = [], goals = [], user
                     icon: rate >= 70 ? '💪' : '🎯',
                     priority: 5,
                     title: `${rate}% mestringsgrad`,
-                    description: `Du har motstått ${resisted} av ${total} situasjoner. ${rate >= 80 ? 'Fantastisk kontroll!' : rate >= 50 ? 'Bra innsats, det går rette veien!' : 'Husk: hver gang du prøver teller.'}`,
+                    description: `Du har motstått ${resisted} av ${total} utfordringer. ${rate >= 80 ? 'Fantastisk kontroll!' : 'Hver lille seier bygger styrke over tid.'}`,
                     color: rate >= 70 ? 'var(--success)' : rate >= 40 ? 'var(--warning)' : 'var(--danger)'
                 });
             }
@@ -168,13 +198,12 @@ export function useInsights({ events = [], journalEntries = [], goals = [], user
                     type: 'motivation',
                     icon: '🔥',
                     priority: 9,
-                    title: `${daysToNext} dager til ${nextMilestone}-dagersmerket!`,
-                    description: `Du er så nære en ny milepæl. Hold ut — du klarer dette! 💪`,
+                    title: `${daysToNext} dager til ny milepæl!`,
+                    description: `Du nærmer deg ${nextMilestone} dager. Hold fokus, du er nesten der! 💪`,
                     color: 'var(--secondary)'
                 });
             }
 
-            // Celebrate passed milestones
             const passedMilestone = milestones.filter(m => daysSober >= m).pop();
             if (passedMilestone) {
                 result.push({
@@ -183,7 +212,7 @@ export function useInsights({ events = [], journalEntries = [], goals = [], user
                     icon: '🏅',
                     priority: 4,
                     title: `${passedMilestone} dager rusfri!`,
-                    description: `Du har passert ${passedMilestone}-dagersmerket. Hver dag er en seier. 🎉`,
+                    description: `En fantastisk prestasjon. Hver dag uten rus er en investering i deg selv. 🎉`,
                     color: 'var(--success)'
                 });
             }
@@ -206,7 +235,7 @@ export function useInsights({ events = [], journalEntries = [], goals = [], user
                     icon: '📝',
                     priority: 5,
                     title: 'Stabil skrivevane!',
-                    description: `Du har skrevet dagbok ${last7Days.size} av de siste 7 dagene. Konsistens er nøkkelen til endring.`,
+                    description: `Du er flink til å reflektere. Konsistens er nøkkelen til varig endring.`,
                     color: 'var(--primary)'
                 });
             } else if (last7Days.size === 0 && journalEntries.length > 2) {
@@ -215,16 +244,15 @@ export function useInsights({ events = [], journalEntries = [], goals = [], user
                     type: 'nudge',
                     icon: '✍️',
                     priority: 6,
-                    title: 'Vi savner deg i dagboken!',
-                    description: 'Du har ikke skrevet på en stund. Bare noen få ord kan gjøre en forskjell.',
+                    title: 'Tid for refleksjon?',
+                    description: 'Du har ikke skrevet i dagboken på en stund. Å sette ord på følelser kan hjelpe på tunge dager.',
                     color: 'var(--text-muted)'
                 });
             }
         }
 
         // ── 7. SMART SUGGESTION ────────────────────────────────────
-        if (events.length >= 2) {
-            // Find the strategy that worked best
+        if (events.length >= 5) {
             const strategyMap = {};
             events.forEach(ev => {
                 if (ev.strategy && ev.outcome === 'resisted') {
@@ -233,14 +261,14 @@ export function useInsights({ events = [], journalEntries = [], goals = [], user
             });
 
             const bestStrategy = Object.entries(strategyMap).sort((a, b) => b[1] - a[1])[0];
-            if (bestStrategy) {
+            if (bestStrategy && bestStrategy[1] >= 3) {
                 result.push({
                     id: 'smart-suggestion',
                     type: 'suggestion',
                     icon: '💡',
                     priority: 8,
-                    title: `"${bestStrategy[0]}" fungerer for deg`,
-                    description: `Denne strategien hjalp deg ${bestStrategy[1]} ${bestStrategy[1] === 1 ? 'gang' : 'ganger'}. Bruk den neste gang suget melder seg!`,
+                    title: `"${bestStrategy[0]}" er effektiv for deg`,
+                    description: `Denne strategien har hjulpet deg flere ganger. Husk å bruke den når det trengs!`,
                     color: 'var(--accent)'
                 });
             }
@@ -256,8 +284,8 @@ export function useInsights({ events = [], journalEntries = [], goals = [], user
                 type: 'nudge',
                 icon: '🎯',
                 priority: 5,
-                title: 'Alle mål er fullført!',
-                description: 'Tid for nye utfordringer? Sett et nytt mål for å holde motivasjonen oppe.',
+                title: 'Alle mål er nådd!',
+                description: 'Kanskje det er på tide å sette seg en ny liten utfordring?',
                 color: 'var(--primary)'
             });
         }
