@@ -2,10 +2,13 @@ import { useState, useEffect, useRef } from 'react';
 import { useRecoveryScore, POINTS } from '../../hooks/useRecoveryScore';
 import { useEvents } from '../../hooks/useEvents';
 import { useJournal } from '../../hooks/useJournal';
+import { useGoals } from '../../hooks/useGoals';
+import { useInsights } from '../../hooks/useInsights';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { daysBetween } from '../../utils/dateUtils';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
+import InsightCards from '../../components/ui/InsightCards';
 import { showToast } from '../../components/ui/Toast';
 import { getDailyChallenge } from '../../data/challenges';
 import './Dashboard.css';
@@ -17,6 +20,18 @@ export default function Dashboard({ onNavigate }) {
     const [user] = useLocalStorage('mv2_user', null);
     const [spending] = useLocalStorage('mv2_spending', null);
     const [customTriggers] = useLocalStorage('mv2_custom_triggers', []);
+    const { goals } = useGoals();
+
+    const daysSober = user?.startDate ? daysBetween(user.startDate) : 0;
+
+    // AI Insights
+    const { insights } = useInsights({
+        events,
+        journalEntries,
+        goals,
+        user,
+        daysSober
+    });
 
     // Daily challenge state
     const [challengeCompleted, setChallengeCompleted] = useLocalStorage('mv2_challenge_completed_date', null);
@@ -78,10 +93,7 @@ export default function Dashboard({ onNavigate }) {
         showToast(`${action} kommer i neste fase.`, 'info');
     };
 
-    // Calculate days sober
-    const daysSober = user?.startDate ? daysBetween(user.startDate) : 0;
-
-    // Calculate money saved
+    // Calculate money saved (daysSober is already computed above)
     const savedAmount = spending && user?.startDate ? calculateSaved(spending.frequency, spending.amountPerTime, daysSober) : 0;
 
     return (
@@ -122,6 +134,9 @@ export default function Dashboard({ onNavigate }) {
                     )}
                 </div>
             </div>
+
+            {/* AI INSIGHTS */}
+            <InsightCards insights={insights} />
 
             <div className="dashboard-grid">
 
