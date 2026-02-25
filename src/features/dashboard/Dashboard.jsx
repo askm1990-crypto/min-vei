@@ -9,6 +9,7 @@ import { daysBetween } from '../../utils/dateUtils';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
 import InsightCards from '../../components/ui/InsightCards';
+import ActivityCalendar from '../../components/ui/ActivityCalendar';
 import { showToast } from '../../components/ui/Toast';
 import { getDailyChallenge } from '../../data/challenges';
 import './Dashboard.css';
@@ -296,12 +297,13 @@ export default function Dashboard({ onNavigate }) {
                     </Card>
                 )}
 
-                {/* CALENDAR PLACEHOLDER */}
-                <Card header="Aktivitetskalender" className="calendar-card" hoverable={false}>
-                    <div className="placeholder-content">
-                        <span className="placeholder-icon">📅</span>
-                        <p>Kalendervisning kommer i Fase 6.</p>
-                    </div>
+                {/* ACTIVITY CALENDAR */}
+                <Card header="Aktivitetskalender (12 uker)" className="calendar-card" hoverable={false}>
+                    <ActivityCalendar
+                        events={events}
+                        journalEntries={journalEntries}
+                        goals={goals}
+                    />
                 </Card>
 
             </div>
