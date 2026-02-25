@@ -10,15 +10,17 @@ For oss er personvern og sikkerhet det aller viktigste. "Min Vei" lagrer all inf
 - **Ingen sporing:** Appen sporer ikke aktiviteten din eller hvem du er.
 - **Full kontroll:** Du som bruker er selv ansvarlig for dataene dine (husk at dersom du tømmer nettleserdata, slettes også all historikk med mindre du eksporterer dataen først).
 
-## ✨ Funksjoner
+## ✨ Funksjoner (Fase 1-6 Fullført)
 
-- **Dashboard:** En personlig startskjerm som gir deg daglig motivasjon, hilser deg velkommen og gir rask tilgang til kjernefunksjoner.
-- **Hendelseslogg (Event Log):** Loggfør hendelser og sug for å kartlegge mønstre. En egen "Event Wizard"-veileder hjelper deg med å reflektere rundt hendelsen.
-- **Mål & Fremgang (Goals & Progress):** Sett deg personlige mål for rusfrihet (eller reduksjon av forbruk) og følg utviklingen og besparelser visuelt over tid.
-- **Dagbok (Journal):** Et trygt og privat sted å skrive ned tanker, refleksjoner, og seire i hverdagen.
-- **Mestringsstrategier (Strategies):** Bygg en verktøykasse med teknikker og strategier for å håndtere sug og vanskelige følelser.
-- **Kunnskap (Knowledge):** Relevant informasjon og psykoedukasjon om avhengighet, recovery og helse.
-- **Kriseplan (Crisis):** Umiddelbar tilgang til en personlig tilpasset kriseplan med kontaktinformasjon og tiltak dersom du opplever akutt behov for hjelp.
+- **📱 PWA & Offline-støtte:** Appen kan installeres på hjemskjermen og fungerer 100% uten internett.
+- **🧠 AI-Innsikt (Lokal):** En innebygd analytikkmotor som finner mønstre i dine triggere, humør og mestringsgrad – helt privat på din enhet.
+- **🏆 Gamification & Nivåer:** Tjen poeng for hver aktivitet og klatre gjennom 10+ humoristiske og motiverende nivåer.
+- **🔒 Sikkerhetslås:** Beskytt dataene dine med en 4-sifret PIN-kode.
+- **📄 PDF & JSON Eksport:** Generer ryddige rapporter for lege/behandler eller ta full backup av dine data.
+- **📊 Avansert Analyse:** GitHub-stil aktivitetskalender, interaktive humørgrafer og 24 samle-badges.
+- **🛡️ Kriseplan:** Umiddelbar tilgang til nødnumre, pusteøvelser og din personlige sikkerhetsplan.
+- **📓 Hendelseslogg & Dagbok:** Reflekter over hverdagen med en guidet "Event Wizard" og privat dagbok.
+- **🎨 Moderne Design:** Glassmorphism, animerte feiringer og full støtte for mørk/lys modus.
 
 ## 🚀 Kom i gang for utviklere
 
