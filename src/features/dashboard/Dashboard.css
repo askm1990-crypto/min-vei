@@ -36,9 +36,32 @@
 }
 
 .hero-level-sub {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--text-muted);
     margin: 0;
+}
+
+@media (max-width: 600px) {
+    .hero-section {
+        padding: var(--space-4);
+        gap: var(--space-3);
+    }
+
+    .hero-level-icon {
+        font-size: 2.2rem;
+    }
+
+    .hero-level-title {
+        font-size: 1.25rem;
+    }
+
+    .hero-level-sub {
+        font-size: 0.85rem;
+    }
+
+    .hero-progress-bar {
+        height: 10px;
+    }
 }
 
 .hero-progress-container {
@@ -203,7 +226,31 @@
 }
 
 .qa-icon {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 480px) {
+    .quick-actions-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-2);
+    }
+
+    .qa-btn {
+        padding: var(--space-3) var(--space-1);
+    }
+
+    .qa-title {
+        font-size: 0.75rem;
+    }
+
+    .qa-icon {
+        font-size: 1.25rem;
+    }
+
+    .qa-points {
+        font-size: 0.65rem;
+        padding: 1px 6px;
+    }
 }
 
 .qa-title {
@@ -257,8 +304,20 @@
 }
 
 .stat-content span {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
+}
+
+@media (max-width: 600px) {
+    .stat-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1.5rem;
+    }
+
+    .stat-content strong {
+        font-size: 1.25rem;
+    }
 }
 
 /* SAVINGS */

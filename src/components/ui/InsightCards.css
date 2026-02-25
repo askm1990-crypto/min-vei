@@ -3,7 +3,7 @@
 }
 
 .insight-section-title {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: var(--text-main);
     margin: 0 0 var(--space-3) 0;
@@ -66,7 +66,7 @@
 }
 
 .insight-title {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 700;
     color: var(--text-main);
     margin: 0 0 var(--space-1) 0;
@@ -74,7 +74,7 @@
 }
 
 .insight-desc {
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
     margin: 0;
     line-height: 1.5;

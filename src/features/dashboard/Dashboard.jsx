@@ -250,9 +250,6 @@ export default function Dashboard({ onNavigate }) {
                     </Button>
                 </Card>
 
-                {/* AI INSIGHTS */}
-                <InsightCards insights={insights} />
-
                 {/* DASHBOARD INSIGHTS (Triggers and Trends) */}
                 {events.length > 0 ? (
                     <Card header="Ditt Mønster" className="recent-events-card" hoverable={false}>

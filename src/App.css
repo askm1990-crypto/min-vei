@@ -28,7 +28,7 @@
 
 @media (max-width: 768px) {
   .view {
-    padding: var(--space-4);
+    padding: var(--space-4) var(--space-3);
     gap: var(--space-4);
   }
 }
