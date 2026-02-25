@@ -18,9 +18,20 @@ export default function Progress() {
     const [user] = useLocalStorage('mv2_user', null);
     const [challengeHistory] = useLocalStorage('mv2_challenge_history', []);
 
-    const daysSober = user?.startDate ? daysBetween(user.startDate) : 0;
+    // ── SOBRIETY CALCULATION ──────────────────────────────────
+    const usedEvents = events.filter(e => e.outcome === 'used');
+    const lastRelapse = usedEvents.length > 0
+        ? usedEvents.reduce((prev, curr) => new Date(prev.date) > new Date(curr.date) ? prev : curr)
+        : null;
+
+    // Current Streak (Visually "Dager rusfri")
+    const daysSober = lastRelapse
+        ? daysBetween(lastRelapse.date)
+        : (user?.startDate ? daysBetween(user.startDate) : 0);
+    // ──────────────────────────────────────────────────────────
+
     const resistedEvents = events.filter(e => e.outcome === 'resisted').length;
-    const usedEvents = events.filter(e => e.outcome === 'used').length;
+    const usedEventsCount = usedEvents.length;
     const trend = getRecentTrend();
     const moodData = getMoodTrend(14);
 

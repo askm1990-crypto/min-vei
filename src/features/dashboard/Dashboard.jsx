@@ -23,7 +23,24 @@ export default function Dashboard({ onNavigate }) {
     const [customTriggers] = useLocalStorage('mv2_custom_triggers', []);
     const { goals } = useGoals();
 
-    const daysSober = user?.startDate ? daysBetween(user.startDate) : 0;
+    // ── SOBRIETY CALCULATION ──────────────────────────────────
+    const usedEvents = events.filter(e => e.outcome === 'used');
+    const lastRelapse = usedEvents.length > 0
+        ? usedEvents.reduce((prev, curr) => new Date(prev.date) > new Date(curr.date) ? prev : curr)
+        : null;
+
+    // Current Streak (Visually "Rusfrie dager")
+    const currentSoberStreak = lastRelapse
+        ? daysBetween(lastRelapse.date)
+        : (user?.startDate ? daysBetween(user.startDate) : 0);
+
+    // Total Savings Days (Cumulative, but freezing on relapse days)
+    const totalDaysSinceStart = user?.startDate ? daysBetween(user.startDate) : 0;
+    const uniqueRelapseDates = new Set(usedEvents.map(e => new Date(e.date).toISOString().split('T')[0]));
+    const totalSoberDays = Math.max(0, totalDaysSinceStart - uniqueRelapseDates.size);
+
+    const daysSober = currentSoberStreak; // Use streak for display and insights
+    // ──────────────────────────────────────────────────────────
 
     // AI Insights
     const { insights } = useInsights({
@@ -94,8 +111,8 @@ export default function Dashboard({ onNavigate }) {
         showToast(`${action} kommer i neste fase.`, 'info');
     };
 
-    // Calculate money saved (daysSober is already computed above)
-    const savedAmount = spending && user?.startDate ? calculateSaved(spending.frequency, spending.amountPerTime, daysSober) : 0;
+    // Calculate money saved (Using totalSoberDays to keep accumulated savings)
+    const savedAmount = spending && user?.startDate ? calculateSaved(spending.frequency, spending.amountPerTime, totalSoberDays) : 0;
 
     return (
         <div className="dashboard">
