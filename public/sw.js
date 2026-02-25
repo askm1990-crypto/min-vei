@@ -1,9 +1,9 @@
 const CACHE_NAME = 'min-vei-cache-v1';
 const ASSETS_TO_CACHE = [
-    '/',
-    '/index.html',
-    '/icons/icon-512.png',
-    '/manifest.json'
+    './',
+    'index.html',
+    'icons/icon-512.png',
+    'manifest.json'
 ];
 
 // Install Event
