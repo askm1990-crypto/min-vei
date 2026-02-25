@@ -9,15 +9,19 @@ export default function WeeklyActivity({ events = [], journalEntries = [], goals
 
     // Parse the last 7 days and check for activity
     const { daysData, activeDaysCount } = useMemo(() => {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
+        const now = new Date();
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
-        // Build a Set of all dates where the user was active
+        const dayOfWeek = today.getDay();
+        const diffToMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+        const monday = new Date(today);
+        monday.setDate(today.getDate() - diffToMonday);
+
         const activeDates = new Set();
         const addDate = (dateStr) => {
+            if (!dateStr) return;
             const d = new Date(dateStr);
-            d.setHours(0, 0, 0, 0);
-            activeDates.add(d.toISOString().split('T')[0]);
+            activeDates.add(new Date(d.getFullYear(), d.getMonth(), d.getDate()).toISOString().split('T')[0]);
         };
 
         events.forEach(ev => addDate(ev.date));
@@ -26,24 +30,24 @@ export default function WeeklyActivity({ events = [], journalEntries = [], goals
             if (g.completedAt) addDate(g.completedAt);
         });
 
-        // Generate the array for the last 7 days (including today)
-        const daysLabelShort = ['S', 'M', 'T', 'O', 'T', 'F', 'L'];
+        const daysLabelShort = ['M', 'T', 'O', 'T', 'F', 'L', 'S'];
         const days = [];
         let count = 0;
 
-        for (let i = 6; i >= 0; i--) {
-            const d = new Date(today);
-            d.setDate(today.getDate() - i);
+        for (let i = 0; i < 7; i++) {
+            const d = new Date(monday);
+            d.setDate(monday.getDate() + i);
             const dateKey = d.toISOString().split('T')[0];
             const isActive = activeDates.has(dateKey);
+            const isToday = d.getTime() === today.getTime();
 
             if (isActive) count++;
 
             days.push({
                 key: dateKey,
-                label: i === 0 ? 'I dag' : daysLabelShort[d.getDay()],
+                label: daysLabelShort[i],
                 isActive: isActive,
-                isToday: i === 0
+                isToday: isToday
             });
         }
 
