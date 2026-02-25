@@ -48,9 +48,10 @@ export function useEvents() {
 
     /**
      * Get the most common trigger (for Dashboard)
+     * Robust: Requires >= 5 events and a clear outlier (top vs second)
      */
     const getMostCommonTrigger = () => {
-        if (!events || events.length === 0) return null;
+        if (!events || events.length < 5) return null;
 
         const triggerCounts = {};
         events.forEach(ev => {
@@ -61,9 +62,18 @@ export function useEvents() {
             }
         });
 
-        if (Object.keys(triggerCounts).length === 0) return null;
+        const sorted = Object.entries(triggerCounts).sort((a, b) => b[1] - a[1]);
+        if (sorted.length === 0) return null;
 
-        return Object.keys(triggerCounts).reduce((a, b) => triggerCounts[a] > triggerCounts[b] ? a : b);
+        const [top, topCount] = sorted[0];
+        const nextCount = sorted[1]?.[1] || 0;
+
+        // Must have at least 3 occurrences AND be 2 more than the runner up
+        if (topCount >= 3 && (topCount - nextCount >= 2)) {
+            return top;
+        }
+
+        return null;
     };
 
     /**

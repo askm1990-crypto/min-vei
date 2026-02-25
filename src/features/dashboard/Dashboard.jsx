@@ -8,8 +8,8 @@ import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { daysBetween } from '../../utils/dateUtils';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
-import InsightCards from '../../components/ui/InsightCards';
 import WeeklyActivity from '../../components/ui/WeeklyActivity';
+import InsightCards from '../../components/ui/InsightCards';
 import { showToast } from '../../components/ui/Toast';
 import { getDailyChallenge } from '../../data/challenges';
 import './Dashboard.css';
@@ -214,10 +214,10 @@ export default function Dashboard({ onNavigate }) {
                             </div>
                         </div>
                         <div className="stat-box">
-                            <span className="stat-icon">🔥</span>
+                            <span className="stat-icon">🏆</span>
                             <div className="stat-content">
-                                <strong>1 Dag</strong>
-                                <span>Streak</span>
+                                <strong>{points} poeng</strong>
+                                <span>Mestringspoeng</span>
                             </div>
                         </div>
                     </div>
@@ -250,7 +250,10 @@ export default function Dashboard({ onNavigate }) {
                     </Button>
                 </Card>
 
-                {/* DASHBOARD INSIGHTS */}
+                {/* AI INSIGHTS */}
+                <InsightCards insights={insights} />
+
+                {/* DASHBOARD INSIGHTS (Triggers and Trends) */}
                 {events.length > 0 ? (
                     <Card header="Ditt Mønster" className="recent-events-card" hoverable={false}>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
