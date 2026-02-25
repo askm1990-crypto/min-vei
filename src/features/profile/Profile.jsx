@@ -2,7 +2,11 @@ import { useState } from 'react';
 import { useRecoveryScore } from '../../hooks/useRecoveryScore';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useTheme } from '../../hooks/useTheme';
+import { useEvents } from '../../hooks/useEvents';
+import { useJournal } from '../../hooks/useJournal';
+import { useGoals } from '../../hooks/useGoals';
 import { daysBetween, formatDateNO } from '../../utils/dateUtils';
+import { exportToPDF } from '../../utils/pdfExport';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
 import { showToast } from '../../components/ui/Toast';
@@ -12,7 +16,13 @@ export default function Profile() {
     const { points, level, title, progressToNext, nextLevelPoints } = useRecoveryScore();
     const [user] = useLocalStorage('mv2_user', null);
     const { theme, toggleTheme } = useTheme();
+    const { events } = useEvents();
+    const { entries: journalEntries } = useJournal();
+    const { goals } = useGoals();
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+    const [pinEnabled, setPinEnabled] = useState(() => !!localStorage.getItem('mv2_pin'));
+    const [showPinSetup, setShowPinSetup] = useState(false);
+    const [newPin, setNewPin] = useState('');
 
     const daysSober = user?.startDate ? daysBetween(user.startDate) : 0;
 
@@ -69,6 +79,40 @@ export default function Profile() {
         keys.forEach(k => localStorage.removeItem(k));
         showToast('Alle data slettet. Laster inn på nytt...', 'success');
         setTimeout(() => window.location.reload(), 1500);
+    };
+
+    // PIN management
+    const handleEnablePin = () => {
+        if (newPin.length !== 4 || !/^\d{4}$/.test(newPin)) {
+            showToast('PIN-koden må være nøyaktig 4 siffer.', 'error');
+            return;
+        }
+        localStorage.setItem('mv2_pin', newPin);
+        setPinEnabled(true);
+        setShowPinSetup(false);
+        setNewPin('');
+        showToast('Sikkerhetslås aktivert! 🔒', 'success');
+    };
+
+    const handleRemovePin = () => {
+        localStorage.removeItem('mv2_pin');
+        setPinEnabled(false);
+        showToast('Sikkerhetslås deaktivert.', 'success');
+    };
+
+    // PDF export
+    const handlePdfExport = () => {
+        exportToPDF({
+            user,
+            events: events || [],
+            journal: journalEntries || [],
+            goals: goals || [],
+            points,
+            level,
+            title,
+            daysSober
+        });
+        showToast('Rapport generert! Lagre som PDF via utskriftsdialogen. 📄', 'success');
     };
 
     return (
@@ -145,6 +189,40 @@ export default function Profile() {
                 </div>
             </Card>
 
+            {/* SECURITY */}
+            <Card header="Sikkerhet" hoverable={false}>
+                <div className="settings-list">
+                    <div className="settings-row">
+                        <div>
+                            <strong>Sikkerhetslås (PIN)</strong>
+                            <span className="settings-hint">
+                                {pinEnabled ? 'Appen er beskyttet med PIN-kode' : 'Beskytt appen med en 4-sifret kode'}
+                            </span>
+                        </div>
+                        {pinEnabled ? (
+                            <Button variant="secondary" size="sm" onClick={handleRemovePin}>🔓 Fjern PIN</Button>
+                        ) : (
+                            <Button variant="secondary" size="sm" onClick={() => setShowPinSetup(true)}>🔒 Sett PIN</Button>
+                        )}
+                    </div>
+                    {showPinSetup && (
+                        <div className="pin-setup-row">
+                            <input
+                                type="password"
+                                inputMode="numeric"
+                                maxLength={4}
+                                placeholder="4 siffer"
+                                value={newPin}
+                                onChange={(e) => setNewPin(e.target.value.replace(/\D/g, ''))}
+                                className="pin-setup-input"
+                            />
+                            <Button variant="primary" size="sm" onClick={handleEnablePin}>Lagre</Button>
+                            <Button variant="secondary" size="sm" onClick={() => { setShowPinSetup(false); setNewPin(''); }}>Avbryt</Button>
+                        </div>
+                    )}
+                </div>
+            </Card>
+
             {/* DATA */}
             <Card header="Data & Personvern" hoverable={false}>
                 <div className="settings-list">
@@ -154,6 +232,13 @@ export default function Profile() {
                             <span className="settings-hint">Last ned all data som JSON-fil</span>
                         </div>
                         <Button variant="secondary" size="sm" onClick={handleExport}>📦 Eksporter</Button>
+                    </div>
+                    <div className="settings-row">
+                        <div>
+                            <strong>Generer PDF-rapport</strong>
+                            <span className="settings-hint">Lag en utskriftsvennlig rapport (for lege/behandler)</span>
+                        </div>
+                        <Button variant="secondary" size="sm" onClick={handlePdfExport}>📄 PDF</Button>
                     </div>
                     <div className="settings-row">
                         <div>

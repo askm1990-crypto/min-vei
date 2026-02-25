@@ -4,6 +4,7 @@ import Header from './components/layout/Header';
 import Modal from './components/ui/Modal';
 import Button from './components/ui/Button';
 import AppGuide from './components/ui/AppGuide';
+import PinLock from './components/ui/PinLock';
 import { ToastContainer, showToast } from './components/ui/Toast';
 import OnboardingWizard from './features/onboarding/OnboardingWizard';
 import Dashboard from './features/dashboard/Dashboard';
@@ -31,6 +32,7 @@ export default function App() {
   const [disclaimerVisible, setDisclaimerVisible] = useLocalStorage('mv2_disclaimer', true);
   const [guideSeen, setGuideSeen] = useLocalStorage('mv2_guide_seen', false);
   const [showGuide, setShowGuide] = useState(false);
+  const [isLocked, setIsLocked] = useState(() => !!localStorage.getItem('mv2_pin'));
 
   const greeting = getGreeting(user?.name);
   const subtitle = 'En dag av gangen.';
@@ -81,6 +83,9 @@ export default function App() {
 
   return (
     <>
+      {/* PIN Lock Screen */}
+      {isLocked && <PinLock onUnlock={() => setIsLocked(false)} />}
+
       {/* GDPR Consent Modal */}
       <Modal isOpen={!consent} title="Velkommen til Min Vei">
         <p><strong>Ditt personvern er vår prioritet.</strong></p>

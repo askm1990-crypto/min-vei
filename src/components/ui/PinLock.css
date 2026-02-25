@@ -1,0 +1,99 @@
+.pin-lock-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg-body);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+}
+
+.pin-lock-card {
+    text-align: center;
+    padding: var(--space-10);
+    max-width: 340px;
+    width: 100%;
+}
+
+.pin-lock-card.shake {
+    animation: pinShake 0.5s ease;
+}
+
+.pin-lock-icon {
+    font-size: 3.5rem;
+    margin-bottom: var(--space-4);
+}
+
+.pin-lock-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin: 0 0 var(--space-2) 0;
+}
+
+.pin-lock-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin: 0 0 var(--space-8) 0;
+}
+
+.pin-lock-inputs {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: center;
+    margin-bottom: var(--space-4);
+}
+
+.pin-lock-digit {
+    width: 56px;
+    height: 64px;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--bg-card);
+    color: var(--text-main);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    caret-color: var(--primary);
+}
+
+.pin-lock-digit:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+.pin-lock-error {
+    color: var(--danger);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: var(--space-3);
+}
+
+@keyframes pinShake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-12px);
+    }
+
+    40% {
+        transform: translateX(10px);
+    }
+
+    60% {
+        transform: translateX(-8px);
+    }
+
+    80% {
+        transform: translateX(6px);
+    }
+}
