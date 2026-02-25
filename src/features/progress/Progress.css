@@ -234,3 +234,124 @@
     text-align: center;
     padding: var(--space-4);
 }
+
+/* Activity Heatmap */
+.heatmap-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-2) 0;
+}
+
+.heatmap-grid {
+    display: flex;
+    gap: 3px;
+    overflow-x: auto;
+}
+
+.heatmap-labels {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-right: var(--space-1);
+    position: absolute;
+    left: 0;
+}
+
+.heatmap-day-label {
+    font-size: 0.55rem;
+    color: var(--text-muted);
+    height: 13px;
+    line-height: 13px;
+}
+
+.heatmap-week {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.heatmap-cell {
+    width: 13px;
+    height: 13px;
+    border-radius: 2px;
+    transition: transform 0.15s;
+}
+
+.heatmap-cell:hover {
+    transform: scale(1.4);
+}
+
+.heatmap-legend {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    justify-content: flex-end;
+    margin-top: var(--space-1);
+}
+
+.heatmap-legend-label {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    margin: 0 var(--space-1);
+}
+
+/* Mood Graph */
+.mood-graph {
+    padding: var(--space-3) 0;
+}
+
+.mood-graph-bars {
+    display: flex;
+    gap: var(--space-1);
+    align-items: flex-end;
+    justify-content: center;
+    height: 120px;
+}
+
+.mood-graph-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
+}
+
+.mood-graph-emoji {
+    font-size: 0.9rem;
+}
+
+.mood-graph-bar-bg {
+    width: 100%;
+    max-width: 24px;
+    height: 80px;
+    background: var(--bg-body);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+}
+
+.mood-graph-bar-fill {
+    width: 100%;
+    border-radius: var(--radius-md);
+    transition: height 0.5s ease;
+    animation: moodBarGrow 0.6s ease both;
+}
+
+.mood-graph-date {
+    font-size: 0.55rem;
+    color: var(--text-muted);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    max-height: 40px;
+    overflow: hidden;
+}
+
+@keyframes moodBarGrow {
+    from {
+        height: 0 !important;
+    }
+}

@@ -6,6 +6,8 @@ import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { daysBetween } from '../../utils/dateUtils';
 import { BADGES } from '../../data/challenges';
 import Card from '../../components/ui/Card';
+import ActivityCalendar from '../../components/ui/ActivityCalendar';
+import MoodGraph from '../../components/ui/MoodGraph';
 import './Progress.css';
 
 export default function Progress() {
@@ -98,6 +100,15 @@ export default function Progress() {
                     </div>
                 </Card>
 
+                {/* ACTIVITY HEATMAP */}
+                <Card header="Aktivitetskalender (12 uker)" hoverable={false} className="badges-card">
+                    <ActivityCalendar
+                        events={events}
+                        journalEntries={journalEntries}
+                        goals={[...activeGoals, ...completedGoals]}
+                    />
+                </Card>
+
                 {/* TRIGGER ANALYSIS */}
                 <Card header="Dine topp-triggere" hoverable={false}>
                     {sortedTriggers.length > 0 ? (
@@ -121,18 +132,7 @@ export default function Progress() {
                 {/* MOOD TREND */}
                 <Card header="Humørtrend (14 dager)" hoverable={false}>
                     {moodData.length > 0 ? (
-                        <div className="mood-trend-row">
-                            {moodData.slice(0, 14).reverse().map((m, i) => {
-                                const d = new Date(m.date);
-                                const dayLabel = d.toLocaleDateString('nb-NO', { day: 'numeric', month: 'short' });
-                                return (
-                                    <div key={i} className="mood-dot">
-                                        <span className="mood-dot-emoji">{MOOD_EMOJIS[m.mood]}</span>
-                                        <span className="mood-dot-date">{dayLabel}</span>
-                                    </div>
-                                );
-                            })}
-                        </div>
+                        <MoodGraph moodData={moodData} />
                     ) : (
                         <p className="placeholder-text">Skriv i dagboken for å se humørtrend.</p>
                     )}
