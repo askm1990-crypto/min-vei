@@ -9,7 +9,7 @@ import { daysBetween } from '../../utils/dateUtils';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
 import InsightCards from '../../components/ui/InsightCards';
-import ActivityCalendar from '../../components/ui/ActivityCalendar';
+import WeeklyActivity from '../../components/ui/WeeklyActivity';
 import { showToast } from '../../components/ui/Toast';
 import { getDailyChallenge } from '../../data/challenges';
 import './Dashboard.css';
@@ -314,9 +314,9 @@ export default function Dashboard({ onNavigate }) {
                     </Card>
                 )}
 
-                {/* ACTIVITY CALENDAR */}
-                <Card header="Aktivitetskalender (12 uker)" className="calendar-card" hoverable={false}>
-                    <ActivityCalendar
+                {/* WEEKLY ACTIVITY */}
+                <Card header="Aktivitet siste 7 dager" className="calendar-card" hoverable={false}>
+                    <WeeklyActivity
                         events={events}
                         journalEntries={journalEntries}
                         goals={goals}

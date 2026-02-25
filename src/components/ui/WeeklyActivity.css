@@ -1,0 +1,94 @@
+.weekly-activity-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-3) 0;
+    gap: var(--space-4);
+}
+
+.weekly-activity-circles {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 400px;
+    gap: var(--space-2);
+}
+
+.weekly-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    flex: 1;
+}
+
+.weekly-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--bg-hover);
+    border: 2px solid transparent;
+}
+
+.weekly-circle.active {
+    background: var(--primary-main);
+    color: white;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    transform: scale(1.05);
+}
+
+.weekly-circle.inactive {
+    background: var(--bg-body);
+    border-color: var(--border);
+}
+
+.today-pulse {
+    animation: pulseBorder 2s infinite;
+    border-color: var(--primary-main) !important;
+}
+
+@keyframes pulseBorder {
+    0% {
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 8px rgba(99, 102, 241, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+    }
+}
+
+.weekly-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.today-label {
+    color: var(--primary-main);
+    font-weight: 700;
+}
+
+.weekly-activity-summary {
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    background: var(--bg-body);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    width: 100%;
+}
+
+.weekly-activity-summary strong {
+    color: var(--text-main);
+    font-weight: 600;
+}

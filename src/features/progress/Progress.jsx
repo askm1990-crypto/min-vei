@@ -6,7 +6,7 @@ import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { daysBetween } from '../../utils/dateUtils';
 import { BADGES } from '../../data/challenges';
 import Card from '../../components/ui/Card';
-import ActivityCalendar from '../../components/ui/ActivityCalendar';
+import WeeklyActivity from '../../components/ui/WeeklyActivity';
 import MoodGraph from '../../components/ui/MoodGraph';
 import './Progress.css';
 
@@ -111,9 +111,9 @@ export default function Progress() {
                     </div>
                 </Card>
 
-                {/* ACTIVITY HEATMAP */}
-                <Card header="Aktivitetskalender (12 uker)" hoverable={false} className="badges-card">
-                    <ActivityCalendar
+                {/* WEEKLY ACTIVITY */}
+                <Card header="Aktivitet siste 7 dager" hoverable={false} className="badges-card">
+                    <WeeklyActivity
                         events={events}
                         journalEntries={journalEntries}
                         goals={[...activeGoals, ...completedGoals]}
