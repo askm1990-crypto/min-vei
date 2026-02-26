@@ -147,6 +147,11 @@
     min-width: 0;
 }
 
+.mood-trend-card {
+    grid-column: span 12;
+    min-width: 0;
+}
+
 .savings-content-wrapper {
     grid-column: span 12;
     min-width: 0;
