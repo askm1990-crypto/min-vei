@@ -204,7 +204,7 @@ export default function Dashboard({ onNavigate }) {
                 </Card>
 
                 {/* STATS */}
-                <Card header="Din Status" hoverable={false}>
+                <Card header="Din Status" className="stats-grid-wrapper" hoverable={false}>
                     <div className="stats-grid">
                         <div className="stat-box">
                             <span className="stat-icon">🌟</span>
@@ -225,7 +225,7 @@ export default function Dashboard({ onNavigate }) {
 
                 {/* SAVINGS CALCULATOR */}
                 {spending && (
-                    <Card header="Sparekalkulator" hoverable={false}>
+                    <Card header="Sparekalkulator" className="savings-content-wrapper" hoverable={false}>
                         <div className="savings-content">
                             <span className="savings-icon">💰</span>
                             <div className="savings-details">
