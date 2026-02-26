@@ -109,9 +109,12 @@
 /* GRID LAYOUT */
 .dashboard-grid {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    /* minmax(0, 1fr) forhindrer flex/grid shrink bugs */
     gap: var(--space-4);
     width: 100%;
+    min-width: 0;
+    /* Hindrer grid i å skyve parent over rammen */
 }
 
 /* Base Card assignments */
@@ -127,6 +130,8 @@
 
 .stats-grid-wrapper {
     grid-column: span 12;
+    min-width: 0;
+    /* Hindre "squashing" av tekst */
 }
 
 .crisis-cta-card {
@@ -135,14 +140,17 @@
 
 .recent-events-card {
     grid-column: span 12;
+    min-width: 0;
 }
 
 .calendar-card {
     grid-column: span 12;
+    min-width: 0;
 }
 
 .savings-content-wrapper {
     grid-column: span 12;
+    min-width: 0;
 }
 
 @media (min-width: 768px) {
@@ -345,17 +353,24 @@
 .stat-content strong {
     font-size: 1.5rem;
     color: var(--text-main);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    line-height: 1.1;
+    margin-bottom: 2px;
 }
 
 .stat-content span {
     font-size: 0.85rem;
     color: var(--text-muted);
+    word-break: break-word;
 }
 
 @media (max-width: 600px) {
+    .stat-box {
+        flex-wrap: wrap;
+        gap: var(--space-3);
+    }
+
     .stat-icon {
         width: 48px;
         height: 48px;
