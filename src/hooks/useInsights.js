@@ -57,7 +57,7 @@ export function useInsights({ events = [], journalEntries = [], goals = [], user
                     type: 'pattern',
                     icon: '📅',
                     priority: 8,
-                    title: `${peakDayNames[peakDayIndex]}er skiller seg ut`,
+                    title: `${dayNames[peakDayIndex]}er skiller seg ut`,
                     description: `Du har logget ${peakDayCount} hendelser på denne dagen. Vær ekstra oppmerksom på dine rutiner da.`,
                     color: 'var(--info)'
                 });
