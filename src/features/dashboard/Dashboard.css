@@ -131,7 +131,6 @@
 .stats-grid-wrapper {
     grid-column: span 12;
     min-width: 0;
-    /* Hindre "squashing" av tekst */
 }
 
 .crisis-cta-card {
@@ -153,14 +152,22 @@
     min-width: 0;
 }
 
+@media (max-width: 480px) {
+
+    /* For ekstremt smale skjermer, tving alle kort til å ta hele bredden (span 12) */
+    .dashboard-grid>* {
+        grid-column: span 12 !important;
+    }
+}
+
 @media (min-width: 768px) {
 
-    /* Split cards 50/50 */
+    /* Split cards 50/50 på nettbrett og oppover */
     .dashboard-grid>.card:nth-child(n+3) {
         grid-column: span 6;
     }
 
-    /* Overrides back to full width */
+    /* Overrides back to full width for spesifikke brede bokser */
     .dashboard-grid>.recent-events-card,
     .dashboard-grid>.calendar-card {
         grid-column: span 12;
@@ -288,16 +295,25 @@
 
 @media (max-width: 480px) {
     .quick-actions-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         gap: var(--space-3);
     }
 
     .qa-btn {
         padding: var(--space-3);
+        flex-direction: row;
+        /* Gå fra stack icon top til side-by-side på rad for å spare plass */
+        justify-content: flex-start;
     }
 
     .qa-title {
-        font-size: 0.85rem;
+        font-size: 0.95rem;
+        flex: 1;
+        text-align: left;
+    }
+
+    .qa-icon {
+        margin-right: var(--space-2);
     }
 }
 
