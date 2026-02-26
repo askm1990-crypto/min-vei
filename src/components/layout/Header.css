@@ -17,17 +17,40 @@ body.dark-mode .header {
     border-bottom-color: rgba(255, 255, 255, 0.05);
 }
 
+.header__left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.header__menu-btn {
+    display: none;
+    /* Hidden on desktop */
+}
+
+@media (max-width: 768px) {
+    .header__menu-btn {
+        display: inline-flex;
+        /* Show on mobile */
+    }
+
+    .header {
+        padding: var(--space-3);
+    }
+}
+
 .header__greeting h1 {
     font-size: 1.15rem;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.03em;
+    margin: 0;
 }
 
 .header__subtitle {
     font-size: 0.8rem;
     color: var(--text-muted);
-    margin-top: 1px;
+    margin: 1px 0 0 0;
 }
 
 .header__actions {

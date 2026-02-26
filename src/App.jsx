@@ -34,6 +34,9 @@ export default function App() {
   const [showGuide, setShowGuide] = useState(false);
   const [isLocked, setIsLocked] = useState(() => !!localStorage.getItem('mv2_pin'));
 
+  // Mobile menu state
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const greeting = getGreeting(user?.name);
   const subtitle = 'En dag av gangen.';
 
@@ -111,6 +114,8 @@ export default function App() {
           isDark={isDark}
           disclaimerVisible={disclaimerVisible}
           onDismissDisclaimer={() => setDisclaimerVisible(false)}
+          isOpen={isMenuOpen}
+          onClose={() => setIsMenuOpen(false)}
         />
 
         <main className="main-content">
@@ -119,6 +124,7 @@ export default function App() {
             subtitle={subtitle}
             isDark={isDark}
             onToggleTheme={toggleTheme}
+            onToggleMenu={() => setIsMenuOpen(!isMenuOpen)}
           />
 
           {needsOnboarding ? (

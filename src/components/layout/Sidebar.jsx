@@ -27,54 +27,71 @@ function Icon({ name }) {
         'sun': <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5" /><line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" /><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" /><line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" /><line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" /></svg>,
         'info': <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" /></svg>,
         'x': <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>,
+        'menu': <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="18" x2="21" y2="18" /></svg>,
     };
     return icons[name] || null;
 }
 
 export { Icon };
 
-export default function Sidebar({ currentView, onNavigate, disclaimerVisible, onDismissDisclaimer }) {
+export default function Sidebar({ currentView, onNavigate, disclaimerVisible, onDismissDisclaimer, isOpen, onClose }) {
+
+    // Auto-close menu on selection for mobile
+    const handleNavigation = (id) => {
+        onNavigate(id);
+        if (onClose) onClose();
+    };
+
     return (
-        <nav className="sidebar">
-            <div className="sidebar__logo">
-                <div className="sidebar__logo-icon">
-                    <Icon name="sun" />
-                </div>
-                <span className="sidebar__logo-text">Min Vei</span>
-            </div>
+        <>
+            {/* Overlay for mobile clicking outside drawer */}
+            <div
+                className={`sidebar-overlay ${isOpen ? 'sidebar-overlay--active' : ''}`}
+                onClick={onClose}
+                aria-hidden="true"
+            />
 
-            <ul className="sidebar__nav">
-                {NAV_ITEMS.map(item => (
-                    <li
-                        key={item.id}
-                        className={`sidebar__item ${currentView === item.id ? 'sidebar__item--active' : ''} ${item.warning ? 'sidebar__item--warning' : ''}`}
-                        onClick={() => onNavigate(item.id)}
-                        onKeyDown={e => e.key === 'Enter' && onNavigate(item.id)}
-                        tabIndex={0}
-                        role="button"
-                        aria-label={item.label}
-                    >
-                        <Icon name={item.icon} />
-                        <span>{item.label}</span>
-                    </li>
-                ))}
-            </ul>
-
-            {disclaimerVisible && (
-                <div className="sidebar__disclaimer">
-                    <div className="sidebar__disclaimer-content">
-                        <Icon name="info" />
-                        <p><strong>Viktig:</strong> Min Vei erstatter ikke medisinsk behandling. Ved akutt livsfare, ring 113.</p>
-                        <button
-                            className="sidebar__dismiss"
-                            onClick={onDismissDisclaimer}
-                            aria-label="Lukk"
-                        >
-                            <Icon name="x" />
-                        </button>
+            <nav className={`sidebar ${isOpen ? 'sidebar--open' : ''}`}>
+                <div className="sidebar__logo">
+                    <div className="sidebar__logo-icon">
+                        <Icon name="sun" />
                     </div>
+                    <span className="sidebar__logo-text">Min Vei</span>
                 </div>
-            )}
-        </nav>
+
+                <ul className="sidebar__nav">
+                    {NAV_ITEMS.map(item => (
+                        <li
+                            key={item.id}
+                            className={`sidebar__item ${currentView === item.id ? 'sidebar__item--active' : ''} ${item.warning ? 'sidebar__item--warning' : ''}`}
+                            onClick={() => handleNavigation(item.id)}
+                            onKeyDown={e => e.key === 'Enter' && handleNavigation(item.id)}
+                            tabIndex={0}
+                            role="button"
+                            aria-label={item.label}
+                        >
+                            <Icon name={item.icon} />
+                            <span>{item.label}</span>
+                        </li>
+                    ))}
+                </ul>
+
+                {disclaimerVisible && (
+                    <div className="sidebar__disclaimer">
+                        <div className="sidebar__disclaimer-content">
+                            <Icon name="info" />
+                            <p><strong>Viktig:</strong> Min Vei erstatter ikke medisinsk behandling. Ved akutt livsfare, ring 113.</p>
+                            <button
+                                className="sidebar__dismiss"
+                                onClick={onDismissDisclaimer}
+                                aria-label="Lukk"
+                            >
+                                <Icon name="x" />
+                            </button>
+                        </div>
+                    </div>
+                )}
+            </nav>
+        </>
     );
 }

@@ -2,20 +2,51 @@
 .card {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: var(--space-5);
+    border-radius: var(--radius-lg);
+    /* Mer avrundede hjørner */
+    padding: var(--space-6);
     box-shadow: var(--shadow-card);
-    transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+    transition: box-shadow var(--transition-spring), transform var(--transition-spring), border-color var(--transition-spring);
+    position: relative;
+    overflow: hidden;
+}
+
+@media (max-width: 600px) {
+    .card {
+        padding: var(--space-4);
+    }
 }
 
 .card--hoverable:hover {
     box-shadow: var(--shadow-card-hover);
-    transform: translateY(-1px);
+    transform: translateY(-4px);
+    /* Tydeligere "løft" */
+    border-color: rgba(15, 159, 145, 0.2);
+    /* Hint av primary i border ved hover */
+}
+
+/* Subtle gradient overlay for Premium look */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 50%);
+    pointer-events: none;
+    opacity: 0.5;
 }
 
 body.dark-mode .card {
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: var(--bg-card);
+    /* Sikre at denne treffer */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+body.dark-mode .card::before {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 50%);
 }
 
 .card__header {
@@ -23,8 +54,13 @@ body.dark-mode .card {
     align-items: center;
     justify-content: space-between;
     margin-bottom: var(--space-4);
+    position: relative;
+    z-index: 1;
+    /* For å havne over before-background */
 }
 
 .card__header h3 {
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
 }

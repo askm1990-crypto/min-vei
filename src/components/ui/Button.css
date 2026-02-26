@@ -4,13 +4,14 @@
     align-items: center;
     justify-content: center;
     gap: var(--space-2);
-    padding: 10px var(--space-5);
-    border-radius: var(--radius-sm);
-    font-size: 0.875rem;
+    padding: 12px var(--space-6);
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
     border: none;
-    transition: background var(--transition), transform var(--transition-spring), box-shadow var(--transition);
+    transition: all var(--transition-spring);
+    letter-spacing: 0.01em;
 }
 
 .btn:disabled {
@@ -24,52 +25,66 @@
 }
 
 .btn__icon svg {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     stroke: currentColor;
 }
 
 /* Primary */
 .btn--primary {
-    background: var(--primary);
-    color: var(--text-invert);
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--primary-fg);
+    box-shadow: 0 4px 14px var(--primary-glow);
 }
 
 .btn--primary:hover:not(:disabled) {
-    background: var(--primary-dark);
-    box-shadow: 0 4px 14px rgba(13, 148, 136, 0.3);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
 }
 
 .btn--primary:active:not(:disabled) {
-    transform: scale(0.97);
+    transform: translateY(1px) scale(0.98);
 }
 
 /* Secondary */
 .btn--secondary {
-    background: var(--bg-input);
+    background: var(--bg-card);
     color: var(--text-main);
     border: 1px solid var(--border);
+    box-shadow: var(--shadow-card);
 }
 
 .btn--secondary:hover:not(:disabled) {
-    background: var(--border);
+    background: var(--bg-hover);
+    color: var(--primary);
+    border-color: var(--primary-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.btn--secondary:active:not(:disabled) {
+    transform: translateY(1px) scale(0.98);
 }
 
 /* Icon button */
 .btn--icon {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     padding: 0;
-    background: var(--bg-input);
+    background: var(--bg-card);
     color: var(--text-muted);
     border: 1px solid var(--border);
     flex-shrink: 0;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
 }
 
 .btn--icon:hover:not(:disabled) {
     background: var(--bg-hover);
     color: var(--primary);
-    transform: scale(1.05);
+    transform: scale(1.08) translateY(-2px);
+    border-color: var(--primary-light);
+    box-shadow: var(--shadow-card-hover);
 }
 
 .btn--icon:active:not(:disabled) {
@@ -78,13 +93,14 @@
 
 /* Sizes */
 .btn--small {
-    padding: 7px var(--space-4);
-    font-size: 0.8rem;
+    padding: 8px var(--space-4);
+    font-size: 0.85rem;
+    border-radius: var(--radius-sm);
 }
 
 .btn--small.btn--icon {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
 }
 
 /* Modifiers */
