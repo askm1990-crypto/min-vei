@@ -370,8 +370,10 @@
 /* SAVINGS */
 .savings-content {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--space-4);
+    flex-wrap: wrap;
+    /* Tillat wrapping */
 }
 
 .savings-icon {
@@ -384,17 +386,31 @@
     flex-direction: column;
     gap: var(--space-1);
     min-width: 0;
+    flex: 1 1 200px;
+    /* La den vokse og ta plass */
 }
 
 .savings-details strong {
     font-size: 1.1rem;
     color: var(--success);
     word-break: break-word;
+    /* Garanter at det ikke ryker utenfor */
 }
 
 .savings-details span {
     font-size: 0.85rem;
     color: var(--text-muted);
+}
+
+@media (max-width: 400px) {
+    .savings-content {
+        gap: var(--space-2);
+        align-items: center;
+    }
+
+    .savings-icon {
+        font-size: 2rem;
+    }
 }
 
 /* CRISIS CTA */
@@ -406,6 +422,7 @@
     display: flex;
     align-items: flex-start;
     gap: var(--space-3);
+    flex-wrap: wrap;
 }
 
 .crisis-icon {
@@ -418,6 +435,7 @@
     margin: 0 0 var(--space-1) 0;
     font-size: 1.1rem;
     color: var(--error);
+    width: 100%;
 }
 
 .crisis-cta-content p {
@@ -425,6 +443,7 @@
     font-size: 0.95rem;
     color: var(--text-main);
     line-height: 1.4;
+    width: 100%;
 }
 
 /* MENU CARD RESTRUCTURE (For any list-based cards on dashboard) */

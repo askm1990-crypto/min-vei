@@ -255,16 +255,16 @@ export default function Dashboard({ onNavigate }) {
                     <Card header="Ditt Mønster" className="recent-events-card" hoverable={false}>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
                             {getMostCommonTrigger() && (
-                                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', background: 'var(--bg-body)', padding: 'var(--space-3)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
-                                    <span style={{ fontSize: '1.5rem' }}>🎯</span>
+                                <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--space-3)', background: 'var(--bg-body)', padding: 'var(--space-3)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
+                                    <span style={{ fontSize: '1.5rem', flexShrink: 0 }}>🎯</span>
                                     <div>
                                         <strong style={{ display: 'block', fontSize: '0.9rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Vanligste trigger</strong>
                                         <span style={{ fontSize: '1.2rem', fontWeight: '600', color: 'var(--text-main)' }}>{getMostCommonTrigger()}</span>
                                     </div>
                                 </div>
                             )}
-                            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', background: 'var(--bg-body)', padding: 'var(--space-3)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
-                                <span style={{ fontSize: '1.5rem' }}>📈</span>
+                            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--space-3)', background: 'var(--bg-body)', padding: 'var(--space-3)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
+                                <span style={{ fontSize: '1.5rem', flexShrink: 0 }}>📈</span>
                                 <div>
                                     <strong style={{ display: 'block', fontSize: '0.9rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Siste 7 dager</strong>
                                     <span style={{ fontSize: '1.1rem', fontWeight: '500', color: 'var(--text-main)' }}>
