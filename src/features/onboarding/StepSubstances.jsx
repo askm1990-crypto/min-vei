@@ -6,6 +6,9 @@ const SUBSTANCES = [
     { id: 'stimulants', icon: '⚡', label: 'Stimulanter', sub: '(Amfetamin, Kokain)' },
     { id: 'opioids', icon: '💊', label: 'Opioider', sub: '(Heroin, Piller)' },
     { id: 'sedatives', icon: '😴', label: 'Beroligende', sub: '(Benzo)' },
+    { id: 'hallucinogens', icon: '🍄', label: 'Hallusinogener', sub: '(LSD, Fleinsopp)' },
+    { id: 'ghb', icon: '💧', label: 'GHB/GBL' },
+    { id: 'steroids', icon: '💪', label: 'Anabole steroider' },
     { id: 'other', icon: '❓', label: 'Annet' },
 ];
 
@@ -38,6 +41,23 @@ export default function StepSubstances({ data, updateData, onNext, onPrev }) {
                     </div>
                 ))}
             </div>
+
+            {data.substances.includes('other') && (
+                <div className="form-group slide-down" style={{ marginTop: '1.5rem' }}>
+                    <label htmlFor="custom-substance" className="form-label" style={{ fontWeight: '600' }}>
+                        Spesifiser rusmiddel (valgfritt)
+                    </label>
+                    <input
+                        id="custom-substance"
+                        type="text"
+                        className="text-input"
+                        placeholder="Hva slags rusmiddel?"
+                        value={data.customSubstance || ''}
+                        onChange={(e) => updateData({ customSubstance: e.target.value })}
+                        autoFocus
+                    />
+                </div>
+            )}
 
             <div className="step__actions">
                 <Button variant="secondary" onClick={onPrev}>Tilbake</Button>

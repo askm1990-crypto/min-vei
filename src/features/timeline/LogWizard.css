@@ -1,0 +1,780 @@
+/* ─── LogWizard Layout ─────────────────────────────────────────── */
+
+.log-wizard {
+    background: var(--bg-body);
+    min-height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+}
+
+.wizard-header {
+    padding: var(--space-4);
+    display: flex;
+    justify-content: flex-start;
+}
+
+.wizard-back-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.wizard-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 var(--space-4) var(--space-6);
+}
+
+.wizard-progress {
+    margin-bottom: var(--space-6);
+    padding: 0 var(--space-2);
+}
+
+.wizard-progress-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.wizard-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary, var(--primary)));
+    border-radius: var(--radius-full);
+    transition: width 0.4s ease;
+}
+
+.wizard-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.wizard-step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ─── Typography ───────────────────────────────────────────────── */
+
+.step-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: var(--space-2);
+    text-align: center;
+}
+
+.step-subtitle {
+    font-size: 1rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: var(--space-6);
+    line-height: 1.5;
+}
+
+.step-actions {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding-top: var(--space-6);
+}
+
+/* ─── Cards (lw-card) ──────────────────────────────────────────── */
+
+.lw-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    border: 1px solid var(--border);
+    margin-bottom: var(--space-4);
+}
+
+.lw-card-highlight {
+    background: rgba(var(--primary-rgb, 13, 148, 136), 0.05);
+    border-color: rgba(var(--primary-rgb, 13, 148, 136), 0.25);
+}
+
+.lw-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: var(--space-2);
+}
+
+.lw-section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: var(--space-3);
+}
+
+.lw-hint {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.lw-hint-center {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: var(--space-6);
+}
+
+.lw-divider {
+    border: none;
+    height: 1px;
+    background: var(--border);
+    margin: var(--space-5) 0;
+}
+
+.lw-divider-soft {
+    border: none;
+    height: 1px;
+    background: var(--border);
+    margin: var(--space-3) 0;
+}
+
+.lw-link-btn {
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    color: var(--text-main);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9rem;
+    display: block;
+    margin: var(--space-3) auto;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    font-weight: 500;
+    transition: all 0.15s;
+}
+
+@media (hover: hover) {
+    .lw-link-btn:hover {
+        color: var(--primary);
+        border-color: var(--primary);
+        transform: translateY(-1px);
+    }
+}
+
+/* ─── Chips ────────────────────────────────────────────────────── */
+
+.lw-chip-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.lw-chip {
+    padding: 8px 16px;
+    border-radius: 100px;
+    border: 2px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-main);
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+@media (hover: hover) {
+    .lw-chip:hover {
+        border-color: var(--primary);
+        background: rgba(var(--primary-rgb, 13, 148, 136), 0.06);
+        transform: translateY(-1px);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    }
+}
+
+.lw-chip:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.lw-chip-selected {
+    border-color: var(--chip-color, var(--primary));
+    background: rgba(var(--primary-rgb, 13, 148, 136), 0.12);
+    color: var(--chip-color, var(--primary));
+    font-weight: 700;
+    box-shadow: 0 0 0 1px var(--chip-color, var(--primary)), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lw-custom-input {
+    display: flex;
+    gap: var(--space-2);
+    margin-top: var(--space-3);
+}
+
+.lw-custom-input .text-input {
+    flex: 1;
+}
+
+/* ─── Step 1: Mood ─────────────────────────────────────────────── */
+
+.mood-selector {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+    margin: var(--space-2) 0;
+}
+
+.mood-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    cursor: pointer;
+    padding: var(--space-3) var(--space-2);
+    border-radius: var(--radius-lg);
+    transition: all 0.15s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    min-width: 72px;
+}
+
+@media (hover: hover) {
+    .mood-btn:hover {
+        border-color: var(--primary);
+        background: rgba(var(--primary-rgb, 13, 148, 136), 0.06);
+        transform: translateY(-2px);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+    }
+}
+
+.mood-btn:active {
+    transform: translateY(0);
+}
+
+.mood-btn.selected {
+    border-color: var(--primary);
+    background: rgba(var(--primary-rgb, 13, 148, 136), 0.1);
+    box-shadow: 0 0 0 2px var(--primary), 0 2px 8px rgba(0, 0, 0, 0.15);
+    transform: scale(1.08);
+}
+
+.mood-emoji {
+    font-size: 2.2rem;
+    transition: transform 0.2s;
+}
+
+.mood-btn:hover .mood-emoji {
+    transform: scale(1.1);
+}
+
+.mood-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.mood-btn.selected .mood-label {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* ─── Step 1: Sug meter ───────────────────────────────────────── */
+
+.intensity-slider {
+    width: 100%;
+    margin-bottom: var(--space-2);
+    accent-color: var(--primary);
+}
+
+.sug-value-display {
+    text-align: center;
+    margin-top: var(--space-3);
+}
+
+.sug-number {
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.sug-divider {
+    font-size: 1.3rem;
+    color: var(--text-muted);
+}
+
+.sug-description {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: var(--space-1);
+}
+
+/* ─── Step 2: Emotions ─────────────────────────────────────────── */
+
+.emotion-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+}
+
+.emotion-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.emotion-card-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--border);
+    background: var(--bg-card);
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    position: relative;
+}
+
+@media (hover: hover) {
+    .emotion-card-container:hover {
+        border-color: color-mix(in srgb, var(--emotion-color, var(--primary)) 40%, var(--border));
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+}
+
+.emotion-card-container.selected {
+    border-color: var(--emotion-color);
+    background: color-mix(in srgb, var(--emotion-color) 8%, var(--bg-card));
+    box-shadow: 0 0 0 1px var(--emotion-color), 0 4px 12px color-mix(in srgb, var(--emotion-color) 15%, transparent);
+}
+
+.emotion-card-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    outline: none;
+}
+
+/* Remove persistent focus ring from mouse clicks, but keep for keyboard */
+.emotion-card-main:focus {
+    outline: none;
+}
+
+.emotion-card-main:focus-visible {
+    outline: 2px solid var(--emotion-color);
+    outline-offset: -4px;
+}
+
+.emotion-card-main:active {
+    transform: scale(0.98);
+    opacity: 0.8;
+}
+
+.emotion-card-emoji {
+    font-size: 1.6rem;
+}
+
+.emotion-card-label {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+.selected .emotion-card-label {
+    color: var(--emotion-color);
+}
+
+.emotion-expand-toggle {
+    margin-right: var(--space-3);
+    font-size: 0.75rem;
+    color: var(--emotion-color);
+    background: color-mix(in srgb, var(--emotion-color) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--emotion-color) 20%, transparent);
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+}
+
+@media (hover: hover) {
+    .emotion-expand-toggle:hover {
+        background: var(--emotion-color);
+        color: white;
+    }
+}
+
+.emotion-sub-drawer {
+    background: var(--bg-body);
+    border: 2px solid color-mix(in srgb, var(--emotion-color) 20%, transparent);
+    border-top: none;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    padding: var(--space-3) var(--space-4);
+}
+
+/* ─── Step 2: Body scan ────────────────────────────────────────── */
+
+.body-scan-trigger {
+    width: 100%;
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    border: 2px dashed var(--primary);
+    background: rgba(var(--primary-rgb, 13, 148, 136), 0.04);
+    cursor: pointer;
+    font-family: inherit;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    text-align: left;
+    transition: all 0.2s;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+@media (hover: hover) {
+    .body-scan-trigger:hover {
+        border-color: var(--primary);
+        background: rgba(var(--primary-rgb, 13, 148, 136), 0.08);
+        transform: translateY(-1px);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+    }
+}
+
+.body-scan-trigger:active {
+    transform: translateY(0);
+}
+
+.scan-progress-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    margin-bottom: var(--space-6);
+}
+
+.scan-progress-fill {
+    height: 100%;
+    background: var(--primary);
+    border-radius: 2px;
+    transition: width 0.3s;
+}
+
+/* ─── Step 4: Outcome cards ────────────────────────────────────── */
+
+.outcome-selectors {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+}
+
+.outcome-card {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    text-align: left;
+    border: 2px solid var(--border);
+    background: var(--bg-card);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+@media (hover: hover) {
+    .outcome-card:hover {
+        border-color: var(--text-muted);
+        transform: translateY(-1px);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+    }
+}
+
+.outcome-card:active {
+    transform: translateY(0);
+}
+
+.outcome-emoji {
+    font-size: 1.8rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.outcome-card-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.outcome-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+.outcome-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.outcome-check {
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+}
+
+.outcome-card.selected.success {
+    background: rgba(var(--success-rgb), 0.08);
+    border-color: var(--success);
+}
+
+.outcome-card.selected.success .outcome-check {
+    background: var(--success);
+}
+
+.outcome-card.selected.warning {
+    background: rgba(var(--warning-rgb), 0.08);
+    border-color: var(--warning);
+}
+
+.outcome-card.selected.warning .outcome-check {
+    background: var(--warning);
+}
+
+.outcome-card.selected.danger {
+    background: rgba(var(--danger-rgb), 0.08);
+    border-color: var(--danger);
+}
+
+.outcome-card.selected.danger .outcome-check {
+    background: var(--danger);
+}
+
+.outcome-followup {
+    margin-top: var(--space-2);
+}
+
+.outcome-followup-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-main);
+    margin: 0 0 var(--space-1);
+}
+
+.outcome-followup-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0 0 var(--space-4);
+}
+
+/* ─── Step 5: Gratitude prompts ────────────────────────────────── */
+
+.lw-textarea {
+    resize: vertical;
+    line-height: 1.6;
+    min-height: 100px;
+}
+
+.gratitude-prompts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+}
+
+.gratitude-prompt-btn {
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-full);
+    padding: var(--space-2) var(--space-3);
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: var(--text-main);
+    font-family: inherit;
+    transition: all 0.15s;
+    text-align: left;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+@media (hover: hover) {
+    .gratitude-prompt-btn:hover {
+        border-color: var(--primary);
+        transform: translateY(-1px);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.gratitude-prompt-btn.active {
+    background: rgba(var(--primary-rgb, 13, 148, 136), 0.08);
+    border-color: var(--primary);
+    color: var(--primary);
+    box-shadow: 0 0 0 1px var(--primary), 0 2px 4px rgba(0, 0, 0, 0.08);
+    font-weight: 600;
+}
+
+/* ─── Step 6: Summary ──────────────────────────────────────────── */
+
+.summary-rows {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+}
+
+.summary-row {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border);
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+}
+
+.summary-row-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.summary-row-content {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.summary-row-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.summary-row-val {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    font-weight: 500;
+    margin-top: 2px;
+    word-break: break-word;
+}
+
+.btn-save {
+    background: var(--success) !important;
+    border-color: var(--success) !important;
+}
+
+/* ─── Text inputs ──────────────────────────────────────────────── */
+
+.text-input {
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    border: 2px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 0.9rem;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.text-input:focus {
+    border-color: var(--primary);
+}
+
+/* ─── Utilities ────────────────────────────────────────────────── */
+
+.mt-4 {
+    margin-top: var(--space-4);
+}
+
+.mt-6 {
+    margin-top: var(--space-6);
+}
+
+.mb-3 {
+    margin-bottom: var(--space-3);
+}
+
+.mb-5 {
+    margin-bottom: var(--space-5);
+}
+
+/* ─── Wizard Buttons (scoped overrides for step components) ──── */
+/* Step components use .btn-primary / .btn-secondary (not BEM).
+   These rules ensure buttons are clearly visible in both themes. */
+
+.log-wizard .btn-primary,
+.wizard-step .btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark, var(--primary)));
+    color: var(--primary-fg, white);
+    border: none;
+    box-shadow: 0 4px 14px var(--primary-glow, rgba(0, 0, 0, 0.15));
+}
+
+@media (hover: hover) {
+    .log-wizard .btn-primary:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px var(--primary-glow, rgba(0, 0, 0, 0.2));
+    }
+}
+
+.log-wizard .btn-primary:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.log-wizard .btn-secondary,
+.wizard-step .btn-secondary {
+    background: var(--bg-card);
+    color: var(--text-main);
+    border: 2px solid var(--border);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+@media (hover: hover) {
+    .log-wizard .btn-secondary:hover:not(:disabled) {
+        border-color: var(--primary);
+        color: var(--primary);
+        transform: translateY(-2px);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+    }
+}
+
+.log-wizard .btn-sm {
+    padding: 8px var(--space-4);
+    font-size: 0.85rem;
+    border-radius: var(--radius-sm);
+}

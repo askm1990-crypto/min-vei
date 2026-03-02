@@ -10,16 +10,10 @@ const GUIDE_STEPS = [
         highlight: 'dashboard'
     },
     {
-        title: 'Min Logg 📝',
-        text: 'Her registrerer du hendelser — når du opplever sug, triggere eller situasjoner. Du tjener poeng for hver registrering!',
+        title: 'Tidslinjen 📝',
+        text: 'Her registrerer du hendelser, sug, mestringsteknikker, eller bare tanker i dagboken. Alt samlet på ett sted! Du tjener poeng for hver registrering.',
         icon: '📝',
-        highlight: 'my-log'
-    },
-    {
-        title: 'Dagbok 📖',
-        text: 'Skriv ned tanker og følelser. Dagboken hjelper deg å se mønstre og gir deg poeng for konsistens.',
-        icon: '📖',
-        highlight: 'journal'
+        highlight: 'timeline'
     },
     {
         title: 'Mål 🎯',
@@ -47,7 +41,7 @@ const GUIDE_STEPS = [
     },
     {
         title: 'Du er klar! 🚀',
-        text: 'Nå vet du det viktigste. Start med å registrere din første hendelse eller skriv i dagboken. Lykke til!',
+        text: 'Nå vet du det viktigste. Start med å registrere din første hendelse på tidslinjen. Lykke til!',
         icon: '🚀',
         highlight: 'dashboard'
     },

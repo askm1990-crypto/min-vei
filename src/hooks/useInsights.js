@@ -255,8 +255,10 @@ export function useInsights({ events = [], journalEntries = [], goals = [], user
         if (events.length >= 5) {
             const strategyMap = {};
             events.forEach(ev => {
-                if (ev.strategy && ev.outcome === 'resisted') {
-                    strategyMap[ev.strategy] = (strategyMap[ev.strategy] || 0) + 1;
+                if (ev.strategies && ev.strategies.length > 0 && ev.outcome === 'resisted') {
+                    ev.strategies.forEach(s => {
+                        strategyMap[s] = (strategyMap[s] || 0) + 1;
+                    });
                 }
             });
 

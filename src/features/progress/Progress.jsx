@@ -1,5 +1,4 @@
-import { useEvents } from '../../hooks/useEvents';
-import { useJournal } from '../../hooks/useJournal';
+import { useTimeline } from '../../hooks/useTimeline';
 import { useGoals } from '../../hooks/useGoals';
 import { useRecoveryScore } from '../../hooks/useRecoveryScore';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
@@ -11,8 +10,11 @@ import MoodGraph from '../../components/ui/MoodGraph';
 import './Progress.css';
 
 export default function Progress() {
-    const { events, getMostCommonTrigger, getRecentTrend } = useEvents();
-    const { entries: journalEntries, getMoodTrend, getStreak: journalStreak } = useJournal();
+    const { getEvents, getJournalEntries, getRecentEventTrend, getStreak, getMoodTrend } = useTimeline();
+
+    // Fetch once
+    const events = getEvents();
+    const journalEntries = getJournalEntries();
     const { activeGoals, completedGoals } = useGoals();
     const { points } = useRecoveryScore();
     const [user] = useLocalStorage('mv2_user', null);
@@ -32,7 +34,7 @@ export default function Progress() {
 
     const resistedEvents = events.filter(e => e.outcome === 'resisted').length;
     const usedEventsCount = usedEvents.length;
-    const trend = getRecentTrend();
+    const trend = getRecentEventTrend();
     const moodData = getMoodTrend(14);
 
     // Build badge data
@@ -43,7 +45,7 @@ export default function Progress() {
         completedGoals: completedGoals.length,
         daysSober,
         resistedEvents,
-        journalStreak: journalStreak(),
+        journalStreak: getStreak(),
         challengeStreak: 0, // TODO: calculate from history
         totalPoints: points,
         crisisPlanComplete: false // TODO: from crisis module

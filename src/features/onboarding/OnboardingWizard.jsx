@@ -22,7 +22,9 @@ export default function OnboardingWizard({ onComplete }) {
     const [currentStep, setCurrentStep] = useState(1);
     const [data, setData] = useState({
         substances: [],
+        customSubstance: '',
         reasons: [],
+        customReason: '',
         duration: '',
         treatmentHistory: '',
         motivation: '',
@@ -53,7 +55,24 @@ export default function OnboardingWizard({ onComplete }) {
     };
 
     const finish = () => {
-        onComplete(data);
+        // Prepare final payload by injecting custom 'other' text if provided
+        const finalData = { ...data };
+
+        if (finalData.substances.includes('other')) {
+            finalData.substances = finalData.substances.filter(s => s !== 'other');
+            if (finalData.customSubstance?.trim()) {
+                finalData.substances.push(finalData.customSubstance.trim());
+            }
+        }
+
+        if (finalData.reasons.includes('other')) {
+            finalData.reasons = finalData.reasons.filter(r => r !== 'other');
+            if (finalData.customReason?.trim()) {
+                finalData.reasons.push(finalData.customReason.trim());
+            }
+        }
+
+        onComplete(finalData);
     };
 
     return (

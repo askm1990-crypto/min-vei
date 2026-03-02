@@ -40,7 +40,7 @@ export function exportToPDF({ user, events, journal, goals, points, level, title
         journalData.slice(0, 10).forEach(entry => {
             const d = new Date(entry.date).toLocaleDateString('nb-NO');
             lines.push(`📅 ${d} — Humør: ${entry.mood || '–'}/5`);
-            lines.push(`   ${entry.text?.substring(0, 120) || 'Ingen tekst'}`);
+            lines.push(`   ${entry.body?.substring(0, 120) || 'Ingen tekst'}`);
             lines.push('');
         });
     }
@@ -54,9 +54,13 @@ export function exportToPDF({ user, events, journal, goals, points, level, title
         lines.push('');
         eventsData.slice(0, 10).forEach(event => {
             const d = new Date(event.date || event.createdAt).toLocaleDateString('nb-NO');
-            lines.push(`📌 ${d} — ${event.type || event.trigger || 'Hendelse'}`);
+
+            // Format triggers as string
+            const triggerStr = event.triggers?.length > 0 ? event.triggers.join(', ') : 'Hendelse';
+
+            lines.push(`📌 ${d} — ${triggerStr}`);
             if (event.intensity) lines.push(`   Intensitet: ${event.intensity}/10`);
-            if (event.strategy) lines.push(`   Strategi: ${event.strategy}`);
+            if (event.strategies?.length > 0) lines.push(`   Strategi: ${event.strategies.join(', ')}`);
             lines.push('');
         });
     }

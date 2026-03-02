@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useRecoveryScore, POINTS } from '../../hooks/useRecoveryScore';
-import { useEvents } from '../../hooks/useEvents';
-import { useJournal } from '../../hooks/useJournal';
+import { useTimeline } from '../../hooks/useTimeline';
 import { useGoals } from '../../hooks/useGoals';
 import { useInsights } from '../../hooks/useInsights';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
@@ -16,8 +15,11 @@ import './Dashboard.css';
 
 export default function Dashboard({ onNavigate }) {
     const { points, level, title, progressToNext, nextLevelPoints, addPoints } = useRecoveryScore();
-    const { events, getMostCommonTrigger, getRecentTrend } = useEvents();
-    const { entries: journalEntries, getMoodTrend, getStreak: getJournalStreak } = useJournal();
+    const { getEvents, getJournalEntries, getMostCommonTrigger, getRecentEventTrend, getStreak, getMoodTrend } = useTimeline();
+
+    // We fetch these once to pass down
+    const events = getEvents();
+    const journalEntries = getJournalEntries();
     const [user] = useLocalStorage('mv2_user', null);
     const [spending] = useLocalStorage('mv2_spending', null);
     const [customTriggers] = useLocalStorage('mv2_custom_triggers', []);
@@ -185,15 +187,10 @@ export default function Dashboard({ onNavigate }) {
                 {/* QUICK ACTIONS */}
                 <Card header="Hurtigvalg (Samle poeng!)" className="quick-actions-card" hoverable={false}>
                     <div className="quick-actions-grid">
-                        <button className="qa-btn" onClick={() => onNavigate('my-log')}>
+                        <button className="qa-btn" onClick={() => onNavigate('log-wizard')}>
                             <span className="qa-icon">📝</span>
-                            <span className="qa-title">Logg Hendelse</span>
-                            <span className="qa-points">+{POINTS.CRAVING_RESISTED}p</span>
-                        </button>
-                        <button className="qa-btn" onClick={() => onNavigate('journal')}>
-                            <span className="qa-icon">📖</span>
-                            <span className="qa-title">Ny Dagbok</span>
-                            <span className="qa-points">+{POINTS.JOURNAL_ENTRY}p</span>
+                            <span className="qa-title">Ny Registrering</span>
+                            <span className="qa-points">Opp til +130p</span>
                         </button>
                         <button className="qa-btn" onClick={() => onNavigate('strategies')}>
                             <span className="qa-icon">🌬️</span>
@@ -268,7 +265,7 @@ export default function Dashboard({ onNavigate }) {
                                 <div>
                                     <strong style={{ display: 'block', fontSize: '0.9rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Siste 7 dager</strong>
                                     <span style={{ fontSize: '1.1rem', fontWeight: '500', color: 'var(--text-main)' }}>
-                                        {getRecentTrend().resisted} mestret / {getRecentTrend().used} ruset
+                                        {getRecentEventTrend().resisted} mestret / {getRecentEventTrend().used} ruset
                                     </span>
                                 </div>
                             </div>
@@ -299,9 +296,9 @@ export default function Dashboard({ onNavigate }) {
                                 );
                             })}
                         </div>
-                        {getJournalStreak() > 1 && (
+                        {getStreak() > 1 && (
                             <p style={{ textAlign: 'center', marginTop: 'var(--space-3)', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                                🔥 {getJournalStreak()} dager dagbok-streak!
+                                🔥 {getStreak()} dager logg-streak!
                             </p>
                         )}
                     </Card>

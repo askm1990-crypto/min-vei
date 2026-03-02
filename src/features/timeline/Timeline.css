@@ -1,0 +1,200 @@
+.timeline {
+    animation: fadeIn 0.4s ease-out forwards;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.timeline-hero {
+    background: var(--bg-card);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    text-align: center;
+}
+
+.hero-points-hint {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.timeline-filters {
+    display: flex;
+    gap: var(--space-2);
+    overflow-x: auto;
+    padding-bottom: var(--space-2);
+
+    /* Hide scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.timeline-filters::-webkit-scrollbar {
+    display: none;
+}
+
+.filter-btn {
+    flex-shrink: 0;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.filter-btn:hover {
+    background: var(--bg-hover);
+    color: var(--text-main);
+}
+
+.filter-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.timeline-month {
+    margin-bottom: var(--space-6);
+}
+
+.month-header {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: var(--space-4);
+    color: var(--text-main);
+    border-bottom: 2px solid var(--border);
+    padding-bottom: var(--space-2);
+}
+
+.month-entries {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+/* CARDS */
+.timeline-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.timeline-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-3);
+}
+
+.card-meta-left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.card-emoji {
+    font-size: 1.8rem;
+    background: var(--bg-body);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    flex-shrink: 0;
+}
+
+.card-emoji.resisted {
+    background: var(--success);
+    color: white;
+}
+
+.card-emoji.used {
+    background: var(--danger);
+    color: white;
+}
+
+.card-title-area {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-date {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.card-title {
+    font-weight: 600;
+    color: var(--text-main);
+    font-size: 1.1rem;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.entry-text {
+    line-height: 1.5;
+    color: var(--text-main);
+    white-space: pre-wrap;
+}
+
+.entry-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.timeline-tag {
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-body);
+    color: var(--text-muted);
+}
+
+.timeline-tag.feeling {
+    background: rgba(var(--primary-rgb), 0.1);
+    color: var(--primary);
+}
+
+.timeline-tag.trigger {
+    background: rgba(var(--warning-rgb), 0.1);
+    color: var(--warning-dark, #b38000);
+    /* Fallback */
+}
+
+.gratitude-box {
+    background: rgba(var(--success-rgb), 0.05);
+    border-left: 3px solid var(--success);
+    padding: var(--space-3);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    margin-top: var(--space-2);
+}
+
+.gratitude-box-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--success);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.strategy-box {
+    background: var(--bg-body);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    border: 1px dashed var(--border);
+}

@@ -6,6 +6,10 @@ const REASONS = [
     { id: 'sleep', label: 'For å få sove / ro' },
     { id: 'euphoria', label: 'For opplevelsen av rus / spenning' },
     { id: 'habit', label: 'Vane / fysisk avhengighet' },
+    { id: 'pain', label: 'Dempe fysisk smerte' },
+    { id: 'focus_adhd', label: 'Håndtere ADHD / roe hodet' },
+    { id: 'performance', label: 'Prestasjonsfremmende (jobb/skole)' },
+    { id: 'other', label: 'Annet' },
 ];
 
 export default function StepReasons({ data, updateData, onNext, onPrev }) {
@@ -38,6 +42,23 @@ export default function StepReasons({ data, updateData, onNext, onPrev }) {
                     </div>
                 ))}
             </div>
+
+            {data.reasons.includes('other') && (
+                <div className="form-group slide-down" style={{ marginTop: '1.5rem' }}>
+                    <label htmlFor="custom-reason" className="form-label" style={{ fontWeight: '600' }}>
+                        Spesifiser årsak (valgfritt)
+                    </label>
+                    <input
+                        id="custom-reason"
+                        type="text"
+                        className="text-input"
+                        placeholder="Hvorfor ruser du deg?"
+                        value={data.customReason || ''}
+                        onChange={(e) => updateData({ customReason: e.target.value })}
+                        autoFocus
+                    />
+                </div>
+            )}
 
             <div className="step__actions">
                 <Button variant="secondary" onClick={onPrev}>Tilbake</Button>

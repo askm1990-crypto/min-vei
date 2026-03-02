@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { useRecoveryScore } from '../../hooks/useRecoveryScore';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useTheme } from '../../hooks/useTheme';
-import { useEvents } from '../../hooks/useEvents';
-import { useJournal } from '../../hooks/useJournal';
+import { useTimeline } from '../../hooks/useTimeline';
 import { useGoals } from '../../hooks/useGoals';
 import { daysBetween, formatDateNO } from '../../utils/dateUtils';
 import { exportToPDF } from '../../utils/pdfExport';
@@ -16,8 +15,7 @@ export default function Profile() {
     const { points, level, title, progressToNext, nextLevelPoints } = useRecoveryScore();
     const [user] = useLocalStorage('mv2_user', null);
     const { theme, toggleTheme } = useTheme();
-    const { events } = useEvents();
-    const { entries: journalEntries } = useJournal();
+    const { getEvents, getJournalEntries } = useTimeline();
     const { goals } = useGoals();
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
     const [pinEnabled, setPinEnabled] = useState(() => !!localStorage.getItem('mv2_pin'));
@@ -33,8 +31,7 @@ export default function Profile() {
             version: '2.0',
             user: localStorage.getItem('mv2_user'),
             spending: localStorage.getItem('mv2_spending'),
-            events: localStorage.getItem('mv2_events'),
-            journal: localStorage.getItem('mv2_journal'),
+            timeline: localStorage.getItem('mv2_timeline'),
             goals: localStorage.getItem('mv2_goals'),
             score: localStorage.getItem('mv2_recovery_score'),
             readArticles: localStorage.getItem('mv2_read_articles'),
@@ -59,8 +56,12 @@ export default function Profile() {
                 const data = JSON.parse(event.target.result);
                 if (data.user) localStorage.setItem('mv2_user', data.user);
                 if (data.spending) localStorage.setItem('mv2_spending', data.spending);
+                if (data.timeline) localStorage.setItem('mv2_timeline', data.timeline);
+
+                // Legacy support if they import an old backup
                 if (data.events) localStorage.setItem('mv2_events', data.events);
                 if (data.journal) localStorage.setItem('mv2_journal', data.journal);
+
                 if (data.goals) localStorage.setItem('mv2_goals', data.goals);
                 if (data.score) localStorage.setItem('mv2_recovery_score', data.score);
                 if (data.readArticles) localStorage.setItem('mv2_read_articles', data.readArticles);
@@ -104,8 +105,8 @@ export default function Profile() {
     const handlePdfExport = () => {
         exportToPDF({
             user,
-            events: events || [],
-            journal: journalEntries || [],
+            events: getEvents(),
+            journal: getJournalEntries(),
             goals: goals || [],
             points,
             level,

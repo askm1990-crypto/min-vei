@@ -8,9 +8,8 @@ import PinLock from './components/ui/PinLock';
 import { ToastContainer, showToast } from './components/ui/Toast';
 import OnboardingWizard from './features/onboarding/OnboardingWizard';
 import Dashboard from './features/dashboard/Dashboard';
-import EventLog from './features/eventLog/EventLog';
-import EventWizard from './features/eventLog/EventWizard';
-import Journal from './features/journal/Journal';
+import Timeline from './features/timeline/Timeline';
+import LogWizard from './features/timeline/LogWizard';
 import Goals from './features/goals/Goals';
 import Progress from './features/progress/Progress';
 import Strategies from './features/strategies/Strategies';
@@ -41,11 +40,11 @@ export default function App() {
   const subtitle = 'En dag av gangen.';
 
   const handleNavigate = (view, payload = null) => {
-    if (view === 'event-wizard-pending' && payload) {
+    if (view === 'log-wizard-pending' && payload) {
       setActiveEventId(payload);
     }
     // Clear activeEventId if we are navigating somewhere else or starting a fresh wizard
-    if (view !== 'event-wizard-pending') {
+    if (view !== 'log-wizard-pending') {
       setActiveEventId(null);
     }
     setCurrentView(view);
@@ -137,29 +136,23 @@ export default function App() {
                 </section>
               )}
 
-              {currentView === 'my-log' && (
+              {currentView === 'timeline' && (
                 <section className="view view-enter">
-                  <EventLog onNavigate={handleNavigate} />
+                  <Timeline onNavigate={handleNavigate} />
                 </section>
               )}
 
-              {currentView === 'event-wizard' && (
-                <EventWizard onNavigate={handleNavigate} />
+              {currentView === 'log-wizard' && (
+                <LogWizard onNavigate={handleNavigate} />
               )}
 
-              {currentView === 'event-wizard-pending' && (
-                <EventWizard onNavigate={handleNavigate} pendingEventId={activeEventId} />
+              {currentView === 'log-wizard-pending' && (
+                <LogWizard onNavigate={handleNavigate} pendingEventId={activeEventId} />
               )}
 
               {currentView === 'progress' && (
                 <section className="view view-enter">
                   <Progress />
-                </section>
-              )}
-
-              {currentView === 'journal' && (
-                <section className="view view-enter">
-                  <Journal onNavigate={handleNavigate} />
                 </section>
               )}
 
