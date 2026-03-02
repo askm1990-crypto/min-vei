@@ -28,5 +28,18 @@ body.dark-mode {
     --shadow-card: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.04);
     --shadow-card-hover: 0 8px 32px rgba(45, 212, 191, 0.12), 0 0 0 1px rgba(45, 212, 191, 0.1);
 
+    /* Mood overrides */
+    --mood-1: hsl(0, 50%, 45%);
+    --mood-2: hsl(25, 50%, 45%);
+    --mood-3: hsl(45, 50%, 45%);
+    --mood-4: hsl(140, 40%, 40%);
+    --mood-5: hsl(160, 50%, 35%);
+
+    /* Special UI Overrides */
+    --crisis-hero-bg: linear-gradient(135deg, hsl(0, 40%, 35%), hsl(20, 50%, 35%));
+    --breathing-bg: linear-gradient(135deg, hsl(210, 50%, 45%), hsl(210, 50%, 30%));
+    --breathing-glow: hsla(210, 50%, 40%, 0.2);
+
     background: linear-gradient(160deg, #0a0e1a 0%, #0d1520 50%, #0a1218 100%);
+
 }

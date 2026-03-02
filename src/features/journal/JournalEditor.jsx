@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useJournal } from '../../hooks/useJournal';
 import { useRecoveryScore } from '../../hooks/useRecoveryScore';
-import { showToast } from '../../components/ui/Toast';
+import { showToast } from '../../components/ui/ToastUtils';
 import Button from '../../components/ui/Button';
 
 const MOOD_OPTIONS = [

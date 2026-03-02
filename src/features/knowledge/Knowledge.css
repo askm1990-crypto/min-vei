@@ -5,10 +5,12 @@
 
 /* ─── Page layout ─────────────────────────────── */
 .fagbibliotek-page {
+    color: var(--text-main);
     display: flex;
     flex-direction: column;
     gap: var(--space-6);
 }
+
 
 .fagbibliotek-header {
     padding-bottom: var(--space-2);

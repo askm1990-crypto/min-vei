@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useGoals } from '../../hooks/useGoals';
 import { useRecoveryScore } from '../../hooks/useRecoveryScore';
-import { showToast } from '../../components/ui/Toast';
+import { showToast } from '../../components/ui/ToastUtils';
 import { LIFE_AREAS } from '../../data/challenges';
 import Button from '../../components/ui/Button';
 import './Goals.css';

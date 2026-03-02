@@ -2,13 +2,13 @@ import { useState, useRef, useEffect } from 'react';
 import './PinLock.css';
 
 export default function PinLock({ onUnlock }) {
+    const inputRefs = useRef([]);
     const [pin, setPin] = useState(['', '', '', '']);
     const [error, setError] = useState('');
     const [shake, setShake] = useState(false);
-    const inputRefs = [useRef(), useRef(), useRef(), useRef()];
 
     useEffect(() => {
-        inputRefs[0].current?.focus();
+        inputRefs.current[0]?.focus();
     }, []);
 
     const handleChange = (index, value) => {
@@ -20,7 +20,7 @@ export default function PinLock({ onUnlock }) {
         setError('');
 
         if (value && index < 3) {
-            inputRefs[index + 1].current?.focus();
+            inputRefs.current[index + 1]?.focus();
         }
 
         // Check PIN when all 4 digits are entered
@@ -35,7 +35,7 @@ export default function PinLock({ onUnlock }) {
                 setTimeout(() => {
                     setPin(['', '', '', '']);
                     setShake(false);
-                    inputRefs[0].current?.focus();
+                    inputRefs.current[0]?.focus();
                 }, 600);
             }
         }
@@ -43,7 +43,7 @@ export default function PinLock({ onUnlock }) {
 
     const handleKeyDown = (index, e) => {
         if (e.key === 'Backspace' && !pin[index] && index > 0) {
-            inputRefs[index - 1].current?.focus();
+            inputRefs.current[index - 1]?.focus();
         }
     };
 
@@ -57,7 +57,7 @@ export default function PinLock({ onUnlock }) {
                     {pin.map((digit, i) => (
                         <input
                             key={i}
-                            ref={inputRefs[i]}
+                            ref={el => inputRefs.current[i] = el}
                             type="password"
                             inputMode="numeric"
                             maxLength={1}

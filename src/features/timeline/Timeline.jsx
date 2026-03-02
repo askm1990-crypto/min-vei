@@ -46,7 +46,6 @@ export default function Timeline({ onNavigate }) {
 
         // Determine what type of card this is physically based on its data
         const isEvent = ev.intensity > 0;
-        const isPureJournal = !isEvent;
 
         // Logic for which Emoji to show prominently
         let mainEmoji = '📝';

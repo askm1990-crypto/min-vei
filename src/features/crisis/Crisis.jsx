@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useRecoveryScore } from '../../hooks/useRecoveryScore';
-import { showToast } from '../../components/ui/Toast';
+import { showToast } from '../../components/ui/ToastUtils';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
 import './Crisis.css';

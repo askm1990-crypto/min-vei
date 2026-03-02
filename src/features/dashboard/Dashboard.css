@@ -1,10 +1,12 @@
 .dashboard {
+    color: var(--text-main);
     display: flex;
     flex-direction: column;
     gap: var(--space-6);
     padding-bottom: var(--space-8);
     width: 100%;
 }
+
 
 /* HERO SECTION - Gamification */
 .hero-section {

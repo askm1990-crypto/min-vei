@@ -5,7 +5,7 @@ import { useMemo } from 'react';
  * Analyzes user data to find patterns and generate actionable insights.
  * Everything runs locally — no network calls, no external APIs.
  */
-export function useInsights({ events = [], journalEntries = [], goals = [], user = null, daysSober = 0 }) {
+export function useInsights({ events = [], journalEntries = [], goals = [], daysSober = 0 }) {
     const insights = useMemo(() => {
         const result = [];
 
@@ -67,7 +67,7 @@ export function useInsights({ events = [], journalEntries = [], goals = [], user
             const peakHour = hourCounts.indexOf(Math.max(...hourCounts));
             const peakHourCount = hourCounts[peakHour];
             if (peakHourCount >= 3) {
-                const timeLabel = peakHour < 12 ? `${peakHour}:00 om morgenen` : peakHour < 18 ? `${peakHour}:00 på ettermiddagen` : `${peakHour}:00 om kvelden`;
+
                 result.push({
                     id: 'time-pattern-hour',
                     type: 'pattern',
@@ -297,7 +297,7 @@ export function useInsights({ events = [], journalEntries = [], goals = [], user
             .sort((a, b) => b.priority - a.priority)
             .slice(0, 4);
 
-    }, [events, journalEntries, goals, user, daysSober]);
+    }, [events, journalEntries, goals, daysSober]);
 
     return { insights };
 }

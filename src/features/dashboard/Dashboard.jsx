@@ -9,7 +9,7 @@ import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
 import WeeklyActivity from '../../components/ui/WeeklyActivity';
 import InsightCards from '../../components/ui/InsightCards';
-import { showToast } from '../../components/ui/Toast';
+import { showToast } from '../../components/ui/ToastUtils';
 import { getDailyChallenge } from '../../data/challenges';
 import './Dashboard.css';
 
@@ -74,14 +74,16 @@ export default function Dashboard({ onNavigate }) {
             setLastSoberPointDate(todayStr);
             showToast(`+${POINTS.SOBER_DAY} poeng for en ny rusfri dag! 🌟`, 'success');
         }
-    }, [todayStr]);
+    }, [todayStr, user?.startDate, lastSoberPointDate, addPoints, setLastSoberPointDate]);
 
     // Detect level-up
     useEffect(() => {
         if (prevLevelRef.current < level) {
-            setShowLevelUp(true);
-            showToast(`🎉 Gratulerer! Du er nå Nivå ${level}: ${title}!`, 'success');
-            setTimeout(() => setShowLevelUp(false), 3000);
+            setTimeout(() => {
+                setShowLevelUp(true);
+                showToast(`🎉 Gratulerer! Du er nå Nivå ${level}: ${title}!`, 'success');
+                setTimeout(() => setShowLevelUp(false), 3000);
+            }, 0);
         }
         prevLevelRef.current = level;
     }, [level, title]);
@@ -109,9 +111,7 @@ export default function Dashboard({ onNavigate }) {
         setTimeout(() => emoji.remove(), 2000);
     };
 
-    const handleQuickAction = (action, pointValue) => {
-        showToast(`${action} kommer i neste fase.`, 'info');
-    };
+
 
     // Calculate money saved (Using totalSoberDays to keep accumulated savings)
     const savedAmount = spending && user?.startDate ? calculateSaved(spending.frequency, spending.amountPerTime, totalSoberDays) : 0;

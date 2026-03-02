@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useEvents } from '../../hooks/useEvents';
 import { useRecoveryScore, POINTS } from '../../hooks/useRecoveryScore';
-import { showToast } from '../../components/ui/Toast';
+import { showToast } from '../../components/ui/ToastUtils';
 import StepIntensity from './StepIntensity';
 import StepTriggers from './StepTriggers';
 import StepFeelings from './StepFeelings';

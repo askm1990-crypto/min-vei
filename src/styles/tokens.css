@@ -18,6 +18,19 @@
   --secondary-light: #fef3c7;
   --secondary-dark: #d97706;
 
+  /* Mood colors */
+  --mood-1: hsl(0, 70%, 55%);
+  --mood-2: hsl(25, 70%, 55%);
+  --mood-3: hsl(45, 70%, 55%);
+  --mood-4: hsl(140, 50%, 50%);
+  --mood-5: hsl(160, 60%, 45%);
+
+  /* Special UI Elements */
+  --crisis-hero-bg: linear-gradient(135deg, hsl(0, 60%, 50%), hsl(20, 80%, 50%));
+  --breathing-bg: linear-gradient(135deg, hsl(210, 80%, 60%), hsl(210, 80%, 40%));
+  --breathing-glow: hsla(210, 80%, 50%, 0.3);
+
+
   /* For gradient usage */
   --primary-rgb: 15, 159, 145;
 

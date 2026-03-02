@@ -19,8 +19,8 @@ export default function BreathingExercise({ onComplete }) {
         if (!isRunning) return;
 
         const phase = PHASES[phaseIndex];
-        const totalSecs = Math.ceil(phase.duration / 1000);
-        setCountdown(totalSecs);
+        // TotalSecs is now set when phaseIndex changes, avoiding synchronous setState in effect.
+
 
         const countdownInterval = setInterval(() => {
             setCountdown(prev => prev > 0 ? prev - 1 : 0);
@@ -37,6 +37,8 @@ export default function BreathingExercise({ onComplete }) {
                 }
                 setRound(nextRound);
             }
+            const nextPhaseData = PHASES[nextPhase];
+            setCountdown(Math.ceil(nextPhaseData.duration / 1000));
             setPhaseIndex(nextPhase);
         }, phase.duration);
 
@@ -70,7 +72,12 @@ export default function BreathingExercise({ onComplete }) {
             )}
 
             {!isRunning && !done && (
-                <Button variant="primary" onClick={() => { setIsRunning(true); setRound(0); setPhaseIndex(0); }}>
+                <Button variant="primary" onClick={() => {
+                    setIsRunning(true);
+                    setRound(0);
+                    setPhaseIndex(0);
+                    setCountdown(Math.ceil(PHASES[0].duration / 1000));
+                }}>
                     Start øvelsen
                 </Button>
             )}

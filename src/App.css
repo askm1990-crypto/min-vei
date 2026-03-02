@@ -25,6 +25,7 @@
 }
 
 .view {
+  color: var(--text-main);
   padding: var(--space-6);
   display: flex;
   flex-direction: column;
@@ -33,6 +34,7 @@
   max-width: 100%;
   box-sizing: border-box;
 }
+
 
 @media (max-width: 768px) {
   .view {

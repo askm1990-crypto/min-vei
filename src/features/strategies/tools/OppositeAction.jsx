@@ -5,7 +5,7 @@ const EXAMPLES = [
     { impulse: 'Trekke seg unna', opposite: 'Ta kontakt med noen, ta en telefon', emoji: '📞' },
     { impulse: 'Bli i sengen', opposite: 'Stå opp, kle på deg, gå ut', emoji: '🚶' },
     { impulse: 'Ruse seg', opposite: 'Gjør en pusteøvelse eller ring noen', emoji: '🌬️' },
-    { impulse: 'Skjelle ut noen', opposite: 'Vær rolig, bruk \"jeg føler\"-setninger', emoji: '💬' },
+    { impulse: 'Skjelle ut noen', opposite: 'Vær rolig, bruk "jeg føler"-setninger', emoji: '💬' },
     { impulse: 'Gi opp', opposite: 'Gjør én liten ting som beveger deg fremover', emoji: '🪜' },
 ];
 
