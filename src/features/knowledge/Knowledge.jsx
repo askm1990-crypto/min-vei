@@ -1,140 +1,227 @@
 import { useState } from 'react';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useRecoveryScore } from '../../hooks/useRecoveryScore';
-import { showToast } from '../../components/ui/Toast';
-import { ARTICLES } from '../../data/articles';
+import { showToast } from '../../components/ui/ToastUtils';
+import MODULES from '../../data/modules.json';
 import Card from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
 import './Knowledge.css';
 
-export default function Knowledge() {
-    const [user] = useLocalStorage('mv2_user', null);
-    const { addPoints } = useRecoveryScore();
-    const [readArticles, setReadArticles] = useLocalStorage('mv2_read_articles', []);
-    const [selectedArticle, setSelectedArticle] = useState(null);
-    const [filter, setFilter] = useState('all');
-    const [search, setSearch] = useState('');
+// ─────────────────────────────────────────────
+//  Status helpers
+// ─────────────────────────────────────────────
+function getStatus(moduleId, progress) {
+    return progress[moduleId] || 'not-started';
+}
 
-    // User's substances from onboarding
-    const userSubstances = user?.substances || [];
+function isUnlocked(module, progress) {
+    if (!module.requiredPreviousModule) return true;
+    return progress[module.requiredPreviousModule] === 'completed';
+}
 
-    // Sort: articles matching user's substances come first
-    const sortedArticles = [...ARTICLES].sort((a, b) => {
-        const aMatch = a.tags.some(t => userSubstances.includes(t)) ? 1 : 0;
-        const bMatch = b.tags.some(t => userSubstances.includes(t)) ? 1 : 0;
-        return bMatch - aMatch;
-    });
+function statusLabel(status, locked) {
+    if (locked) return { emoji: '🔒', text: 'Låst', cls: 'status--locked' };
+    if (status === 'completed') return { emoji: '✅', text: 'Fullført', cls: 'status--completed' };
+    if (status === 'in-progress') return { emoji: '🔄', text: 'Pågår', cls: 'status--progress' };
+    return { emoji: '⏳', text: 'Ikke startet', cls: 'status--pending' };
+}
 
-    // Filter & search
-    const filtered = sortedArticles.filter(a => {
-        if (filter !== 'all' && a.category !== filter) return false;
-        if (search && !a.title.toLowerCase().includes(search.toLowerCase()) && !a.summary.toLowerCase().includes(search.toLowerCase())) return false;
-        return true;
-    });
+// ─────────────────────────────────────────────
+//  Article view
+// ─────────────────────────────────────────────
+function ModuleArticle({ module, onBack, onComplete, isCompleted }) {
+    return (
+        <div className="module-article view-enter">
+            {/* Header */}
+            <div className="module-article__header">
+                <button className="wizard-back-btn" onClick={onBack}>← Tilbake</button>
+                <span className="module-article__num">Modul {MODULES.indexOf(module) + 1}</span>
+            </div>
 
-    const handleRead = (article) => {
-        setSelectedArticle(article);
-        if (!readArticles.includes(article.id)) {
-            setReadArticles(prev => [...prev, article.id]);
-            addPoints(15, `Leste artikkel: ${article.title}`);
-            showToast('+15 poeng for å lese! 📖', 'success');
-        }
-    };
+            {/* Hero */}
+            <div className="module-article__hero">
+                <span className="module-article__icon">{module.icon}</span>
+                <h1 className="module-article__title">{module.title}</h1>
+                <p className="module-article__summary">{module.summary}</p>
+            </div>
 
-    if (selectedArticle) {
-        return (
-            <div className="article-view view-enter">
-                <div className="editor-header">
-                    <h2>{selectedArticle.title}</h2>
-                    <button className="wizard-back-btn" onClick={() => setSelectedArticle(null)}>
-                        ← Tilbake
-                    </button>
+            {/* Core message callout */}
+            <div className="module-callout">
+                <span className="module-callout__label">Kjernebeskjed</span>
+                <p className="module-callout__text">{module.content.coreMessage}</p>
+            </div>
+
+            {/* What this means for you */}
+            <section className="module-section">
+                <h2 className="module-section__heading">
+                    <span role="img" aria-label="deg">💬</span> Hva betyr dette for deg?
+                </h2>
+                <div className="module-paragraphs">
+                    {module.content.whatThisMeansForYou.map((para, i) => (
+                        <p key={i} className="module-para">{para}</p>
+                    ))}
                 </div>
-                <div className="article-content">
-                    <div className="article-meta">
-                        <span className="article-category-badge">{selectedArticle.category}</span>
-                        {selectedArticle.tags.map(t => (
-                            <span key={t} className="tag journal-tag">{t}</span>
+            </section>
+
+            {/* Actionable advice */}
+            <section className="module-section">
+                <h2 className="module-section__heading">
+                    <span role="img" aria-label="råd">💡</span> Konkrete råd til deg
+                </h2>
+                <ol className="advice-list">
+                    {module.content.actionableAdvice.map((tip, i) => (
+                        <li key={i} className="advice-list__item">
+                            <span className="advice-list__num">{i + 1}</span>
+                            <span>{tip}</span>
+                        </li>
+                    ))}
+                </ol>
+            </section>
+
+            {/* App integrations */}
+            {module.content.appIntegrations?.length > 0 && (
+                <section className="module-section">
+                    <h2 className="module-section__heading">
+                        <span role="img" aria-label="app">📱</span> Bruk appen aktivt
+                    </h2>
+                    <div className="integration-chips">
+                        {module.content.appIntegrations.map((item, i) => (
+                            <div key={i} className="integration-chip">
+                                <strong className="integration-chip__feature">{item.feature}</strong>
+                                <span className="integration-chip__desc">{item.description}</span>
+                            </div>
                         ))}
                     </div>
-                    <div className="article-body">
-                        {selectedArticle.body.split('\n').map((line, i) => {
-                            if (line.startsWith('**') && line.endsWith('**')) {
-                                return <h3 key={i}>{line.replace(/\*\*/g, '')}</h3>;
-                            }
-                            if (line.startsWith('- ')) {
-                                return <li key={i}>{line.substring(2).replace(/\*\*/g, '')}</li>;
-                            }
-                            if (line.trim() === '') return <br key={i} />;
-                            return <p key={i}>{line.replace(/\*\*/g, '')}</p>;
-                        })}
+                </section>
+            )}
+
+            {/* Complete button */}
+            <div className="module-article__footer">
+                {isCompleted ? (
+                    <div className="completed-banner">
+                        ✅ Du har fullført denne modulen – bra jobba!
                     </div>
-                </div>
+                ) : (
+                    <Button variant="primary" wide onClick={onComplete}>
+                        ✅ Marker som fullført
+                    </Button>
+                )}
             </div>
+        </div>
+    );
+}
+
+// ─────────────────────────────────────────────
+//  Main Knowledge component
+// ─────────────────────────────────────────────
+export default function Knowledge() {
+    const { addPoints } = useRecoveryScore();
+    const [progress, setProgress] = useLocalStorage('mv2_module_progress', {});
+    const [selected, setSelected] = useState(null);
+
+    const completedCount = Object.values(progress).filter(v => v === 'completed').length;
+
+    const handleOpen = (module) => {
+        const unlocked = isUnlocked(module, progress);
+        if (!unlocked) return;
+
+        // Mark as in-progress if not yet started
+        if (!progress[module.id]) {
+            setProgress(prev => ({ ...prev, [module.id]: 'in-progress' }));
+        }
+        setSelected(module);
+    };
+
+    const handleComplete = () => {
+        if (!selected) return;
+        setProgress(prev => ({ ...prev, [selected.id]: 'completed' }));
+        addPoints(50, `Fullførte ${selected.title}`);
+        showToast(`🎉 +50 poeng! ${selected.title} fullfort!`, 'success');
+        setSelected(null);
+    };
+
+    // Show article view
+    if (selected) {
+        return (
+            <ModuleArticle
+                module={selected}
+                onBack={() => setSelected(null)}
+                onComplete={handleComplete}
+                isCompleted={progress[selected.id] === 'completed'}
+            />
         );
     }
 
+    // Show module list
     return (
-        <div className="knowledge-page">
-            <h2 className="strategies-title">Kunnskapsbank</h2>
-            <p className="strategies-subtitle">Forståelse er første steg mot endring. Artikler personalisert for deg.</p>
+        <div className="fagbibliotek-page">
+            {/* Page header */}
+            <div className="fagbibliotek-header">
+                <h2 className="fagbibliotek-title">Fagbibliotek</h2>
+                <p className="fagbibliotek-subtitle">
+                    Din personlige læringsreise gjennom fem kliniske moduler.
+                </p>
+            </div>
 
-            {/* Search & Filters */}
-            <div className="knowledge-controls">
-                <input
-                    type="text"
-                    placeholder="🔍 Søk i artikler..."
-                    value={search}
-                    onChange={e => setSearch(e.target.value)}
-                    className="knowledge-search"
-                />
-                <div className="knowledge-filters">
-                    {[
-                        { id: 'all', label: 'Alle' },
-                        { id: 'avhengighet', label: 'Avhengighet' },
-                        { id: 'rusmidler', label: 'Rusmidler' },
-                        { id: 'recovery', label: 'Recovery' },
-                    ].map(f => (
-                        <button
-                            key={f.id}
-                            className={`filter-btn ${filter === f.id ? 'active' : ''}`}
-                            onClick={() => setFilter(f.id)}
-                        >
-                            {f.label}
-                        </button>
-                    ))}
+            {/* Progress bar */}
+            <div className="progress-track">
+                <div className="progress-track__labels">
+                    <span>{completedCount} av {MODULES.length} moduler fullfort</span>
+                    <span className="progress-track__pct">{Math.round((completedCount / MODULES.length) * 100)}%</span>
+                </div>
+                <div className="progress-track__bar">
+                    <div
+                        className="progress-track__fill"
+                        style={{ width: `${(completedCount / MODULES.length) * 100}%` }}
+                    />
                 </div>
             </div>
 
-            {/* Articles Grid */}
-            <div className="articles-grid">
-                {filtered.map(article => {
-                    const isRead = readArticles.includes(article.id);
-                    const isPersonalized = article.tags.some(t => userSubstances.includes(t));
+            {/* Module cards */}
+            <div className="module-grid">
+                {MODULES.map((module, idx) => {
+                    const status = getStatus(module.id, progress);
+                    const locked = !isUnlocked(module, progress);
+                    const sLabel = statusLabel(status, locked);
+
                     return (
                         <Card
-                            key={article.id}
-                            className={`article-card ${isRead ? 'article-read' : ''}`}
-                            onClick={() => handleRead(article)}
+                            key={module.id}
+                            className={`module-card ${locked ? 'module-card--locked' : ''} ${status === 'completed' ? 'module-card--completed' : ''}`}
+                            hoverable={!locked}
+                            onClick={() => handleOpen(module)}
                         >
-                            {isPersonalized && <span className="personalized-badge">For deg ✨</span>}
-                            <h3 className="article-title">{article.title}</h3>
-                            <p className="article-summary">{article.summary}</p>
-                            <div className="article-footer">
-                                <span className="article-category">{article.category}</span>
-                                {isRead ? <span className="read-badge">✓ Lest</span> : <span className="points-badge">+15p</span>}
+                            {/* Card top row */}
+                            <div className="module-card__top">
+                                <div className="module-card__num-icon">
+                                    <span className="module-card__num">Modul {idx + 1}</span>
+                                    <span className="module-card__icon">{locked ? '🔒' : module.icon}</span>
+                                </div>
+                                <span className={`status-pill ${sLabel.cls}`}>
+                                    {sLabel.emoji} {sLabel.text}
+                                </span>
+                            </div>
+
+                            {/* Title & summary */}
+                            <h3 className="module-card__title">{module.title}</h3>
+                            <p className="module-card__summary">{module.summary}</p>
+
+                            {/* Footer */}
+                            <div className="module-card__footer">
+                                {locked ? (
+                                    <span className="module-card__unlock-hint">
+                                        Fullfør foregående modul for å låse opp
+                                    </span>
+                                ) : (
+                                    <span className="module-card__cta">
+                                        {status === 'completed' ? 'Les igjen →' : 'Start modul →'}
+                                    </span>
+                                )}
                             </div>
                         </Card>
                     );
                 })}
             </div>
-
-            {filtered.length === 0 && (
-                <div className="empty-state">
-                    <h3>Ingen artikler funnet</h3>
-                    <p>Prøv å endre filter eller søkeord.</p>
-                </div>
-            )}
         </div>
     );
 }

@@ -5,6 +5,14 @@ import './ActivityHistory.css';
  * Activity History Component
  * A browsable monthly calendar showing activity history.
  */
+// Returns a YYYY-MM-DD string in the user's LOCAL timezone (avoids UTC off-by-one at night)
+const toLocalDateKey = (date) => {
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, '0');
+    const d = String(date.getDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
+};
+
 export default function ActivityHistory({ events = [], journalEntries = [], goals = [] }) {
     const [currentMonth, setCurrentMonth] = useState(new Date());
 
@@ -62,13 +70,13 @@ export default function ActivityHistory({ events = [], journalEntries = [], goal
         const addActivity = (dateStr) => {
             if (!dateStr) return;
             const d = new Date(dateStr);
-            activeDates.add(new Date(d.getFullYear(), d.getMonth(), d.getDate()).toISOString().split('T')[0]);
+            activeDates.add(toLocalDateKey(new Date(d.getFullYear(), d.getMonth(), d.getDate())));
         };
 
         const addRelapse = (dateStr) => {
             if (!dateStr) return;
             const d = new Date(dateStr);
-            relapseDates.add(new Date(d.getFullYear(), d.getMonth(), d.getDate()).toISOString().split('T')[0]);
+            relapseDates.add(toLocalDateKey(new Date(d.getFullYear(), d.getMonth(), d.getDate())));
         };
 
         events.forEach(ev => {
@@ -81,13 +89,14 @@ export default function ActivityHistory({ events = [], journalEntries = [], goal
         });
 
         // Map activities to days
+        const todayKey = toLocalDateKey(new Date());
         const daysWithStatus = days.map(d => {
-            const key = d.date.toISOString().split('T')[0];
+            const key = toLocalDateKey(d.date);
             return {
                 ...d,
                 hasActivity: activeDates.has(key),
                 hasRelapse: relapseDates.has(key),
-                isToday: new Date().toISOString().split('T')[0] === key
+                isToday: todayKey === key
             };
         });
 

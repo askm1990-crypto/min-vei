@@ -1,5 +1,6 @@
 /* Crisis Page */
 .crisis-page {
+    color: var(--text-main);
     display: flex;
     flex-direction: column;
     gap: var(--space-4);
@@ -8,7 +9,7 @@
 .crisis-hero {
     text-align: center;
     padding: var(--space-5);
-    background: linear-gradient(135deg, hsl(0, 60%, 50%), hsl(20, 80%, 50%));
+    background: var(--crisis-hero-bg);
     border-radius: var(--radius-lg);
     color: white;
 }
@@ -53,7 +54,7 @@
     border-color: hsl(0, 60%, 80%);
 }
 
-[data-theme="dark"] .emergency-item.priority {
+body.dark-mode .emergency-item.priority {
     background: hsl(0, 30%, 15%);
     border-color: hsl(0, 30%, 30%);
 }
@@ -167,9 +168,10 @@
     padding: var(--space-4);
 }
 
-[data-theme="dark"] .crisis-disclaimer {
+body.dark-mode .crisis-disclaimer {
     background: hsl(45, 20%, 14%);
     border-color: hsl(45, 20%, 30%);
+    color: var(--text-main);
 }
 
 .crisis-disclaimer p {
