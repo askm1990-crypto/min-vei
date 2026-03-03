@@ -5,7 +5,8 @@ import Modal from './components/ui/Modal';
 import Button from './components/ui/Button';
 import AppGuide from './components/ui/AppGuide';
 import PinLock from './components/ui/PinLock';
-import { ToastContainer, showToast } from './components/ui/Toast';
+import { ToastContainer } from './components/ui/Toast';
+import { showToast } from './components/ui/ToastUtils';
 import OnboardingWizard from './features/onboarding/OnboardingWizard';
 import Dashboard from './features/dashboard/Dashboard';
 import Timeline from './features/timeline/Timeline';
@@ -24,10 +25,10 @@ import './App.css';
 export default function App() {
   const [currentView, setCurrentView] = useState('dashboard');
   const [activeEventId, setActiveEventId] = useState(null); // Used for editing/resolving pending events
-  const { theme, toggleTheme, isDark } = useTheme();
+  const { toggleTheme, isDark } = useTheme();
   const [consent, setConsent] = useLocalStorage('mv2_consent', false);
   const [user, setUser] = useLocalStorage('mv2_user', null);
-  const [spending, setSpending] = useLocalStorage('mv2_spending', null);
+  const [, setSpending] = useLocalStorage('mv2_spending', null);
   const [disclaimerVisible, setDisclaimerVisible] = useLocalStorage('mv2_disclaimer', true);
   const [guideSeen, setGuideSeen] = useLocalStorage('mv2_guide_seen', false);
   const [showGuide, setShowGuide] = useState(false);

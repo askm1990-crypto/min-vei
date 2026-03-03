@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useJournal } from '../../hooks/useJournal';
-import { useRecoveryScore } from '../../hooks/useRecoveryScore';
-import { showToast } from '../../components/ui/Toast';
+import { showToast } from '../../components/ui/ToastUtils';
 import { formatDateNO, formatTimeNO, daysBetween } from '../../utils/dateUtils';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
@@ -16,7 +15,7 @@ const MOOD_EMOJIS = [
     { value: 5, emoji: '😁', label: 'Toppen' }
 ];
 
-export default function Journal({ onNavigate }) {
+export default function Journal() {
     const { entries, deleteEntry, getStreak } = useJournal();
     const [isWriting, setIsWriting] = useState(false);
     const [expandedId, setExpandedId] = useState(null);

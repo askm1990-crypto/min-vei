@@ -8,7 +8,7 @@ import { daysBetween, formatDateNO } from '../../utils/dateUtils';
 import { exportToPDF } from '../../utils/pdfExport';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
-import { showToast } from '../../components/ui/Toast';
+import { showToast } from '../../components/ui/ToastUtils';
 import './Profile.css';
 
 export default function Profile() {
@@ -153,7 +153,16 @@ export default function Profile() {
             <Card header="Min Recovery-Profil" hoverable={false}>
                 <div className="profile-details">
                     <div className="profile-detail-group">
-                        <span className="detail-label">Mine utfordringer (rusmidler):</span>
+                        <span className="detail-label">🎯 Mitt mål:</span>
+                        <p className="detail-value">
+                            {user?.goal === 'total_abstinence' ? 'Total avholdenhet' :
+                                user?.goal === 'reduction' ? 'Redusert bruk' :
+                                    user?.goal === 'harm_reduction' ? 'Skadereduksjon' :
+                                        user?.goal || 'Ikke angitt'}
+                        </p>
+                    </div>
+                    <div className="profile-detail-group">
+                        <span className="detail-label">💊 Mine utfordringer (rusmidler):</span>
                         <div className="detail-tags">
                             {user?.substances?.length > 0 ? (
                                 user.substances.map(s => <span key={s} className="tag">{s}</span>)
@@ -163,14 +172,26 @@ export default function Profile() {
                         </div>
                     </div>
                     <div className="profile-detail-group">
-                        <span className="detail-label">Kjente triggere:</span>
+                        <span className="detail-label">❤️ Grunner for endring:</span>
                         <div className="detail-tags">
-                            {user?.triggers?.length > 0 ? (
-                                user.triggers.map(t => <span key={t} className="tag trigger-tag">{t}</span>)
+                            {user?.reasons?.length > 0 ? (
+                                user.reasons.map(r => <span key={r} className="tag">{r}</span>)
                             ) : (
                                 <span className="text-muted">Ikke angitt</span>
                             )}
                         </div>
+                    </div>
+                    <div className="profile-detail-group">
+                        <span className="detail-label">⏳ Varighet av bruk:</span>
+                        <p className="detail-value">{user?.duration || 'Ikke angitt'}</p>
+                    </div>
+                    <div className="profile-detail-group">
+                        <span className="detail-label">🏥 Behandlingshistorikk:</span>
+                        <p className="detail-value">{user?.treatmentHistory || 'Ikke angitt'}</p>
+                    </div>
+                    <div className="profile-detail-group">
+                        <span className="detail-label">💪 Motivasjon:</span>
+                        <p className="detail-value">{user?.motivation || 'Ikke angitt'}</p>
                     </div>
                 </div>
             </Card>

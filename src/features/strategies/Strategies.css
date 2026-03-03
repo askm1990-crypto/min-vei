@@ -1,5 +1,6 @@
 /* Strategies Hub */
 .strategies-page {
+    color: var(--text-main);
     display: flex;
     flex-direction: column;
     gap: var(--space-5);
@@ -148,7 +149,7 @@
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background: linear-gradient(135deg, hsl(210, 80%, 60%), hsl(210, 80%, 40%));
+    background: var(--breathing-bg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -156,7 +157,7 @@
     font-size: 1.2rem;
     font-weight: 700;
     transition: transform 4s ease-in-out;
-    box-shadow: 0 0 40px hsla(210, 80%, 50%, 0.3);
+    box-shadow: 0 0 40px var(--breathing-glow);
 }
 
 .breathing-circle.inhale {
@@ -273,7 +274,7 @@
     background: hsl(150, 60%, 96%);
 }
 
-[data-theme="dark"] .checklist-item.checked {
+body.dark-mode .checklist-item.checked {
     background: hsl(150, 30%, 15%);
     border-color: hsl(150, 30%, 30%);
 }
@@ -295,6 +296,12 @@
     border-color: hsl(150, 60%, 50%);
     color: white;
 }
+
+body.dark-mode .checklist-item.checked .check-icon {
+    background: hsl(150, 60%, 40%);
+    border-color: hsl(150, 60%, 40%);
+}
+
 
 /* Pros/Cons grid */
 .proscons-grid {

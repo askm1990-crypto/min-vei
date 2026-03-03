@@ -6,11 +6,11 @@ import { useMemo } from 'react';
 export default function MoodGraph({ moodData = [] }) {
     const MOOD_EMOJIS = { 1: '😞', 2: '😕', 3: '😐', 4: '😊', 5: '😁' };
     const MOOD_COLORS = {
-        1: 'hsl(0, 70%, 55%)',
-        2: 'hsl(25, 70%, 55%)',
-        3: 'hsl(45, 70%, 55%)',
-        4: 'hsl(140, 50%, 50%)',
-        5: 'hsl(160, 60%, 45%)'
+        1: 'var(--mood-1)',
+        2: 'var(--mood-2)',
+        3: 'var(--mood-3)',
+        4: 'var(--mood-4)',
+        5: 'var(--mood-5)'
     };
 
     const reversedData = useMemo(() =>

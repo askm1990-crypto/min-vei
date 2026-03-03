@@ -1,5 +1,6 @@
 /* Onboarding Wizard styles */
 .onboarding {
+    color: var(--text-main);
     flex: 1;
     display: flex;
     align-items: center;

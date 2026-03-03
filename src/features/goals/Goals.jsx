@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useGoals } from '../../hooks/useGoals';
 import { useRecoveryScore } from '../../hooks/useRecoveryScore';
-import { showToast } from '../../components/ui/Toast';
+import { showToast } from '../../components/ui/ToastUtils';
 import { formatDateNO } from '../../utils/dateUtils';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
 import GoalWizard from './GoalWizard';
 import './Goals.css';
 
-export default function Goals({ onNavigate }) {
+export default function Goals() {
     const { activeGoals, completedGoals, completeGoal, deleteGoal } = useGoals();
     const { addPoints } = useRecoveryScore();
     const [showWizard, setShowWizard] = useState(false);

@@ -1,5 +1,6 @@
 /* Journal main view */
 .journal {
+    color: var(--text-main);
     display: flex;
     flex-direction: column;
     gap: var(--space-5);
@@ -30,7 +31,7 @@
     padding: var(--space-4);
 }
 
-[data-theme="dark"] .streak-banner {
+body.dark-mode .streak-banner {
     background: linear-gradient(135deg, hsl(35, 40%, 18%), hsl(25, 40%, 16%));
     border-color: hsl(25, 40%, 30%);
 }
@@ -152,9 +153,15 @@
     gap: var(--space-2);
 }
 
-[data-theme="dark"] .journal-gratitude {
+body.dark-mode .journal-gratitude {
     background: hsl(45, 30%, 14%);
     border-color: hsl(45, 30%, 28%);
+}
+
+body.dark-mode textarea::placeholder,
+body.dark-mode input::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
 }
 
 .gratitude-icon {

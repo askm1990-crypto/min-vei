@@ -18,7 +18,7 @@ export default function Progress() {
     const { activeGoals, completedGoals } = useGoals();
     const { points } = useRecoveryScore();
     const [user] = useLocalStorage('mv2_user', null);
-    const [challengeHistory] = useLocalStorage('mv2_challenge_history', []);
+
 
     // ── SOBRIETY CALCULATION ──────────────────────────────────
     const usedEvents = events.filter(e => e.outcome === 'used');
@@ -33,7 +33,7 @@ export default function Progress() {
     // ──────────────────────────────────────────────────────────
 
     const resistedEvents = events.filter(e => e.outcome === 'resisted').length;
-    const usedEventsCount = usedEvents.length;
+
     const trend = getRecentEventTrend();
     const moodData = getMoodTrend(14);
 

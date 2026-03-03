@@ -40,7 +40,7 @@ self.addEventListener('fetch', (event) => {
         caches.match(event.request).then((cachedResponse) => {
             if (cachedResponse) {
                 // Return cached response but refresh in background
-                const fetchPromise = fetch(event.request).then((networkResponse) => {
+                fetch(event.request).then((networkResponse) => {
                     caches.open(CACHE_NAME).then((cache) => {
                         cache.put(event.request, networkResponse.clone());
                     });

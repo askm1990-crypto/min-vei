@@ -1,0 +1,75 @@
+﻿
+C:\Users\ask_s\OneDrive\Desktop\TEST APP\public\sw.js
+  43:23  error  'fetchPromise' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\ask_s\OneDrive\Desktop\TEST APP\src\App.jsx
+  27:11  error  'theme' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+  30:10  error  'spending' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\ask_s\OneDrive\Desktop\TEST APP\src\components\ui\PinLock.jsx
+  12:8  warning  React Hook useEffect has a missing dependency: 'inputRefs'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\ask_s\OneDrive\Desktop\TEST APP\src\components\ui\Toast.jsx
+  10:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\ask_s\OneDrive\Desktop\TEST APP\src\features\dashboard\Dashboard.jsx
+   77:8   warning  React Hook useEffect has missing dependencies: 'addPoints', 'lastSoberPointDate', 'setLastSoberPointDate', and 'user.startDate'. Either include them or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               react-hooks/exhaustive-deps
+   82:13  error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  80 |     useEffect(() => {
+  81 |         if (prevLevelRef.current < level) {
+> 82 |             setShowLevelUp(true);
+     |             ^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  83 |             showToast(`­ƒÄë Gratulerer! Du er n├Ñ Niv├Ñ ${level}: ${title}!`, 'success');
+  84 |             setTimeout(() => setShowLevelUp(false), 3000);
+  85 |         }  react-hooks/set-state-in-effect
+  112:11  error    'handleQuickAction' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 no-unused-vars
+  112:40  error    'pointValue' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            no-unused-vars
+
+C:\Users\ask_s\OneDrive\Desktop\TEST APP\src\features\goals\Goals.jsx
+  11:33  error  'onNavigate' is defined but never used  no-unused-vars
+
+C:\Users\ask_s\OneDrive\Desktop\TEST APP\src\features\journal\Journal.jsx
+   3:10  error  'useRecoveryScore' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  19:35  error  'onNavigate' is defined but never used                                                   no-unused-vars
+
+C:\Users\ask_s\OneDrive\Desktop\TEST APP\src\features\progress\Progress.jsx
+  21:12  error  'challengeHistory' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  36:11  error  'usedEventsCount' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u   no-unused-vars
+
+C:\Users\ask_s\OneDrive\Desktop\TEST APP\src\features\strategies\tools\BreathingExercise.jsx
+  23:9  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  21 |         const phase = PHASES[phaseIndex];
+  22 |         const totalSecs = Math.ceil(phase.duration / 1000);
+> 23 |         setCountdown(totalSecs);
+     |         ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  24 |
+  25 |         const countdownInterval = setInterval(() => {
+  26 |             setCountdown(prev => prev > 0 ? prev - 1 : 0);  react-hooks/set-state-in-effect
+
+C:\Users\ask_s\OneDrive\Desktop\TEST APP\src\features\strategies\tools\OppositeAction.jsx
+  8:62  error  Unnecessary escape character: \"  no-useless-escape
+  8:73  error  Unnecessary escape character: \"  no-useless-escape
+
+C:\Users\ask_s\OneDrive\Desktop\TEST APP\src\features\timeline\Timeline.jsx
+  49:15  error  'isPureJournal' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\ask_s\OneDrive\Desktop\TEST APP\src\hooks\useInsights.js
+   70:23  error    'timeLabel' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                   no-unused-vars
+  300:8   warning  React Hook useMemo has an unnecessary dependency: 'user'. Either exclude it or remove the dependency array  react-hooks/exhaustive-deps
+
+Ô£û 20 problems (17 errors, 3 warnings)
+
