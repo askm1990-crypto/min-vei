@@ -459,3 +459,592 @@ body.dark-mode .completed-banner {
     background: rgba(16, 185, 129, 0.15);
     color: #6ee7b7;
 }
+
+/* ─── Pull quotes ─────────────────────────────── */
+.pull-quote {
+    margin: var(--space-4) 0;
+    padding: var(--space-5) var(--space-6);
+    border-left: none;
+    border-radius: var(--radius-lg);
+    background: var(--bg-input);
+    position: relative;
+    text-align: center;
+}
+
+.pull-quote::before {
+    content: '"';
+    position: absolute;
+    top: -8px;
+    left: var(--space-4);
+    font-size: 3.5rem;
+    line-height: 1;
+    color: var(--primary);
+    opacity: 0.3;
+    font-family: Georgia, serif;
+}
+
+.pull-quote p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--text-main);
+    margin: 0;
+}
+
+/* ─── Reflection box ──────────────────────────── */
+.reflection-box {
+    border-radius: var(--radius-md);
+    border: 1px dashed var(--border);
+    overflow: hidden;
+    transition: border-color var(--transition);
+}
+
+.reflection-box--open {
+    border-color: var(--primary);
+    border-style: solid;
+}
+
+.reflection-box__toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    width: 100%;
+    padding: var(--space-4) var(--space-5);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.88rem;
+    color: var(--text-main);
+    text-align: left;
+    line-height: 1.5;
+    transition: background var(--transition);
+}
+
+.reflection-box__toggle:hover {
+    background: var(--bg-hover);
+}
+
+.reflection-box__icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.reflection-box__prompt {
+    flex: 1;
+    font-weight: 500;
+}
+
+.reflection-box__chevron {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    transition: transform var(--transition);
+    flex-shrink: 0;
+}
+
+.reflection-box__chevron.open {
+    transform: rotate(180deg);
+}
+
+.reflection-box__content {
+    padding: 0 var(--space-5) var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    animation: reflectionFadeIn 0.3s ease;
+}
+
+@keyframes reflectionFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reflection-box__input {
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--bg-body);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    resize: vertical;
+    min-height: 80px;
+    transition: border-color var(--transition);
+}
+
+.reflection-box__input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+.reflection-box__input::placeholder {
+    color: var(--text-light);
+}
+
+.reflection-box__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reflection-box__hint {
+    font-size: 0.72rem;
+    color: var(--text-light);
+}
+
+.reflection-box__saved {
+    font-size: 0.75rem;
+    color: var(--success);
+    font-weight: 600;
+    animation: reflectionFadeIn 0.3s ease;
+}
+
+/* ─── Reading time badge ──────────────────────── */
+.module-article__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.module-article__reading-time {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--bg-input);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+}
+
+.module-card__time {
+    font-size: 0.72rem;
+    color: var(--text-light);
+    font-weight: 600;
+    margin-right: auto;
+}
+
+/* ─── Advice "why" line ───────────────────────── */
+.advice-list__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.advice-list__tip {
+    color: var(--text-main);
+}
+
+.advice-list__why {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: 1.5;
+}
+
+/* ─── Card footer with time ───────────────────── */
+.module-card__footer {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border);
+    margin-top: auto;
+}
+
+/* ─── Dark mode: new elements ─────────────────── */
+body.dark-mode .pull-quote {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+body.dark-mode .pull-quote p {
+    color: var(--text-main);
+}
+
+body.dark-mode .reflection-box {
+    border-color: var(--border);
+}
+
+body.dark-mode .reflection-box--open {
+    border-color: var(--primary);
+}
+
+body.dark-mode .reflection-box__toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+body.dark-mode .reflection-box__input {
+    background: var(--bg-card);
+    border-color: var(--border);
+    color: var(--text-main);
+}
+
+body.dark-mode .advice-list__tip {
+    color: var(--text-main);
+}
+
+/* ─── Reading progress bar (sticky) ──────────── */
+.reading-progress {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--border);
+    z-index: 10;
+    margin: 0 calc(-1 * var(--space-6));
+    width: calc(100% + var(--space-6) * 2);
+    display: flex;
+    align-items: center;
+    overflow: visible;
+}
+
+.reading-progress__fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: width 0.15s ease;
+    position: relative;
+}
+
+.reading-progress__fill::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+}
+
+.reading-progress__label {
+    position: absolute;
+    right: 0;
+    top: 8px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+/* ─── Section stepper ─────────────────────────── */
+.section-stepper {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-5);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.section-stepper::-webkit-scrollbar {
+    display: none;
+}
+
+.stepper-dot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: var(--bg-body);
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition);
+    flex-shrink: 0;
+}
+
+.stepper-dot:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.stepper-dot--active {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 0 0 4px var(--primary-glow);
+}
+
+.stepper-dot--done {
+    border-color: var(--success);
+    background: var(--success-light);
+    color: var(--success);
+    font-size: 0.8rem;
+}
+
+/* Connector line between dots */
+.section-stepper::before {
+    content: none;
+}
+
+/* ─── Reaction chips ──────────────────────────── */
+.reaction-chips {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+}
+
+.reaction-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-full);
+    border: 1.5px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-family: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.reaction-chip:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: var(--bg-hover);
+}
+
+.reaction-chip--chosen {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: white;
+    font-weight: 700;
+}
+
+/* ─── Section nav footer ──────────────────────── */
+.section-nav-footer {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: space-between;
+    padding: var(--space-4) 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.section-nav-btn {
+    flex: 1;
+    padding: var(--space-3) var(--space-4);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--bg-card);
+    color: var(--primary);
+    font-size: 0.82rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all var(--transition);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.section-nav-btn:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.section-nav-btn--prev {
+    text-align: left;
+}
+
+.section-nav-btn--next {
+    text-align: right;
+}
+
+/* ─── Dark mode: new features ─────────────────── */
+body.dark-mode .section-stepper {
+    background: var(--bg-card);
+    border-color: var(--border);
+}
+
+body.dark-mode .stepper-dot {
+    background: var(--bg-body);
+    border-color: var(--border);
+    color: var(--text-muted);
+}
+
+body.dark-mode .stepper-dot--done {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: var(--success);
+    color: #6ee7b7;
+}
+
+body.dark-mode .reaction-chip {
+    background: var(--bg-card);
+    border-color: var(--border);
+    color: var(--text-muted);
+}
+
+body.dark-mode .reaction-chip:hover {
+    background: rgba(var(--primary-rgb), 0.1);
+    color: var(--primary);
+}
+
+body.dark-mode .section-nav-btn {
+    background: var(--bg-card);
+    border-color: var(--border);
+    color: var(--primary);
+}
+
+body.dark-mode .section-nav-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+body.dark-mode .reading-progress {
+    background: var(--border);
+}
+
+/* ─── Paginated reading: section page ────────── */
+.section-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    min-height: 200px;
+}
+
+.section-page--finish {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-5);
+    padding: var(--space-8) var(--space-4);
+}
+
+.finish-icon {
+    font-size: 4rem;
+    animation: gentleBounce 2s ease-in-out infinite;
+}
+
+@keyframes gentleBounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.finish-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin: 0;
+    letter-spacing: -0.3px;
+}
+
+.finish-sub {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    max-width: 380px;
+    margin: 0;
+}
+
+/* ─── Page navigation bar ─────────────────────── */
+.page-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-4) 0;
+    border-top: 2px solid var(--border);
+    margin-top: var(--space-2);
+    position: sticky;
+    bottom: 0;
+    background: var(--bg-body);
+    z-index: 5;
+}
+
+.page-nav__btn {
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-md);
+    border: 1.5px solid var(--border);
+    background: var(--bg-card);
+    color: var(--primary);
+    font-size: 0.88rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all var(--transition);
+    min-width: 90px;
+}
+
+.page-nav__btn:hover:not(:disabled) {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.page-nav__btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.page-nav__btn--next {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.page-nav__btn--next:hover:not(:disabled) {
+    background: var(--primary-dark, var(--primary));
+    box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+.page-nav__counter {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    flex: 1;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* ─── Dark mode: paginated nav ────────────────── */
+body.dark-mode .page-nav {
+    background: var(--bg-body);
+    border-color: var(--border);
+}
+
+body.dark-mode .page-nav__btn {
+    background: var(--bg-card);
+    border-color: var(--border);
+    color: var(--primary);
+}
+
+body.dark-mode .page-nav__btn--next {
+    background: var(--primary);
+    color: white;
+}
+
+body.dark-mode .finish-title {
+    color: var(--text-main);
+}

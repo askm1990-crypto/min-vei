@@ -11,7 +11,21 @@ import WeeklyActivity from '../../components/ui/WeeklyActivity';
 import InsightCards from '../../components/ui/InsightCards';
 import { showToast } from '../../components/ui/ToastUtils';
 import { getDailyChallenge } from '../../data/challenges';
+import MODULES from '../../data/modules.json';
 import './Dashboard.css';
+
+// ── Helper: find the next module to read ─────────────────────────────────
+function getNextModule(progress) {
+    // Try in-progress first, then not-started unlocked
+    const unlocked = MODULES.filter(m => {
+        const required = m.requiredPreviousModules ||
+            (m.requiredPreviousModule ? [m.requiredPreviousModule] : []);
+        return required.every(id => progress[id] === 'completed');
+    });
+    const inProgress = unlocked.find(m => progress[m.id] === 'in-progress');
+    if (inProgress) return inProgress;
+    return unlocked.find(m => !progress[m.id] || progress[m.id] === 'not-started') || null;
+}
 
 export default function Dashboard({ onNavigate }) {
     const { points, level, title, progressToNext, nextLevelPoints, addPoints } = useRecoveryScore();
@@ -20,6 +34,7 @@ export default function Dashboard({ onNavigate }) {
     // We fetch these once to pass down
     const events = getEvents();
     const journalEntries = getJournalEntries();
+    const [moduleProgress] = useLocalStorage('mv2_module_progress', {});
     const [user] = useLocalStorage('mv2_user', null);
     const [spending] = useLocalStorage('mv2_spending', null);
     const [customTriggers] = useLocalStorage('mv2_custom_triggers', []);
@@ -157,6 +172,43 @@ export default function Dashboard({ onNavigate }) {
 
             {/* AI INSIGHTS */}
             <InsightCards insights={insights} />
+
+            {/* NESTE MODUL FOCUS CARD */}
+            {(() => {
+                const next = getNextModule(moduleProgress);
+                if (!next) return null;
+                const completedCount = Object.values(moduleProgress).filter(v => v === 'completed').length;
+                const isInProgress = moduleProgress[next.id] === 'in-progress';
+                return (
+                    <Card className="next-module-card" hoverable={false}>
+                        <div className="next-module-card__inner">
+                            <div className="next-module-card__left">
+                                <span className="next-module-card__eyebrow">
+                                    {isInProgress ? '🔄 Fortsett der du slapp' : '📚 Neste i læringsreisen'}
+                                </span>
+                                <h3 className="next-module-card__title">{next.icon} {next.title}</h3>
+                                <p className="next-module-card__summary">{next.summary}</p>
+                                <div className="next-module-card__meta">
+                                    {next.readingTime && <span>📖 {next.readingTime}</span>}
+                                    <span>{completedCount} av {MODULES.length} fullført</span>
+                                </div>
+                            </div>
+                            <button
+                                className="next-module-card__cta"
+                                onClick={() => onNavigate('knowledge')}
+                            >
+                                {isInProgress ? 'Fortsett →' : 'Start →'}
+                            </button>
+                        </div>
+                        <div className="next-module-card__progress">
+                            <div
+                                className="next-module-card__progress-fill"
+                                style={{ width: `${(completedCount / MODULES.length) * 100}%` }}
+                            />
+                        </div>
+                    </Card>
+                );
+            })()}
 
             <div className="dashboard-grid">
 

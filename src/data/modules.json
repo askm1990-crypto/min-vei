@@ -2,32 +2,68 @@
     {
         "id": "modul-1",
         "title": "Introduksjon til TSB",
-        "summary": "Hva er egentlig TSB, og hva kan du forvente av behandlingen? Her får du en avmystifiserende innføring i hva det betyr å ta imot spesialisert hjelp for rus og avhengighet – og hvorfor det er en styrke, ikke en svakhet.",
+        "summary": "Hva er egentlig TSB, og hva kan du forvente av behandlingen? Her får du en avmystifiserende innføring i hva det betyr å ta imot spesialisert hjelp – og hvorfor det er en styrke, ikke en svakhet.",
         "icon": "🧭",
+        "readingTime": "8 min",
         "isObligatory": true,
-        "requiredPreviousModule": null,
+        "requiredPreviousModules": [],
         "content": {
             "coreMessage": "Du er i Tverrfaglig Spesialisert Rusbehandling – en helsetjeneste på linje med et sykehus for hjertet, bare at den er skreddersydd for deg og din situasjon. Å søke hjelp her er et av de modigste valgene du kan ta.",
-            "whatThisMeansForYou": [
-                "TSB er ikke ett enkelt sted eller én enkelt behandlingsform. Det er et helt system av spesialisert støtte – leger, psykologer og sosionomer som jobber *sammen* om å se hele deg, ikke bare rusmidlet. Det kaller vi tverrfaglig.",
-                "Akkurat som det finnes egne spesialister for hjerteproblemer, finnes det spesialister for det du sliter med. Det betyr at hjelpen du får er basert på kunnskap og erfaring – ikke på tilfeldigheter.",
-                "Behandling kan se ut på mange måter: ukentlige samtaler her på poliklinikk, innleggelse i en periode, eller avrusning som et første steg. Hva som passer best for deg finner vi ut *sammen*.",
-                "En viktig ting å vite er at avhengighet ikke handler om svak viljestyrke eller dårlig moral. Det er et komplekst samspill mellom kropp, tanker og livssituasjon – og du er ikke alene om å ha havnet her.",
-                "Du har lovfestede rettigheter i behandlingen. Du har rett til å vite hva som skjer, til å stille spørsmål, og til å si ifra om noe ikke fungerer for deg. Behandlerfaget trenger din stemme."
+            "sections": [
+                {
+                    "heading": "Hva er egentlig TSB?",
+                    "paragraphs": [
+                        "Kanskje har du hørt forkortelsen TSB uten helt å vite hva den betyr. Eller kanskje du vet det, men lurer på hva det egentlig innebærer i praksis. La oss ta det fra start.",
+                        "TSB står for Tverrfaglig Spesialisert Behandling. Det betyr at det ikke er én person som hjelper deg, men et helt team – leger, psykologer, sosionomer og andre fagfolk som jobber *sammen* for å se hele bildet av situasjonen din. Ikke bare rusmidlet, ikke bare kroppen, men også tankene dine, følelsene dine og livssituasjonen du lever i.",
+                        "Og dette er viktig: TSB er en del av spesialisthelsetjenesten. Akkurat som det finnes egne spesialister for hjerteproblemer, finnes det spesialister for det du sliter med. Det betyr at hjelpen du får er basert på oppdatert fagkunnskap – ikke tilfeldigheter. Det betyr også at du har lovfestede rettigheter som pasient: rett til informasjon, rett til å stille spørsmål, og rett til å si ifra om noe ikke fungerer for deg."
+                    ],
+                    "pullQuote": "Du er ikke her fordi du er svak. Du er her fordi du gjorde et modig valg.",
+                    "reflection": "Hva visste du om TSB fra før? Har du noen forventninger du vil skrive ned?"
+                },
+                {
+                    "heading": "Du er mer enn diagnosen",
+                    "paragraphs": [
+                        "En av de viktigste tingene vi vet om avhengighet i dag, er at den aldri handler om bare én ting. Det finnes en modell som hjelper oss å tenke om dette på en god måte – den bio-psyko-sosiale modellen.",
+                        "**Bio** handler om kroppen: genetikk, hvordan hjernen din reagerer på rusmidler, fysisk helse. **Psyko** handler om tanker og følelser: dine erfaringer, dine mestringsstrategier, psykisk helse. **Sosial** handler om omgivelsene: relasjoner, bo-situasjon, økonomi, nettverk.",
+                        "Poenget er at avhengighet ikke er et resultat av dårlig moral eller svak viljestyrke. Det er et komplekst samspill mellom disse tre – og det betyr at behandlingen også må handle om alle tre. Det er derfor teamet rundt deg har så ulik kompetanse. Hver enkelt ser en viktig del av bildet.",
+                        "Og det betyr at løsningen heller ikke er bare én ting. Behandling kan se ut som ukentlige samtaler, en periode med innleggelse, medikamentell støtte – eller en kombinasjon. Det viktigste er at vi finner det som passer for *deg*. Og det finner vi ut sammen."
+                    ],
+                    "pullQuote": "Behandling er ikke noe som skjer med deg – det er noe du skaper sammen med oss.",
+                    "reflection": "Kjenner du igjen noen av de tre områdene (bio, psyko, sosial) som spesielt viktige i din situasjon?"
+                },
+                {
+                    "heading": "Din stemme teller",
+                    "paragraphs": [
+                        "Mange som kommer til behandling har en historie med å ikke bli hørt – i hjelpeapparatet, i familien, i livet generelt. Det er kanskje det viktigste vi vil endre på her.",
+                        "Brukermedvirkning er ikke en fin frase. Det er en lovfestet rettighet. Du har rett til å være med og bestemme over din egen behandling. Det betyr ikke at du må ha alle svarene. Det betyr at dine mål, dine erfaringer og dine verdier skal styre retningen.",
+                        "Tenk på det slik: behandleren har fagkunnskapen, men du er eksperten på ditt eget liv. Behandlingen fungerer best når vi klarer å flette disse to kunnskapene sammen.",
+                        "Og med rettigheten følger noe annet – et gjensidig ansvar. Vårt ansvar er å lytte, tilpasse og tilrettelegge. Ditt ansvar er å delta, si ifra når noe ikke fungerer, og forsøke å være ærlig om hvordan du har det. Det er ikke alltid lett, men det gjør enorm forskjell."
+                    ],
+                    "reflection": "Er det noe du vil at behandleren din skal vite om hva som er viktig for deg akkurat nå?"
+                }
             ],
             "actionableAdvice": [
-                "Tenk gjennom hva du håper å få ut av å være her. Hva er det viktigste for deg akkurat nå? Det er ingen svar som er feil.",
-                "Nei du behøver ikke ha alle svarene med én gang. Behandling er en prosess, og det er lov å finne ut av det underveis.",
-                "Si ifra til din behandler hvis noe føles feil, uklart eller ikke passer deg. De trenger ditt perspektiv for å gi deg god hjelp."
+                {
+                    "tip": "Tenk gjennom hva du håper å få ut av å være her. Ikke hva du «burde» ønske – men hva som faktisk betyr noe for deg.",
+                    "why": "Forskning viser at behandling som styres av pasientens egne verdier har bedre utfall."
+                },
+                {
+                    "tip": "Du trenger ikke ha alle svarene med én gang. Behandling er en prosess – det er lov å finne ut av det underveis.",
+                    "why": "De fleste endringsprosesser er ikke lineære. Det å «ikke vite» er et helt gyldig startpunkt."
+                },
+                {
+                    "tip": "Si ifra til din behandler hvis noe føles feil, uklart eller ikke passer deg.",
+                    "why": "Tilbakemeldinger fra deg er det viktigste verktøyet vi har for å gjøre behandlingen bedre."
+                }
             ],
             "appIntegrations": [
                 {
                     "feature": "Mål",
-                    "description": "Bruk Mål-modulen til å notere ned hva du ønsker å jobbe mot. Det trenger ikke være stort – ett lite steg er nok å starte med."
+                    "description": "Bruk Mål-modulen til å notere ned hva du ønsker å jobbe mot. Ett lite steg er nok å starte med."
                 },
                 {
                     "feature": "Journal",
-                    "description": "Bruk Journal til å skrive ned tanker og forventninger du har til behandlingen. Det kan hjelpe deg å sortere hva som er viktig."
+                    "description": "Skriv ned tanker og forventninger du har til behandlingen. Det kan hjelpe deg å sortere hva som er viktigst."
                 }
             ]
         }
@@ -35,32 +71,80 @@
     {
         "id": "modul-2",
         "title": "Motivasjon og Endring",
-        "summary": "Motivasjon er ikke noe du enten har eller ikke har – det svinger, og det er helt normalt. Her lærer du å forstå din egen endringsreise, hva som driver deg og hva som bremser, og hvordan du kan sette ett konkret første mål.",
+        "summary": "Motivasjon er ferskvare – den svinger, og det er helt normalt. Her lærer du å forstå din egen endringsreise, hva som driver deg og hva som bremser, og hvordan du kan ta det helt første steget.",
         "icon": "🔥",
+        "readingTime": "10 min",
         "isObligatory": true,
-        "requiredPreviousModule": null,
+        "requiredPreviousModules": [],
         "content": {
-            "coreMessage": "Det å kjenne seg dratt i to retninger – 'jeg vil endre meg' og 'men det er så vanskelig' – er ikke et tegn på svakhet. Det er en helt normal del av enhver endringsprosess. Det har til og med et navn: ambivalens.",
-            "whatThisMeansForYou": [
-                "Endring skjer sjelden i en rett linje. Noen ganger tar man et steg tilbake for å få ny sats. Det er ikke fiasko – det er slik prosessen ser ut for de fleste.",
-                "Du befinner deg et sted på en endringsreise akkurat nå. Kanskje er du fortsatt usikker på om du vil endre deg. Kanskje er du klar for handling. Begge deler er gyldige utgangspunkt.",
-                "Motivasjon som kommer fra indre verdier – det som virkelig betyr noe for *deg* – varer lenger enn ytre press. Hva er det du egentlig ønsker deg av livet?",
-                "Ambivalens er ikke fienden. Den forteller deg at endringen betyr noe. Rusen har hatt en funksjon i livet ditt. Å gi den opp innebærer et reelt tap – og det er lov å sørge over det.",
-                "Mestringstro er troen på at du *kan* klare det – og den bygges opp av små, konkrete seire. Å sette et realistisk mål og faktisk klare det, gir næring til troen på at noe større er mulig."
+            "coreMessage": "Å kjenne seg dratt i to retninger – «Jeg vil endre meg» og «Men det er så vanskelig» – er ikke et tegn på svakhet. Det er ambivalens, og det er en helt normal del av enhver endringsprosess.",
+            "sections": [
+                {
+                    "heading": "Endring er en reise – ikke en bryter",
+                    "paragraphs": [
+                        "De fleste av oss ønsker at endring var enkelt: en dag bestemmer man seg, og så er alt annerledes. Men sånn fungerer det sjelden. Endring skjer gradvis, over tid, og det er helt normalt å ta et steg tilbake for å få ny sats.",
+                        "Forskere har beskrevet denne prosessen som en trapp med fem trinn. På det første trinnet – «føroverveielse» – er man kanskje ikke helt klar over at noe trenger å endre seg. På neste trinn – «overveielse» – begynner man å se både fordeler og ulemper. Så kommer forberedelse, handling og til slutt vedlikehold.",
+                        "Det viktige å huske er at dette IKKE er en test. Det finnes ingen riktig plassering. Du kan bevege deg frem og tilbake mellom trinnene, og det er slik det er for de aller fleste. Å vite hvor du er akkurat nå, gjør det lettere å velge hva du trenger.",
+                        "Og det er et viktig poeng i seg selv: å sitte her og lese dette betyr at du allerede er i gang med noe. Kanskje du ikke er «klar for handling» ennå – og det er helt OK. Det at du er nysgjerrig er en verdifull start."
+                    ],
+                    "pullQuote": "Du trenger ikke vite hvor du skal. Det holder å vite at du har begynt å gå.",
+                    "reflection": "Hvilket «trinn» i endringsreisen kjenner du deg mest igjen i akkurat nå?"
+                },
+                {
+                    "heading": "Hva driver deg – egentlig?",
+                    "paragraphs": [
+                        "Motivasjon er et ord vi bruker mye, men som vi sjelden stopper opp og tenker over hva egentlig betyr. Hva *er* motivasjon?",
+                        "En måte å forstå det på er å skille mellom det som kommer utenfra og det som kommer innenfra. Ytre motivasjon er kravene du møter – fra NAV, familien, retten. Indre motivasjon er det du genuint ønsker for deg selv – kanskje å være en trygg forelder, å ha råd til å gjøre ting du liker, eller bare å våkne uten angst.",
+                        "Ytre motivasjon er ikke dårlig. Den kan faktisk være startskuddet. Men den varer sjelden lenge nok alene. Det magiske skjer når du klarer å bygge en bro mellom de ytre kravene og dine egne verdier. Kanskje du opplever et krav fra NAV som meningsløst – men hva om å oppfylle det kravet faktisk bringer deg nærmere noe som er genuint viktig for deg?",
+                        "Da går motivasjonen fra å være et «must» til å bli et «vil». Og det er den typen motivasjon som bærer over tid."
+                    ],
+                    "pullQuote": "Motivasjon som kommer fra dine egne verdier er den som bærer lengst.",
+                    "reflection": "Hva er den viktigste grunnen til at DU vil endre noe? Ikke hva andre mener – men hva du selv kjenner innerst inne?"
+                },
+                {
+                    "heading": "Ambivalens – den usynlige kampen",
+                    "paragraphs": [
+                        "Her kommer vi til noe de fleste kjenner, men få snakker om: ambivalens. Å føle seg dratt i to retninger samtidig. Å ville slutte og ikke ville slutte – på én og samme gang.",
+                        "Det er lett å tenke at ambivalens er et problem. At det betyr at man ikke prøver hardt nok, eller at man er svak. Men sannheten er det stikk motsatte: ambivalens betyr at endringen *betyr noe*. Du overveier noe som virkelig teller for deg.",
+                        "En grunn til at det er vanskelig er at rusen har hatt en reell funksjon i livet ditt. Den har gitt deg noe – kanskje ro, en pause, en følelse av normalitet. Å gi opp det innebærer et reelt tap. Og det er lov å kjenne på det.",
+                        "Et nyttig verktøy for å sortere ambivalensen er å skrive den ned. Hva er fordelene med å fortsette som nå? Hva er ulempene? Hva er fordelene med endring? Og hva frykter du ved å endre deg? Å se alle fire sidene svart på hvitt kan gjøre den kaotiske følelsen mer håndterbar."
+                    ],
+                    "pullQuote": "Ambivalens er ikke svakhet – det er et tegn på at du tar det på alvor.",
+                    "reflection": "Hva er det rusen har «gitt» deg – og hva har den kostet deg? Skriv gjerne et stikk-ord for hver side."
+                },
+                {
+                    "heading": "Ditt første lille mål",
+                    "paragraphs": [
+                        "Etter å ha utforsket motivasjon og ambivalens, er det naturlig å spørre: «Ok, men hva gjør jeg nå?» Og svaret er overraskende lite: start med noe *bittelite*.",
+                        "Det viktigste er ikke størrelsen på målet – det er opplevelsen av å klare det. Forskning viser at mestringstro – troen på at du *kan* klare noe – er en av de aller sterkeste faktorene for vellykket endring. Og mestringstro bygges av små seire.",
+                        "Et godt mål er SMART: Spesifikt (hva nøyaktig), Målbart (vet du når du har klart det?), Oppnåelig (er det realistisk denne uken?), Relevant (betyr det noe for deg?), og Tidsbestemt (når). Eksempel: «Jeg skal ta en 15-minutters tur i parken onsdag etter lunsj.»",
+                        "Det er ikke et mål for resten av livet. Det er et mål for de neste sju dagene. Og det eneste formålet er å gi deg opplevelsen av at du kan fullføre noe du har bestemt deg for. Den opplevelsen er gull."
+                    ],
+                    "reflection": "Hva er ETT lite mål du kan sette deg for de neste sju dagene? Gjør det så konkret at du vet nøyaktig når du har lyktes."
+                }
             ],
             "actionableAdvice": [
-                "Skriv ned tre ting du ønsker å ha mer av i livet ditt. Ikke hva du 'burde' ønske – men hva som faktisk betyr noe for deg.",
-                "Velg ETT lite, konkret mål for neste uke. Gjør det så spesifikt at du vet nøyaktig når du har lyktes. Eksempel: 'Jeg skal ta en 15-minutters tur onsdag ettermiddag.'",
-                "Neste gang du kjenner på ambivalens – skriv ned begge sider. Hva taler for å fortsette som nå? Hva taler for endring? Å se det svart på hvitt kan hjelpe deg å finne din egne grunner."
+                {
+                    "tip": "Skriv ned tre ting du ønsker å ha mer av i livet ditt. Ikke hva du «burde» ønske – men hva som faktisk betyr noe.",
+                    "why": "Å tydeliggjøre dine verdier gjør det lettere å finne motivasjon som varer."
+                },
+                {
+                    "tip": "Velg ETT lite mål for neste uke. Gjør det så konkret at du vet nøyaktig når du har lyktes.",
+                    "why": "Mestringstro bygges av å faktisk fullføre noe – uansett hvor lite."
+                },
+                {
+                    "tip": "Neste gang du kjenner ambivalens: skriv ned begge sider. Fordeler og ulemper med å endre seg, og fordeler og ulemper med å fortsette som nå.",
+                    "why": "Å se det svart på hvitt reduserer det indre kaoset og hjelper deg finne dine egne grunner."
+                }
             ],
             "appIntegrations": [
                 {
                     "feature": "Mål",
-                    "description": "Bruk Mål-modulen til å sette ditt SMART-mål: Spesifikt, Målbart, Oppnåelig, Relevant og Tidsbestemt."
+                    "description": "Bruk Mål-modulen til å sette ditt SMART-mål. Appen hjelper deg å følge opp."
                 },
                 {
                     "feature": "LogWizard",
-                    "description": "Bruk loggen til å registrere dager der du følger planen. Å se fremgangen over tid styrker mestringstroen."
+                    "description": "Registrer dager der du følger planen. Å se fremgangen over tid styrker mestringstroen din."
                 }
             ]
         }
@@ -68,23 +152,71 @@
     {
         "id": "modul-3",
         "title": "En Dypere Forståelse av Avhengighet",
-        "summary": "Avhengighet er verken et moralsk valg eller en simpel vane. Her får du et kart som forklarer hva som faktisk skjer i kropp, tanker og omgivelser – og hvorfor det er så mye mer komplekst enn 'bare å slutte'.",
+        "summary": "Avhengighet er verken et moralsk valg eller en simpel vane. Her får du et kart som forklarer hva som faktisk skjer i kropp, tanker og omgivelser – og hvorfor forståelsen gir deg makt til å navigere bedre.",
         "icon": "🧩",
+        "readingTime": "12 min",
         "isObligatory": true,
-        "requiredPreviousModule": null,
+        "requiredPreviousModules": [],
         "content": {
-            "coreMessage": "Avhengighet er ikke et tegn på svak karakter – det er et komplekst samspill mellom din biologi, dine erfaringer og miljøet rundt deg. Å forstå dette er ikke en unnskyldning; det er et kart som gir deg makt til å navigere bedre.",
-            "whatThisMeansForYou": [
-                "Rusmidler 'kaprer' hjernens belønningssystem ved å frigi store mengder dopamin – mye mer enn en god middag eller en klem. Over tid venner hjernen seg til det, og hverdagslige gleder mister farge. Det er kjemi, ikke svakhet.",
-                "Toleranse og abstinenser er kroppens måte å tilpasse seg på. Når du kjenner et uutholdelig sug, er det fordi hjernen har lært å forvente rusmidlet. Det sier noe om avhengighetens makt – ikke om hvem du er.",
-                "Det psykologiske bildet handler mye om hva rusen *gjorde for deg*: dempet angst, ga sosial flyt, hjalp deg å holde ut smerte. Rusen var en (u)vane som løste et reelt problem. Det nye spørsmålet er: finnes det andre måter å løse det på?",
-                "Nettverket rundt deg betyr enormt mye. Folk, steder og situasjoner du forbinder med rus kan utløse sug nesten automatisk. Det er klassisk betinging – det er ikke du som er svak, det er hjernen som husker.",
-                "Noen opplever at de bytter ut én avhengighet med en annen. Det skjer fordi den underliggende sårbarheten – kanskje angst, tomhet eller traumeerfaringer – fremdeles er der. Behandling handler om å adressere det som drev rusen, ikke bare rusen selv."
+            "coreMessage": "Avhengighet er ikke et tegn på svak karakter – det er et komplekst samspill mellom din biologi, dine erfaringer og miljøet rundt deg. Å forstå dette er ikke en unnskyldning; det er et kart som gir deg makt.",
+            "sections": [
+                {
+                    "heading": "Hjernen: når belønningssystemet kapres",
+                    "paragraphs": [
+                        "La oss starte med noe du kanskje har merket, men aldri helt forstått: hvorfor føles det som om rusen er sterkere enn deg? Svaret ligger i hjernen, og det er verken mystisk eller skummelt – det er kjemi.",
+                        "Hjernen har et innebygd belønningssystem. Det er designet for å forsterke handlinger som er viktige – som å spise, å ha kontakt med andre og å være aktiv. Når du gjør noe bra, slipper hjernen ut et signalstoff som heter dopamin. Dopamin er som hjernens «tommel opp»: det gir en følelse av tilfredsstillelse og forteller hjernens læringssystem «dette var bra – gjør det igjen».",
+                        "Problemet er at rusmidler kaprer dette systemet. De skaper en dopaminfrigjøring som er mye kraftigere enn det naturlige belønninger gir. En god middag gir kanskje én «tommel opp». Rusens ti. Over tid venner hjernen seg til dette nivået – og da mister hverdagslige ting farge. Maten smaker ikke like godt. Venner gir ikke like mye. Det er ikke deg som er tom – det er kjemien som har endret seg.",
+                        "Denne tilpasningen er det vi kaller toleranse: du trenger mer og mer for å oppnå samme effekt. Og når rusmidlet forsvinner, går kroppen i alarm: abstinens. Uro, angst, irritabilitet. Ikke fordi du er svak, men fordi hjernen har omstilt seg og forventer å få det den er vant til."
+                    ],
+                    "pullQuote": "Når hjernen din sier «jeg MÅ ha det» – er det kjemi, ikke svakhet.",
+                    "reflection": "Har du merket at ting som ga deg glede før rusen har mistet noe av sin glans? Hva er det du savner mest?"
+                },
+                {
+                    "heading": "Tankene: rusen som mestringsstrategi",
+                    "paragraphs": [
+                        "Nå som vi forstår hva hjernen gjør, kan vi spørre: men hvorfor begynte det i utgangspunktet? Og her beveger vi oss over i det psykologiske landskapet.",
+                        "For mange har rusbruk startet som en løsning på et reelt problem. Kanskje var det angst som ble for tung. Kanskje var det ensomhet, vonde minner eller en følelse av tomhet. Rusen gjorde jobben: den dempet smerten, ga en pause, lot deg puste ut. Det var ikke et dumt valg – det var det beste alternativet du hadde tilgjengelig der og da.",
+                        "Men over tid endrer «jobben» seg. Det som startet som en måte å ha det bra på (positiv forsterkning) blir til en måte å unngå å ha det vondt på (negativ forsterkning). Du ruser deg ikke lenger for å føle noe godt – du gjør det for å slippe unna det vonde. Det er en viktig forskjell.",
+                        "Og parallelt med dette har hjernen lært seg helt nye koblinger. Bestemte steder, bestemte folk, bestemte sanger, bestemte følelser – alt dette har blitt «triggere» som automatisk kan utløse et intenst sug. Det er klassisk betinging: hjernen din husker, og den husker veldig godt. Det er ikke du som er svak – det er hjernen som er flink til å lære."
+                    ],
+                    "pullQuote": "Rusen var ikke irrasjonell – den løste et problem du ikke hadde andre verktøy for.",
+                    "reflection": "Hva var den «jobben» rusen gjorde for deg? Hva var det du prøvde å håndtere eller unngå?"
+                },
+                {
+                    "heading": "Omgivelsene: ingen lever i et vakuum",
+                    "paragraphs": [
+                        "Hjernen og tankene forklarer mye, men det hele skjer i en kontekst. Ingen utvikler avhengighet helt isolert. Omgivelsene rundt deg – nettverket, bo-situasjonen, økonomien, kulturen – spiller en enorm rolle.",
+                        "Tenk på omgivelsene dine som sirkler rundt deg. Den innerste sirkelen er dem du har nærmest: familie, nære venner, rusmiljøet. Noen er støttende, andre er risikofaktorer. Neste sirkel er samspillet mellom arenaene dine – for eksempel forholdet mellom behandleren din, familien din og NAV. Jo bedre dette samspillet fungerer, jo sterkere er støttesystemet ditt.",
+                        "Og så finnes det sirkler du kanskje ikke tenker over: kommunens boligpolitikk, ventelister i helsevesenet, samfunnets holdninger til rus. Stigma – følelsen av å bli sett ned på – er i seg selv en risikofaktor for tilbakefall. Det sier noe om at problemet ikke bare er «ditt»; det er sammenvevd med systemene rundt deg.",
+                        "Poenget er ikke å skylde på omgivelsene, men å forstå dem. Fordi noen av disse sirklene kan du påvirke – spesielt den innerste. Hvem er dine viktigste støttespillere? Hvem representerer en risiko? Å kartlegge dette gir deg handlekraft."
+                    ],
+                    "pullQuote": "Du er produktet av ditt samspill med verden – ikke av ett enkelt dårlig valg.",
+                    "reflection": "Hvem i livet ditt støtter endring? Og er det noen steder, personer eller situasjoner du vet er risikofylte?"
+                },
+                {
+                    "heading": "Kryssavhengighet – når én uvane blir til en annen",
+                    "paragraphs": [
+                        "Til slutt: en viktig advarsel som er like viktig å forstå som alt det andre. Noen ganger opplever folk at de klarer å slutte med sin primære rus – men så dukker det opp noe nytt. Overdreven gaming, shopping, spilling, eller en ny substans.",
+                        "Det kalles kryssavhengighet, og det skjer fordi den underliggende sårbarheten – kanskje angsten, tomheten, behovet for en flukt – fremdeles er der. Man har fjernet symptom, men ikke årsaken. Rusen hadde en jobb, og den jobben trengs fortsatt utført.",
+                        "Det er derfor behandling i TSB handler om mer enn bare å «slutte med rus». Det handler om å forstå hva som drev rusbruken og å finne nye, sunne måter å dekke de behovene på. Det er det de neste modulene skal hjelpe deg med."
+                    ],
+                    "pullQuote": "Behandling handler ikke om å fjerne rusen – det handler om å møte det som drev den.",
+                    "reflection": "Har du noen ganger kjent at du bytter ut én uvane med en annen? Hva tror du «tomrommet» handler om?"
+                }
             ],
             "actionableAdvice": [
-                "Tenk på en situasjon der du hadde sterkt sug. Hva skjedde rett before? Var det en spesifikk følelse, person eller sted? Å gjenkjenne mønstrene gir deg et forsprang.",
-                "Skriv ned hva rusen 'ga deg'. Ikke for å romantisere det, men for å forstå hvilket behov du må finne andre løsninger på.",
-                "Identifiser én person, ett sted eller én situasjon som er en tydelig risikofaktor for deg. Tenk gjennom hva du kan gjøre annerledes neste gang du møter den."
+                {
+                    "tip": "Tenk på en situasjon der du hadde sterkt sug. Hva skjedde rett FØR? Var det en spesifikk følelse, person eller sted?",
+                    "why": "Å gjenkjenne triggerene dine gir deg et forsprang. Du kan handle før automatikken tar over."
+                },
+                {
+                    "tip": "Skriv ned hva rusen «ga deg». Ikke for å romantisere det – men for å forstå hvilke behov du trenger nye løsninger for.",
+                    "why": "Uten å forstå rusens funksjon er det vanskelig å finne gode alternativer."
+                },
+                {
+                    "tip": "Identifiser én person, ett sted eller én situasjon som er en tydelig risikofaktor. Tenk gjennom én ting du kan gjøre annerledes neste gang.",
+                    "why": "Å ha en plan klar reduserer faren for å handle på autopilot."
+                }
             ],
             "appIntegrations": [
                 {
@@ -93,7 +225,7 @@
                 },
                 {
                     "feature": "LogWizard",
-                    "description": "Bruk 'Registrer hendelse'-funksjonen til å loggføre sug-episoder: hva trigget det, og hva hjalp?"
+                    "description": "Bruk Registrer hendelse for å loggføre sug-episoder: hva trigget det, og hva hjalp?"
                 }
             ]
         }
@@ -101,32 +233,86 @@
     {
         "id": "modul-4",
         "title": "Å Mestre Sug og Triggere",
-        "summary": "Sug er ikke et tegn på at du er svak – det er hjernen din som husker. Her får du konkrete verktøy for å håndtere suget i øyeblikket, kartlegge dine personlige triggere, og begynne å bygge et liv der suget forekommer sjeldnere.",
+        "summary": "Sug er ikke et tegn på at du er svak – det er hjernen din som husker. Her får du konkrete verktøy for å håndtere suget i øyeblikket og over tid, slik at du sitter i førersetet.",
         "icon": "🌊",
+        "readingTime": "12 min",
         "isObligatory": false,
-        "requiredPreviousModule": "modul-3",
+        "requiredPreviousModules": [
+            "modul-1",
+            "modul-2",
+            "modul-3"
+        ],
         "content": {
             "coreMessage": "Sug er som en bølge – det stiger, topper seg, og avtar alltid av seg selv. Din jobb er ikke å stoppe bølgen, men å ri den. Du trenger ikke å gi etter.",
-            "whatThisMeansForYou": [
-                "Sug er ikke bare 'i hodet'. Det er en blanding av tanker ('Bare én skader ikke'), følelser (uro, lengsel) og kroppssensasjoner (spenning, uro i magen). Å gjenkjenne alle tre delene gjør det lettere å håndtere.",
-                "Triggere kan være ytre (et bestemt sted, en person, en sang) eller indre (stress, ensomhet, eller overraskende nok, glede og feiring). Mange er ikke klar over at gode perioder også kan utløse sug.",
-                "HALT er en enkel selvsjekk: Er jeg Hungry (sulten), Angry (sint/frustrert), Lonely (ensom), eller Tired (trett)? Disse fire tilstandene gjør terskelen for sug lavere. En enkel sjekk kan redde en vanskelig kveld.",
-                "Den gode nyheten: hjernen er plastisk. Jo mer du øver deg på å 'ri bølgen' uten å gi etter, jo svakere blir bølgene over tid. Det er trening, ikke viljekraft.",
-                "Å bygge et liv du trives i – med aktiviteter som gir deg ekte glede – er like viktig som akuttstrategier. Et meningsfullt liv gir suget mindre grobunn."
+            "sections": [
+                {
+                    "heading": "Hva er egentlig sug?",
+                    "paragraphs": [
+                        "Du kjenner det sikkert. Det kan komme plutselig – eller bygge seg sakte opp. En uro i kroppen, tanker som begynner å sirkle, en lengsel som tar over. Det er sug. Og det er en av de mest misforståtte delene av avhengighet.",
+                        "Sug er nemlig ikke bare «i hodet». Det er en tredelt opplevelse – tanker, følelser og kroppssensasjoner som alle slår inn samtidig. Tankene sier kanskje «bare én gang». Følelsene er kanskje uro eller lengsel. Og kroppen kjenner spenning, kribling, uro i magen.",
+                        "Her er den viktige nyheten: sug er ikke et tegn på at noe er galt med deg. Det er tvert imot et tegn på at hjernen din har lært noe veldig godt – som vi snakket om i Modul 3. De dopaminerge banene som ble «trent opp» av rusen husker fortsatt – og de reagerer fortsatt. Det er en fysiologisk realitet, ikke en moralsk svikt.",
+                        "Men her er den gode nyheten: sug er som en bølge. Det stiger, det topper seg – og så avtar det. Alltid. Typisk innen 15–30 minutter. Du har aldri opplevd et sug som varer for alltid. Det betyr at oppgaven din ikke er å stoppe bølgen, men å holde ut mens den passerer. Og det finnes konkrete ting du kan gjøre mens du venter."
+                    ],
+                    "pullQuote": "Et sug som ikke får næring, dør ut av seg selv. Hver eneste gang.",
+                    "reflection": "Når er suget vanligvis sterkest for deg? Er det en bestemt tid på døgnet, en følelse, eller en situasjon?"
+                },
+                {
+                    "heading": "Dine personlige alarmknapper: triggere",
+                    "paragraphs": [
+                        "Nå vet du hva sug er. Neste steg er å forstå hva som setter det i gang – triggerene. Å kjenne dine egne triggere er kanskje den viktigste kunnskapen du kan ha, fordi det lar deg forberede deg i stedet for å bli tatt på sengen.",
+                        "Triggere deler vi i to typer. **Ytre triggere** er ting utenfor deg: et bestemt sted, en person du forbinder med rus, en sang, en fredagskveld, en lukt. Det som gjør dem farlige er at reaksjonen er automatisk – hjernen din kobler stimulus til rus uten at du velger det.",
+                        "**Indre triggere** er det som skjer på innsiden: følelser, tanker, kroppssensasjoner. Og her er en viktig oppdagelse: det er ikke bare negative følelser (stress, ensomhet, tristhet) som trigger sug. Positive følelser – glede, feiring, lettelse – er like reelle triggere. Mange er sårbare nettopp i gode perioder, fordi man ikke er forberedt.",
+                        "Et enkelt verktøy for indre triggere er HALT: er jeg Hungry (sulten), Angry (sint), Lonely (ensom) eller Tired (trett)? Disse fire tilstandene senker terskelen for sug. En enkel sjekk før du handler kan redde en vanskelig kveld."
+                    ],
+                    "pullQuote": "Du er ikke svak fordi en sang kan trigge sug. Hjernen din er bare veldig flink til å huske.",
+                    "reflection": "Kan du identifisere tre triggere – ytre eller indre – som er spesielt sterke for deg?"
+                },
+                {
+                    "heading": "Verktøykassen: akutt hjelp i øyeblikket",
+                    "paragraphs": [
+                        "OK, du kjenner suget. Du har kanskje identifisert triggeren. Men hva gjør du akkurat NÅ, når bølgen er på vei opp? Her er fem bevisbaserte verktøy å velge mellom – og du trenger ikke alle. Velg 2–3 som føles riktige for deg.",
+                        "**1. Surf på bølgen.** I stedet for å kjempe mot suget, observerer du det med nysgjerrighet. Hvor i kroppen kjenner du det? Hvordan endrer det seg? Forskning viser at det å observere uten å handle er en av de mest effektive strategiene – fordi suget faktisk avtar av seg selv når du ikke mater det.",
+                        "**2. Utsett og distraher.** Sett en timer på 15 minutter og gjør noe som krever hjernekapasitet: ring en venn, start en kryssordoppgave, gå ut og tell røde biler. Poenget er å okkupere hjernen lenge nok til at bølgen avtar.",
+                        "**3. Utfordre tanken.** Suget kommer med en historie: «Bare denne ene gangen», «Du fortjener det», «Det hjelper ikke uansett». Lag deg et «mestringskort» – en setning du skriver ned på forhånd, i en rolig stund, som svarer på denne tanken. «Jeg har klart 14 dager. Én gang leder til neste.» Ha den på telefonen.",
+                        "**4. Vær din egen venn.** Selvmedfølelse er ikke svakhet – det er en av de mest beskyttende faktorene mot tilbakefall. Si til deg selv det du ville sagt til en god venn i samme situasjon: «Dette er jævlig vanskelig, og du gjør en bra jobb ved å holde ut.»",
+                        "**5. Ring noen.** Å si høyt til et annet menneske at du har sug reduserer intensiteten dramatisk. Ikke vent til du er i full krise – ring mens du fortsatt tenker klart. Identifiser en person du stoler på og avtal på forhånd at det er OK å ringe."
+                    ],
+                    "reflection": "Hvilke 2–3 av disse verktøyene tror du ville fungert best for deg? Prøv å skrive dem ned."
+                },
+                {
+                    "heading": "Fra brannslukking til brannsikkert liv",
+                    "paragraphs": [
+                        "Akutte strategier er viktige – men de er som å slukke branner. Det langsiktige arbeidet handler om å bygge et liv som sjeldnere tar fyr.",
+                        "Det første verktøyet er å bli en detektiv i eget liv. Neste gang du har et sterkt sug (eller en episode med rusbruk), utforsk det som en forskningsjob: Hva skjedde rett FØR? (Foranledningen). Hva tenkte, følte og gjorde du? (Atferden). Hva skjedde ETTER – på kort sikt og på lang sikt? (Konsekvensen). Denne ABC-analysen avslører mønstre du ikke ser i øyeblikkets kaos.",
+                        "Det andre verktøyet er å aktivt fylle livet med ting som betyr noe for deg. Det høres kanskje banalt ut, men forskning viser at en av de sterkeste prediktorene for tilbakefall ikke er sug – det er mangel på meningsfulle alternativer. Hva ga deg glede før rusen? Hva gjør du som bringer deg nærmere den du vil være? Start i det små: en 10-minutters tur i naturen er en reell seier.",
+                        "Disse to – detektivarbeidet og det meningsfulle livet – utgjør til sammen grunnlaget for tilbakefallsforebygging. Vi kommer tilbake til dette i enda dypere detalj senere."
+                    ],
+                    "pullQuote": "Det langsiktige målet er ikke å bli flink til å slukke branner – det er å bygge et hus som sjelden tar fyr.",
+                    "reflection": "Hva ga deg glede eller mening FØR rusen tok over? Finnes det noe av det du kan hente tilbake?"
+                }
             ],
             "actionableAdvice": [
-                "Neste gang du kjenner sug: sett en timer på 15 minutter og gjør noe som krever oppmerksomhet (ring noen, ta en tur, gjør noe med hendene). Sjansen er stor for at suget er svakere eller borte når timeren ringer.",
-                "Lag din personlige 'verktøykasse': skriv ned 2-3 strategier som er realistiske for deg å bruke når suget er på topp. Ha dem tilgjengelig – gjerne på telefonen.",
-                "Identifiser én person du stoler på og som du kan ringe *FØR* suget er på topp. Ring dem mens du fortsatt tenker klart, ikke når krisen allerede er der."
+                {
+                    "tip": "Neste gang du kjenner sug: sett en timer på 15 minutter og gjør noe som krever oppmerksomhet. Sjekk om suget har endret seg når timeren ringer.",
+                    "why": "Suget avtar nesten alltid innen 15–30 minutter. Å vente det ut er trening for hjernen."
+                },
+                {
+                    "tip": "Lag din personlige verktøykasse: skriv ned 2–3 strategier som er realistiske for deg å bruke under press.",
+                    "why": "I en krise har du ikke overskudd til å tenke nytt. En plan som ligger klar reduserer den kognitive belastningen."
+                },
+                {
+                    "tip": "Identifiser én person du kan ringe FØR suget er på topp – og avtal det med dem.",
+                    "why": "Å verbalisere suget til noen reduserer intensiteten og aktiverer sosial støtte."
+                }
             ],
             "appIntegrations": [
                 {
                     "feature": "LogWizard",
-                    "description": "Bruk loggen til å registrere sug-episoder: tidspunkt, triggertype og hvilken strategi som hjalp. Mønstrene vil vise seg over tid."
+                    "description": "Registrer sug-episoder med tidspunkt, triggertype og strategi som hjalp. Mønstrene vil vise seg over tid."
                 },
                 {
                     "feature": "Strategier",
-                    "description": "Finn konkrete urge surfing-øvelser og andre akuttstrategier under Strategier i menyen."
+                    "description": "Finn urge surfing-øvelser og akuttstrategier under Strategier i menyen."
                 }
             ]
         }
@@ -134,32 +320,99 @@
     {
         "id": "modul-5",
         "title": "Følelsesregulering og Psykisk Helse",
-        "summary": "For mange har rusen i lang tid vært den primære måten å takle sterke følelser på. Her lærer du hva følelser egentlig er, hvorfor de kan bli overveldende, og du får konkrete verktøy fra DBT, ACT og mindfulness for å møte følelsene på en ny måte.",
+        "summary": "For mange har rusen vært den primære måten å takle vanskelige følelser på. Her lærer du hva følelser egentlig er, hvorfor de kan bli overveldende, og du får verktøy for å møte dem uten å ty til gamle løsninger.",
         "icon": "🧘",
+        "readingTime": "14 min",
         "isObligatory": false,
-        "requiredPreviousModule": "modul-4",
+        "requiredPreviousModules": [
+            "modul-1",
+            "modul-2",
+            "modul-3"
+        ],
         "content": {
             "coreMessage": "Følelser er ikke fiender – de er budbringere med viktige beskjeder. Rusen var ikke en svakhet; den var en løsning på et reelt problem. Nå lærer du nye løsninger.",
-            "whatThisMeansForYou": [
-                "Alle følelser hadde opprinnelig en god grunn: frykt holder deg trygg, sinne setter grenser, sorg forteller deg hva som betyr noe. Problemet oppstår når de blir for intense, for uklare, eller for vanskelige å utholde – og rusen tok over jobben med å håndtere dem.",
-                "Toleransevinduet er en måte å forstå seg selv på: innenfor vinduet fungerer du godt. Utenfor kan du enten bli hypersensitiv og overveldet, eller nummen og frakoblet. Langvarig rusbruk snevrer dette vinduet inn. Det gode er at det kan utvides igjen.",
-                "Selvmedisinering er ikke irrasjonelt – det løste et problem. Angst, vonde minner, tomhet eller stress er reelle belastninger. Det nye spørsmålet er: finnes det andre måter å lindre dem på som ikke koster deg like mye?",
-                "Kognitiv defusjon er en teknikk fra ACT: i stedet for å tenke 'Jeg er verdiløs', lærer du å tenke 'Jeg merker at det er en tanke om å være verdiløs'. En liten avstand fra tanken gjør den mye mindre mektig.",
-                "Mindfulness handler ikke om å tømme hodet – det er umulig. Det handler om å legge merke til det som er her, uten å dømme. Och over tid gir det ro – ikke fordi følelsene forsvinner, men fordi de ikke lenger styrer deg."
+            "sections": [
+                {
+                    "heading": "Hva er egentlig følelser – og hvorfor har vi dem?",
+                    "paragraphs": [
+                        "Mange som har brukt rus over tid har et komplisert forhold til egne følelser. Kanskje har du lært at følelser er farlige, at de er overveldende, eller at de gjør deg sårbar. Men sannheten er at følelser er kroppens aller viktigste informasjonssystem.",
+                        "Tenk på følelser som budbringere. De kommer med en beskjed. Frykt sier: «Vær forsiktig, noe kan true deg.» Sinne sier: «En grense har blitt kryssen – gjør noe.» Sorg sier: «Du har mistet noe som betyr noe.» Glede sier: «Mer av dette.» Alle følelser hadde opprinnelig en god grunn til å eksistere.",
+                        "Problemet er aldri følelsen i seg selv – det er hva vi gjør med den. Noen skyver den vekk. Noen drukner den. Noen eksploderer. Og noen ruser seg. Det som alle disse reaksjonene har til felles er at de forsøker å *unngå* å kjenne følelsen fullt ut.",
+                        "Et viktig skille å forstå er mellom primære og sekundære følelser. Den primære følelsen er den umiddelbare reaksjonen – frykten, sorgen, sinnet. Den sekundære er reaksjonen du får *på* følelsen: skam over at du er sint, angst for at du er trist. For mange er det den sekundære følelsen – «det burde ikke kjennes slik» – som driver rusbruken. Ikke selve sorgen, men skammen over sorgen."
+                    ],
+                    "pullQuote": "Problemet er sjelden følelsen. Det er at ingen lærte deg å leve med den.",
+                    "reflection": "Hvilken følelse er vanskeligst for deg å sitte med uten å handle? Er det selve følelsen – eller reaksjonen din på den?"
+                },
+                {
+                    "heading": "Selvmedisinering – rusen som løsning",
+                    "paragraphs": [
+                        "Her knytter vi tråden tilbake til Modul 3 og spørsmålet om rusens funksjon. For veldig mange har rusen primært vært et reguleringsverktøy – en måte å håndtere følelser som var for intense, for uklare eller for uutholdelige.",
+                        "Og her er poenget: det var ikke irrasjonelt. Angst er reelt vondt. Flashbacks er reelt overveldende. Tomhet er reelt uutholdelig. Rusen virket – akutt. Det er ikke et moralsk problem, det er et ferdighetsproblem: du manglet andre verktøy, og du brukte det du hadde.",
+                        "Men over tid skjer noe paradoksalt. Rusen som var ment å regulere følelsene, gjør deg gradvis *dårligere* til å regulere dem uten hjelp. Toleransevinduet ditt – den sonen der du klarer å tenke klart, føle og fungere – snevres inn. Det betyr at det over tid kreves mindre og mindre for å havne utenfor den sonen. Og da er rusen igjen den enkleste utveien. Det er en selvforsterkende syklus.",
+                        "Forskning bekrefter dette: vansker med følelsesregulering er en av de sterkeste prediktorene for tilbakefall. Men det gode i det er at regulering er en ferdighet – og ferdigheter kan læres. Det er det vi skal gjøre nå."
+                    ],
+                    "pullQuote": "Rusen var den beste brannslukker du hadde. Men kjemikaliene har skadet rommet den skulle redde.",
+                    "reflection": "Hva er den vanligste følelsen du rusa deg for å slippe unna? Skjer det fortsatt at den følelsen dukker opp?"
+                },
+                {
+                    "heading": "Toleransevinduet – ditt personlige barometer",
+                    "paragraphs": [
+                        "Toleransevinduet er et begrep som kan endre hvordan du forstår deg selv. Se for deg en sone i midten – det er der du fungerer. Du kan tenke, du kan føle, du kan ta valg. Innenfor vinduet er du «ombord».",
+                        "Over den sonen er hyperaktivering: hjertet hamrer, tankene raser, du er rastløs, alt føles som en krise. Du reagerer for mye, for fort. Under sonen er hypoaktivering: nummenhet, tomhet, det føles som vatt i hodet. Du er tilstede, men du er ikke *der*. Frakoblet.",
+                        "Mange som har brukt rus over tid har et smalt toleransevindu. Det kreves ikke mye for å havne utenfor – enten opp eller ned. Og gjett hva: regulestrategiene dine, pusteøvelsene, alt det vi snakker om – de fungerer best *innenfor* vinduet. I full panikk er det nesten umulig å huske å puste sakte.",
+                        "Derfor handler arbeidet om to ting: å utvide vinduet gradvis over tid, og å lære å oppdage tidlige tegn på at du er på vei ut. Hvilke signaler gir kroppen din? Uro i magen? Spenning i skuldrene? Nummenhet i ansiktet? Å gjenkjenne signalet tidlig betyr at du kan handle mens verktøyene fortsatt virker.",
+                        "Et viktig poeng: det er helt normalt at toleransevinduet er smalt akkurat nå. Det er en naturlig konsekvens av det du har vært gjennom. Det er ikke en feil ved deg – det er et utgangspunkt å jobbe fra."
+                    ],
+                    "pullQuote": "Målet er ikke å aldri havne utenfor vinduet – det er å komme tilbake raskere.",
+                    "reflection": "Hva er de første tegnene din kropp gir på at du er på vei ut av toleransevinduet? Opp (uro, panikk) eller ned (nummenhet)?"
+                },
+                {
+                    "heading": "Den nye verktøykassen: regulering i praksis",
+                    "paragraphs": [
+                        "Fra Modul 4 har du urge surfing, distraksjon og selvmedfølelse. De er fortsatt gyldige og verdifulle. Nå legger vi til verktøy som virker på et dypere nivå – kroppen, tankeforholdet og handlingens retning.",
+                        "**Pusteankeret.** Det raskeste verktøyet du har – fordi det virker uavhengig av om du tenker klart eller ikke. Pust inn i 4 sekunder, pust ut i 8. Gjør dette 3–4 ganger. Den forlengede utpusten aktiverer kroppens rorespons. Du kan gjøre det usynlig, overalt, i hvilken som helst situasjon.",
+                        "**Grounding (5-4-3-2-1).** Spesielt nyttig når du kjenner nummenhet eller dissosiasjon – stater som urge surfing ikke dekker. Nevn 5 ting du ser, 4 du kan røre, 3 du hører, 2 du lukter, 1 du smaker. Det bringer deg tilbake til kroppen og til nå-øyeblikket.",
+                        "**Kognitiv defusjon.** I stedet for å tenke «Jeg er verdiløs» og drukne i det, prøv «Jeg legger merke til at det dukker opp en tanke om å være verdiløs». En liten avstand, en stor forskjell. Du utfordrer ikke innholdet i tanken – du endrer forholdet til den.",
+                        "**Motstridende handling.** Når en følelse ber deg om å gjøre noe destruktivt – trekke deg unna folk, gjemme deg, gi etter – gjør det stikk motsatte. Er du fristet til isolasjon? Ta kontakt med noen. Er du fristet til å unngå? Nærm deg forsiktig. Det er ikke lett, men det bryter syklusen.",
+                        "Husk: du trenger ikke alle. Velg 2–3 som snakker til deg. Ha dem skrevet ned. Det er din personlige beredskapsplan."
+                    ],
+                    "reflection": "Hvilke av disse nye verktøyene trigger nysgjerrighet? Hva vil du prøve først, og i hvilken situasjon?"
+                },
+                {
+                    "heading": "Mindfulness: å leve med, ikke mot",
+                    "paragraphs": [
+                        "Til slutt et ord om mindfulness – et begrep som kanskje skaper motstand, nysgjerrighet, eller begge deler. La oss avmystifisere det.",
+                        "Mindfulness handler ikke om å tømme hodet for tanker. Det er umulig – hjernen produserer tanker som lungene produserer pust. Mindfulness handler om å legge merke til det som er her, akkurat nå, uten å dømme det. Tanker kommer og går. Følelser stiger og faller. Din oppgave er å observere dem – som skyer på en himmel – uten å bli revet med.",
+                        "Det er ikke religiøst. Det er ikke mystisk. Det er en ferdighet, og som alle ferdigheter krever den øvelse. De første gangene vil det sannsynligvis kjennes rart, kjedelig, eller ubehagelig. Det er normalt. Over tid gir det noe verdifullt: friheten til å velge hva du gjør med det du føler, i stedet for å reagere på autopilot.",
+                        "Aksept er et nøkkelord her – men det betyr ikke det du kanskje tror. Å akseptere betyr ikke å synes noe er OK. Det betyr å slutte å kjempe mot det som allerede er sant, akkurat nå. «Jeg har intens sorg, og det er det som er akkurat nå.» Aksept gir deg handlerom. Motstand låser deg fast.",
+                        "Og du trenger ikke en meditasjonspute eller 30 minutter i stillhet. Uformell mindfulness – å spise bevisst, å legge merke til vinden i ansiktet, å gi noen full oppmerksomhet i ett minutt – er like verdifullt og mye mer bærekraftig i en travel hverdag."
+                    ],
+                    "pullQuote": "Aksept betyr ikke å gi opp. Det betyr å slutte å slåss med virkeligheten – og bruke kreftene på det du kan endre.",
+                    "reflection": "Har du noen gang prøvd mindfulness? Hva skjedde? Og hva ville du tenkt om å gi det en sjanse etter å ha lest dette?"
+                }
             ],
             "actionableAdvice": [
-                "Prøv puste-øvelsen: pust inn i 4 sekunder, pust ut i 8 sekunder. Gjøre dette 3-4 ganger aktiverer kroppens rompesystem og senker stressnivået. Du kan gjøre det overalt, usynlig.",
-                "Neste gang du kjenner en overveldende følelse: prøv å navngi den ('Dette er angst', 'Dette er sinne'). Forskning viser at det å sette ord på følelser faktisk reduserer intensiteten.",
-                "Prøv 'motstridende handling': er du fristet til å trekke deg unna folk? Ta kontakt med noen i stedet. Handlingen som er stikk motsatt av det følelsen ber deg om, er often det som hjelper mest på lang sikt."
+                {
+                    "tip": "Prøv pusteøvelsen i dag: pust inn i 4 sekunder, pust ut i 8. Gjør det 3–4 ganger. Du trenger ikke en spesiell situasjon – bare prøv det.",
+                    "why": "Forlengede utpust aktiverer kroppens rompesystem og senker stressnivået umiddelbart."
+                },
+                {
+                    "tip": "Neste gang du kjenner en overveldende følelse: prøv å navngi den. «Dette er angst.» «Dette er sinne.»",
+                    "why": "Forskning viser at å sette ord på følelser faktisk demper intensiteten i hjernen."
+                },
+                {
+                    "tip": "Prøv «motstridende handling» én gang denne uken: gjør det stikk motsatte av det følelsen ber deg om.",
+                    "why": "Å bryte mønsteret – selv én gang – viser hjernen at du har et valg."
+                }
             ],
             "appIntegrations": [
                 {
                     "feature": "Journal",
-                    "description": "Bruk Journal som følelsesdagbok: noter hva du kjente, hva som trigget det, og hva som hjalp. Over tid ser du mønstre du ikke visste var der."
+                    "description": "Bruk Journal som din daglige følelsesdagbok. Noter hva du kjente, hva som trigget det, hva som hjalp. Over tid ser du mønstre."
                 },
                 {
                     "feature": "Strategier",
-                    "description": "Under Strategier finner du guidede puste- og grounding-øvelser, inkludert 5-4-3-2-1-metoden og kroppsskanning."
+                    "description": "Under Strategier finner du guidede pusteøvelser, grounding og 5-4-3-2-1-metoden."
                 }
             ]
         }
