@@ -66,7 +66,7 @@ export default function LogWizard({ onNavigate, pendingEventId = null }) {
                 addPoints(POINTS.CRAVING_RESISTED, 'Mestret pågående sug i tidslinjen');
                 showToast(`Oppdatert! Sterkt jobba, +${POINTS.CRAVING_RESISTED} poeng! 🎉`, 'success');
             } else {
-                showToast('Hendelse oppdatert.', 'success');
+                showToast('Dagboknotat oppdatert.', 'success');
             }
         } else {
             addEntry(entryData);
@@ -86,14 +86,14 @@ export default function LogWizard({ onNavigate, pendingEventId = null }) {
                     showToast(`Suget er registrert. Vi heier på deg! (+${newlyEarnedPoints + POINTS.CRAVING_LOGGED_ONLY}p)`, 'warning');
                 } else {
                     addPoints(newlyEarnedPoints + POINTS.RELAPSE_HONESTY, 'Vært ærlig om sprekk');
-                    showToast('Registrering lagret. Takk for at du deler ærlig.', 'success');
+                    showToast('Dagboknotat lagret. Takk for at du deler ærlig.', 'success');
                 }
             } else {
                 if (newlyEarnedPoints > 0) {
                     addPoints(newlyEarnedPoints, 'Skrevet i dagboken');
-                    showToast(`Registrering lagret! +${newlyEarnedPoints} poeng ✍️`, 'success');
+                    showToast(`Dagboknotat lagret! +${newlyEarnedPoints} poeng ✍️`, 'success');
                 } else {
-                    showToast('Registrering lagret.', 'success');
+                    showToast('Dagboknotat lagret.', 'success');
                 }
             }
         }

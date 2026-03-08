@@ -75,7 +75,7 @@ export default function Timeline({ onNavigate }) {
                             <span className="card-title">
                                 {ev.title ? ev.title : (
                                     isEvent
-                                        ? (ev.outcome === 'resisted' ? 'Mestret sug' : ev.outcome === 'used' ? 'En sprekk' : 'Registrert hendelse')
+                                        ? (ev.outcome === 'resisted' ? 'Mestret sug' : ev.outcome === 'used' ? 'En sprekk' : 'Dagboknotat')
                                         : 'Dagboknotat'
                                 )}
                             </span>
@@ -144,7 +144,7 @@ export default function Timeline({ onNavigate }) {
                     onClick={() => onNavigate('log-wizard')}
                     className="new-entry-btn"
                 >
-                    <span style={{ fontSize: '1.2rem', marginRight: '8px' }}>📝</span> Ny Registrering
+                    <span style={{ fontSize: '1.2rem', marginRight: '8px' }}>📝</span> Skriv i dagboken
                 </Button>
                 <p className="hero-points-hint">Tjen poeng for å logge tanker og mestre sug</p>
             </div>
@@ -187,7 +187,7 @@ export default function Timeline({ onNavigate }) {
                             <circle cx="130" cy="100" r="12" fill="var(--primary)" opacity="0.8" />
                             <path d="M126 100l3 3 5-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
                         </svg>
-                        <h3>Din tidslinje er tom</h3>
+                        <h3>Din dagbok er tom</h3>
                         <p>Her samles både dagboknotater og situasjoner hvor du kjenner på sug. Start med å registrere hvordan du har det akkurat nå.</p>
                         <Button variant="primary" onClick={() => onNavigate('log-wizard')}>
                             📝 Start din første registrering

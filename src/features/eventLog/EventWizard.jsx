@@ -75,7 +75,7 @@ export default function EventWizard({ onNavigate, pendingEventId = null }) {
         if (pendingEventId) {
             updateEvent(pendingEventId, eventData);
             if (eventData.outcome === 'resisted') {
-                addPoints(POINTS.CRAVING_RESISTED, 'Mestret pågående sug i hendelsesloggen');
+                addPoints(POINTS.CRAVING_RESISTED, 'Mestret pågående sug i dagboken');
                 showToast('Oppdatert! Sterkt jobba, +100 poeng! 🎉', 'success');
             } else {
                 showToast('Hendelse oppdatert.', 'success');
@@ -84,13 +84,13 @@ export default function EventWizard({ onNavigate, pendingEventId = null }) {
             addEvent(eventData);
 
             if (eventData.outcome === 'resisted') {
-                addPoints(POINTS.CRAVING_RESISTED, 'Mestret sug i hendelsesloggen');
+                addPoints(POINTS.CRAVING_RESISTED, 'Mestret sug i dagboken');
                 showToast('Lagret! Sterkt jobba, +100 poeng! 🎉', 'success');
             } else if (eventData.outcome === 'ongoing') {
                 addPoints(POINTS.CRAVING_LOGGED_ONLY, 'Logget et pågående sug');
                 showToast(`Suget er registrert. Vi heier på deg! (+${POINTS.CRAVING_LOGGED_ONLY}p)`, 'warning');
             } else {
-                addPoints(POINTS.RELAPSE_HONESTY, 'Vært ærlig i hendelsesloggen');
+                addPoints(POINTS.RELAPSE_HONESTY, 'Vært ærlig i dagboken');
                 showToast('Hendelse lagret. Takk for at du deler ærlig.', 'success');
             }
         }

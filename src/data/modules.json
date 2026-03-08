@@ -408,7 +408,7 @@
             "appIntegrations": [
                 {
                     "feature": "Journal",
-                    "description": "Bruk Journal som din daglige følelsesdagbok. Noter hva du kjente, hva som trigget det, hva som hjalp. Over tid ser du mønstre."
+                    "description": "Bruk dagboken daglig. Noter hva du kjente, hva som trigget det, hva som hjalp. Over tid ser du mønstre."
                 },
                 {
                     "feature": "Strategier",
@@ -595,7 +595,7 @@
                 },
                 {
                     "feature": "Journal",
-                    "description": "Bruk Journal til å reflektere over relasjonene dine. Hvem støtter deg? Hva trenger du å si til noen?"
+                    "description": "Bruk dagboken til å reflektere over relasjonene dine. Hvem støtter deg? Hva trenger du å si til noen?"
                 }
             ]
         }
@@ -765,7 +765,7 @@
             "appIntegrations": [
                 {
                     "feature": "LogWizard",
-                    "description": "Bruk LogWizard til å registrere hvordan psykiske symptomer (angst, depresjon, uro) henger sammen med sug og rusbruk."
+                    "description": "Bruk dagboken til å registrere hvordan psykiske symptomer (angst, depresjon, uro) henger sammen med sug og rusbruk."
                 },
                 {
                     "feature": "Journal",
@@ -851,7 +851,7 @@
             "appIntegrations": [
                 {
                     "feature": "LogWizard",
-                    "description": "Registrer søvnkvalitet, aktivitet og mat i LogWizard. Over tid ser du sammenhengen mellom kropp og tilfriskning."
+                    "description": "Registrer søvnkvalitet, aktivitet og mat i dagboken. Over tid ser du sammenhengen mellom kropp og tilfriskning."
                 },
                 {
                     "feature": "Strategier",

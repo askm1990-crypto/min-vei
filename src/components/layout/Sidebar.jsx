@@ -2,7 +2,7 @@ import './Sidebar.css';
 
 const NAV_ITEMS = [
     { id: 'dashboard', label: 'Hjem', icon: 'home' },
-    { id: 'timeline', label: 'Tidslinje', icon: 'edit-3' },
+    { id: 'timeline', label: 'Dagbok', icon: 'book' },
     { id: 'progress', label: 'Fremgang', icon: 'trending-up' },
     { id: 'goals', label: 'Mål', icon: 'flag' },
     { id: 'strategies', label: 'Mestring', icon: 'anchor' },
