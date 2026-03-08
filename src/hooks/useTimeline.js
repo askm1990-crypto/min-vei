@@ -1,8 +1,8 @@
-import { useLocalStorage } from './useLocalStorage';
+import { useTimelineStore } from '../store/useTimelineStore';
 
 export function useTimeline() {
     // Single source of truth for all entries
-    const [entries, setEntries] = useLocalStorage('mv2_timeline', []);
+    const { entries, setEntries } = useTimelineStore();
 
     // ── CRUD OPERATIONS ──────────────────────────────────────────────
 

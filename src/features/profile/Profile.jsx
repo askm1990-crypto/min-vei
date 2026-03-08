@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useRecoveryScore } from '../../hooks/useRecoveryScore';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
-import { useTheme } from '../../hooks/useTheme';
+import { useAppStore } from '../../store/useAppStore';
 import { useTimeline } from '../../hooks/useTimeline';
 import { useGoals } from '../../hooks/useGoals';
 import { daysBetween, formatDateNO } from '../../utils/dateUtils';
@@ -13,8 +12,7 @@ import './Profile.css';
 
 export default function Profile() {
     const { points, level, title, progressToNext, nextLevelPoints } = useRecoveryScore();
-    const [user] = useLocalStorage('mv2_user', null);
-    const { theme, toggleTheme } = useTheme();
+    const { user, theme, toggleTheme } = useAppStore();
     const { getEvents, getJournalEntries } = useTimeline();
     const { goals } = useGoals();
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);

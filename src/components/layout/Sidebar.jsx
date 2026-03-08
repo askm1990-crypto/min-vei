@@ -33,24 +33,34 @@ function Icon({ name }) {
 
 export { Icon };
 
-export default function Sidebar({ currentView, onNavigate, disclaimerVisible, onDismissDisclaimer, isOpen, onClose }) {
+import { useAppStore } from '../../store/useAppStore';
+
+export default function Sidebar() {
+    const {
+        currentView, navigate,
+        disclaimerVisible, setDisclaimerVisible,
+        isMenuOpen, setIsMenuOpen
+    } = useAppStore();
 
     // Auto-close menu on selection for mobile
     const handleNavigation = (id) => {
-        onNavigate(id);
-        if (onClose) onClose();
+        navigate(id);
+        if (isMenuOpen) setIsMenuOpen(false);
     };
+
+    const onClose = () => setIsMenuOpen(false);
+    const onDismissDisclaimer = () => setDisclaimerVisible(false);
 
     return (
         <>
             {/* Overlay for mobile clicking outside drawer */}
             <div
-                className={`sidebar-overlay ${isOpen ? 'sidebar-overlay--active' : ''}`}
+                className={`sidebar-overlay ${isMenuOpen ? 'sidebar-overlay--active' : ''}`}
                 onClick={onClose}
                 aria-hidden="true"
             />
 
-            <nav className={`sidebar ${isOpen ? 'sidebar--open' : ''}`}>
+            <nav className={`sidebar ${isMenuOpen ? 'sidebar--open' : ''}`}>
                 <div className="sidebar__logo">
                     <div className="sidebar__logo-icon">
                         <Icon name="sun" />

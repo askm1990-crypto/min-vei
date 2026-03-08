@@ -1,4 +1,4 @@
-import { useLocalStorage } from './useLocalStorage';
+import { useRecoveryStore } from '../store/useRecoveryStore';
 
 // Level thresholds
 const LEVELS = [
@@ -34,9 +34,7 @@ export const POINTS = {
  */
 export function useRecoveryScore() {
     // Current total points
-    const [points, setPoints] = useLocalStorage('mv2_score', 0);
-    // History of transactions for stats/display
-    const [history, setHistory] = useLocalStorage('mv2_score_history', []);
+    const { score: points, setScore: setPoints, history, setHistory } = useRecoveryStore();
 
     // Calculate current level based on points
     const currentLevelInfo = LEVELS.slice().reverse().find(l => points >= l.minPoints) || LEVELS[0];
