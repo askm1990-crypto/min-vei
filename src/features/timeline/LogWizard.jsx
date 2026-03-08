@@ -64,27 +64,28 @@ export default function LogWizard({ onNavigate, pendingEventId = null }) {
             updateEntry(pendingEventId, entryData);
             if (entryData.outcome === 'resisted') {
                 addPoints(POINTS.CRAVING_RESISTED, 'Mestret pågående sug i tidslinjen');
-                showToast('Oppdatert! Sterkt jobba, +100 poeng! 🎉', 'success');
+                showToast(`Oppdatert! Sterkt jobba, +${POINTS.CRAVING_RESISTED} poeng! 🎉`, 'success');
             } else {
                 showToast('Hendelse oppdatert.', 'success');
             }
         } else {
             addEntry(entryData);
 
-            // Calculate base points. 30 for writing diary, extra 100 if craving resisted
+            // Calculate base points
             let newlyEarnedPoints = 0;
-            if (entryData.body?.trim()?.length > 0 || entryData.mood) newlyEarnedPoints += 30; // base logging
+            if (entryData.body?.trim()?.length > 0 || entryData.mood) newlyEarnedPoints += POINTS.JOURNAL_ENTRY; // base logging
 
             if (entryData.intensity > 0) {
                 if (entryData.outcome === 'resisted') {
-                    newlyEarnedPoints += 100;
-                    addPoints(130, 'Logget mestret sug');
-                    showToast('Lagret! Sterkt jobba, +130 poeng! 🎉', 'success');
+                    newlyEarnedPoints += POINTS.CRAVING_RESISTED;
+                    const combinedPoints = POINTS.CRAVING_RESISTED + POINTS.JOURNAL_ENTRY;
+                    addPoints(combinedPoints, 'Logget mestret sug');
+                    showToast(`Lagret! Sterkt jobba, +${combinedPoints} poeng! 🎉`, 'success');
                 } else if (entryData.outcome === 'ongoing') {
-                    addPoints(newlyEarnedPoints + 20, 'Logget et pågående sug');
-                    showToast('Suget er registrert. Vi heier på deg! (+50p)', 'warning');
+                    addPoints(newlyEarnedPoints + POINTS.CRAVING_LOGGED_ONLY, 'Logget et pågående sug');
+                    showToast(`Suget er registrert. Vi heier på deg! (+${newlyEarnedPoints + POINTS.CRAVING_LOGGED_ONLY}p)`, 'warning');
                 } else {
-                    addPoints(newlyEarnedPoints + 20, 'Vært ærlig om sprekk');
+                    addPoints(newlyEarnedPoints + POINTS.RELAPSE_HONESTY, 'Vært ærlig om sprekk');
                     showToast('Registrering lagret. Takk for at du deler ærlig.', 'success');
                 }
             } else {

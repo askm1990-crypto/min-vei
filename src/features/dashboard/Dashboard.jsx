@@ -4,6 +4,7 @@ import { useTimeline } from '../../hooks/useTimeline';
 import { useGoals } from '../../hooks/useGoals';
 import { useInsights } from '../../hooks/useInsights';
 import { useAppStore } from '../../store/useAppStore';
+import { useRecoveryStore } from '../../store/useRecoveryStore';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { daysBetween } from '../../utils/dateUtils';
 import Button from '../../components/ui/Button';
@@ -39,6 +40,12 @@ export default function Dashboard({ onNavigate }) {
     const { user, spending } = useAppStore();
     const [customTriggers] = useLocalStorage('mv2_custom_triggers', []);
     const { goals } = useGoals();
+    const {
+        lastSoberMilestone,
+        lastLoggingMilestone,
+        setLastSoberMilestone,
+        setLastLoggingMilestone
+    } = useRecoveryStore();
 
     // ── SOBRIETY CALCULATION ──────────────────────────────────
     const usedEvents = events.filter(e => e.outcome === 'used');
@@ -90,6 +97,29 @@ export default function Dashboard({ onNavigate }) {
             showToast(`+${POINTS.SOBER_DAY} poeng for en ny rusfri dag! 🌟`, 'success');
         }
     }, [todayStr, user?.startDate, lastSoberPointDate, addPoints, setLastSoberPointDate]);
+
+    // Streak awarding logic
+    useEffect(() => {
+        const logStreak = getStreak();
+
+        // Check Sobriety Milestones
+        [3, 7, 30].forEach(milestone => {
+            if (currentSoberStreak >= milestone && lastSoberMilestone < milestone) {
+                addPoints(POINTS[`STREAK_${milestone}_DAYS`], `${milestone} dager rusfri! 🎉`);
+                showToast(`${milestone} dager rusfri! +${POINTS[`STREAK_${milestone}_DAYS`]} poeng 🎉`, 'success');
+                setLastSoberMilestone(milestone);
+            }
+        });
+
+        // Check Logging Milestones
+        [3, 7, 30].forEach(milestone => {
+            if (logStreak >= milestone && lastLoggingMilestone < milestone) {
+                addPoints(POINTS[`STREAK_${milestone}_DAYS`], `${milestone} dagers logg-streak! 🔥`);
+                showToast(`${milestone} dagers logg-streak! +${POINTS[`STREAK_${milestone}_DAYS`]} poeng 🔥`, 'success');
+                setLastLoggingMilestone(milestone);
+            }
+        });
+    }, [currentSoberStreak, getStreak, lastSoberMilestone, lastLoggingMilestone, setLastSoberMilestone, setLastLoggingMilestone, addPoints]);
 
     // Detect level-up
     useEffect(() => {
@@ -242,7 +272,7 @@ export default function Dashboard({ onNavigate }) {
                         <button className="qa-btn" onClick={() => onNavigate('log-wizard')}>
                             <span className="qa-icon">📝</span>
                             <span className="qa-title">Ny Registrering</span>
-                            <span className="qa-points">Opp til +130p</span>
+                            <span className="qa-points">Opp til +{POINTS.CRAVING_RESISTED + POINTS.JOURNAL_ENTRY}p</span>
                         </button>
                         <button className="qa-btn" onClick={() => onNavigate('strategies')}>
                             <span className="qa-icon">🌬️</span>

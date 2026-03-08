@@ -29,9 +29,10 @@ export const useRecoveryStore = create(
         (set) => ({
             score: 0,
             setScore: (scoreOrUpdater) => set((state) => {
-                const currentScore = typeof state.score === 'number' ? state.score : 0;
+                const currentScore = (typeof state.score === 'number' && !Number.isNaN(state.score)) ? state.score : 0;
+                const newScore = typeof scoreOrUpdater === 'function' ? scoreOrUpdater(currentScore) : scoreOrUpdater;
                 return {
-                    score: typeof scoreOrUpdater === 'function' ? scoreOrUpdater(currentScore) : scoreOrUpdater
+                    score: (!Number.isNaN(newScore)) ? newScore : 0
                 };
             }),
             history: [],
@@ -41,6 +42,10 @@ export const useRecoveryStore = create(
                     history: typeof historyOrUpdater === 'function' ? historyOrUpdater(currentHistory) : historyOrUpdater
                 };
             }),
+            lastSoberMilestone: 0,
+            setLastSoberMilestone: (val) => set({ lastSoberMilestone: val }),
+            lastLoggingMilestone: 0,
+            setLastLoggingMilestone: (val) => set({ lastLoggingMilestone: val }),
         }),
         {
             name: 'mv2_recovery_store'

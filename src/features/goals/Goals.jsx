@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useGoals } from '../../hooks/useGoals';
-import { useRecoveryScore } from '../../hooks/useRecoveryScore';
+import { useRecoveryScore, POINTS } from '../../hooks/useRecoveryScore';
 import { showToast } from '../../components/ui/ToastUtils';
 import { formatDateNO } from '../../utils/dateUtils';
 import Button from '../../components/ui/Button';
@@ -16,8 +16,8 @@ export default function Goals() {
 
     const handleComplete = (goal) => {
         completeGoal(goal.id);
-        addPoints(200, `Fullførte mål: ${goal.specific || goal.description}`);
-        showToast('Mål fullført! +200 poeng 🎉🎉🎉', 'success');
+        addPoints(POINTS.GOAL_COMPLETE, `Fullførte mål: ${goal.specific || goal.description}`);
+        showToast(`Mål fullført! +${POINTS.GOAL_COMPLETE} poeng 🎉🎉🎉`, 'success');
 
         // Confetti
         const emoji = document.createElement('div');
@@ -45,7 +45,7 @@ export default function Goals() {
                 <Button variant="primary" wide onClick={() => setShowWizard(true)}>
                     🎯 Sett et nytt mål
                 </Button>
-                <p className="hero-points-hint">Tjen <strong>+50 poeng</strong> for å sette mål, <strong>+200</strong> for å fullføre!</p>
+                <p className="hero-points-hint">Tjen <strong>+{POINTS.GOAL_SET} poeng</strong> for å sette mål, <strong>+{POINTS.GOAL_COMPLETE}</strong> for å fullføre!</p>
             </div>
 
             {/* ACTIVE GOALS */}
@@ -89,7 +89,7 @@ export default function Goals() {
 
                                 <div className="goal-card-actions">
                                     <Button variant="primary" size="sm" onClick={() => handleComplete(goal)}>
-                                        ✅ Fullfør (+200p)
+                                        ✅ Fullfør (+{POINTS.GOAL_COMPLETE}p)
                                     </Button>
                                     <Button variant="secondary" size="sm" onClick={() => handleDelete(goal.id)}>
                                         🗑️ Slett

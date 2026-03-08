@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useGoals } from '../../hooks/useGoals';
-import { useRecoveryScore } from '../../hooks/useRecoveryScore';
+import { useRecoveryScore, POINTS } from '../../hooks/useRecoveryScore';
 import { showToast } from '../../components/ui/ToastUtils';
 import { LIFE_AREAS } from '../../data/challenges';
 import Button from '../../components/ui/Button';
@@ -30,8 +30,8 @@ export default function GoalWizard({ onClose }) {
             lifeAreaLabel: selectedArea?.label,
             lifeAreaEmoji: selectedArea?.emoji,
         });
-        addPoints(50, 'Satte et nytt mål');
-        showToast('Mål lagret! +50 poeng 🎯', 'success');
+        addPoints(POINTS.GOAL_SET, 'Satte et nytt mål');
+        showToast(`Mål lagret! +${POINTS.GOAL_SET} poeng 🎯`, 'success');
         setTimeout(() => onClose(), 100);
     };
 
@@ -211,7 +211,7 @@ export default function GoalWizard({ onClose }) {
                         </div>
 
                         <p style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-                            Du tjener <strong style={{ color: 'var(--primary)' }}>+50 poeng</strong> for å sette et nytt mål!
+                            Du tjener <strong style={{ color: 'var(--primary)' }}>+{POINTS.GOAL_SET} poeng</strong> for å sette et nytt mål!
                         </p>
 
                         <div className="step-actions">
