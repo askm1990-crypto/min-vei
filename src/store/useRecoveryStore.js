@@ -28,9 +28,19 @@ export const useRecoveryStore = create(
     persist(
         (set) => ({
             score: 0,
-            setScore: (score) => set({ score }),
+            setScore: (scoreOrUpdater) => set((state) => {
+                const currentScore = typeof state.score === 'number' ? state.score : 0;
+                return {
+                    score: typeof scoreOrUpdater === 'function' ? scoreOrUpdater(currentScore) : scoreOrUpdater
+                };
+            }),
             history: [],
-            setHistory: (history) => set({ history }),
+            setHistory: (historyOrUpdater) => set((state) => {
+                const currentHistory = Array.isArray(state.history) ? state.history : [];
+                return {
+                    history: typeof historyOrUpdater === 'function' ? historyOrUpdater(currentHistory) : historyOrUpdater
+                };
+            }),
         }),
         {
             name: 'mv2_recovery_store'
