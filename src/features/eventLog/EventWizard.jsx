@@ -87,10 +87,10 @@ export default function EventWizard({ onNavigate, pendingEventId = null }) {
                 addPoints(POINTS.CRAVING_RESISTED, 'Mestret sug i hendelsesloggen');
                 showToast('Lagret! Sterkt jobba, +100 poeng! 🎉', 'success');
             } else if (eventData.outcome === 'ongoing') {
-                addPoints(20, 'Logget et pågående sug');
-                showToast('Suget er registrert. Vi heier på deg! (+20p)', 'warning');
+                addPoints(POINTS.CRAVING_LOGGED_ONLY, 'Logget et pågående sug');
+                showToast(`Suget er registrert. Vi heier på deg! (+${POINTS.CRAVING_LOGGED_ONLY}p)`, 'warning');
             } else {
-                addPoints(20, 'Vært ærlig i hendelsesloggen');
+                addPoints(POINTS.RELAPSE_HONESTY, 'Vært ærlig i hendelsesloggen');
                 showToast('Hendelse lagret. Takk for at du deler ærlig.', 'success');
             }
         }

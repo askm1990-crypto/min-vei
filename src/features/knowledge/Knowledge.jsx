@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
-import { useRecoveryScore } from '../../hooks/useRecoveryScore';
+import { useRecoveryScore, POINTS } from '../../hooks/useRecoveryScore';
 import { showToast } from '../../components/ui/ToastUtils';
 import MODULES from '../../data/modules.json';
 import Card from '../../components/ui/Card';
@@ -307,7 +307,7 @@ function ModuleArticle({ module, onBack, onComplete, isCompleted }) {
                         </div>
                     ) : (
                         <Button variant="primary" wide onClick={onComplete}>
-                            ✅ Marker som fullført (+50 poeng)
+                            ✅ Marker som fullført (+{POINTS.KNOWLEDGE_COMPLETE} poeng)
                         </Button>
                     )}
                 </div>
@@ -368,8 +368,8 @@ export default function Knowledge() {
     const handleComplete = () => {
         if (!selected) return;
         setProgress(prev => ({ ...prev, [selected.id]: 'completed' }));
-        addPoints(50, `Fullførte ${selected.title}`);
-        showToast(`🎉 +50 poeng! ${selected.title} fullført!`, 'success');
+        addPoints(POINTS.KNOWLEDGE_COMPLETE, `Fullførte ${selected.title}`);
+        showToast(`🎉 +${POINTS.KNOWLEDGE_COMPLETE} poeng! ${selected.title} fullført!`, 'success');
         setSelected(null);
     };
 
