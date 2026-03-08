@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Sidebar from './components/layout/Sidebar';
 import Header from './components/layout/Header';
 import Modal from './components/ui/Modal';
@@ -17,38 +16,22 @@ import Strategies from './features/strategies/Strategies';
 import Knowledge from './features/knowledge/Knowledge';
 import Profile from './features/profile/Profile';
 import Crisis from './features/crisis/Crisis';
-import { useTheme } from './hooks/useTheme';
-import { useLocalStorage } from './hooks/useLocalStorage';
-import { getGreeting } from './utils/dateUtils';
+import { useAppStore } from './store/useAppStore';
 import './App.css';
 
 export default function App() {
-  const [currentView, setCurrentView] = useState('dashboard');
-  const [activeEventId, setActiveEventId] = useState(null); // Used for editing/resolving pending events
-  const { toggleTheme, isDark } = useTheme();
-  const [consent, setConsent] = useLocalStorage('mv2_consent', false);
-  const [user, setUser] = useLocalStorage('mv2_user', null);
-  const [, setSpending] = useLocalStorage('mv2_spending', null);
-  const [disclaimerVisible, setDisclaimerVisible] = useLocalStorage('mv2_disclaimer', true);
-  const [guideSeen, setGuideSeen] = useLocalStorage('mv2_guide_seen', false);
-  const [showGuide, setShowGuide] = useState(false);
-  const [isLocked, setIsLocked] = useState(() => !!localStorage.getItem('mv2_pin'));
-
-  // Mobile menu state
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const greeting = getGreeting(user?.name);
-  const subtitle = 'En dag av gangen.';
+  const {
+    currentView, navigate,
+    activeEventId,
+    consent, setConsent,
+    user, setUser, setSpending,
+    guideSeen, setGuideSeen,
+    showGuide, setShowGuide,
+    isLocked, setIsLocked
+  } = useAppStore();
 
   const handleNavigate = (view, payload = null) => {
-    if (view === 'log-wizard-pending' && payload) {
-      setActiveEventId(payload);
-    }
-    // Clear activeEventId if we are navigating somewhere else or starting a fresh wizard
-    if (view !== 'log-wizard-pending') {
-      setActiveEventId(null);
-    }
-    setCurrentView(view);
+    navigate(view, payload);
   };
 
   const handleOnboardingComplete = (data) => {
@@ -108,24 +91,10 @@ export default function App() {
 
       {/* App Shell */}
       <div className="app-container">
-        <Sidebar
-          currentView={currentView}
-          onNavigate={handleNavigate}
-          isDark={isDark}
-          disclaimerVisible={disclaimerVisible}
-          onDismissDisclaimer={() => setDisclaimerVisible(false)}
-          isOpen={isMenuOpen}
-          onClose={() => setIsMenuOpen(false)}
-        />
+        <Sidebar />
 
         <main className="main-content">
-          <Header
-            greeting={greeting}
-            subtitle={subtitle}
-            isDark={isDark}
-            onToggleTheme={toggleTheme}
-            onToggleMenu={() => setIsMenuOpen(!isMenuOpen)}
-          />
+          <Header />
 
           {needsOnboarding ? (
             <OnboardingWizard onComplete={handleOnboardingComplete} />
@@ -200,7 +169,7 @@ export default function App() {
             setShowGuide(false);
             setGuideSeen(true);
           }}
-          onNavigateHighlight={(view) => setCurrentView(view)}
+          onNavigateHighlight={(view) => navigate(view)}
         />
       )}
     </>

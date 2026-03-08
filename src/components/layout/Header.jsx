@@ -1,13 +1,24 @@
 import { Icon } from './Sidebar';
+import { useAppStore } from '../../store/useAppStore';
+import { getGreeting } from '../../utils/dateUtils';
 import './Header.css';
 
-export default function Header({ greeting, subtitle, isDark, onToggleTheme, onToggleMenu }) {
+export default function Header() {
+    const {
+        user, theme, toggleTheme,
+        isMenuOpen, setIsMenuOpen
+    } = useAppStore();
+
+    const isDark = theme === 'dark';
+    const greeting = getGreeting(user?.name);
+    const subtitle = 'En dag av gangen.';
+
     return (
         <header className="header">
             <div className="header__left">
                 <button
                     className="header__icon-btn header__menu-btn"
-                    onClick={onToggleMenu}
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
                     aria-label="Åpne meny"
                 >
                     <Icon name="menu" />
@@ -21,7 +32,7 @@ export default function Header({ greeting, subtitle, isDark, onToggleTheme, onTo
             <div className="header__actions">
                 <button
                     className="header__icon-btn"
-                    onClick={onToggleTheme}
+                    onClick={toggleTheme}
                     aria-label="Bytt tema"
                 >
                     {isDark ? (

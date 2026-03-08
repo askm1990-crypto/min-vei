@@ -3,6 +3,7 @@ import { useRecoveryScore, POINTS } from '../../hooks/useRecoveryScore';
 import { useTimeline } from '../../hooks/useTimeline';
 import { useGoals } from '../../hooks/useGoals';
 import { useInsights } from '../../hooks/useInsights';
+import { useAppStore } from '../../store/useAppStore';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { daysBetween } from '../../utils/dateUtils';
 import Button from '../../components/ui/Button';
@@ -35,8 +36,7 @@ export default function Dashboard({ onNavigate }) {
     const events = getEvents();
     const journalEntries = getJournalEntries();
     const [moduleProgress] = useLocalStorage('mv2_module_progress', {});
-    const [user] = useLocalStorage('mv2_user', null);
-    const [spending] = useLocalStorage('mv2_spending', null);
+    const { user, spending } = useAppStore();
     const [customTriggers] = useLocalStorage('mv2_custom_triggers', []);
     const { goals } = useGoals();
 

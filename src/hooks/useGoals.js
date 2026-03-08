@@ -1,7 +1,7 @@
-import { useLocalStorage } from './useLocalStorage';
+import { useGoalsStore } from '../store/useGoalsStore';
 
 export function useGoals() {
-    const [goals, setGoals] = useLocalStorage('mv2_goals', []);
+    const { goals, setGoals } = useGoalsStore();
 
     const getGoals = () => {
         return [...goals].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
