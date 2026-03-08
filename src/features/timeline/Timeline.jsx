@@ -181,7 +181,12 @@ export default function Timeline({ onNavigate }) {
             <div className="timeline-list">
                 {entries.length === 0 ? (
                     <div className="empty-state">
-                        <span className="empty-icon">📓</span>
+                        <svg viewBox="0 0 200 150" className="empty-state-svg" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="50" y="20" width="100" height="110" rx="8" fill="var(--bg-card)" stroke="var(--border)" strokeWidth="4" />
+                            <path d="M70 40h60M70 60h60M70 80h40" stroke="var(--text-muted)" strokeWidth="4" strokeLinecap="round" opacity="0.5" />
+                            <circle cx="130" cy="100" r="12" fill="var(--primary)" opacity="0.8" />
+                            <path d="M126 100l3 3 5-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                        </svg>
                         <h3>Din tidslinje er tom</h3>
                         <p>Her samles både dagboknotater og situasjoner hvor du kjenner på sug. Start med å registrere hvordan du har det akkurat nå.</p>
                         <Button variant="primary" onClick={() => onNavigate('log-wizard')}>

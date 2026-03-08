@@ -10,7 +10,7 @@
     font-weight: 600;
     cursor: pointer;
     border: none;
-    transition: all var(--transition-spring);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     letter-spacing: 0.01em;
 }
 
@@ -39,7 +39,8 @@
 
 .btn--primary:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-card-hover);
+    box-shadow: 0 8px 20px var(--primary-glow);
+    filter: brightness(1.05);
 }
 
 .btn--primary:active:not(:disabled) {

@@ -17,12 +17,23 @@
     }
 }
 
+.card--hoverable {
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
 .card--hoverable:hover {
-    box-shadow: var(--shadow-card-hover);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
     transform: translateY(-4px);
     /* Tydeligere "løft" */
-    border-color: rgba(15, 159, 145, 0.2);
+    border-color: rgba(15, 159, 145, 0.3);
     /* Hint av primary i border ved hover */
+}
+
+/* Tactile feedback on press */
+.card--hoverable:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 /* Subtle gradient overlay for Premium look */

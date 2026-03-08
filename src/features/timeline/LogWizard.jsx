@@ -97,9 +97,16 @@ export default function LogWizard({ onNavigate, pendingEventId = null }) {
             }
         }
 
+        // Celebrate with confetti
+        const emoji = document.createElement('div');
+        emoji.innerText = '🎉';
+        emoji.className = 'confetti-pop';
+        document.body.appendChild(emoji);
+        setTimeout(() => emoji.remove(), 2000);
+
         setTimeout(() => {
             onNavigate('timeline');
-        }, 100);
+        }, 1200);
     };
 
     // Total steps fixed conceptually to 6 for the progress bar calculation
