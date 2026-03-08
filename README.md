@@ -1,7 +1,22 @@
 # Min Vei - TSB Egenhjelpsapp
 (En dag av gangen)
 
+## 🌐 Prøv appen nå
+Klikk på lenken under for å åpne applikasjonen direkte i nettleseren din:
+
+👉 **[https://askm1990-crypto.github.io/min-vei/](https://askm1990-crypto.github.io/min-vei/)**
+
+### 📱 Slik "laster du ned" appen (PWA)
+Siden dette er en progressiv web-app (PWA), trenger du ikke gå via App Store eller Google Play:
+1. Åpne lenken over i nettleseren på telefonen din (Safari på iOS, Chrome på Android).
+2. Trykk på **Del-ikonet** (iOS) eller **Meny-ikonet** (Android).
+3. Velg **"Legg til på hjem-skjermen"**.
+4. Appen ligger nå sammen med dine andre apper og fungerer 100% offline!
+
+---
+
 **Min Vei** er en digital egenhjelpsapplikasjon skapt for pasienter i Tverrfaglig Spesialisert Rusbehandling (TSB). Målet med applikasjonen er å gi brukeren et verktøy for å støtte sin egen recovery-prosess, bygge mestringsstrategier, loggføre hendelser og få oversikt over egen fremgang – helt privat og sikkert.
+
 
 ## 🛡️ Personvern først (Privacy First)
 
