@@ -416,5 +416,540 @@
                 }
             ]
         }
+    },
+    {
+        "id": "modul-6",
+        "title": "Skam, Stigma og Selvfølelse",
+        "summary": "Skam er en av de sterkeste kreftene som holder avhengighet på plass. Her lærer du forskjellen på sunn skyld og giftig skam, og du får verktøy for å bygge en selvfølelse som tåler motgang.",
+        "icon": "🪞",
+        "readingTime": "14 min",
+        "isObligatory": false,
+        "requiredPreviousModules": [
+            "modul-1",
+            "modul-2",
+            "modul-3"
+        ],
+        "content": {
+            "coreMessage": "Skam forteller deg at du ER feil. Skyld forteller deg at du GJORDE noe feil. Forskjellen er avgjørende – fordi skyld kan repareres, mens skam bare låser deg fast.",
+            "sections": [
+                {
+                    "heading": "Skam vs. skyld – en avgjørende forskjell",
+                    "paragraphs": [
+                        "De fleste mennesker bruker ordene «skam» og «skyld» om hverandre, som om de betyr det samme. Men i virkeligheten er de to fundamentalt forskjellige følelser – og forskjellen har enorm betydning for din tilfriskning.",
+                        "**Skyld** handler om atferd: «Jeg gjorde noe dumt.» Den er konkret, avgrenset og peker mot noe du kan rette opp. Skyld kan faktisk være nyttig – den motiverer deg til å ta ansvar og gjøre ting annerledes neste gang.",
+                        "**Skam** handler om identitet: «Jeg ER feil. Jeg ER verdiløs. Det er noe grunnleggende galt med meg.» Skam er global, altomfattende og tilsynelatende umulig å fikse. For hvordan reparerer du noe som er «deg»?",
+                        "Her er det avgjørende poenget: forskning viser at skyld motiverer til endring, mens skam motiverer til tilbaketrekning, hemmeligholdelse og – ofte – mer rusbruk. Skam er ikke en motivator. Den er en felle. Og den er kanskje den mest undervurderte opprettholdende faktoren i avhengighet."
+                    ],
+                    "pullQuote": "Skyld sier: «Jeg gjorde noe dårlig.» Skam sier: «Jeg ER dårlig.» Det er et hav av forskjell.",
+                    "reflection": "Kjenner du igjen forskjellen mellom skyld og skam i ditt eget liv? Når tipper det fra «noe jeg gjorde» til «noe jeg er»?"
+                },
+                {
+                    "heading": "Skamsirkelen – hvordan skam holder avhengigheten i live",
+                    "paragraphs": [
+                        "Skam har en egen logikk, og den er ødeleggende enkel: Du ruser deg → du kjenner skam over at du ruste deg → skammen gjør at du føler deg verdiløs → den verdiløse følelsen er uutholdelig → du ruser deg for å slippe unna den → og sirkelen gjentar seg.",
+                        "Det som gjør denne sirkelen så vanskelig å bryte er at den virker helt logisk innenfra. «Jeg er en dårlig person som bruker rus» → «En dårlig person fortjener ikke å ha det bra» → «Hvorfor prøve?» → «Like godt å gi opp.» Hvert eneste trinn virker fornuftig – men summen er en felle.",
+                        "En annen del av skamsirkelen er hemmeligholdelse. Skam trives i mørket. Jo mer du skjuler det du skammer deg over, jo sterkere blir skammen, fordi den aldri blir testet mot virkeligheten. Du tror at andre ville fordømme deg hvis de visste – men du vet det ikke, fordi du aldri har gitt dem sjansen til å reagere.",
+                        "Forskning viser at det å sette ord på skamfulle opplevelser – i trygge rammer – dramatisk reduserer skammens makt. Det er ikke fordi det som skjedde blir OK, men fordi du oppdager at du ikke trenger å bære det alene."
+                    ],
+                    "pullQuote": "Skam trives i mørket. Å dele den med noen du stoler på er som å skru på lyset.",
+                    "reflection": "Er det noe du bærer på som du aldri har sagt høyt til noen? Hva tror du ville skjedd om du gjorde det?"
+                },
+                {
+                    "heading": "Stigma – når skammen kommer utenfra",
+                    "paragraphs": [
+                        "Skam handler ikke bare om hva du gjør med deg selv – den handler også om hva samfunnet gjør med deg. Stigma er den skammen som andre legger på deg. Og den er reell og dokumentert.",
+                        "Stigma ved ruslidelse er sterkere enn stigmaet ved de fleste andre helsetilstander. Folk med ruslidelse blir møtt med mer negative holdninger og mer sosial avvisning enn folk med for eksempel depresjon. Det er ikke rettferdig, men det er virkeligheten. Og det rammer deg direkte – i møte med helsevesenet, arbeidsgivere, naboer og familie.",
+                        "Men det finnes noe enda mer lumsk: selvstigma. Det er når du internaliserer samfunnets holdninger og begynner å tro på dem selv. «De har rett – jeg er en belastning. Jeg er en taper.» Selvstigma er som å bli din egen verste fiende.",
+                        "Det er viktig å vite at stigma ikke er fakta – det er fordommer. Ruslidelse er en behandlingsbar helsetilstand, ikke et moralsk valg. Å utfordre stigma – i deg selv og i møte med andre – er en del av tilfriskningen."
+                    ],
+                    "pullQuote": "Stigma er andres fordommer. Du trenger ikke gjøre dem til din sannhet.",
+                    "reflection": "Har du opplevd stigma? Fra hvem? Og har du begynt å tro på det de sier om deg?"
+                },
+                {
+                    "heading": "Å bygge selvfølelse – stein for stein",
+                    "paragraphs": [
+                        "Etter år med skam og stigma er det naturlig at selvfølelsen er slitt. Men selvfølelse er ikke noe du «har» eller «mangler» – det er noe du bygger. Gradvis. Gjennom handlinger og erfaringer.",
+                        "Start med noe vi kaller betinget vs. ubetinget selvverd. Betinget selvverd betyr at du kun føler deg verdifull når du presterer, når du er rusfri, når andre bekrefter deg. Ubetinget selvverd betyr at du har verdi bare fordi du eksisterer – uavhengig av hva du gjør eller ikke gjør.",
+                        "Det høres kanskje rart ut å si «du har verdi uansett» – spesielt hvis du har gjort ting du angrer på. Men ubetinget selvverd betyr ikke at alt du har gjort er greit. Det betyr at feiltakelsene dine ikke definerer hele deg. Du er mer enn det verste du har gjort.",
+                        "Et praktisk verktøy er å bygge selvfølelse gjennom handlinger som er i tråd med dine egne verdier. Ikke de store, heroiske grepene – men de små, daglige: å holde en avtale, å være ærlig i en samtale, å ta en tur selv om du ikke orker. Hver gang du gjør noe som er i tråd med den du vil være, legger du en stein i fundamentet for en sterkere selvfølelse."
+                    ],
+                    "pullQuote": "Du er mer enn det verste du har gjort. Mye mer.",
+                    "reflection": "Hva er en liten ting du kan gjøre i dag som er i tråd med den du ønsker å være?"
+                },
+                {
+                    "heading": "Selvmedfølelse – å bli din egen venn",
+                    "paragraphs": [
+                        "Selvmedfølelse er kanskje det kraftigste motgiften mot skam som finnes. Og det er overraskende enkelt å forstå – men det krever øvelse.",
+                        "Tenk på en god venn som sliter. Hva ville du sagt til dem? Sannsynligvis ikke «Du er patetisk» eller «Du fortjener dette.» Du ville sagt noe som «Det her er jævlig vanskelig, og jeg skjønner at du har det tungt.» Selvmedfølelse er å rette den samme varmen mot deg selv.",
+                        "Det handler om tre ting: **For det første**, å anerkjenne at du har det vondt – uten å overdrive eller minimere. **For det andre**, å minne deg selv på at dette er en menneskelig erfaring – du er ikke den eneste som sliter, og smerten din gjør deg ikke unik i negativ forstand. **For det tredje**, å være vennlig mot deg selv – konkret og aktivt.",
+                        "Forskning viser at selvmedfølelse reduserer skam, forbedrer psykisk helse og – kritisk – er en av de sterkeste beskyttelsesfaktorene mot tilbakefall. Det er ikke selvmedlidenhet. Det er motsatt: det er å ta deg selv på alvor nok til å behandle deg ordentlig."
+                    ],
+                    "pullQuote": "Snakk til deg selv som du ville snakket til en god venn. Du fortjener samme varme.",
+                    "reflection": "Hva ville du sagt til en venn i din situasjon? Kan du si det til deg selv?"
+                }
+            ],
+            "actionableAdvice": [
+                {
+                    "tip": "Neste gang du kjenner skam: stopp opp og spør deg selv – er dette skyld over noe jeg GJORDE, eller skam over noe jeg ER? Bare det å stille spørsmålet endrer perspektivet.",
+                    "why": "Skyld er handlingsbar og kan repareres. Skam trenger å bli gjenkjent og utfordret for å miste sin makt."
+                },
+                {
+                    "tip": "Øv på å si én ting du skammer deg over høyt til noen du stoler på. Start smått – det trenger ikke være det tyngste.",
+                    "why": "Forskning viser at å dele skamfulle opplevelser i trygge rammer reduserer skammens intensitet dramatisk."
+                },
+                {
+                    "tip": "Gjør én liten ting i dag som er i tråd med den personen du ønsker å være. Det kan være å holde en avtale, å ta en tur, eller å svare ærlig på et spørsmål.",
+                    "why": "Selvfølelse bygges gjennom verdibaserte handlinger – ikke gjennom store gevinster, men gjennom daglige valg."
+                }
+            ],
+            "appIntegrations": [
+                {
+                    "feature": "Journal",
+                    "description": "Bruk journalen til å skrive ned skamfulle tanker og utforske dem. Å skrive er en form for å «si det høyt» uten å dele det med noen."
+                },
+                {
+                    "feature": "Strategier",
+                    "description": "Under Strategier finner du pusteøvelser og grounding som kan hjelpe når skammen kjennes overveldende."
+                }
+            ]
+        }
+    },
+    {
+        "id": "modul-7",
+        "title": "Sosiale Relasjoner og Nettverk",
+        "summary": "Relasjoner kan både drive rusbruk og beskytte mot det. Her lærer du å kartlegge nettverket ditt, bygge støtte, og kommunisere i vanskelige situasjoner – inkludert med hjelpetjenestene.",
+        "icon": "🤝",
+        "readingTime": "14 min",
+        "isObligatory": false,
+        "requiredPreviousModules": [
+            "modul-1",
+            "modul-2",
+            "modul-3"
+        ],
+        "content": {
+            "coreMessage": "Ensomhet er en av de sterkeste driverne for rusbruk. Å bygge et nettverk som støtter tilfriskning er ikke en bonus – det er en nødvendighet. Og det starter med å kartlegge hva du allerede har.",
+            "sections": [
+                {
+                    "heading": "Rus og relasjoner – den doble rollen",
+                    "paragraphs": [
+                        "Relasjoner er paradoksale i rusens verden: de kan både drive problemet og være løsningen. Venner som bruker gjør det vanskeligere å slutte. Nære som roser og støtter gjør det lettere å holde ut. Begge deler kan være sant – på samme tid.",
+                        "Forskning viser at sosial isolasjon øker risikoen for dødelighet like mye som å røyke. For deg i behandling er det ekstra viktig, fordi rusbruk systematisk tærer på nettopp de relasjonene som er viktigst for tilfriskningen din.",
+                        "Rusbruk påvirker relasjoner på tre nivåer: **Atferdsmessig** – løftebrudd, fravær, uforutsigbarhet. **Følelsesmessig** – at du ikke er tilstede emosjonelt, at humøret svinger. **Tillitsmessig** – gjentatte brudd som skaper utmattelse hos de nærmeste.",
+                        "Det oppstår en negativ spiral: rusbruk skader relasjoner → tapte relasjoner gir ensomhet → ensomhet øker risikoen for mer rusbruk. Det er ikke moralsk svikt – det er et mønster. Og mønstre kan brytes."
+                    ],
+                    "pullQuote": "Relasjoner er ikke bare et hyggelig tillegg til livet ditt – de er en av de sterkeste medisinene som finnes.",
+                    "reflection": "Hva har rusbruken gjort med relasjonene dine? Til familie, venner, kanskje kolleger?"
+                },
+                {
+                    "heading": "Ditt sosiale nettverk – hvem er der?",
+                    "paragraphs": [
+                        "La oss kartlegge. Tenk deg tre sirkler rundt deg. I den innerste: hvem er aller nærmest? I den midterste: hvem er viktige, men ikke helt nær? I den ytterste: hvem kjenner du, men har løsere kontakt med?",
+                        "Det handler ikke bare om antallet folk – det handler om kvaliteten. Forskning skiller mellom fire typer sosial støtte: **Emosjonell støtte** – noen som lytter og ser deg. **Informasjonsstøtte** – noen som gir råd og veiledning. **Praktisk støtte** – noen som hjelper med konkrete ting. **Bekreftende støtte** – noen som styrker selvtilliten din.",
+                        "En viktig test: «Hvem kan du ringe klokken tre om natten hvis du har det virkelig vanskelig?» Har du noen? Hvis ja – det er verdifullt. Hvis nei – det er et viktig mål å jobbe med.",
+                        "Og hør: det er ingen skam i å ha et lite nettverk. Mange i behandling har det slik. Det betyr bare at en del av jobben din nå handler om å bygge nettverk, ikke bare vedlikeholde det."
+                    ],
+                    "pullQuote": "Du trenger ikke at én person gjør alt. Ulike folk gir ulik støtte – og det er som det skal være.",
+                    "reflection": "Hvem ville du ringt klokken tre om natten? Og hva slags støtte trenger du mest akkurat nå?"
+                },
+                {
+                    "heading": "Kommunikasjon i vanskelige samtaler",
+                    "paragraphs": [
+                        "Å ha nettverk er én ting. Å navigere vanskelige samtaler er noe helt annet. Spesielt tre kommunikasjonsutfordringer dukker opp igjen og igjen: å be om noe, å si nei, og å si unnskyld – på en måte som faktisk bygger tillit.",
+                        "For den vanskelige samtalen finnes det en enkel struktur: **Beskriv** situasjonen konkret uten å tolke. **Uttrykk** hva du føler. **Si tydelig** hva du ønsker. **Vis** hva den andre får ut av det. Det er ikke manipulasjon – det er klarhet.",
+                        "Når det gjelder unnskyldninger: mange pendler mellom to ekstremer. Enten «det var ikke min skyld» (forsvar) eller «det er alt min feil» (overdreven selvbebreidelse). Ingen av delene bygger tillit. Det som bygger tillit er: «Jeg ser at det jeg gjorde skadet deg. Jeg beklager. Jeg kan ikke angre fortiden, men jeg kan vise deg gjennom handlinger hvem jeg er nå.»",
+                        "Å sette grenser er også kommunikasjon. Mange med ruserfaring har aldri lært at det er lov å si nei – eller at egne grenser ble respektert. Grensesetting handler ikke om å avvise den andre. Det handler om å kommunisere tydelig hva du trenger for at relasjonen skal fungere."
+                    ],
+                    "pullQuote": "Tillit bygges ikke gjennom én stor samtale – den bygges gjennom hundre små handlinger over tid.",
+                    "reflection": "Er det en samtale du har utsatt fordi den kjennes vanskelig? Hva ville du sagt hvis du kunne si det trygt?"
+                },
+                {
+                    "heading": "Samarbeid med hjelpetjenestene",
+                    "paragraphs": [
+                        "NAV, fastlegen, barnevernet, DPS – for mange er disse møtene preget av maktesløshet. Det er forståelig: det er en reell maktforskjell mellom deg og en saksbehandler som tar beslutninger om livet ditt.",
+                        "Men du har rettigheter – og de er viktige å kjenne. Du har rett til individuell plan (IP) og koordinator hvis du trenger langvarige tjenester. Du har rett til innsyn i journalen din. Du har rett til å klage. Å si «Jeg vil ha IP» er noe tjenestene er pliktige til å følge opp.",
+                        "Et viktig poeng om medvirkning: Noen ønsker å være med å bestemme alt. Andre foretrekker at behandleren anbefaler, og så sier du ja eller nei. Begge deler er helt OK. Det viktige er at du opplever at du faktisk blir hørt.",
+                        "Forbered deg til møter med hjelpetjenestene: skriv ned hva du vil ta opp, hva du lurer på, og hva du trenger. Det gir deg mer kontroll – og det gir saksbehandleren et bedre grunnlag for å hjelpe deg."
+                    ],
+                    "pullQuote": "Du er ikke en sak. Du er en person med rettigheter. Bruk dem.",
+                    "reflection": "Vet du hvilke rettigheter du har som pasient? Er det noe du har lurt på, men aldri spurt om?"
+                }
+            ],
+            "actionableAdvice": [
+                {
+                    "tip": "Tegn ditt nettverk: tre sirkler, med deg i midten. Hvem er nærmest? Hvem er litt lenger unna? Hvem representerer en risiko?",
+                    "why": "Å se nettverket visuelt gjør det lettere å identifisere både ressurser og hull."
+                },
+                {
+                    "tip": "Identifiser én person du kan ringe i en vanskelig stund – og avtal det med dem på forhånd.",
+                    "why": "Sosial støtte virker best når den er avtalt og tilgjengelig. Ha nummeret klart."
+                },
+                {
+                    "tip": "Forbered deg til neste møte med NAV, fastlegen eller annen tjeneste: skriv ned tre ting du vil si eller spørre om.",
+                    "why": "Forberedelse gir deg mer kontroll og reduserer maktesløsheten i møtet."
+                }
+            ],
+            "appIntegrations": [
+                {
+                    "feature": "Krisehjelp",
+                    "description": "Under Krisehjelp finner du viktige telefonnumre og kontaktpunkter – ha dem klare før du trenger dem."
+                },
+                {
+                    "feature": "Journal",
+                    "description": "Bruk Journal til å reflektere over relasjonene dine. Hvem støtter deg? Hva trenger du å si til noen?"
+                }
+            ]
+        }
+    },
+    {
+        "id": "modul-8",
+        "title": "Traumebevissthet og Rus",
+        "summary": "Traume er ikke et fjernt begrep – det er hverdagen for svært mange i rusbehandling. Her lærer du hva traume gjør med kroppen og hjernen, og du får konkrete grounding-verktøy for stabilisering.",
+        "icon": "🛡️",
+        "readingTime": "16 min",
+        "isObligatory": false,
+        "requiredPreviousModules": [
+            "modul-1",
+            "modul-2",
+            "modul-3"
+        ],
+        "content": {
+            "coreMessage": "Traume er ikke en karaktersvakhet – det er nervesystemets respons på erfaringer som overveldet deg. Å forstå dette er første steg mot å gi nervesystemet nye erfaringer av trygghet.",
+            "sections": [
+                {
+                    "heading": "Hva er psykologisk traume?",
+                    "paragraphs": [
+                        "Traume er ikke hendelsen i seg selv – det er kroppens og sinnets *respons* på hendelser som overveldet din kapasitet til å mestre dem i øyeblikket. To personer kan oppleve det samme og ha helt ulike responser. Begge er gyldige.",
+                        "Det finnes ulike typer traume. **Enkelttraume** er en avgrenset hendelse – en ulykke, et overgrep. **Vedvarende traume** er gjentatte erfaringer over tid – langvarig vold, omsorgssvikt. **Komplekst traume** skjer i relasjoner der du ikke kan flykte – spesielt i barndommen, med omsorgspersoner som skulle gi trygghet.",
+                        "Forskning viser at mellom en tredjedel og halvparten av alle som kommer til rusbehandling har opplevd alvorlige traumeerfaringer i barndommen. Du er ikke unntaket. Du er normen. Og det er ikke noe å skamme seg over.",
+                        "Det viktigste å forstå: traume er ikke et tegn på svakhet. Det er nervesystemets naturlige respons på ekstraordinære erfaringer. Å forstå dette endrer alt – fra «hva er galt med meg?» til «hva har skjedd med meg?»"
+                    ],
+                    "pullQuote": "Du er ikke ødelagt. Du overlevde. Og overlevelsesmekanismene dine ga mening der og da.",
+                    "reflection": "Er det noe av dette som resonerer? Finnes det erfaringer du bærer på som du kanskje aldri har kalt et «traume»?"
+                },
+                {
+                    "heading": "Hjernen og kroppen under stress",
+                    "paragraphs": [
+                        "Hjernen har et innebygd alarmsystem. Når det oppdager fare, skjer alt automatisk: hjertet banker, adrenalinet pumper, kroppen gjør seg klar for kamp, flukt eller frys. Det er biologi – ikke valg.",
+                        "**Toleransevinduet** er sonen der du fungerer. Over den: hyperaktivering – uro, panikk, angst, irritabilitet. Under den: hypoaktivering – nummenhet, tomhet, frakobling. Mange som har opplevd traume har et smalt toleransevindu – det kreves lite for å falle ut av det.",
+                        "Og her er koblingen til rus: Hva gjør rusmidler med toleransevinduet? De demper hyperaktivering eller fyller hypoaktivering – midlertidig. Rusen regulerer nervesystemet der du ikke hadde andre verktøy. Det er ikke dumhet – det er et nervesystem som lette etter regulering og fant det der.",
+                        "Dessverre snevrer langvarig rusbruk toleransevinduet ytterligere – du trenger mer og mer for å oppnå samme effekt, og uten rusen blir svingningene enda villere. Men her er det gode: toleransevinduet kan utvides igjen. Gradvis. Med øvelse."
+                    ],
+                    "pullQuote": "Kroppen din husker det sinnet har forsøkt å glemme. Det er ikke galskap – det er biologi.",
+                    "reflection": "Kjenner du deg mest igjen i hyperaktivering (alltid på vakt, uro) eller hypoaktivering (nummenhet, å koble ut)?"
+                },
+                {
+                    "heading": "Traume og rus – sammenhengen",
+                    "paragraphs": [
+                        "Sammenhengen mellom traume og rus går begge veier. Traume øker risikoen for rusbruk – fordi nervesystemet trenger regulering. Rusbruk øker risikoen for nye traumeopplevelser – fordi du er mer utsatt i ruspåvirket tilstand.",
+                        "Omtrent 20 % av alle med PTSD bruker rusmidler aktivt for å dempe symptomene. Det er selvmedisinering – og det er forståelig. Problemet er at over tid opprettholder rusbruken seg selv, uavhengig av det opprinnelige traumet.",
+                        "For deg med tidlige barndomserfaringer kan rusens funksjon være enda mer grunnleggende: det handler om å regulere en hjerne som aldri utviklet robuste indre reguleringsmekanismer, fordi omsorgspersonene som skulle hjelpe deg med det, var utilgjengelige eller farlige.",
+                        "Et viktig poeng: Ikke all avhengighet skyldes traume. Og ikke alle traumatiserte utvikler ruslidelser. Vi snakker om økt sårbarhet – ikke en enkel årsak-virkning. Ruslidelsen er sin egen diagnose som fortjener sin egen behandling."
+                    ],
+                    "pullQuote": "Rusen var en reguleringsrespons – ikke en moralsk svikt. Men den har blitt sitt eget problem som trenger egen behandling.",
+                    "reflection": "Kan du se en sammenheng mellom vanskelige erfaringer i livet ditt og rusbruk? Hva var det du flyktet fra?"
+                },
+                {
+                    "heading": "Grounding – verktøy for her og nå",
+                    "paragraphs": [
+                        "Nå det viktigste: konkrete verktøy. Grounding er teknikker som bringer deg tilbake til nåtidsøyeblikket – ut av tankespiraler, ut av flashbacks, ut av nummenhet.",
+                        "**5-4-3-2-1-teknikken:** Nevn 5 ting du ser. 4 ting du kan berøre. 3 ting du hører. 2 ting du lukter. 1 ting du smaker. Sansene drar deg inn i nåtiden – fordi sansene alltid er i nåtiden.",
+                        "**Fysiologisk sukk:** To innpust gjennom nesen (dobbel inhalasjon) etterfulgt av ett langt utpust gjennom munnen. Det er hjernens raskeste kjente verktøy for å roe ned stressresponsen – og du kan gjøre det når som helst, uten at noen trenger å se det.",
+                        "**Bakkeforankring:** Plant føttene i gulvet. Kjenn vekten av kroppen. Si til deg selv: «Jeg er her. Det er 2026. Jeg er trygg nok akkurat nå.» Det høres enkelt ut – og det er det. Men nervesystemet trenger disse signalene for å forstå at faren er over.",
+                        "Velg 2–3 teknikker som fungerer for deg. Øv på dem når du har det bra – så de sitter når du trenger dem. Grounding er en ferdighet, og som alle ferdigheter blir den bedre med trening."
+                    ],
+                    "pullQuote": "Stabilisering er ikke terapi-light. Det er en av de viktigste ferdighetene du kan lære.",
+                    "reflection": "Hvilken av grounding-teknikkene trigger mest nysgjerrighet hos deg? Kan du prøve den akkurat nå?"
+                }
+            ],
+            "actionableAdvice": [
+                {
+                    "tip": "Prøv den fysiologiske sukken akkurat nå: to innpust gjennom nesen, ett langt utpust gjennom munnen. Gjør det tre ganger og kjenn etter.",
+                    "why": "Det er hjernens raskeste verktøy for stressreduksjon og virker umiddelbart på nervesystemet."
+                },
+                {
+                    "tip": "Når du kjenner deg «ute av vinduet» – enten i uro eller i nummenhet – bruk 5-4-3-2-1 for å anke deg tilbake til nåtiden.",
+                    "why": "Sansene dine er alltid i nåtiden. Å aktivere dem henter oppmerksomheten ut av fortid og fremtid."
+                },
+                {
+                    "tip": "Lag en kort setning du kan si til deg selv i vanskelige øyeblikk: «Jeg er her. Jeg er trygg nok akkurat nå.» Skriv den ned og ha den tilgjengelig.",
+                    "why": "Nervesystemet trenger konkrete, verbale signaler om trygghet for å roe seg ned."
+                }
+            ],
+            "appIntegrations": [
+                {
+                    "feature": "Strategier",
+                    "description": "Under Strategier finner du guidede pusteøvelser og grounding – bruk dem daglig for å bygge stabiliseringsferdigheter."
+                },
+                {
+                    "feature": "LogWizard",
+                    "description": "Registrer hendelser der du brukte grounding. Å se at det faktisk fungerer styrker motivasjonen til å bruke det igjen."
+                }
+            ]
+        }
+    },
+    {
+        "id": "modul-9",
+        "title": "Forståelse av Komorbiditet",
+        "summary": "De fleste i rusbehandling har «mer enn ett problem». Her får du forståelse for hvorfor ruslidelse og psykiske vansker henger sammen – og hvorfor begge sider må jobbe med samtidig.",
+        "icon": "🧬",
+        "readingTime": "12 min",
+        "isObligatory": false,
+        "requiredPreviousModules": [
+            "modul-1",
+            "modul-2",
+            "modul-3"
+        ],
+        "content": {
+            "coreMessage": "Å ha både ruslidelse og psykiske vansker er ikke et tegn på at du er ekstra skadet. Det er regelen, ikke unntaket – og det finnes gode forklaringer på hvorfor det henger sammen.",
+            "sections": [
+                {
+                    "heading": "Hva er komorbiditet?",
+                    "paragraphs": [
+                        "Komorbiditet er et fancy ord for noe ganske hverdagslig: å ha mer enn én utfordring samtidig. Ikke bare rusproblemet, men også angst, depresjon, ADHD, uro eller traumereaksjoner. Fagfolk kaller det ROP – rus og psykisk lidelse.",
+                        "Forskning viser at mellom halvparten og alle som kommer til rusbehandling også har en psykisk lidelse. Det betyr at du som sitter her med begge deler – du er i flertall. Du er regelen, ikke unntaket.",
+                        "Komorbiditet har reelle konsekvenser: de som har begge deler har vanskeligere behandlingsforløp, høyere risiko for tilbakefall og lavere livskvalitet. Men det betyr også at når vi tar begge sider på alvor, kan vi gjøre en reell forskjell.",
+                        "Tenk på det som to sider av samme mynt. Rusproblemet er den ene siden. De psykiske vanskene er den andre. Du kan ikke behandle bare én side uten at den andre fortsetter å påvirke deg."
+                    ],
+                    "pullQuote": "Å ha «dobbelt opp» gjør deg ikke svakere. Det gjør behandlingen din mer kompleks – og det er vårt ansvar å møte den kompleksiteten.",
+                    "reflection": "Har du fått kartlagt hele bildet ditt – ikke bare ruslidelsen, men også psykisk helse? Hva tror du er viktigst å ta tak i?"
+                },
+                {
+                    "heading": "Hvorfor henger det sammen?",
+                    "paragraphs": [
+                        "Det finnes ikke én forklaring som passer for alle. Men det finnes flere modeller som gjør det forståelig – og som reduserer selvklandring.",
+                        "**Selvmedisinering:** For mange kom de psykiske vanskene først – angst, depresjon, urolighet – og rusen ble en måte å dempe symptomene på. Det er ikke en moralsk svakhet. Det er en logisk løsning på et reelt problem – bare at løsningen over tid ble et nytt problem.",
+                        "**Gjensidig forsterkning:** Ruslidelser og psykiske lidelser forsterker hverandre. Rusbruk forverrer depresjon. Depresjon øker risikoen for mer rusbruk. Slik holder de hverandre i gang i en ond sirkel.",
+                        "**Felles sårbarhet:** Både ruslidelser og psykiske lidelser kan ha felles underliggende årsaker – arv, barndomserfaringer, nevrobiologisk sårbarhet. Da handler det ikke om at den ene forårsaket den andre, men at begge vokste fra samme jordbunn.",
+                        "Uansett hvilken modell som passer best for deg: forståelsen gir makt. Det er ikke kaos. Det er et mønster som kan gjøres forståelig."
+                    ],
+                    "pullQuote": "Rusen var ikke irrasjonell – den løste et problem du ikke hadde andre verktøy for. Men løsningen ble selv et problem.",
+                    "reflection": "Hva tror du kom først for deg – rusproblemet eller de psykiske vanskene? Eller kom alt på en gang?"
+                },
+                {
+                    "heading": "Integrert behandling – å jobbe med alt samtidig",
+                    "paragraphs": [
+                        "Har du opplevd å bli sendt fra sted til sted? At rusbehandlingen sa «ordne opp i depresjonen først» og psykiatrien sa «bli rusfri først»? Det er dessverre altfor vanlig – og det fungerer dårlig.",
+                        "Forskning og norske retningslinjer er tydelige: begge sidene må jobbes med samtidig. Det kalles integrert behandling. Ikke sekvensielt (først det ene, så det andre), men parallelt.",
+                        "I praksis betyr det at behandleren din adresserer *begge* dine utfordringer i den samme relasjonen. At du slipper å velge mellom «rusbehandling» og «psykisk helsebehandling». Og at kartlegging av psykisk helse skjer parallelt med rusbehandling.",
+                        "Det vi gjør her – dette programmet – er integrert behandling i praksis. Vi jobber med hele deg: rusproblemet, de psykiske vanskene, relasjonene, kroppen, identiteten. Ikke i rekkefølge, men parallelt."
+                    ],
+                    "pullQuote": "Du skal slippe å velge mellom hjelp for ruslidelsen og hjelp for psykisk helse. Du fortjener begge deler – samtidig.",
+                    "reflection": "Opplever du at behandlingen din tar hele bildet på alvor? Er det noe du ønsker at behandleren skal vite?"
+                },
+                {
+                    "heading": "Å gi det tid – det diagnostiske vinduet",
+                    "paragraphs": [
+                        "En ting som kan være frustrerende er å ikke få klare svar med en gang. Noen av symptomene du opplever nå – angst, depresjon, søvnproblemer – kan være direkte effekter av rusbruk som vil avta med tid. Andre kan være uttrykk for noe som var der lenge før rusen.",
+                        "Tenk på det som å se ut av et vindu mens det regner. Det er vanskelig å se klart. Men etter hvert som regnet avtar – etter hvert som kroppen tilpasser seg rusfrihet – blir utsikten klarere. Noen symptomer forsvinner. Andre blir tydeligere. Begge deler er viktig informasjon.",
+                        "Det betyr ikke at vi venter med å hjelpe. Vi begynner å jobbe med det vi ser allerede nå. Men vi holder også en åpen dør for at bildet kan klargjøres etter hvert. Å forstå dette kan redusere frustrasjonen.",
+                        "Og en viktig påminnelse: det at det er komplekst betyr ikke at det er håpløst. Det betyr at det trenger tilpasset behandling – og det er det du får."
+                    ],
+                    "pullQuote": "Ikke alt som er uklart nå, forblir uklart. Gi det tid – bildet klarner.",
+                    "reflection": "Har du symptomer nå som du er usikker på om handler om rusbruk eller noe annet? Hva ville du spurt behandleren din om?"
+                }
+            ],
+            "actionableAdvice": [
+                {
+                    "tip": "Skriv ned alle vanskene dine – ikke bare rusproblemet. Angst, søvn, konsentrasjon, humør. Se hele bildet.",
+                    "why": "Å identifisere og navngi dine egne vansker er første steg mot å forstå samspillet mellom dem."
+                },
+                {
+                    "tip": "Spør behandleren din: «Jobber vi med hele bildet mitt, eller bare ruslidelsen?» Du har rett til integrert behandling.",
+                    "why": "Forskning viser at integrert behandling – der begge sider adresseres samtidig – gir bedre resultater."
+                },
+                {
+                    "tip": "Vær tålmodig med diagnostikk. Etter 2–4 uker med rusfrihet begynner bildet å klargjøre seg.",
+                    "why": "Mange symptomer endrer seg i rusfrie perioder, og det gir uvurderlig informasjon om hva som er hva."
+                }
+            ],
+            "appIntegrations": [
+                {
+                    "feature": "LogWizard",
+                    "description": "Bruk LogWizard til å registrere hvordan psykiske symptomer (angst, depresjon, uro) henger sammen med sug og rusbruk."
+                },
+                {
+                    "feature": "Journal",
+                    "description": "Skriv om sammenhengen mellom psykisk helse og rusbruk. Hva trigget hva? Mønstre viser seg over tid."
+                }
+            ]
+        }
+    },
+    {
+        "id": "modul-10",
+        "title": "Kropp og Fysisk Helse",
+        "summary": "Kroppen din har båret konsekvensene av rusbruk – men den har også en bemerkelsesverdig evne til å hele seg. Her lærer du om søvn, ernæring, bevegelse og kropp-bevissthet som verktøy i tilfriskning.",
+        "icon": "💪",
+        "readingTime": "14 min",
+        "isObligatory": false,
+        "requiredPreviousModules": [
+            "modul-1",
+            "modul-2",
+            "modul-3"
+        ],
+        "content": {
+            "coreMessage": "Kroppen din har tatt imot mye. Men den har også en bemerkelsesverdig evne til å hele seg. Leveren reparerer seg. Hjernen gjenoppbygger seg. Søvnen normaliserer seg. Helingen har allerede begynt.",
+            "sections": [
+                {
+                    "heading": "Hva rusen gjør med kroppen",
+                    "paragraphs": [
+                        "La oss starte med noe mange har erfart, men kanskje aldri fått satt ord på: hva rusbruk faktisk gjør med kroppen. Ikke for å skremme – men for å gi kunnskap. Fordi kunnskap er første steg mot å gjøre noe med det.",
+                        "Rusmidler rammer nesten hvert organsystem: **Leveren** – alkohol er et av de sterkeste giftstoffene leveren utsettes for. **Hjertet** – stimulantia gir akutt belastning, alkohol gir langsiktig risiko. **Hjernen** – kognitive vansker, konsentrasjonssvikt, i alvorlige tilfeller varig skade. **Immunsystemet** – svekket infeksjonsforsvar. **Ernæring** – næringsmangler, muskelsvekkelse, hormonforstyrrelser.",
+                        "Men her er det viktige: mange av disse skadene er **reversible**. Leverfunksjonen bedres raskt ved alkoholfrihet. Blodtrykket normaliserer seg. Lunger heler seg. Kognitiv funksjon forbedres gradvis over måneder. Kroppen din er allerede i gang med å reparere seg.",
+                        "Å vite dette er ikke bare medisinsk informasjon – det er motivasjon. Hver dag uten rus er en dag der kroppen din jobber for deg, ikke mot deg."
+                    ],
+                    "pullQuote": "Kroppen din er allerede i gang med å heles. Hver rusfri dag er en investering i den prosessen.",
+                    "reflection": "Hvilke konsekvenser i kroppen kjenner du igjen fra din egen rusbruk? Har du merket forandringer etter perioder med rusfrihet?"
+                },
+                {
+                    "heading": "Søvn – din viktigste allierte i tilfriskning",
+                    "paragraphs": [
+                        "Søvnproblemer er blant de vanligste plagene i rusbehandling. Mange har brukt rusmidler som «sovemiddel» – og oppdager at søvnen blir verre i begynnelsen av rusfrihet. Det er normalt og forventet.",
+                        "Forskning er tydelig: dårlig søvn er en av de sterkeste risikofaktorene for tilbakefall. Fordi dårlig søvn forstyrrer følelsesregulering, impulskontroll og evnen til å tåle ubehag – alt det du trenger mest akkurat nå.",
+                        "Den gode nyheten: søvn kan forbedres med enkle grep. **Stå opp til samme tid hver dag** – uansett når du sovnet. **Unngå skjerm 1-2 timer før sengetid**. **Bruk soverommet bare til søvn**. **Unngå koffein etter kl. 14**. **Ikke ligg og vent på søvnen** – er du ikke søvnig etter 20 minutter, gå opp og gjør noe rolig.",
+                        "Gi det tid. Søvnkvaliteten forbedres gradvis etter 2-4 uker med rusfrihet. Hjernen trenger tid til å gjenopprette sine naturlige rytmer – men det skjer."
+                    ],
+                    "pullQuote": "God søvn er ikke en luksus. Det er grunnlaget for alt det andre du jobber med.",
+                    "reflection": "Hvordan sover du for tiden? Er det noe av søvnhygiene-tipsene du kan prøve allerede i kveld?"
+                },
+                {
+                    "heading": "Mat, bevegelse og energi",
+                    "paragraphs": [
+                        "Hjernen din er et kjemisk system. Den trenger byggesteiner for å produsere dopamin, serotonin og andre stoffer som regulerer humøret og motivasjonen. Når du spiser næringsrik mat regelmessig, gir du hjernen verktøyene den trenger for å heles.",
+                        "Start enkelt: **regelmessige måltider** stabiliserer blodsukker og reduserer sug. **Protein** (egg, fisk, bønner) bygger opp muskelvev. **Vann** – mange er dehydrerte i tidlig tilfriskning. Ikke prøv å endre alt på en gang – velg ett konkret grep denne uken.",
+                        "Fysisk aktivitet er en av de best dokumenterte, rimeligste og mest tilgjengelige selvhjelpsstrategiene som finnes. Det trenger ikke være maraton – 10 minutters gåtur er bedre enn 0 minutters løpetur. Forskning viser at moderat trening reduserer sug, forbedrer søvn og stemningsleie, og normaliserer hjernens belønningssystem.",
+                        "Finn noe du liker. Ikke noe du «burde» gjøre. Gåtur, sykling, dans, hagearbeid, svømming – hva som helst som setter kroppen i bevegelse. Målet er ikke prestasjon. Det er konsistens og glede."
+                    ],
+                    "pullQuote": "10 minutters gåtur er bedre enn 0 minutters løpetur. Start der du er.",
+                    "reflection": "Hva spiste du til frokost i dag? Og er det en fysisk aktivitet du kan tenke deg å prøve denne uken?"
+                },
+                {
+                    "heading": "Å lytte til kroppen igjen",
+                    "paragraphs": [
+                        "Mange som har brukt rus over tid har mistet kontakten med kroppens signaler. Rusmidler nummengjør sanser. Traume kan gjøre at du «forlater» kroppen. Og da mister du tilgang til viktig informasjon.",
+                        "Sug starter ofte som en kroppsfølelse – et trykk i brystet, uro i magen – lenge før det blir en bevisst tanke. Føler du suget i kroppen tidlig, har du et øyeblikk mellom signal og handling. Det øyeblikket er frihet.",
+                        "En enkel øvelse: Sjekk inn med kroppen tre ganger daglig. Morgen, middag, kveld. Legg hånden på brystet og spør: Hva kjenner jeg? Uro, spenning, ro, nummenhet? Ikke endre det – bare legg merke til det. Over tid begynner mønstre å vise seg.",
+                        "Forskning viser at økt kroppsbevissthet – evnen til å kjenne og tolke kroppens signaler – er direkte forbedringsfaktor for rusbehandling. Det er en ferdighet som kan gjenoppbygges, gradvis og gjennom øvelse."
+                    ],
+                    "pullQuote": "Kroppen snakker til deg hele tiden. Det handler om å lære å lytte igjen.",
+                    "reflection": "Hvis du legger hånden på brystet akkurat nå – hva kjenner du? Hva forteller kroppen din deg?"
+                }
+            ],
+            "actionableAdvice": [
+                {
+                    "tip": "Start en enkel søvnrutine i kveld: legg vekk skjermen 1 time før leggetid og stå opp til fast tid i morgen.",
+                    "why": "To uker med konsistent søvnrytme gir merkbar forbedring i søvnkvalitet."
+                },
+                {
+                    "tip": "Gjør en 10-minutters tur i dag. Uten mål, uten prestasjon – bare bevegelse.",
+                    "why": "Moderat fysisk aktivitet reduserer sug og forbedrer stemningsleiet, og det virker allerede etter én økt."
+                },
+                {
+                    "tip": "Sjekk inn med kroppen tre ganger i dag: morgen, middag, kveld. Legg hånden på brystet og kjenn etter. Skriv ned ett ord som beskriver det du kjenner.",
+                    "why": "Kroppsbevissthet er første steg mot å oppdage sug og følelsesendringer tidlig nok til å handle."
+                }
+            ],
+            "appIntegrations": [
+                {
+                    "feature": "LogWizard",
+                    "description": "Registrer søvnkvalitet, aktivitet og mat i LogWizard. Over tid ser du sammenhengen mellom kropp og tilfriskning."
+                },
+                {
+                    "feature": "Strategier",
+                    "description": "Under Strategier finner du pusteøvelser og kroppsskanning som støtter din daglige kropps-innsjekk."
+                }
+            ]
+        }
+    },
+    {
+        "id": "modul-11",
+        "title": "Tilbakefallsforebygging",
+        "summary": "Tilbakefall er ikke det motsatte av tilfriskning – det er en del av prosessen. Her lærer du å gjenkjenne dine personlige varselsignaler, bygge mestringsverktøy, og lage en konkret plan for de vanskeligste øyeblikkene.",
+        "icon": "🔥",
+        "readingTime": "16 min",
+        "isObligatory": false,
+        "requiredPreviousModules": [
+            "modul-1",
+            "modul-2",
+            "modul-3"
+        ],
+        "content": {
+            "coreMessage": "Over 60 % opplever tilbakefall innen det første året. Det er ikke behandlingssvikt – det er sykdommens natur. Det som teller er ikke om du faller, men hva du gjør når du faller.",
+            "sections": [
+                {
+                    "heading": "Sprekk, tilbakefall og prosessen",
+                    "paragraphs": [
+                        "La oss starte med å rydde opp i begreper. Det er tre nivåer – og forskjellen mellom dem er avgjørende.",
+                        "**Sprekk** er en enkeltstående episode med rusbruk etter en periode med rusfrihet. Du drikker et glass. Du tar en dose. Du angrer og returnerer raskt til rusfrihet. En sprekk er alvorlig nok til å ta tak i, men det er *ikke* det samme som å ha mistet kontrollen.",
+                        "**Tilbakefall** er et vedvarende mønster – du ruser deg over flere dager, de negative konsekvensene er tilbake, du klarer ikke stoppe på egenhånd. **Fullstendig retur** er tilbake til det gamle mønsteret – som om behandlingen aldri fant sted.",
+                        "Her er det kritiske poenget: det er **reaksjonen din på en sprekk** som bestemmer om den forblir en sprekk eller eskalerer. Hvis du tenker «Nå er alt ødelagt, like godt å gi opp» – da er risikoen for tilbakefall enorm. Men hvis du tenker «Jeg tok et glass. Det var en glipp. Jeg ringer noen nå» – da kan sprekken stoppes der.",
+                        "Denne mekanismen – at skam og katastrofetenking etter en sprekk driver den videre – er en av de mest klinisk viktige innsiktene i rusbehandling. Og den er direkte handlingsbar."
+                    ],
+                    "pullQuote": "En sprekk betyr ikke at alt er ødelagt. Det er en tanke som er farligere enn selve sprekken.",
+                    "reflection": "Hva ville du tenkt og følt hvis du hadde en sprekk i morgen? Hva ville den første tanken din vært?"
+                },
+                {
+                    "heading": "Din personlige risikoprofil",
+                    "paragraphs": [
+                        "Tilbakefall starter ikke i glasset eller i dosen. Det starter lenge før – med situasjoner, følelser og mønstre som gradvis øker risikoen. Ditt risikokart er unikt for deg.",
+                        "**Indre triggere:** Negative følelser (angst, skam, kjedsomhet, ensomhet), MEN OGSÅ positive følelser (feiring, suksess, «nå er alt bra»). Fysisk ubehag: smerte, søvnmangel, sykdom. Og tanker: «én gang er ingen gang», «jeg fortjener å slappe av», idyllisering av rusopplevelser.",
+                        "**Ytre triggere:** Steder du forbinder med rus. Nøkkelpersoner som bruker. Tidspunkter og ritualer (fredagskveld, lønningsdag). Sensoriske inntrykk: lukter, musikk, syner.",
+                        "En enkel sjekk er **HALT**: er du **H**ungry (sulten), **A**ngry (sint), **L**onely (ensom) eller **T**ired (trøtt)? Disse fire tilstandene svekker hjernens evne til å stoppe og tenke – og de er varsellampene du kan lære å se."
+                    ],
+                    "pullQuote": "En risikosituasjon for deg kan være helt nøytral for noen andre. Derfor er dette arbeidet personlig.",
+                    "reflection": "Hva er de fem farligste situasjonene for DEG? Vær spesifikk – ikke 'negative følelser', men konkrete scenarier."
+                },
+                {
+                    "heading": "Varselsignaler – kjenner du dem igjen?",
+                    "paragraphs": [
+                        "Tilbakefall skjer sjelden plutselig. Det er en prosess som begynner dager til uker i forveien – med subtile endringer du kan lære å gjenkjenne.",
+                        "**Tanker:** Idyllisering av rus («det var egentlig ikke så ille»), bagatellisering («jeg kan kontrollere det nå»), katastrofisering («ingenting fungerer uansett»). **Følelser:** Økt irritabilitet, tomhet, rastløshet, angst uten klar årsak.",
+                        "**Atferd:** Søvnmønsteret endres. Du begynner å isolere deg. Du unngår behandlingssamtaler. Du søker kontakt med gamle rusmiljøer. Egenomsorg faller – mat, hygiene, aktivitet.",
+                        "**Sosialt:** Økt konflikt i nære relasjoner. Hemmeligholdelse. Du distanserer deg fra støttepersoner. Du endrer hvem du tilbringer tid med.",
+                        "Det viktigste varselsignalet av alle: når du begynner å isolere deg fra nettverk og behandling. Fordi det betyr at den delen av hjernen som vil bruke, allerede har begynt å koble deg fra dem som kan hjelpe."
+                    ],
+                    "pullQuote": "Tilbakefall starter ikke i glasset. Det starter i isolasjonen, i tankene, i de små valgene dagene i forveien.",
+                    "reflection": "Hva merker du i deg selv i dagene FØR det blir vanskelig? Hva er dine tidlige varselsignaler?"
+                },
+                {
+                    "heading": "Mestringsstrategier og brannslukningsplan",
+                    "paragraphs": [
+                        "Nå fyller vi verktøykassa. Kognitive strategier: **«Spill filmen til slutten»** – neste gang suget kommer, stopp ikke filmen der rusen smaker godt. Spill den videre: hva skjer dagen etter? Uken etter? Hele filmen. **Urge surfing** – observer suget som en bølge som stiger, topper seg og faller. Du trenger ikke handle på det.",
+                        "Atferdsstrategier: **Unngå** risikosituasjoner du ikke trenger å være i. **Forlat** situasjoner som utvikler seg risikabelt. **Utsett** avgjørelsen med 30 minutter – sug topper seg og avtar. **Strukturerte rutiner** – søvn, mat, aktivitet – reduserer tomrommet der risiko oppstår.",
+                        "Og det viktigste: **brannslukningsplanen** – hva gjør du de første 24 timene etter en sprekk? (1) Stopp. Erkjenn hva som skjer. (2) Fjern deg fra situasjonen – det er ikke svakhet, det er den enkleste mestringsstrategien. (3) Si til deg selv: «En sprekk betyr ikke at alt er ødelagt.» (4) Ring noen – nå, ikke i morgen. (5) Gjør noe strukturert de neste timene.",
+                        "Skriv planen ned mens hjernen er kald – ikke varm. Ha den tilgjengelig. En plan som ligger klar reduserer den kognitive belastningen i det øyeblikket det teller mest."
+                    ],
+                    "pullQuote": "Den viktigste planen er ikke hvordan du unngår alle problemer – det er hva du gjør i de første 24 timene etter en glipp.",
+                    "reflection": "Hvem ville du ringt de første 24 timene etter en sprekk? Skriv ned tre navn og tre telefonnumre. Nå."
+                }
+            ],
+            "actionableAdvice": [
+                {
+                    "tip": "Lag din HALT-sjekk til en daglig rutine: Er du sulten, sint, ensom eller trøtt? Fikse det før det fikser deg.",
+                    "why": "Disse fire tilstandene svekker hjernens impulskontroll. Å oppdage dem tidlig er forebygging i praksis."
+                },
+                {
+                    "tip": "Skriv ned din personlige brannslukningsplan: (1) Stopp, (2) Fjern deg, (3) Si en setning som bryter katastrofetanken, (4) Ring noen, (5) Gjør noe strukturert.",
+                    "why": "En plan som er skrevet ned på forhånd fungerer bedre fordi du slipper å tenke under press."
+                },
+                {
+                    "tip": "Identifiser dine tre viktigste varselsignaler – tanker, følelser eller atferd som typisk dukker opp i dagene FØR det blir vanskelig.",
+                    "why": "Jo tidligere du oppdager prosessen, jo mer handlingsrom har du til å endre kursen."
+                }
+            ],
+            "appIntegrations": [
+                {
+                    "feature": "Krisehjelp",
+                    "description": "Under Krisehjelp har du akutte kontaktpunkter – ha dem som del av brannslukningsplanen din."
+                },
+                {
+                    "feature": "LogWizard",
+                    "description": "Registrer risikosituasjoner og hva du gjorde for å mestre dem. Mønstrene som viser seg er din personlige guide."
+                },
+                {
+                    "feature": "Strategier",
+                    "description": "Urge surfing, pusteøvelser og grounding – alt du trenger i de vanskeligste øyeblikkene finner du under Strategier."
+                }
+            ]
+        }
     }
 ]
