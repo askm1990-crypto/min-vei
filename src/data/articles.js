@@ -26,7 +26,7 @@ export const ARTICLES = [
         category: 'recovery',
         tags: [],
         summary: 'Et tilbakefall er en mulighet til å lære, ikke et bevis på at du har feilet.',
-        body: `Tilbakefall er en vanlig del av recovery-prosessen. Forskning viser at de fleste som oppnår varig rusfrihet har opplevd tilbakefall underveis.\n\n**Viktig forskjell:**\n- **Glipp** (lapse): En enkelt hendelse der du bruker\n- **Tilbakefall** (relapse): Tilbakevending til gammelt mønster\n\nEn glipp trenger ikke bli et tilbakefall.\n\n**Hva du bør gjøre:**\n1. Vær ærlig med deg selv\n2. Loggfør hendelsen (bruk hendelsesloggen)\n3. Identifiser triggeren\n4. Lag en plan for neste gang\n5. Søk støtte — snakk med noen\n\nDu har IKKE mistet alt du har jobbet for.`
+        body: `Tilbakefall er en vanlig del av recovery-prosessen. Forskning viser at de fleste som oppnår varig rusfrihet har opplevd tilbakefall underveis.\n\n**Viktig forskjell:**\n- **Glipp** (lapse): En enkelt hendelse der du bruker\n- **Tilbakefall** (relapse): Tilbakevending til gammelt mønster\n\nEn glipp trenger ikke bli et tilbakefall.\n\n**Hva du bør gjøre:**\n1. Vær ærlig med deg selv\n2. Skriv det ned (bruk dagboken)\n3. Identifiser triggeren\n4. Lag en plan for neste gang\n5. Søk støtte — snakk med noen\n\nDu har IKKE mistet alt du har jobbet for.`
     },
     // --- Alkohol ---
     {

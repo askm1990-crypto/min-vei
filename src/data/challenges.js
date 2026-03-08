@@ -41,7 +41,7 @@ export const CHALLENGES = [
     { id: 'c14', text: 'Fortell noen du stoler på hvordan du egentlig har det', category: 'social', points: 200, triggers: [] },
 
     // --- Recovery ---
-    { id: 'c15', text: 'Logg en hendelse i hendelsesloggen', category: 'recovery', points: 100, triggers: [] },
+    { id: 'c15', text: 'Skriv i dagboken', category: 'recovery', points: 100, triggers: [] },
     { id: 'c16', text: 'Les en artikkel i kunnskapsbanken', category: 'recovery', points: 100, triggers: [] },
     { id: 'c17', text: 'Gjennomgå din sikkerhetsplan', category: 'recovery', points: 150, triggers: ['Tilgjengelighet'] },
     { id: 'c18', text: 'Identifiser én trigger du kan unngå i morgen', category: 'recovery', points: 100, triggers: [] },

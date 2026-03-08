@@ -10,7 +10,7 @@ const GUIDE_STEPS = [
         highlight: 'dashboard'
     },
     {
-        title: 'Tidslinjen 📝',
+        title: 'Dagbok 📝',
         text: 'Her registrerer du hendelser, sug, mestringsteknikker, eller bare tanker i dagboken. Alt samlet på ett sted! Du tjener poeng for hver registrering.',
         icon: '📝',
         highlight: 'timeline'
