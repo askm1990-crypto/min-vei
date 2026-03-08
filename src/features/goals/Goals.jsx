@@ -54,7 +54,12 @@ export default function Goals() {
 
                 {activeGoals.length === 0 ? (
                     <div className="empty-state">
-                        <span className="empty-icon">🎯</span>
+                        <svg viewBox="0 0 200 150" className="empty-state-svg" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M30 130L100 40L170 130" fill="var(--bg-card)" stroke="var(--border)" strokeWidth="4" strokeLinejoin="round" />
+                            <path d="M100 40L130 80H70Z" fill="var(--primary)" opacity="0.2" />
+                            <circle cx="100" cy="40" r="16" fill="var(--bg-body)" stroke="var(--primary)" strokeWidth="4" />
+                            <circle cx="100" cy="40" r="6" fill="var(--primary)" />
+                        </svg>
                         <h3>Ingen aktive mål</h3>
                         <p>Sett ditt første SMART-mål for å komme i gang!</p>
                         <Button variant="primary" onClick={() => setShowWizard(true)}>

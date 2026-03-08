@@ -248,6 +248,7 @@
 .challenge-btn {
     background-color: var(--secondary);
     width: 100%;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 @media (min-width: 600px) {
@@ -258,6 +259,13 @@
 
 .challenge-btn:hover {
     background-color: var(--secondary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(var(--secondary-rgb), 0.3);
+}
+
+.challenge-btn:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: none;
 }
 
 .challenge-success {
@@ -286,14 +294,20 @@
     padding: var(--space-4) var(--space-2);
     border-radius: var(--radius-md);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     width: 100%;
 }
 
 .qa-btn:hover {
     border-color: var(--primary);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    background: var(--bg-card);
+}
+
+.qa-btn:active {
+    transform: translateY(1px) scale(0.96);
+    box-shadow: none;
 }
 
 .qa-icon {
@@ -696,14 +710,19 @@
     font-weight: 700;
     font-family: inherit;
     cursor: pointer;
-    transition: all var(--transition);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     white-space: nowrap;
 }
 
 .next-module-card__cta:hover {
     background: var(--primary-dark);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px var(--primary-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px var(--primary-glow);
+}
+
+.next-module-card__cta:active {
+    transform: translateY(1px) scale(0.97);
+    box-shadow: none;
 }
 
 .next-module-card__progress {

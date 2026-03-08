@@ -275,11 +275,16 @@
 
 .mood-emoji {
     font-size: 2.2rem;
-    transition: transform 0.2s;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .mood-btn:hover .mood-emoji {
-    transform: scale(1.1);
+    transform: scale(1.15) translateY(-2px);
+}
+
+.mood-btn.selected .mood-emoji {
+    transform: scale(1.35) translateY(-4px);
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
 }
 
 .mood-label {

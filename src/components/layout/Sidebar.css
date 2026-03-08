@@ -200,18 +200,17 @@ body.dark-mode .sidebar__item--active {
         top: 0;
         bottom: 0;
         width: 260px;
-        /* Wider drawer on mobile to fit text */
         min-width: 260px;
         transform: translateX(-100%);
-        /* Hidden by default */
         box-shadow: 4px 0 16px rgba(0, 0, 0, 0.1);
         padding: var(--space-5) 0 var(--space-6);
         background: var(--bg-card);
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .sidebar--open {
         transform: translateX(0);
-        /* Show when active */
+        box-shadow: 8px 0 32px rgba(0, 0, 0, 0.15);
     }
 
     /* Show items text and icons normally in drawer */
@@ -232,10 +231,68 @@ body.dark-mode .sidebar__item--active {
         font-size: 1rem;
         border-radius: 0;
         /* Full width items look better in drawer */
+        opacity: 0;
+        transform: translateX(-15px);
+        transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .sidebar--open .sidebar__item {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* Staggered delays for nav items */
+    .sidebar--open .sidebar__item:nth-child(1) {
+        transition-delay: 0.10s;
+    }
+
+    .sidebar--open .sidebar__item:nth-child(2) {
+        transition-delay: 0.15s;
+    }
+
+    .sidebar--open .sidebar__item:nth-child(3) {
+        transition-delay: 0.20s;
+    }
+
+    .sidebar--open .sidebar__item:nth-child(4) {
+        transition-delay: 0.25s;
+    }
+
+    .sidebar--open .sidebar__item:nth-child(5) {
+        transition-delay: 0.30s;
+    }
+
+    .sidebar--open .sidebar__item:nth-child(6) {
+        transition-delay: 0.35s;
+    }
+
+    .sidebar--open .sidebar__item:nth-child(7) {
+        transition-delay: 0.40s;
+    }
+
+    .sidebar--open .sidebar__item:nth-child(8) {
+        transition-delay: 0.45s;
+    }
+
+    .sidebar--open .sidebar__item:nth-child(9) {
+        transition-delay: 0.50s;
     }
 
     .sidebar__item svg {
         width: 20px;
         height: 20px;
+    }
+
+    /* Accessibility for Sidebar */
+    @media (prefers-reduced-motion: reduce) {
+        .sidebar {
+            transition: none;
+        }
+
+        .sidebar__item {
+            transition: none;
+            opacity: 1;
+            transform: translateX(0);
+        }
     }
 }
