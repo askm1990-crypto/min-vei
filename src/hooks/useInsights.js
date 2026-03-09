@@ -14,9 +14,9 @@ export function useInsights({ events = [], journalEntries = [], goals = [], days
             result.push({
                 id: 'learning-phase',
                 type: 'info',
-                icon: '🧠',
+                icon: '💡',
                 priority: 10,
-                title: 'AI-en lærer dine mønstre',
+                title: 'Vi ser etter mønstre',
                 description: 'Du har logget dine første hendelser. Vi ser etter sammenhenger og vil gi deg dypere innsikt når du når 5 logger.',
                 color: 'var(--primary)'
             });
