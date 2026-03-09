@@ -1,0 +1,104 @@
+.reminder-banner {
+    position: relative;
+    z-index: 50;
+    margin: var(--space-4) var(--space-4) 0 var(--space-4);
+    background: linear-gradient(135deg, var(--primary), hsl(calc(var(--primary-hue, 210) + 30), 70%, 55%));
+    color: white;
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow-md);
+    gap: var(--space-4);
+}
+
+.reminder-banner-content {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex: 1;
+}
+
+.reminder-banner-icon {
+    font-size: 2rem;
+    background: rgba(255, 255, 255, 0.2);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    backdrop-filter: blur(8px);
+}
+
+.reminder-banner-text strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 2px;
+}
+
+.reminder-banner-text p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.reminder-banner-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.reminder-banner-actions button {
+    white-space: nowrap;
+}
+
+/* Specific styling for the close button since it's an icon only */
+.reminder-banner-close {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    padding: var(--space-1);
+}
+
+.reminder-banner-close:hover {
+    opacity: 1;
+}
+
+/* Animations */
+.bounce-in {
+    animation: slideDownFade 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes slideDownFade {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+    .reminder-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--space-3);
+        margin: var(--space-3) var(--space-3) 0 var(--space-3);
+        gap: var(--space-3);
+    }
+
+    .reminder-banner-actions {
+        width: 100%;
+        justify-content: space-between;
+        flex-direction: row-reverse; /* Put Primary button on right */
+    }
+}

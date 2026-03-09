@@ -8,6 +8,8 @@ import { exportToPDF } from '../../utils/pdfExport';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
 import { showToast } from '../../components/ui/ToastUtils';
+import { useNotificationStore } from '../../store/useNotificationStore';
+import { useNotifications } from '../../hooks/useNotifications';
 import './Profile.css';
 
 export default function Profile() {
@@ -19,6 +21,14 @@ export default function Profile() {
     const [pinEnabled, setPinEnabled] = useState(() => !!localStorage.getItem('mv2_pin'));
     const [showPinSetup, setShowPinSetup] = useState(false);
     const [newPin, setNewPin] = useState('');
+
+    const {
+        dailyReminderEnabled,
+        setDailyReminderEnabled,
+        dailyReminderTime,
+        setDailyReminderTime
+    } = useNotificationStore();
+    const { permissionStatus, requestPermissions } = useNotifications();
 
     const daysSober = user?.startDate ? daysBetween(user.startDate) : 0;
 
@@ -190,6 +200,58 @@ export default function Profile() {
                     <div className="profile-detail-group">
                         <span className="detail-label">💪 Motivasjon:</span>
                         <p className="detail-value">{user?.motivation || 'Ikke angitt'}</p>
+                    </div>
+                </div>
+            </Card>
+
+            {/* NOTIFICATIONS */}
+            <Card header="Varsler & Påminnelser" hoverable={false}>
+                <div className="settings-list">
+                    <div className="settings-row">
+                        <div>
+                            <strong>Daglig påminnelse</strong>
+                            <span className="settings-hint">Få et varsel om å skrive i dagboken</span>
+                        </div>
+                        <label className="toggle-switch">
+                            <input
+                                type="checkbox"
+                                checked={dailyReminderEnabled}
+                                onChange={(e) => setDailyReminderEnabled(e.target.checked)}
+                            />
+                            <span className="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    {dailyReminderEnabled && (
+                        <div className="settings-row" style={{ background: 'var(--bg-body)', margin: '0 var(--space-3)', borderRadius: 'var(--radius-md)' }}>
+                            <div>
+                                <strong>Tidspunkt</strong>
+                                <span className="settings-hint">Når vil du bli påminnet?</span>
+                            </div>
+                            <input
+                                type="time"
+                                className="time-input"
+                                value={dailyReminderTime}
+                                onChange={(e) => setDailyReminderTime(e.target.value)}
+                            />
+                        </div>
+                    )}
+
+                    <div className="settings-row">
+                        <div>
+                            <strong>Systemvarsler</strong>
+                            <span className="settings-hint">
+                                {permissionStatus === 'granted' ? 'Tillatelse gitt ✅' :
+                                    permissionStatus === 'denied' ? 'Blokkert av nettleser ❌' :
+                                        permissionStatus === 'unsupported' ? 'Ikke støttet på denne enheten' :
+                                            'Spør om tillatelse for Push-varsler'}
+                            </span>
+                        </div>
+                        {permissionStatus === 'default' && (
+                            <Button variant="secondary" size="sm" onClick={requestPermissions}>
+                                Aktiver
+                            </Button>
+                        )}
                     </div>
                 </div>
             </Card>

@@ -14,6 +14,9 @@ import InsightCards from '../../components/ui/InsightCards';
 import { showToast } from '../../components/ui/ToastUtils';
 import { getDailyChallenge } from '../../data/challenges';
 import MODULES from '../../data/modules.json';
+import ReminderBanner from '../../components/ui/ReminderBanner';
+import { useNotifications } from '../../hooks/useNotifications';
+import { useNotificationStore } from '../../store/useNotificationStore';
 import './Dashboard.css';
 
 // ── Helper: find the next module to read ─────────────────────────────────
@@ -46,6 +49,8 @@ export default function Dashboard({ onNavigate }) {
         setLastSoberMilestone,
         setLastLoggingMilestone
     } = useRecoveryStore();
+    const { checkAndShowDailyReminder } = useNotifications();
+    const { showInAppBanner } = useNotificationStore();
 
     // ── SOBRIETY CALCULATION ──────────────────────────────────
     const usedEvents = events.filter(e => e.outcome === 'used');
@@ -96,7 +101,10 @@ export default function Dashboard({ onNavigate }) {
             setLastSoberPointDate(todayStr);
             showToast(`+${POINTS.SOBER_DAY} poeng for en ny rusfri dag! 🌟`, 'success');
         }
-    }, [todayStr, user?.startDate, lastSoberPointDate, addPoints, setLastSoberPointDate]);
+
+        // Also check if we should show a daily reminder
+        checkAndShowDailyReminder();
+    }, [todayStr, user?.startDate, lastSoberPointDate, addPoints, setLastSoberPointDate, checkAndShowDailyReminder]);
 
     // Streak awarding logic
     useEffect(() => {
@@ -163,6 +171,9 @@ export default function Dashboard({ onNavigate }) {
 
     return (
         <div className="dashboard">
+            {/* IN-APP REMINDER BANNER */}
+            {showInAppBanner && <ReminderBanner onNavigate={onNavigate} />}
+
             {/* LEVEL-UP CELEBRATION */}
             {showLevelUp && (
                 <div className="level-up-overlay">
