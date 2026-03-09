@@ -62,7 +62,7 @@
                     "description": "Bruk Mål-modulen til å notere ned hva du ønsker å jobbe mot. Ett lite steg er nok å starte med."
                 },
                 {
-                    "feature": "Journal",
+                    "feature": "Dagbok",
                     "description": "Skriv ned tanker og forventninger du har til behandlingen. Det kan hjelpe deg å sortere hva som er viktigst."
                 }
             ]
@@ -143,7 +143,7 @@
                     "description": "Bruk Mål-modulen til å sette ditt SMART-mål. Appen hjelper deg å følge opp."
                 },
                 {
-                    "feature": "LogWizard",
+                    "feature": "Dagbok",
                     "description": "Registrer dager der du følger planen. Å se fremgangen over tid styrker mestringstroen din."
                 }
             ]
@@ -224,7 +224,7 @@
                     "description": "Sjekk Strategier-modulen for konkrete teknikker tilpasset ulike triggersituasjoner."
                 },
                 {
-                    "feature": "LogWizard",
+                    "feature": "Dagbok",
                     "description": "Bruk Registrer hendelse for å loggføre sug-episoder: hva trigget det, og hva hjalp?"
                 }
             ]
@@ -307,7 +307,7 @@
             ],
             "appIntegrations": [
                 {
-                    "feature": "LogWizard",
+                    "feature": "Dagbok",
                     "description": "Registrer sug-episoder med tidspunkt, triggertype og strategi som hjalp. Mønstrene vil vise seg over tid."
                 },
                 {
@@ -407,7 +407,7 @@
             ],
             "appIntegrations": [
                 {
-                    "feature": "Journal",
+                    "feature": "Dagbok",
                     "description": "Bruk dagboken daglig. Noter hva du kjente, hva som trigget det, hva som hjalp. Over tid ser du mønstre."
                 },
                 {
@@ -504,8 +504,8 @@
             ],
             "appIntegrations": [
                 {
-                    "feature": "Journal",
-                    "description": "Bruk journalen til å skrive ned skamfulle tanker og utforske dem. Å skrive er en form for å «si det høyt» uten å dele det med noen."
+                    "feature": "Dagbok",
+                    "description": "Bruk dagboken til å skrive ned skamfulle tanker og utforske dem. Å skrive er en form for å «si det høyt» uten å dele det med noen."
                 },
                 {
                     "feature": "Strategier",
@@ -594,7 +594,7 @@
                     "description": "Under Krisehjelp finner du viktige telefonnumre og kontaktpunkter – ha dem klare før du trenger dem."
                 },
                 {
-                    "feature": "Journal",
+                    "feature": "Dagbok",
                     "description": "Bruk dagboken til å reflektere over relasjonene dine. Hvem støtter deg? Hva trenger du å si til noen?"
                 }
             ]
@@ -681,7 +681,7 @@
                     "description": "Under Strategier finner du guidede pusteøvelser og grounding – bruk dem daglig for å bygge stabiliseringsferdigheter."
                 },
                 {
-                    "feature": "LogWizard",
+                    "feature": "Dagbok",
                     "description": "Registrer hendelser der du brukte grounding. Å se at det faktisk fungerer styrker motivasjonen til å bruke det igjen."
                 }
             ]
@@ -764,11 +764,11 @@
             ],
             "appIntegrations": [
                 {
-                    "feature": "LogWizard",
+                    "feature": "Dagbok",
                     "description": "Bruk dagboken til å registrere hvordan psykiske symptomer (angst, depresjon, uro) henger sammen med sug og rusbruk."
                 },
                 {
-                    "feature": "Journal",
+                    "feature": "Dagbok",
                     "description": "Skriv om sammenhengen mellom psykisk helse og rusbruk. Hva trigget hva? Mønstre viser seg over tid."
                 }
             ]
