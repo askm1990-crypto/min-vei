@@ -2,11 +2,13 @@ import { useTimeline } from '../../hooks/useTimeline';
 import { useGoals } from '../../hooks/useGoals';
 import { useRecoveryScore } from '../../hooks/useRecoveryScore';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { useInsights } from '../../hooks/useInsights';
 import { daysBetween } from '../../utils/dateUtils';
 import { BADGES } from '../../data/challenges';
 import Card from '../../components/ui/Card';
 import ActivityHistory from '../../components/ui/ActivityHistory';
 import MoodGraph from '../../components/ui/MoodGraph';
+import InsightCards from '../../components/ui/InsightCards';
 import './Progress.css';
 
 export default function Progress() {
@@ -37,6 +39,65 @@ export default function Progress() {
     const trend = getRecentEventTrend();
     const moodData = getMoodTrend(14);
 
+    // ── challengeStreak: consecutive days with completed challenges ──
+    const challengeStreak = (() => {
+        try {
+            const raw = localStorage.getItem('mv2_challenge_history');
+            if (!raw) return 0;
+            const history = JSON.parse(raw);
+            if (!Array.isArray(history) || history.length === 0) return 0;
+
+            // Collect unique dates (ISO date strings) where a challenge was completed
+            const completedDates = new Set(
+                history
+                    .filter(entry => entry.completed)
+                    .map(entry => new Date(entry.date).toISOString().split('T')[0])
+            );
+
+            let streak = 0;
+            const today = new Date();
+            for (let i = 0; i < 365; i++) {
+                const d = new Date(today);
+                d.setDate(today.getDate() - i);
+                const key = d.toISOString().split('T')[0];
+                if (completedDates.has(key)) {
+                    streak++;
+                } else {
+                    break;
+                }
+            }
+            return streak;
+        } catch {
+            return 0;
+        }
+    })();
+
+    // ── crisisPlanComplete: has at least one phone number AND one coping strategy ──
+    const crisisPlanComplete = (() => {
+        try {
+            const raw = localStorage.getItem('mv2_crisis_plan');
+            if (!raw) return false;
+            const plan = JSON.parse(raw);
+            if (!plan || typeof plan !== 'object') return false;
+
+            // Check for at least one non-empty phone number
+            const phones = plan.contacts || plan.phones || plan.phoneNumbers || [];
+            const hasPhone = Array.isArray(phones)
+                ? phones.some(p => p && (typeof p === 'string' ? p.trim() : (p.phone || p.number || '')).toString().trim())
+                : Object.values(plan).some(v => typeof v === 'string' && /\d{4,}/.test(v));
+
+            // Check for at least one coping strategy
+            const strategies = plan.strategies || plan.copingStrategies || plan.techniques || [];
+            const hasStrategy = Array.isArray(strategies)
+                ? strategies.some(s => s && (typeof s === 'string' ? s.trim() : (s.text || s.name || '')).toString().trim())
+                : false;
+
+            return hasPhone && hasStrategy;
+        } catch {
+            return false;
+        }
+    })();
+
     // Build badge data
     const badgeData = {
         totalEvents: events.length,
@@ -46,9 +107,9 @@ export default function Progress() {
         daysSober,
         resistedEvents,
         journalStreak: getStreak(),
-        challengeStreak: 0, // TODO: calculate from history
+        challengeStreak,
         totalPoints: points,
-        crisisPlanComplete: false // TODO: from crisis module
+        crisisPlanComplete
     };
 
     const earnedBadges = BADGES.filter(b => b.condition(badgeData));
@@ -65,12 +126,16 @@ export default function Progress() {
     });
     const sortedTriggers = Object.entries(triggerCounts).sort((a, b) => b[1] - a[1]).slice(0, 5);
 
+    // Insights
+    const allGoals = [...activeGoals, ...completedGoals];
+    const { insights } = useInsights({ events, journalEntries, goals: allGoals, daysSober });
+
     const MOOD_EMOJIS = { 1: '😞', 2: '😕', 3: '😐', 4: '😊', 5: '😁' };
 
     return (
         <div className="progress-page">
-            <h2 className="progress-title">Din Fremgang</h2>
-            <p className="progress-subtitle">Alt du har oppnådd samlet på ett sted.</p>
+            <h2 className="progress-title">Innsikt</h2>
+            <p className="progress-subtitle">Dine mønstre, din mestring, dine fremskritt.</p>
 
             {/* STATS OVERVIEW */}
             <div className="progress-stats">
@@ -93,6 +158,11 @@ export default function Progress() {
             </div>
 
             <div className="progress-grid">
+                {/* INSIGHT CARDS — full width, top of grid */}
+                <div style={{ gridColumn: '1 / -1' }}>
+                    <InsightCards insights={insights} />
+                </div>
+
                 {/* WEEKLY OVERVIEW */}
                 <Card header="Siste 7 dager" hoverable={false}>
                     <div className="weekly-bar">

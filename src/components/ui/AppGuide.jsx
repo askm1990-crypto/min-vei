@@ -34,9 +34,9 @@ const GUIDE_STEPS = [
         highlight: 'crisis'
     },
     {
-        title: 'Poeng & Nivåer 🏆',
-        text: 'Alt du gjør gir poeng! Jobb deg oppover fra "Stuegris" til "Recovery-Legende". Det tar tid, men humor gjør reisen lettere.',
-        icon: '🏆',
+        title: 'Innsikt 💡',
+        text: 'Se mønstre i dine egne data: triggere, humørtrend, mestringsgrad og badges – alt samlet på Innsikt-siden. Jo mer du logger, jo tydeligere blir mønstrene.',
+        icon: '💡',
         highlight: 'progress'
     },
     {

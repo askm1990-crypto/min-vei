@@ -5,7 +5,7 @@ export default function InsightCards({ insights }) {
 
     return (
         <div className="insight-section">
-            <h3 className="insight-section-title">🧠 AI-Innsikt</h3>
+            <h3 className="insight-section-title">💡 Dine Innsikter</h3>
             <div className="insight-grid">
                 {insights.map(insight => (
                     <div
