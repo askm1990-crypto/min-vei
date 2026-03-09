@@ -1,20 +1,48 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-const migrateLegacyScore = () => {
+// ----------------------------------------------------------------
+// Types
+// ----------------------------------------------------------------
+
+interface ScoreHistoryEntry {
+    id: string;
+    amount: number;
+    reason: string;
+    date: string;
+}
+
+interface RecoveryState {
+    // State
+    score: number;
+    history: ScoreHistoryEntry[];
+    lastSoberMilestone: number;
+    lastLoggingMilestone: number;
+    // Actions
+    setScore: (scoreOrUpdater: number | ((prev: number) => number)) => void;
+    setHistory: (historyOrUpdater: ScoreHistoryEntry[] | ((prev: ScoreHistoryEntry[]) => ScoreHistoryEntry[])) => void;
+    setLastSoberMilestone: (val: number) => void;
+    setLastLoggingMilestone: (val: number) => void;
+}
+
+// ----------------------------------------------------------------
+// Legacy migration (runs once on import)
+// ----------------------------------------------------------------
+
+const migrateLegacyScore = (): void => {
     if (typeof window !== 'undefined' && !window.localStorage.getItem('mv2_recovery_store')) {
-        const getLegacy = (key, defaultVal) => {
+        const getLegacy = <T>(key: string, defaultVal: T): T => {
             try {
                 const item = window.localStorage.getItem(key);
-                return item ? JSON.parse(item) : defaultVal;
+                return item ? (JSON.parse(item) as T) : defaultVal;
             } catch {
                 return defaultVal;
             }
         };
 
         const legacyState = {
-            score: getLegacy('mv2_score', 0),
-            history: getLegacy('mv2_score_history', [])
+            score: getLegacy<number>('mv2_score', 0),
+            history: getLegacy<ScoreHistoryEntry[]>('mv2_score_history', [])
         };
 
         const wrapped = { state: legacyState, version: 0 };
@@ -24,7 +52,11 @@ const migrateLegacyScore = () => {
 
 migrateLegacyScore();
 
-export const useRecoveryStore = create(
+// ----------------------------------------------------------------
+// Store
+// ----------------------------------------------------------------
+
+export const useRecoveryStore = create<RecoveryState>()(
     persist(
         (set) => ({
             score: 0,

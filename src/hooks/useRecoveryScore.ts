@@ -1,7 +1,55 @@
 import { useRecoveryStore } from '../store/useRecoveryStore';
 
+// ----------------------------------------------------------------
+// Types
+// ----------------------------------------------------------------
+
+interface LevelInfo {
+    level: number;
+    title: string;
+    minPoints: number;
+}
+
+interface ScoreHistoryEntry {
+    id: string;
+    amount: number;
+    reason: string;
+    date: string;
+}
+
+type PointsMap = {
+    SOBER_DAY: number;
+    CRAVING_RESISTED: number;
+    JOURNAL_ENTRY: number;
+    BREATHING_EXERCISE: number;
+    DAILY_CHALLENGE: number;
+    CRISIS_PLAN_COMPLETE: number;
+    GOAL_SET: number;
+    GOAL_COMPLETE: number;
+    KNOWLEDGE_COMPLETE: number;
+    CRAVING_LOGGED_ONLY: number;
+    RELAPSE_HONESTY: number;
+    STREAK_3_DAYS: number;
+    STREAK_7_DAYS: number;
+    STREAK_30_DAYS: number;
+};
+
+interface RecoveryScoreResult {
+    points: number;
+    level: number;
+    title: string;
+    progressToNext: number;
+    nextLevelPoints: number | null;
+    addPoints: (amount: number, reason: string) => void;
+    history: ScoreHistoryEntry[];
+}
+
+// ----------------------------------------------------------------
+// Constants
+// ----------------------------------------------------------------
+
 // Level thresholds
-const LEVELS = [
+const LEVELS: LevelInfo[] = [
     { level: 1, title: 'Stuegris 🛋️', minPoints: 0 },
     { level: 2, title: 'Garasjeridder 👟', minPoints: 500 },
     { level: 3, title: "Kaffekoker'n ☕", minPoints: 2000 },
@@ -17,7 +65,7 @@ const LEVELS = [
 ];
 
 // Point values for actions
-export const POINTS = {
+export const POINTS: PointsMap = {
     SOBER_DAY: 50,
     CRAVING_RESISTED: 100,
     JOURNAL_ENTRY: 30,
@@ -38,7 +86,7 @@ export const POINTS = {
 /**
  * Hook to manage Recovery Score and Levels
  */
-export function useRecoveryScore() {
+export function useRecoveryScore(): RecoveryScoreResult {
     // Current total points
     const { score: points, setScore: setPoints, history, setHistory } = useRecoveryStore();
 
@@ -58,13 +106,13 @@ export function useRecoveryScore() {
 
     /**
      * Add points for an action
-     * @param {number} amount - Amount of points to add
-     * @param {string} reason - Description of why points were added
+     * @param amount - Amount of points to add
+     * @param reason - Description of why points were added
      */
-    const addPoints = (amount, reason) => {
+    const addPoints = (amount: number, reason: string): void => {
         setPoints(prev => prev + amount);
 
-        const transaction = {
+        const transaction: ScoreHistoryEntry = {
             id: Date.now().toString(),
             amount,
             reason,
