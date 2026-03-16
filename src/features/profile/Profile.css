@@ -269,3 +269,126 @@ input:checked+.toggle-slider:before {
 .time-input:focus {
     border-color: var(--primary);
 }
+
+/* --- Profile Edit Mode --- */
+.profile-hero {
+    position: relative;
+}
+
+.profile-edit-btn {
+    margin-left: auto;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: var(--radius-full);
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.15s;
+    align-self: flex-start;
+    backdrop-filter: blur(6px);
+}
+
+.profile-edit-btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: scale(1.1);
+}
+
+.profile-edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    flex: 1;
+}
+
+.profile-edit-input {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    border-radius: var(--radius-md);
+    padding: var(--space-2) var(--space-3);
+    color: white;
+    font-size: 0.95rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.profile-edit-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.profile-edit-input:focus {
+    border-color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.22);
+}
+
+/* color-scheme fix so date picker shows correct text on dark*/
+.profile-edit-input[type="date"] {
+    color-scheme: dark;
+}
+
+.profile-edit-textarea {
+    background: var(--bg-body);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-2) var(--space-3);
+    color: var(--text-main);
+    font-size: 0.9rem;
+    font-family: inherit;
+    outline: none;
+    resize: vertical;
+    transition: border-color 0.2s;
+    line-height: 1.6;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.profile-edit-textarea:focus {
+    border-color: var(--primary);
+}
+
+.profile-edit-actions {
+    display: flex;
+    gap: var(--space-2);
+    margin-top: var(--space-1);
+}
+
+.profile-edit-save-btn {
+    background: rgba(255, 255, 255, 0.9);
+    color: hsl(210, 70%, 35%);
+    border: none;
+    border-radius: var(--radius-md);
+    padding: var(--space-2) var(--space-4);
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    font-family: inherit;
+}
+
+.profile-edit-save-btn:hover {
+    background: white;
+    transform: translateY(-1px);
+}
+
+.profile-edit-cancel-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-md);
+    padding: var(--space-2) var(--space-3);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: inherit;
+}
+
+.profile-edit-cancel-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
