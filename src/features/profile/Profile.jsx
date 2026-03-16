@@ -10,17 +10,32 @@ import Card from '../../components/ui/Card';
 import { showToast } from '../../components/ui/ToastUtils';
 import { useNotificationStore } from '../../store/useNotificationStore';
 import { useNotifications } from '../../hooks/useNotifications';
+import {
+    SUBSTANCE_LABELS,
+    REASON_LABELS,
+    DURATION_LABELS,
+    TREATMENT_HISTORY_LABELS,
+    GOAL_LABELS,
+    translate,
+    translateAll,
+} from '../../utils/translations';
 import './Profile.css';
 
 export default function Profile() {
     const { points, level, title, progressToNext, nextLevelPoints } = useRecoveryScore();
-    const { user, theme, toggleTheme } = useAppStore();
+    const { user, theme, toggleTheme, updateUser } = useAppStore();
     const { getEvents, getJournalEntries } = useTimeline();
     const { goals } = useGoals();
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
     const [pinEnabled, setPinEnabled] = useState(() => !!localStorage.getItem('mv2_pin'));
     const [showPinSetup, setShowPinSetup] = useState(false);
     const [newPin, setNewPin] = useState('');
+
+    // Edit mode state
+    const [isEditing, setIsEditing] = useState(false);
+    const [editName, setEditName] = useState('');
+    const [editStartDate, setEditStartDate] = useState('');
+    const [editMotivation, setEditMotivation] = useState('');
 
     const {
         dailyReminderEnabled,
@@ -31,6 +46,28 @@ export default function Profile() {
     const { permissionStatus, requestPermissions } = useNotifications();
 
     const daysSober = user?.startDate ? daysBetween(user.startDate) : 0;
+
+    // --- Edit mode handlers ---
+    const handleEditClick = () => {
+        setEditName(user?.name || '');
+        setEditStartDate(user?.startDate || '');
+        setEditMotivation(user?.motivation || '');
+        setIsEditing(true);
+    };
+
+    const handleSaveEdit = () => {
+        updateUser({
+            name: editName.trim() || user?.name,
+            startDate: editStartDate || user?.startDate,
+            motivation: editMotivation,
+        });
+        setIsEditing(false);
+        showToast('Profil oppdatert! ✅', 'success');
+    };
+
+    const handleCancelEdit = () => {
+        setIsEditing(false);
+    };
 
     // Export data
     const handleExport = () => {
@@ -65,11 +102,8 @@ export default function Profile() {
                 if (data.user) localStorage.setItem('mv2_user', data.user);
                 if (data.spending) localStorage.setItem('mv2_spending', data.spending);
                 if (data.timeline) localStorage.setItem('mv2_timeline', data.timeline);
-
-                // Legacy support if they import an old backup
                 if (data.events) localStorage.setItem('mv2_events', data.events);
                 if (data.journal) localStorage.setItem('mv2_journal', data.journal);
-
                 if (data.goals) localStorage.setItem('mv2_goals', data.goals);
                 if (data.score) localStorage.setItem('mv2_recovery_score', data.score);
                 if (data.readArticles) localStorage.setItem('mv2_read_articles', data.readArticles);
@@ -132,16 +166,49 @@ export default function Profile() {
                     <span>{user?.name?.[0]?.toUpperCase() || '👤'}</span>
                 </div>
                 <div className="profile-info">
-                    <h2 className="profile-name">{user?.name || 'Min Vei-bruker'}</h2>
-                    <p className="profile-subtitle">
-                        Nivå {level}: {title} · {points.toLocaleString('nb-NO')} poeng
-                    </p>
-                    {user?.startDate && (
-                        <p className="profile-start">
-                            Startdato: {formatDateNO(user.startDate)} · {daysSober} dager
-                        </p>
+                    {isEditing ? (
+                        <div className="profile-edit-form">
+                            <input
+                                className="profile-edit-input"
+                                value={editName}
+                                onChange={e => setEditName(e.target.value)}
+                                placeholder="Ditt navn"
+                                autoFocus
+                            />
+                            <input
+                                className="profile-edit-input"
+                                type="date"
+                                value={editStartDate}
+                                onChange={e => setEditStartDate(e.target.value)}
+                            />
+                            <div className="profile-edit-actions">
+                                <button className="profile-edit-save-btn" onClick={handleSaveEdit}>
+                                    ✅ Lagre
+                                </button>
+                                <button className="profile-edit-cancel-btn" onClick={handleCancelEdit}>
+                                    Avbryt
+                                </button>
+                            </div>
+                        </div>
+                    ) : (
+                        <>
+                            <h2 className="profile-name">{user?.name || 'Min Vei-bruker'}</h2>
+                            <p className="profile-subtitle">
+                                Nivå {level}: {title} · {points.toLocaleString('nb-NO')} poeng
+                            </p>
+                            {user?.startDate && (
+                                <p className="profile-start">
+                                    Startdato: {formatDateNO(user.startDate)} · {daysSober} dager
+                                </p>
+                            )}
+                        </>
                     )}
                 </div>
+                {!isEditing && (
+                    <button className="profile-edit-btn" onClick={handleEditClick} title="Rediger profil">
+                        ✏️
+                    </button>
+                )}
             </div>
 
             {/* LEVEL PROGRESS */}
@@ -163,17 +230,16 @@ export default function Profile() {
                     <div className="profile-detail-group">
                         <span className="detail-label">🎯 Mitt mål:</span>
                         <p className="detail-value">
-                            {user?.goal === 'total_abstinence' ? 'Total avholdenhet' :
-                                user?.goal === 'reduction' ? 'Redusert bruk' :
-                                    user?.goal === 'harm_reduction' ? 'Skadereduksjon' :
-                                        user?.goal || 'Ikke angitt'}
+                            {user?.goal ? translate(GOAL_LABELS, user.goal) : 'Ikke angitt'}
                         </p>
                     </div>
                     <div className="profile-detail-group">
                         <span className="detail-label">💊 Mine utfordringer (rusmidler):</span>
                         <div className="detail-tags">
                             {user?.substances?.length > 0 ? (
-                                user.substances.map(s => <span key={s} className="tag">{s}</span>)
+                                translateAll(SUBSTANCE_LABELS, user.substances).map((label, i) => (
+                                    <span key={user.substances[i]} className="tag">{label}</span>
+                                ))
                             ) : (
                                 <span className="text-muted">Ikke angitt</span>
                             )}
@@ -183,7 +249,9 @@ export default function Profile() {
                         <span className="detail-label">❤️ Grunner for endring:</span>
                         <div className="detail-tags">
                             {user?.reasons?.length > 0 ? (
-                                user.reasons.map(r => <span key={r} className="tag">{r}</span>)
+                                translateAll(REASON_LABELS, user.reasons).map((label, i) => (
+                                    <span key={user.reasons[i]} className="tag">{label}</span>
+                                ))
                             ) : (
                                 <span className="text-muted">Ikke angitt</span>
                             )}
@@ -191,15 +259,29 @@ export default function Profile() {
                     </div>
                     <div className="profile-detail-group">
                         <span className="detail-label">⏳ Varighet av bruk:</span>
-                        <p className="detail-value">{user?.duration || 'Ikke angitt'}</p>
+                        <p className="detail-value">
+                            {user?.duration ? translate(DURATION_LABELS, user.duration) : 'Ikke angitt'}
+                        </p>
                     </div>
                     <div className="profile-detail-group">
                         <span className="detail-label">🏥 Behandlingshistorikk:</span>
-                        <p className="detail-value">{user?.treatmentHistory || 'Ikke angitt'}</p>
+                        <p className="detail-value">
+                            {user?.treatmentHistory ? translate(TREATMENT_HISTORY_LABELS, user.treatmentHistory) : 'Ikke angitt'}
+                        </p>
                     </div>
                     <div className="profile-detail-group">
                         <span className="detail-label">💪 Motivasjon:</span>
-                        <p className="detail-value">{user?.motivation || 'Ikke angitt'}</p>
+                        {isEditing ? (
+                            <textarea
+                                className="profile-edit-textarea"
+                                value={editMotivation}
+                                onChange={e => setEditMotivation(e.target.value)}
+                                placeholder="Hva motiverer deg?"
+                                rows={3}
+                            />
+                        ) : (
+                            <p className="detail-value">{user?.motivation || 'Ikke angitt'}</p>
+                        )}
                     </div>
                 </div>
             </Card>

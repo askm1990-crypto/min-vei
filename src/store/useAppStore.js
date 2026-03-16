@@ -52,6 +52,7 @@ export const useAppStore = create(
             // Actions - Persisted
             setConsent: (consent) => set({ consent }),
             setUser: (user) => set({ user }),
+            updateUser: (updates) => set((state) => ({ user: { ...state.user, ...updates } })),
             setSpending: (spending) => set({ spending }),
             setDisclaimerVisible: (disclaimerVisible) => set({ disclaimerVisible }),
             setGuideSeen: (guideSeen) => set({ guideSeen }),
