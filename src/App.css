@@ -1,6 +1,7 @@
 /* App layout & view styles */
 .app-container {
   display: flex;
+  height: 100vh;
   height: 100dvh;
   overflow: hidden;
   position: relative;

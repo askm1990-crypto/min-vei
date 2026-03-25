@@ -9,7 +9,7 @@ const migrateLegacyArray = (key, stateKey) => {
                 const parsed = JSON.parse(legacy);
                 const wrapped = { state: { [stateKey]: parsed }, version: 0 };
                 window.localStorage.setItem(key, JSON.stringify(wrapped));
-            } catch (e) { }
+            } catch { /* ignore parse errors */ }
         }
     }
 };

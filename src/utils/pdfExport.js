@@ -52,7 +52,7 @@ function tl(map, key) {
     return map[key] || key;
 }
 
-function tlArr(map, arr) {
+function _TlArr(map, arr) {
     if (!arr || arr.length === 0) return '–';
     return arr.map(k => map[k] || k).join(', ');
 }
@@ -88,7 +88,7 @@ function buildPieChart(freq, palette) {
     let svgSlices = '';
     let cumulativeFrac = 0;
 
-    entries.forEach(([label, count], i) => {
+    entries.forEach(([, count], i) => {
         const frac = count / total;
         const dasharray = (frac * CIRCUM).toFixed(2);
         const dashoffset = (-(cumulativeFrac * CIRCUM)).toFixed(2);
