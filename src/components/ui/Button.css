@@ -1,21 +1,27 @@
-/* Button styles */
+/* Button styles — Frosted Glass redesign */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: var(--space-2);
     padding: 12px var(--space-6);
-    border-radius: var(--radius-md);
-    font-size: 0.95rem;
+    border-radius: var(--radius-full);     /* Pill shape */
+    font-size: 0.925rem;
     font-weight: 600;
+    font-family: var(--font-sans);
     cursor: pointer;
     border: none;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     letter-spacing: 0.01em;
+    transition:
+        transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1),
+        box-shadow 0.25s cubic-bezier(0.25, 0.8, 0.25, 1),
+        filter 0.2s ease,
+        background 0.2s ease;
+    white-space: nowrap;
 }
 
 .btn:disabled {
-    opacity: 0.5;
+    opacity: 0.45;
     cursor: not-allowed;
 }
 
@@ -25,40 +31,42 @@
 }
 
 .btn__icon svg {
-    width: 18px;
-    height: 18px;
+    width: 17px;
+    height: 17px;
     stroke: currentColor;
 }
 
-/* Primary */
+/* ─── Primary ── Solid indigo pill ── */
 .btn--primary {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     color: var(--primary-fg);
-    box-shadow: 0 4px 14px var(--primary-glow);
+    box-shadow: 0 4px 16px var(--primary-glow);
 }
 
 .btn--primary:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px var(--primary-glow);
-    filter: brightness(1.05);
+    box-shadow: 0 8px 24px var(--primary-glow);
+    filter: brightness(1.06);
 }
 
 .btn--primary:active:not(:disabled) {
     transform: translateY(1px) scale(0.98);
+    box-shadow: 0 2px 8px var(--primary-glow);
 }
 
-/* Secondary */
+/* ─── Secondary ── Frosted glass pill ── */
 .btn--secondary {
-    background: var(--bg-card);
-    color: var(--text-main);
-    border: 1px solid var(--border);
+    background: var(--glass-bg);
+    color: var(--primary);
+    border: 1px solid var(--glass-border);
     box-shadow: var(--shadow-card);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
 }
 
 .btn--secondary:hover:not(:disabled) {
-    background: var(--bg-hover);
-    color: var(--primary);
-    border-color: var(--primary-light);
+    background: rgba(var(--primary-rgb), 0.08);
+    border-color: rgba(var(--primary-rgb), 0.25);
     transform: translateY(-2px);
     box-shadow: var(--shadow-card-hover);
 }
@@ -67,24 +75,26 @@
     transform: translateY(1px) scale(0.98);
 }
 
-/* Icon button */
+/* ─── Icon button ── */
 .btn--icon {
     width: 40px;
     height: 40px;
     padding: 0;
-    background: var(--bg-card);
+    background: var(--glass-bg);
     color: var(--text-muted);
-    border: 1px solid var(--border);
+    border: 1px solid var(--glass-border);
     flex-shrink: 0;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-card);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
 }
 
 .btn--icon:hover:not(:disabled) {
-    background: var(--bg-hover);
+    background: rgba(var(--primary-rgb), 0.08);
     color: var(--primary);
     transform: scale(1.08) translateY(-2px);
-    border-color: var(--primary-light);
+    border-color: rgba(var(--primary-rgb), 0.2);
     box-shadow: var(--shadow-card-hover);
 }
 
@@ -92,11 +102,10 @@
     transform: scale(0.95);
 }
 
-/* Sizes */
+/* ─── Sizes ── */
 .btn--small {
     padding: 8px var(--space-4);
-    font-size: 0.85rem;
-    border-radius: var(--radius-sm);
+    font-size: 0.825rem;
 }
 
 .btn--small.btn--icon {
@@ -104,7 +113,7 @@
     height: 32px;
 }
 
-/* Modifiers */
+/* ─── Modifiers ── */
 .btn--wide {
     width: 100%;
 }
@@ -121,4 +130,5 @@
 .btn--danger.btn--primary {
     background: var(--danger);
     color: white;
+    box-shadow: 0 4px 16px rgba(239, 68, 68, 0.28);
 }

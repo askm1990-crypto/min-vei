@@ -1,65 +1,87 @@
-/* Card styles */
+/* Card styles — Frosted Glass redesign */
 .card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
     border-radius: var(--radius-lg);
-    /* Mer avrundede hjørner */
     padding: var(--space-6);
-    box-shadow: var(--shadow-card);
-    transition: box-shadow var(--transition-spring), transform var(--transition-spring), border-color var(--transition-spring);
+    box-shadow: var(--shadow-glass);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    transition:
+        box-shadow var(--transition-spring),
+        transform var(--transition-spring),
+        border-color var(--transition);
     position: relative;
     overflow: hidden;
+}
+
+/* Subtle inner shimmer */
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.35) 0%,
+        rgba(255, 255, 255, 0.00) 60%
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+.card > * {
+    position: relative;
+    z-index: 1;
 }
 
 @media (max-width: 600px) {
     .card {
         padding: var(--space-4);
+        border-radius: var(--radius-md);
     }
 }
 
+/* Hoverable variant */
 .card--hoverable {
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .card--hoverable:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-    transform: translateY(-4px);
-    /* Tydeligere "løft" */
-    border-color: rgba(15, 159, 145, 0.3);
-    /* Hint av primary i border ved hover */
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: rgba(var(--primary-rgb), 0.25);
 }
 
-/* Tactile feedback on press */
 .card--hoverable:active {
-    transform: translateY(1px) scale(0.98);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transform: translateY(1px) scale(0.99);
+    box-shadow: var(--shadow-card);
 }
 
-/* Subtle gradient overlay for Premium look */
-.card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 50%);
-    pointer-events: none;
-    opacity: 0.5;
+/* Solid variant (no glass blur, for mobile perf or content-heavy areas) */
+.card--solid {
+    background: var(--bg-card-solid);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-color: var(--border);
+    box-shadow: var(--shadow-card);
 }
 
-body.dark-mode .card {
-    background: var(--bg-card);
-    /* Sikre at denne treffer */
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+/* Hero card (indigo gradient) */
+.card--hero {
+    background: var(--hero-gradient);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
 }
 
-body.dark-mode .card::before {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 50%);
+.card--hero::before {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0.00) 60%
+    );
 }
 
+/* Card header */
 .card__header {
     display: flex;
     align-items: center;
@@ -67,11 +89,24 @@ body.dark-mode .card::before {
     margin-bottom: var(--space-4);
     position: relative;
     z-index: 1;
-    /* For å havne over before-background */
 }
 
 .card__header h3 {
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-size: 1.05rem;
+    font-weight: 600;
     letter-spacing: -0.01em;
+}
+
+/* Dark mode — slightly more opaque */
+body.dark-mode .card {
+    --glass-bg: rgba(22, 27, 44, 0.75);
+    --glass-border: rgba(129, 140, 248, 0.10);
+}
+
+body.dark-mode .card::before {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.04) 0%,
+        rgba(255, 255, 255, 0.00) 60%
+    );
 }

@@ -1,4 +1,4 @@
-/* Reset & base styles */
+/* Reset & base styles — Frosted Glass redesign */
 *,
 *::before,
 *::after {
@@ -19,19 +19,21 @@ body {
     height: 100dvh;
     overflow: hidden;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     overflow-wrap: break-word;
     transition: background var(--transition-slow), color var(--transition-slow);
+
+    /* Subtle background blobs for glass effect */
+    background-image:
+        radial-gradient(ellipse 60% 50% at 20% -10%, rgba(67, 82, 165, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 90% 110%, rgba(124, 58, 237, 0.07) 0%, transparent 60%);
+    background-attachment: fixed;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-sans);
     font-weight: 600;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.02em;
     line-height: 1.25;
     text-wrap: balance;
     color: var(--text-main);
@@ -59,12 +61,16 @@ select {
     font-family: inherit;
 }
 
-/* Scrollbar */
+/* Slim glass scrollbar */
 ::-webkit-scrollbar {
     width: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--border);
+    background: rgba(67, 82, 165, 0.18);
     border-radius: 99px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
 }
