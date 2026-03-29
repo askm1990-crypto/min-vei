@@ -1,99 +1,112 @@
 /*
-  Min Vei v2 — Design Tokens
-  All CSS custom properties in one place
+  Min Vei v2 — Design Tokens (Frosted Glass Redesign)
+  The Luminous Path — Indigo/Violet palette, glassmorphism, Lexend typography
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
+
 :root {
-  /* Brand — teal palette with cyan accents (Premium Vibe) */
-  --primary: #0f9f91;
-  --primary-light: #dcfce7;
-  --primary-dark: #0d8276;
-  --primary-fg: #ffffff;
-  --primary-glow: rgba(15, 159, 145, 0.25);
-  --accent: #0ea5e9;
-  --accent-light: #e0f2fe;
+  /* ─── Brand — Deep Indigo / Violet ─────────── */
+  --primary:           #4352a5;
+  --primary-light:     #dee0ff;
+  --primary-dark:      #2f3f92;
+  --primary-fg:        #ffffff;
+  --primary-glow:      rgba(67, 82, 165, 0.22);
+  --primary-rgb:       67, 82, 165;
 
-  /* Secondary /*/
-  --secondary: #fbbf24;
-  --secondary-light: #fef3c7;
-  --secondary-dark: #d97706;
+  --accent:            #7c3aed;         /* Vibrant violet accent */
+  --accent-light:      #ede9fe;
 
-  /* Mood colors */
+  /* Secondary — soft indigo tint */
+  --secondary:         #4c56af;
+  --secondary-light:   #e0e0ff;
+  --secondary-dark:    #343d96;
+
+  /* ─── Mood Colors ───────────────────────────── */
   --mood-1: hsl(0, 70%, 55%);
   --mood-2: hsl(25, 70%, 55%);
   --mood-3: hsl(45, 70%, 55%);
   --mood-4: hsl(140, 50%, 50%);
   --mood-5: hsl(160, 60%, 45%);
 
-  /* Special UI Elements */
-  --crisis-hero-bg: linear-gradient(135deg, hsl(0, 60%, 50%), hsl(20, 80%, 50%));
-  --breathing-bg: linear-gradient(135deg, hsl(210, 80%, 60%), hsl(210, 80%, 40%));
-  --breathing-glow: hsla(210, 80%, 50%, 0.3);
+  /* ─── Special UI ────────────────────────────── */
+  --crisis-hero-bg:   linear-gradient(135deg, hsl(0, 60%, 50%), hsl(20, 80%, 50%));
+  --breathing-bg:     linear-gradient(135deg, hsl(240, 80%, 60%), hsl(260, 80%, 50%));
+  --breathing-glow:   hsla(250, 80%, 60%, 0.3);
 
+  /* ─── Hero Gradient (for Dashboard hero card) ─ */
+  --hero-gradient:    linear-gradient(135deg, #4352a5 0%, #5c6bc0 50%, #7c3aed 100%);
 
-  /* For gradient usage */
-  --primary-rgb: 15, 159, 145;
+  /* ─── Surfaces ──────────────────────────────── */
+  --bg-body:          #f7fafd;          /* Lightest blue-white */
+  --bg-card:          rgba(255, 255, 255, 0.72);
+  --bg-card-solid:    #ffffff;
+  --bg-sidebar:       rgba(255, 255, 255, 0.82);
+  --bg-input:         #f1f4f7;
+  --bg-hover:         rgba(67, 82, 165, 0.06);
 
-  /* Surfaces - very clean */
-  --bg-body: #f8fafc;
-  --bg-card: #ffffff;
-  --bg-sidebar: #ffffff;
-  --bg-input: #f1f5f9;
-  --bg-hover: #f0fdf4;
+  /* Glass material */
+  --glass-bg:         rgba(255, 255, 255, 0.65);
+  --glass-border:     rgba(255, 255, 255, 0.5);
+  --glass-blur:       blur(20px) saturate(180%);
 
-  /* Borders */
-  --border: #e2e8f0;
-  --border-focus: #0f9f91;
+  /* ─── Borders ───────────────────────────────── */
+  --border:           rgba(198, 197, 211, 0.5);
+  --border-focus:     #4352a5;
+  --border-glass:     rgba(255, 255, 255, 0.5);
 
-  /* Text */
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --text-light: #94a3b8;
-  --text-invert: #ffffff;
+  /* ─── Text ──────────────────────────────────── */
+  --text-main:        #181c1e;
+  --text-muted:       #454651;
+  --text-light:       #767683;
+  --text-invert:      #ffffff;
 
-  /* Semantic */
-  --success: #10b981;
-  --success-light: #d1fae5;
-  --warning: #f59e0b;
-  --warning-light: #fef3c7;
-  --danger: #ef4444;
-  --danger-light: #fee2e2;
-  --info: #3b82f6;
-  --info-light: #dbeafe;
+  /* ─── Semantic ──────────────────────────────── */
+  --success:          #10b981;
+  --success-light:    #d1fae5;
+  --warning:          #f59e0b;
+  --warning-light:    #fef3c7;
+  --danger:           #ef4444;
+  --danger-light:     #fee2e2;
+  --info:             #3b82f6;
+  --info-light:       #dbeafe;
 
-  /* Geometry - softer and friendlier */
-  --radius-xs: 8px;
-  --radius-sm: 12px;
-  --radius-md: 18px;
-  --radius-lg: 24px;
-  --radius-xl: 32px;
+  /* ─── Geometry ──────────────────────────────── */
+  --radius-xs:  8px;
+  --radius-sm:  12px;
+  --radius-md:  16px;
+  --radius-lg:  22px;
+  --radius-xl:  28px;
+  --radius-2xl: 36px;
   --radius-full: 9999px;
 
-  /* Spacing */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 20px;
-  --space-6: 24px;
-  --space-8: 32px;
+  /* ─── Spacing ───────────────────────────────── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
   --space-10: 40px;
   --space-12: 48px;
 
-  /* Typography */
-  --font-sans: 'Outfit', 'Inter', system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, sans-serif;
+  /* ─── Typography ────────────────────────────── */
+  --font-sans: 'Lexend', 'Inter', system-ui, sans-serif;
+  --font-body: 'Lexend', 'Inter', system-ui, sans-serif;
 
-  /* Shadows - Premium, soft and deep */
-  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.01);
-  --shadow-card-hover: 0 10px 40px rgba(15, 159, 145, 0.12), 0 4px 12px rgba(15, 159, 145, 0.06);
+  /* ─── Shadows — Ambient "cloud" shadows ─────── */
+  --shadow-card:       0 2px 12px rgba(24, 28, 30, 0.05), 0 1px 3px rgba(24, 28, 30, 0.04);
+  --shadow-card-hover: 0 12px 40px rgba(67, 82, 165, 0.14), 0 4px 12px rgba(67, 82, 165, 0.08);
+  --shadow-glass:      0 8px 32px rgba(24, 28, 30, 0.08);
+  --shadow-nav:        0 -4px 24px rgba(24, 28, 30, 0.06);
 
-  /* Sidebar */
-  --sidebar-w: 240px;
+  /* ─── Layout ─────────────────────────────────── */
+  --sidebar-w:        240px;
   --sidebar-w-mobile: 64px;
 
-  /* Transitions */
-  --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* ─── Transitions ───────────────────────────── */
+  --transition:        200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow:   400ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-spring: 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
