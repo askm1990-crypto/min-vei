@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useNotificationStore } from '../store/useNotificationStore';
 
 export function useNotifications() {
@@ -11,7 +11,7 @@ export function useNotifications() {
         setShowInAppBanner,
     } = useNotificationStore();
 
-    const requestPermissions = async () => {
+    const requestPermissions = useCallback(async () => {
         if (!('Notification' in window)) {
             console.warn('Denne nettleseren støtter ikke skrivebordsvarsler.');
             return;
@@ -24,9 +24,9 @@ export function useNotifications() {
             console.error('Feil ved forespørsel om varslingstillatelse:', error);
             // Ignore error, fallback to in-app banner is handled naturally
         }
-    };
+    }, [setPermissionsGranted]);
 
-    const checkAndShowDailyReminder = () => {
+    const checkAndShowDailyReminder = useCallback(() => {
         if (!dailyReminderEnabled) return;
 
         const now = new Date();
@@ -61,7 +61,7 @@ export function useNotifications() {
             // Fallback: Show In-App Banner
             setShowInAppBanner(true);
         }
-    };
+    }, [dailyReminderEnabled, dailyReminderTime, lastInAppBannerShownDate, setShowInAppBanner]);
 
     return {
         permissionStatus: permissionsGranted ? 'granted' : ('Notification' in window ? Notification.permission : 'unsupported'),
