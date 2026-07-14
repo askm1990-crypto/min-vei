@@ -1,15 +1,15 @@
 import Button from '../../components/ui/Button';
 
 const SUBSTANCES = [
-    { id: 'alcohol', icon: '🍺', label: 'Alkohol' },
-    { id: 'cannabis', icon: '🌿', label: 'Cannabis' },
-    { id: 'stimulants', icon: '⚡', label: 'Stimulanter', sub: '(Amfetamin, Kokain)' },
-    { id: 'opioids', icon: '💊', label: 'Opioider', sub: '(Heroin, Piller)' },
-    { id: 'sedatives', icon: '😴', label: 'Beroligende', sub: '(Benzo)' },
-    { id: 'hallucinogens', icon: '🍄', label: 'Hallusinogener', sub: '(LSD, Fleinsopp)' },
-    { id: 'ghb', icon: '💧', label: 'GHB/GBL' },
-    { id: 'steroids', icon: '💪', label: 'Anabole steroider' },
-    { id: 'other', icon: '❓', label: 'Annet' },
+    { id: 'alcohol', label: 'Alkohol' },
+    { id: 'cannabis', label: 'Cannabis' },
+    { id: 'stimulants', label: 'Stimulanter', sub: 'Amfetamin, kokain' },
+    { id: 'opioids', label: 'Opioider', sub: 'Heroin, smertestillende' },
+    { id: 'sedatives', label: 'Beroligende', sub: 'Benzodiazepiner' },
+    { id: 'hallucinogens', label: 'Hallusinogener' },
+    { id: 'ghb', label: 'GHB/GBL' },
+    { id: 'steroids', label: 'Anabole steroider' },
+    { id: 'other', label: 'Annet' },
 ];
 
 export default function StepSubstances({ data, updateData, onNext, onPrev }) {
@@ -23,22 +23,24 @@ export default function StepSubstances({ data, updateData, onNext, onPrev }) {
 
     return (
         <div className="step">
-            <h2 className="step__title">Hva er din hovedutfordring?</h2>
+            <span className="step__eyebrow">Steg 3 av 4</span>
+            <h2 className="step__title">Hva vil du ha støtte til?</h2>
             <p className="step__subtitle">
-                Velg de rusmidlene som er mest relevante for din tilfriskning.
+                Velg det som er relevant, eller hopp over. Valgene brukes til å tilpasse registreringene dine.
             </p>
 
-            <div className="selection-grid">
+            <div className="selection-grid" aria-label="Områder du ønsker støtte til">
                 {SUBSTANCES.map(s => (
-                    <div
+                    <button
+                        type="button"
                         key={s.id}
                         className={`selection-card ${data.substances.includes(s.id) ? 'selected' : ''}`}
                         onClick={() => toggle(s.id)}
+                        aria-pressed={data.substances.includes(s.id)}
                     >
-                        <span className="selection-card__icon">{s.icon}</span>
                         <span className="selection-card__label">{s.label}</span>
                         {s.sub && <span className="selection-card__sub">{s.sub}</span>}
-                    </div>
+                    </button>
                 ))}
             </div>
 
@@ -61,8 +63,8 @@ export default function StepSubstances({ data, updateData, onNext, onPrev }) {
 
             <div className="step__actions">
                 <Button variant="secondary" onClick={onPrev}>Tilbake</Button>
-                <Button variant="primary" onClick={onNext} disabled={data.substances.length === 0}>
-                    Neste
+                <Button variant="primary" onClick={onNext}>
+                    {data.substances.length > 0 ? 'Fortsett' : 'Hopp over'}
                 </Button>
             </div>
         </div>

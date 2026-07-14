@@ -1,445 +1,270 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useRecoveryScore, POINTS } from '../../hooks/useRecoveryScore';
 import { useTimeline } from '../../hooks/useTimeline';
 import { useGoals } from '../../hooks/useGoals';
 import { useInsights } from '../../hooks/useInsights';
 import { useAppStore } from '../../store/useAppStore';
-import { useRecoveryStore } from '../../store/useRecoveryStore';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { daysBetween } from '../../utils/dateUtils';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
 import WeeklyActivity from '../../components/ui/WeeklyActivity';
 import InsightCards from '../../components/ui/InsightCards';
+import ReminderBanner from '../../components/ui/ReminderBanner';
+import { Icon } from '../../components/layout/Sidebar';
 import { showToast } from '../../components/ui/ToastUtils';
 import { getDailyChallenge } from '../../data/challenges';
 import MODULES from '../../data/modules.json';
-import ReminderBanner from '../../components/ui/ReminderBanner';
 import { useNotifications } from '../../hooks/useNotifications';
 import { useNotificationStore } from '../../store/useNotificationStore';
 import './Dashboard.css';
 
-// ── Helper: find the next module to read ─────────────────────────────────
 function getNextModule(progress) {
-    // Try in-progress first, then not-started unlocked
-    const unlocked = MODULES.filter(m => {
-        const required = m.requiredPreviousModules ||
-            (m.requiredPreviousModule ? [m.requiredPreviousModule] : []);
+    const unlocked = MODULES.filter(module => {
+        const required = module.requiredPreviousModules ||
+            (module.requiredPreviousModule ? [module.requiredPreviousModule] : []);
         return required.every(id => progress[id] === 'completed');
     });
-    const inProgress = unlocked.find(m => progress[m.id] === 'in-progress');
-    if (inProgress) return inProgress;
-    return unlocked.find(m => !progress[m.id] || progress[m.id] === 'not-started') || null;
+
+    return unlocked.find(module => progress[module.id] === 'in-progress') ||
+        unlocked.find(module => !progress[module.id] || progress[module.id] === 'not-started') ||
+        null;
 }
 
 export default function Dashboard({ onNavigate }) {
-    const { points, level, title, progressToNext, nextLevelPoints, addPoints } = useRecoveryScore();
-    const { getEvents, getJournalEntries, getMostCommonTrigger, getRecentEventTrend, getStreak, getMoodTrend } = useTimeline();
-
-    // We fetch these once to pass down
-    const events = getEvents();
-    const journalEntries = getJournalEntries();
-    const [moduleProgress] = useLocalStorage('mv2_module_progress', {});
-    const { user, spending } = useAppStore();
-    const [customTriggers] = useLocalStorage('mv2_custom_triggers', []);
-    const { goals } = useGoals();
+    const { addPoints } = useRecoveryScore();
     const {
-        lastSoberMilestone,
-        lastLoggingMilestone,
-        setLastSoberMilestone,
-        setLastLoggingMilestone
-    } = useRecoveryStore();
+        getEvents,
+        getJournalEntries,
+        getMostCommonTrigger,
+        getRecentEventTrend,
+        getMoodTrend
+    } = useTimeline();
+    const { goals } = useGoals();
+    const { user, spending } = useAppStore();
+    const [moduleProgress] = useLocalStorage('mv2_module_progress', {});
+    const [customTriggers] = useLocalStorage('mv2_custom_triggers', []);
+    const [challengeCompleted, setChallengeCompleted] = useLocalStorage('mv2_challenge_completed_date', null);
+    const [lastSoberPointDate, setLastSoberPointDate] = useLocalStorage('mv2_last_sober_point_date', null);
     const { checkAndShowDailyReminder } = useNotifications();
     const { showInAppBanner } = useNotificationStore();
 
-    // ── SOBRIETY CALCULATION ──────────────────────────────────
-    const usedEvents = events.filter(e => e.outcome === 'used');
+    const events = getEvents();
+    const journalEntries = getJournalEntries();
+    const usedEvents = events.filter(event => event.outcome === 'used');
     const lastRelapse = usedEvents.length > 0
-        ? usedEvents.reduce((prev, curr) => new Date(prev.date) > new Date(curr.date) ? prev : curr)
+        ? usedEvents.reduce((previous, current) =>
+            new Date(previous.date) > new Date(current.date) ? previous : current)
         : null;
-
-    // Current Streak (Visually "Rusfrie dager")
-    const currentSoberStreak = lastRelapse
+    const daysSober = lastRelapse
         ? daysBetween(lastRelapse.date)
         : (user?.startDate ? daysBetween(user.startDate) : 0);
-
-    // Total Savings Days (Cumulative, but freezing on relapse days)
     const totalDaysSinceStart = user?.startDate ? daysBetween(user.startDate) : 0;
-    const uniqueRelapseDates = new Set(usedEvents.map(e => new Date(e.date).toISOString().split('T')[0]));
-    const totalSoberDays = Math.max(0, totalDaysSinceStart - uniqueRelapseDates.size);
+    const relapseDates = new Set(usedEvents.map(event => new Date(event.date).toISOString().split('T')[0]));
+    const totalSoberDays = Math.max(0, totalDaysSinceStart - relapseDates.size);
+    const activityCount = events.length + journalEntries.length;
+    const hasActivity = activityCount > 0;
+    const today = getLocalDateString();
 
-    const daysSober = currentSoberStreak; // Use streak for display and insights
-    // ──────────────────────────────────────────────────────────
-
-    // AI Insights
-    const { insights } = useInsights({
-        events,
-        journalEntries,
-        goals,
-        user,
-        daysSober
-    });
-
-    // Daily challenge state
-    const [challengeCompleted, setChallengeCompleted] = useLocalStorage('mv2_challenge_completed_date', null);
-
-    // Track last date sober-day points were awarded
-    const [lastSoberPointDate, setLastSoberPointDate] = useLocalStorage('mv2_last_sober_point_date', null);
-
-    // Track level for level-up celebrations
-    const prevLevelRef = useRef(level);
-    const [showLevelUp, setShowLevelUp] = useState(false);
-
-    const todayStr = new Date().toISOString().split('T')[0];
-
-    // Auto-award sober-day points once per day on dashboard load
-    useEffect(() => {
-        if (!user?.startDate) return;
-        const daysSoberNow = daysBetween(user.startDate);
-        if (daysSoberNow > 0 && lastSoberPointDate !== todayStr) {
-            addPoints(POINTS.SOBER_DAY, `Rusfri dag #${daysSoberNow}`);
-            setLastSoberPointDate(todayStr);
-            showToast(`+${POINTS.SOBER_DAY} poeng for en ny rusfri dag! 🌟`, 'success');
-        }
-
-        // Also check if we should show a daily reminder
-        checkAndShowDailyReminder();
-    }, [todayStr, user?.startDate, lastSoberPointDate, addPoints, setLastSoberPointDate, checkAndShowDailyReminder]);
-
-    // Streak awarding logic
-    useEffect(() => {
-        const logStreak = getStreak();
-
-        // Check Sobriety Milestones
-        [3, 7, 30].forEach(milestone => {
-            if (currentSoberStreak >= milestone && lastSoberMilestone < milestone) {
-                addPoints(POINTS[`STREAK_${milestone}_DAYS`], `${milestone} dager rusfri! 🎉`);
-                showToast(`${milestone} dager rusfri! +${POINTS[`STREAK_${milestone}_DAYS`]} poeng 🎉`, 'success');
-                setLastSoberMilestone(milestone);
-            }
-        });
-
-        // Check Logging Milestones
-        [3, 7, 30].forEach(milestone => {
-            if (logStreak >= milestone && lastLoggingMilestone < milestone) {
-                addPoints(POINTS[`STREAK_${milestone}_DAYS`], `${milestone} dagers logg-streak! 🔥`);
-                showToast(`${milestone} dagers logg-streak! +${POINTS[`STREAK_${milestone}_DAYS`]} poeng 🔥`, 'success');
-                setLastLoggingMilestone(milestone);
-            }
-        });
-    }, [currentSoberStreak, getStreak, lastSoberMilestone, lastLoggingMilestone, setLastSoberMilestone, setLastLoggingMilestone, addPoints]);
-
-    // Detect level-up
-    useEffect(() => {
-        if (prevLevelRef.current < level) {
-            setTimeout(() => {
-                setShowLevelUp(true);
-                showToast(`🎉 Gratulerer! Du er nå Nivå ${level}: ${title}!`, 'success');
-                setTimeout(() => setShowLevelUp(false), 3000);
-            }, 0);
-        }
-        prevLevelRef.current = level;
-    }, [level, title]);
-
-    // Get user's known triggers from events + custom triggers
+    const { insights } = useInsights({ events, journalEntries, goals, user, daysSober });
     const knownTriggers = [...new Set([
         ...customTriggers,
-        ...events.flatMap(e => e.triggers || [])
+        ...events.flatMap(event => event.triggers || [])
     ])];
-
     const dailyChallenge = getDailyChallenge(knownTriggers);
+    const nextModule = getNextModule(moduleProgress);
+    const recentTrend = getRecentEventTrend();
+    const moodTrend = getMoodTrend(7);
+    const commonTrigger = getMostCommonTrigger();
+    const savedAmount = spending && user?.startDate
+        ? calculateSaved(spending.frequency, spending.amountPerTime, totalSoberDays)
+        : 0;
+
+    useEffect(() => {
+        if (user?.startDate && daysBetween(user.startDate) > 0 && lastSoberPointDate !== today) {
+            addPoints(POINTS.SOBER_DAY, 'Ny dag registrert');
+            setLastSoberPointDate(today);
+        }
+        checkAndShowDailyReminder();
+    }, [today, user?.startDate, lastSoberPointDate, addPoints, setLastSoberPointDate, checkAndShowDailyReminder]);
 
     const handleCompleteChallenge = () => {
-        if (!dailyChallenge || challengeCompleted === todayStr) return;
-
-        addPoints(dailyChallenge.points, `Fullført utfordring: ${dailyChallenge.text}`);
-        setChallengeCompleted(todayStr);
-        showToast(`Bra jobba! +${dailyChallenge.points} poeng 🎉`, 'success');
-
-        // Trigger generic confetti (could be replaced with a real canvas confetti later)
-        const emoji = document.createElement('div');
-        emoji.innerText = '🎊';
-        emoji.className = 'confetti-pop';
-        document.body.appendChild(emoji);
-        setTimeout(() => emoji.remove(), 2000);
+        if (!dailyChallenge || challengeCompleted === today) return;
+        addPoints(dailyChallenge.points, `Fullført fokus: ${dailyChallenge.text}`);
+        setChallengeCompleted(today);
+        showToast('Dagens fokus er markert som gjennomført.', 'success');
     };
-
-
-
-    // Calculate money saved (Using totalSoberDays to keep accumulated savings)
-    const savedAmount = spending && user?.startDate ? calculateSaved(spending.frequency, spending.amountPerTime, totalSoberDays) : 0;
 
     return (
         <div className="dashboard">
-            {/* IN-APP REMINDER BANNER */}
             {showInAppBanner && <ReminderBanner onNavigate={onNavigate} />}
 
-            {/* LEVEL-UP CELEBRATION */}
-            {showLevelUp && (
-                <div className="level-up-overlay">
-                    <div className="level-up-content">
-                        <span className="level-up-emoji">🎉</span>
-                        <h2>Nivå {level}!</h2>
-                        <p>{title}</p>
-                    </div>
-                </div>
-            )}
+            <header className="dashboard-welcome">
+                <span className="dashboard-eyebrow">Din dag</span>
+                <h2>Hva trenger du akkurat nå?</h2>
+                <p>Velg ett lite steg. Resten kan vente.</p>
+            </header>
 
-            {/* HERO: Gamification progress */}
-            <div className="hero-section">
-                <div className="hero-level">
-                    <span className="hero-level-icon">🏆</span>
-                    <div>
-                        <h2 className="hero-level-title">Nivå {level}: {title}</h2>
-                        <p className="hero-level-sub">{points.toLocaleString('nb-NO')} poeng totalt</p>
+            <div className="dashboard-primary-grid">
+                <Card className="checkin-card" hoverable={false}>
+                    <span className="card-eyebrow">Rask innsjekk</span>
+                    <h3>Ta et lite øyeblikk</h3>
+                    <p>Registrer en situasjon, eller åpne et verktøy som kan hjelpe her og nå.</p>
+                    <div className="dashboard-actions">
+                        <button type="button" className="dashboard-action" onClick={() => onNavigate('log-wizard')}>
+                            <span className="dashboard-action__icon"><Icon name="edit-3" /></span>
+                            <span><strong>Ny registrering</strong><small>Humør, sug eller hendelse</small></span>
+                        </button>
+                        <button type="button" className="dashboard-action" onClick={() => onNavigate('strategies')}>
+                            <span className="dashboard-action__icon"><Icon name="anchor" /></span>
+                            <span><strong>Finn ro</strong><small>Pust, grounding og mestring</small></span>
+                        </button>
                     </div>
-                </div>
+                </Card>
 
-                <div className="hero-progress-container">
-                    <div className="hero-progress-bar">
-                        <div
-                            className="hero-progress-fill"
-                            style={{ width: `${progressToNext}%` }}
-                        />
+                <Card className="today-card" hoverable={false}>
+                    <span className="card-eyebrow">Status</span>
+                    <div className="today-stat">
+                        <strong>{user?.startDate ? daysSober : '–'}</strong>
+                        <span>{user?.startDate ? 'dager siden startdato' : 'Legg til startdato under Profil'}</span>
                     </div>
-                    {nextLevelPoints && (
-                        <div className="hero-progress-text">
-                            <span>Nivå {level}</span>
-                            <span>Nivå {level + 1} ({nextLevelPoints.toLocaleString('nb-NO')} p)</span>
-                        </div>
+                    <div className="today-divider" />
+                    <div className="today-meta">
+                        <span><strong>{activityCount}</strong> registreringer</span>
+                        <span><strong>{goals.filter(goal => goal.status === 'active').length}</strong> aktive mål</span>
+                    </div>
+                    {!user?.startDate && (
+                        <Button variant="secondary" wide onClick={() => onNavigate('profile')}>Åpne profil</Button>
                     )}
-                </div>
+                </Card>
             </div>
 
-            {/* AI INSIGHTS */}
-            <InsightCards insights={insights} />
-
-            {/* NESTE MODUL FOCUS CARD */}
-            {(() => {
-                const next = getNextModule(moduleProgress);
-                if (!next) return null;
-                const completedCount = Object.values(moduleProgress).filter(v => v === 'completed').length;
-                const isInProgress = moduleProgress[next.id] === 'in-progress';
-                return (
-                    <Card className="next-module-card" hoverable={false}>
-                        <div className="next-module-card__inner">
-                            <div className="next-module-card__left">
-                                <span className="next-module-card__eyebrow">
-                                    {isInProgress ? '🔄 Fortsett der du slapp' : '📚 Neste i læringsreisen'}
-                                </span>
-                                <h3 className="next-module-card__title">{next.icon} {next.title}</h3>
-                                <p className="next-module-card__summary">{next.summary}</p>
-                                <div className="next-module-card__meta">
-                                    {next.readingTime && <span>📖 {next.readingTime}</span>}
-                                    <span>{completedCount} av {MODULES.length} fullført</span>
-                                </div>
-                            </div>
-                            <button
-                                className="next-module-card__cta"
-                                onClick={() => onNavigate('knowledge')}
-                            >
-                                {isInProgress ? 'Fortsett →' : 'Start →'}
-                            </button>
-                        </div>
-                        <div className="next-module-card__progress">
-                            <div
-                                className="next-module-card__progress-fill"
-                                style={{ width: `${(completedCount / MODULES.length) * 100}%` }}
-                            />
-                        </div>
-                    </Card>
-                );
-            })()}
-
-            <div className="dashboard-grid">
-
-                {/* DAILY CHALLENGE */}
-                {dailyChallenge && (
-                    <Card className="challenge-card" hoverable={false}>
-                        <div className="challenge-header">
-                            <h3>⚡ Dagens Utfordring</h3>
-                            {challengeCompleted === todayStr && <span className="challenge-badge">Fullført</span>}
-                        </div>
-                        <p className="challenge-text">"{dailyChallenge.text}"</p>
-
-                        {challengeCompleted !== todayStr ? (
-                            <Button
-                                variant="primary"
-                                wide
-                                onClick={handleCompleteChallenge}
-                                className="challenge-btn"
-                            >
-                                Fullfør for +{dailyChallenge.points} poeng 💰
-                            </Button>
-                        ) : (
-                            <p className="challenge-success">Poeng samlet! Kom tilbake i morgen for ny utfordring.</p>
-                        )}
-                    </Card>
-                )}
-
-                {/* QUICK ACTIONS */}
-                <Card header="Hurtigvalg (Samle poeng!)" className="quick-actions-card" hoverable={false}>
-                    <div className="quick-actions-grid">
-                        <button className="qa-btn" onClick={() => onNavigate('log-wizard')}>
-                            <span className="qa-icon">📝</span>
-                            <span className="qa-title">Ny Registrering</span>
-                            <span className="qa-points">Opp til +{POINTS.CRAVING_RESISTED + POINTS.JOURNAL_ENTRY}p</span>
-                        </button>
-                        <button className="qa-btn" onClick={() => onNavigate('strategies')}>
-                            <span className="qa-icon">🌬️</span>
-                            <span className="qa-title">Pusteøvelse</span>
-                            <span className="qa-points">+{POINTS.BREATHING_EXERCISE}p</span>
-                        </button>
+            {dailyChallenge && (
+                <Card className="focus-card" hoverable={false}>
+                    <div className="focus-card__content">
+                        <span className="card-eyebrow">Dagens fokus</span>
+                        <h3>{dailyChallenge.text}</h3>
+                        <p>Et forslag, ikke et krav. Velg det bare hvis det passer dagen din.</p>
                     </div>
-                </Card>
-
-                {/* STATS */}
-                <Card header="Din Status" className="stats-grid-wrapper" hoverable={false}>
-                    <div className="stats-grid">
-                        <div className="stat-box">
-                            <span className="stat-icon">🌟</span>
-                            <div className="stat-content">
-                                <strong>{daysSober} Dager</strong>
-                                <span>Rusfri (+{POINTS.SOBER_DAY}p / dag)</span>
-                            </div>
-                        </div>
-                        <div className="stat-box">
-                            <span className="stat-icon">🏆</span>
-                            <div className="stat-content">
-                                <strong>{points} poeng</strong>
-                                <span>Mestringspoeng</span>
-                            </div>
-                        </div>
-                    </div>
-                </Card>
-
-                {/* SAVINGS CALCULATOR */}
-                {spending && (
-                    <Card header="Sparekalkulator" className="savings-content-wrapper" hoverable={false}>
-                        <div className="savings-content">
-                            <span className="savings-icon">💰</span>
-                            <div className="savings-details">
-                                <strong>Du har spart ca. {savedAmount.toLocaleString('nb-NO')} kr</strong>
-                                <span>Tilsvarer {formatFrequency(spending.frequency)} à {spending.amountPerTime} kr</span>
-                            </div>
-                        </div>
-                    </Card>
-                )}
-
-                {/* CRISIS CTA */}
-                <Card className="crisis-cta-card" hoverable={false}>
-                    <div className="crisis-cta-content">
-                        <span className="crisis-icon">🛡️</span>
-                        <div>
-                            <h3>Klar for kriser?</h3>
-                            <p>Tjen <strong>+{POINTS.CRISIS_PLAN_COMPLETE} poeng</strong> og bli "Kriseklar" ved å fylle ut din sikkerhetsplan.</p>
-                        </div>
-                    </div>
-                    <Button variant="secondary" onClick={() => onNavigate('crisis')} style={{ marginTop: 'var(--space-3)' }}>
-                        Start nå
+                    <Button
+                        variant={challengeCompleted === today ? 'secondary' : 'primary'}
+                        onClick={handleCompleteChallenge}
+                        disabled={challengeCompleted === today}
+                    >
+                        {challengeCompleted === today ? 'Gjennomført' : 'Marker som gjort'}
                     </Button>
                 </Card>
+            )}
 
-                {/* DASHBOARD INSIGHTS (Triggers and Trends) */}
-                {events.length > 0 ? (
-                    <Card header="Ditt Mønster" className="recent-events-card" hoverable={false}>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
-                            {getMostCommonTrigger() && (
-                                <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--space-3)', background: 'var(--bg-body)', padding: 'var(--space-3)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
-                                    <span style={{ fontSize: '1.5rem', flexShrink: 0 }}>🎯</span>
-                                    <div>
-                                        <strong style={{ display: 'block', fontSize: '0.9rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Vanligste trigger</strong>
-                                        <span style={{ fontSize: '1.2rem', fontWeight: '600', color: 'var(--text-main)' }}>{getMostCommonTrigger()}</span>
-                                    </div>
-                                </div>
-                            )}
-                            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--space-3)', background: 'var(--bg-body)', padding: 'var(--space-3)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
-                                <span style={{ fontSize: '1.5rem', flexShrink: 0 }}>📈</span>
-                                <div>
-                                    <strong style={{ display: 'block', fontSize: '0.9rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Siste 7 dager</strong>
-                                    <span style={{ fontSize: '1.1rem', fontWeight: '500', color: 'var(--text-main)' }}>
-                                        {getRecentEventTrend().resisted} mestret / {getRecentEventTrend().used} ruset
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </Card>
-                ) : (
-                    <Card header="Siste Hendelser" className="recent-events-card" hoverable={false}>
-                        <div className="placeholder-content">
-                            <span className="placeholder-icon">📋</span>
-                            <p>Registrer din første hendelse for å se trender og din vanligste trigger.</p>
-                        </div>
-                    </Card>
-                )}
+            <aside className="support-strip" aria-label="Hjelp og sikkerhet">
+                <span className="support-strip__icon"><Icon name="alert-circle" /></span>
+                <div>
+                    <strong>Trenger du støtte nå?</strong>
+                    <p>Finn nødnumre, støttepersoner og din personlige sikkerhetsplan.</p>
+                </div>
+                <Button variant="secondary" onClick={() => onNavigate('crisis')}>Åpne hjelp</Button>
+            </aside>
 
-                {/* MOOD TREND */}
-                {getMoodTrend(7).length > 0 ? (
-                    <Card header="Humør siste 7 dager" className="mood-trend-card" hoverable={false}>
-                        <div style={{ display: 'flex', justifyContent: 'center', gap: 'var(--space-3)', flexWrap: 'wrap' }}>
-                            {getMoodTrend(7).slice(0, 7).reverse().map((m, i) => {
-                                const EMOJIS = { 1: '😞', 2: '😕', 3: '😐', 4: '😊', 5: '😁' };
-                                const d = new Date(m.date);
-                                const dayLabel = d.toLocaleDateString('nb-NO', { weekday: 'short' });
-                                return (
-                                    <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
-                                        <span style={{ fontSize: '1.5rem' }}>{EMOJIS[m.mood]}</span>
-                                        <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'capitalize' }}>{dayLabel}</span>
-                                    </div>
-                                );
-                            })}
+            {nextModule && (
+                <section className="dashboard-section" aria-labelledby="learning-title">
+                    <div className="dashboard-section__header">
+                        <div>
+                            <span className="dashboard-eyebrow">Neste steg</span>
+                            <h2 id="learning-title">Lær i ditt tempo</h2>
                         </div>
-                        {getStreak() > 1 && (
-                            <p style={{ textAlign: 'center', marginTop: 'var(--space-3)', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                                🔥 {getStreak()} dager logg-streak!
-                            </p>
+                    </div>
+                    <Card className="learning-card" hoverable={false}>
+                        <div>
+                            <span className="card-eyebrow">{moduleProgress[nextModule.id] === 'in-progress' ? 'Fortsett der du slapp' : 'Anbefalt innhold'}</span>
+                            <h3>{nextModule.title}</h3>
+                            <p>{nextModule.summary}</p>
+                            <small>{nextModule.readingTime || 'Kort lesing'}</small>
+                        </div>
+                        <Button variant="secondary" onClick={() => onNavigate('knowledge')}>Åpne</Button>
+                    </Card>
+                </section>
+            )}
+
+            {hasActivity && (
+                <section className="dashboard-section" aria-labelledby="insight-title">
+                    <div className="dashboard-section__header">
+                        <div>
+                            <span className="dashboard-eyebrow">Over tid</span>
+                            <h2 id="insight-title">Dine mønstre</h2>
+                        </div>
+                        <Button variant="secondary" size="small" onClick={() => onNavigate('progress')}>Se all innsikt</Button>
+                    </div>
+
+                    {insights?.length > 0 && <InsightCards insights={insights} />}
+
+                    <div className="insight-grid">
+                        {(commonTrigger || events.length > 0) && (
+                            <Card header="Siste 7 dager" hoverable={false}>
+                                <dl className="pattern-list">
+                                    {commonTrigger && <><dt>Vanligste trigger</dt><dd>{commonTrigger}</dd></>}
+                                    <dt>Mestret</dt><dd>{recentTrend.resisted}</dd>
+                                    <dt>Registrert bruk</dt><dd>{recentTrend.used}</dd>
+                                </dl>
+                            </Card>
                         )}
-                    </Card>
-                ) : (
-                    <Card header="Humørtrend" className="mood-trend-card" hoverable={false}>
-                        <div className="placeholder-content">
-                            <span className="placeholder-icon">😊</span>
-                            <p>Skriv i dagboken for å se humørtrenden din her.</p>
-                        </div>
-                    </Card>
-                )}
 
-                {/* WEEKLY ACTIVITY */}
-                <Card header="Aktivitet siste 7 dager" className="calendar-card" hoverable={false}>
-                    <WeeklyActivity
-                        events={events}
-                        journalEntries={journalEntries}
-                        goals={goals}
-                    />
+                        {moodTrend.length > 0 && (
+                            <Card header="Humør" hoverable={false}>
+                                <div className="mood-row" aria-label="Humør de siste sju dagene">
+                                    {moodTrend.slice(0, 7).reverse().map((mood, index) => (
+                                        <div key={`${mood.date}-${index}`} className="mood-day">
+                                            <span className={`mood-dot mood-dot--${mood.mood}`} aria-hidden="true" />
+                                            <small>{new Date(mood.date).toLocaleDateString('nb-NO', { weekday: 'short' })}</small>
+                                        </div>
+                                    ))}
+                                </div>
+                            </Card>
+                        )}
+
+                        <Card header="Aktivitet siste 7 dager" hoverable={false}>
+                            <WeeklyActivity events={events} journalEntries={journalEntries} goals={goals} />
+                        </Card>
+                    </div>
+                </section>
+            )}
+
+            {spending && (
+                <Card className="savings-card" hoverable={false}>
+                    <span className="card-eyebrow">Ditt estimat</span>
+                    <h3>Omtrent {savedAmount.toLocaleString('nb-NO')} kr spart</h3>
+                    <p>Basert på {formatFrequency(spending.frequency).toLowerCase()} à {spending.amountPerTime} kr og oppgitt startdato.</p>
                 </Card>
-
-            </div>
+            )}
         </div>
     );
 }
 
+function getLocalDateString() {
+    const now = new Date();
+    const offset = now.getTimezoneOffset() * 60_000;
+    return new Date(now.getTime() - offset).toISOString().split('T')[0];
+}
+
 function calculateSaved(frequency, amount, days) {
-    const freqMap = {
-        'daily': 7,
+    const frequencyMap = {
+        daily: 7,
         '4-6_week': 5,
         '2-3_week': 2.5,
         '1_week': 1,
         '2-3_month': 0.625,
         '1_month': 0.25,
     };
-    const timesPerWeek = freqMap[frequency] || 0;
-    const timesPerDay = timesPerWeek / 7;
-    return Math.round(timesPerDay * amount * days);
+    return Math.round(((frequencyMap[frequency] || 0) / 7) * amount * days);
 }
 
 function formatFrequency(frequency) {
-    const f = {
-        'daily': 'Daglig',
-        '4-6_week': '4-6 ganger/uke',
-        '2-3_week': '2-3 ganger/uke',
-        '1_week': '1 gang/uke',
-        '2-3_month': '2-3 ganger/måned',
-        '1_month': '1 gang/måned'
+    const labels = {
+        daily: 'Daglig',
+        '4-6_week': '4–6 ganger per uke',
+        '2-3_week': '2–3 ganger per uke',
+        '1_week': '1 gang per uke',
+        '2-3_month': '2–3 ganger per måned',
+        '1_month': '1 gang per måned'
     };
-    return f[frequency] || frequency;
+    return labels[frequency] || frequency;
 }

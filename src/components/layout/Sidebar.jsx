@@ -11,6 +11,10 @@ const NAV_ITEMS = [
     { id: 'crisis', label: 'Krisehjelp', icon: 'alert-circle', warning: true },
 ];
 
+const MOBILE_NAV_ITEMS = NAV_ITEMS.filter(item =>
+    ['dashboard', 'timeline', 'strategies', 'progress'].includes(item.id)
+);
+
 /** SVG icon helper — simple inline feather-style icons */
 function Icon({ name }) {
     const icons = {
@@ -55,13 +59,19 @@ export default function Sidebar() {
     return (
         <>
             {/* Overlay for mobile clicking outside drawer */}
-            <div
+            <button
+                type="button"
                 className={`sidebar-overlay ${isMenuOpen ? 'sidebar-overlay--active' : ''}`}
                 onClick={onClose}
-                aria-hidden="true"
+                aria-label="Lukk meny"
+                tabIndex={isMenuOpen ? 0 : -1}
             />
 
-            <nav className={`sidebar ${isMenuOpen ? 'sidebar--open' : ''}`}>
+            <nav
+                id="app-sidebar"
+                className={`sidebar ${isMenuOpen ? 'sidebar--open' : ''}`}
+                aria-label="Alle områder"
+            >
                 <div className="sidebar__logo">
                     <div className="sidebar__logo-icon">
                         <Icon name="sun" />
@@ -71,17 +81,16 @@ export default function Sidebar() {
 
                 <ul className="sidebar__nav">
                     {NAV_ITEMS.map(item => (
-                        <li
-                            key={item.id}
-                            className={`sidebar__item ${currentView === item.id ? 'sidebar__item--active' : ''} ${item.warning ? 'sidebar__item--warning' : ''}`}
-                            onClick={() => handleNavigation(item.id)}
-                            onKeyDown={e => e.key === 'Enter' && handleNavigation(item.id)}
-                            tabIndex={0}
-                            role="button"
-                            aria-label={item.label}
-                        >
-                            <Icon name={item.icon} />
-                            <span>{item.label}</span>
+                        <li key={item.id}>
+                            <button
+                                type="button"
+                                className={`sidebar__item ${currentView === item.id ? 'sidebar__item--active' : ''} ${item.warning ? 'sidebar__item--warning' : ''}`}
+                                onClick={() => handleNavigation(item.id)}
+                                aria-current={currentView === item.id ? 'page' : undefined}
+                            >
+                                <Icon name={item.icon} />
+                                <span>{item.label}</span>
+                            </button>
                         </li>
                     ))}
                 </ul>
@@ -101,6 +110,31 @@ export default function Sidebar() {
                         </div>
                     </div>
                 )}
+            </nav>
+
+            <nav className="bottom-nav" aria-label="Hovednavigasjon">
+                {MOBILE_NAV_ITEMS.map(item => (
+                    <button
+                        type="button"
+                        key={item.id}
+                        className={`bottom-nav__item ${currentView === item.id ? 'bottom-nav__item--active' : ''}`}
+                        onClick={() => handleNavigation(item.id)}
+                        aria-current={currentView === item.id ? 'page' : undefined}
+                    >
+                        <Icon name={item.icon} />
+                        <span>{item.label}</span>
+                    </button>
+                ))}
+                <button
+                    type="button"
+                    className="bottom-nav__item"
+                    onClick={() => setIsMenuOpen(true)}
+                    aria-expanded={isMenuOpen}
+                    aria-controls="app-sidebar"
+                >
+                    <Icon name="menu" />
+                    <span>Mer</span>
+                </button>
             </nav>
         </>
     );

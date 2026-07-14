@@ -2,7 +2,6 @@ import Sidebar from './components/layout/Sidebar';
 import Header from './components/layout/Header';
 import Modal from './components/ui/Modal';
 import Button from './components/ui/Button';
-import AppGuide from './components/ui/AppGuide';
 import PinLock from './components/ui/PinLock';
 import { ToastContainer } from './components/ui/Toast';
 import { showToast } from './components/ui/ToastUtils';
@@ -26,7 +25,6 @@ export default function App() {
     consent, setConsent,
     user, setUser, setSpending,
     guideSeen, setGuideSeen,
-    showGuide, setShowGuide,
     isLocked, setIsLocked
   } = useAppStore();
 
@@ -56,11 +54,11 @@ export default function App() {
       });
     }
 
-    showToast(`Velkommen, ${data.name}! 🎉`, 'success');
+    showToast(data.name ? `Velkommen, ${data.name}.` : 'Velkommen til Min Vei.', 'success');
 
-    // Show guided tour for new users
+    // The dashboard is intentionally self-explanatory; avoid another tour after onboarding.
     if (!guideSeen) {
-      setShowGuide(true);
+      setGuideSeen(true);
     }
   };
 
@@ -74,17 +72,17 @@ export default function App() {
 
       {/* GDPR Consent Modal */}
       <Modal isOpen={!consent} title="Velkommen til Min Vei">
-        <p><strong>Ditt personvern er vår prioritet.</strong></p>
-        <p>Denne appen er designet for å hjelpe deg i din recovery, og fungerer slik:</p>
+        <p><strong>Du har kontroll over opplysningene dine.</strong></p>
+        <p>Før du starter, er dette viktig å vite:</p>
         <ul>
-          <li><strong>Ingen sky-lagring:</strong> Alt lagres <em>utelukkende lokalt</em> på din enhet.</li>
-          <li><strong>Ingen sporing:</strong> Vi sporer ikke hva du gjør eller hvem du er.</li>
-          <li><strong>Ditt ansvar:</strong> Sletter du nettleserdataene, forsvinner også din historikk (med mindre du eksporterer først).</li>
+          <li><strong>Lokal lagring:</strong> Registreringene lagres i denne nettleseren, ikke på en Min Vei-server.</li>
+          <li><strong>Ingen brukerkonto:</strong> Appen identifiserer eller sporer deg ikke.</li>
+          <li><strong>Sikkerhetskopi:</strong> Nettleserdata kan bli slettet. Bruk eksport hvis du vil ta vare på historikken.</li>
         </ul>
-        <p><strong>Viktig:</strong> Appen erstatter ikke profesjonell medisinsk behandling. Ved akutt helsefare, ring 113.</p>
+        <p><strong>Min Vei er et egenhjelpsverktøy og erstatter ikke helsehjelp.</strong> Ved akutt fare, ring 113.</p>
         <div style={{ marginTop: 'var(--space-6)' }}>
           <Button variant="primary" wide onClick={() => setConsent(true)}>
-            Jeg forstår og aksepterer
+            Jeg forstår – fortsett
           </Button>
         </div>
       </Modal>
@@ -162,16 +160,6 @@ export default function App() {
 
       <ToastContainer />
 
-      {/* Guided App Tour */}
-      {showGuide && (
-        <AppGuide
-          onComplete={() => {
-            setShowGuide(false);
-            setGuideSeen(true);
-          }}
-          onNavigateHighlight={(view) => navigate(view)}
-        />
-      )}
     </>
   );
 }

@@ -20,6 +20,8 @@ export default function Header() {
                     className="header__icon-btn header__menu-btn"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                     aria-label="Åpne meny"
+                    aria-expanded={isMenuOpen}
+                    aria-controls="app-sidebar"
                 >
                     <Icon name="menu" />
                 </button>
@@ -33,7 +35,7 @@ export default function Header() {
                 <button
                     className="header__icon-btn"
                     onClick={toggleTheme}
-                    aria-label="Bytt tema"
+                    aria-label={isDark ? 'Bruk lyst tema' : 'Bruk mørkt tema'}
                 >
                     {isDark ? (
                         <Icon name="sun" />

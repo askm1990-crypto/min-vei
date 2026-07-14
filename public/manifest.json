@@ -1,11 +1,15 @@
 {
-    "name": "Min Vei - Recovery Støtte",
+    "id": "/min-vei/",
+    "name": "Min Vei – støtte i recovery",
     "short_name": "Min Vei",
     "description": "En støttespiller i hverdagen for rusmestring og recovery.",
     "start_url": "/min-vei/",
+    "scope": "/min-vei/",
     "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#0d9488",
+    "background_color": "#f7fafd",
+    "theme_color": "#3f518c",
+    "lang": "nb-NO",
+    "categories": ["health", "lifestyle"],
     "orientation": "portrait",
     "icons": [
         {

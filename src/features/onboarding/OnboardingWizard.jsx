@@ -1,21 +1,15 @@
 import { useState } from 'react';
 import StepWelcome from './StepWelcome';
 import StepSubstances from './StepSubstances';
-import StepReasons from './StepReasons';
-import StepHistory from './StepHistory';
-import StepSpending from './StepSpending';
 import StepProfile from './StepProfile';
 import StepGamification from './StepGamification';
 import './OnboardingWizard.css';
 
 const STEPS = [
     { id: 1, label: 'Velkommen' },
-    { id: 2, label: 'Rusmidler' },
-    { id: 3, label: 'Funksjon' },
-    { id: 4, label: 'Bakgrunn' },
-    { id: 5, label: 'Forbruk' },
-    { id: 6, label: 'Profil' },
-    { id: 7, label: 'Poeng' },
+    { id: 2, label: 'Om deg' },
+    { id: 3, label: 'Ditt fokus' },
+    { id: 4, label: 'Klar' },
 ];
 
 export default function OnboardingWizard({ onComplete }) {
@@ -78,18 +72,24 @@ export default function OnboardingWizard({ onComplete }) {
     return (
         <div className="onboarding">
             <div className="onboarding__container">
-                {/* Progress bar */}
-                <div className="onboarding__progress-bar">
+                <div
+                    className="onboarding__progress-bar"
+                    role="progressbar"
+                    aria-label="Fremdrift i oppsettet"
+                    aria-valuemin="1"
+                    aria-valuemax={STEPS.length}
+                    aria-valuenow={currentStep}
+                >
                     <div
                         className="onboarding__progress-fill"
                         style={{ width: `${progress}%` }}
                     />
                 </div>
 
-                {/* Step indicators */}
-                <div className="onboarding__steps">
+                <div className="onboarding__steps" aria-label={`Steg ${currentStep} av ${STEPS.length}`}>
                     {STEPS.map(step => (
-                        <div
+                        <button
+                            type="button"
                             key={step.id}
                             className={`onboarding__step-dot ${step.id < currentStep ? 'completed clickable' :
                                 step.id === currentStep ? 'active' : ''
@@ -99,11 +99,12 @@ export default function OnboardingWizard({ onComplete }) {
                                     setCurrentStep(step.id);
                                 }
                             }}
-                            role={step.id < currentStep ? "button" : "presentation"}
-                            style={{ cursor: step.id < currentStep ? 'pointer' : 'default' }}
+                            disabled={step.id >= currentStep}
+                            aria-current={step.id === currentStep ? 'step' : undefined}
+                            aria-label={`${step.label}${step.id < currentStep ? ', fullført' : step.id === currentStep ? ', aktivt steg' : ''}`}
                         >
                             {step.id < currentStep ? '✓' : step.id}
-                        </div>
+                        </button>
                     ))}
                 </div>
 
@@ -113,21 +114,12 @@ export default function OnboardingWizard({ onComplete }) {
                         <StepWelcome onNext={next} />
                     )}
                     {currentStep === 2 && (
-                        <StepSubstances data={data} updateData={updateData} onNext={next} onPrev={prev} />
-                    )}
-                    {currentStep === 3 && (
-                        <StepReasons data={data} updateData={updateData} onNext={next} onPrev={prev} />
-                    )}
-                    {currentStep === 4 && (
-                        <StepHistory data={data} updateData={updateData} onNext={next} onPrev={prev} />
-                    )}
-                    {currentStep === 5 && (
-                        <StepSpending data={data} updateData={updateData} onNext={next} onPrev={prev} />
-                    )}
-                    {currentStep === 6 && (
                         <StepProfile data={data} updateData={updateData} onNext={next} onPrev={prev} />
                     )}
-                    {currentStep === 7 && (
+                    {currentStep === 3 && (
+                        <StepSubstances data={data} updateData={updateData} onNext={next} onPrev={prev} />
+                    )}
+                    {currentStep === 4 && (
                         <StepGamification onNext={finish} onPrev={prev} />
                     )}
                 </div>

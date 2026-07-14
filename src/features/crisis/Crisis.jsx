@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
-import { useRecoveryScore, POINTS } from '../../hooks/useRecoveryScore';
 import { showToast } from '../../components/ui/ToastUtils';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
@@ -16,7 +15,6 @@ const EMERGENCY_NUMBERS = [
 ];
 
 export default function Crisis({ onNavigate }) {
-    const { addPoints } = useRecoveryScore();
     const [safetyPlan, setSafetyPlan] = useLocalStorage('mv2_safety_plan', {
         warnings: '',
         copingStrategies: '',
@@ -33,10 +31,9 @@ export default function Crisis({ onNavigate }) {
         const fieldsFilledCount = Object.values(safetyPlan).filter(v => v.trim()).length;
         if (fieldsFilledCount >= 4 && !planCompleted) {
             setPlanCompleted(true);
-            addPoints(POINTS.CRISIS_PLAN_COMPLETE, 'Fullførte sikkerhetsplanen');
-            showToast(`Sikkerhetsplan lagret! +${POINTS.CRISIS_PLAN_COMPLETE} poeng 🛡️ Du er nå Kriseklar!`, 'success');
+            showToast('Sikkerhetsplanen er lagret.', 'success');
         } else {
-            showToast('Sikkerhetsplan oppdatert ✓', 'success');
+            showToast('Sikkerhetsplanen er oppdatert.', 'success');
         }
     };
 
@@ -117,8 +114,8 @@ export default function Crisis({ onNavigate }) {
                             <div className="empty-state">
                                 <span className="empty-icon">🛡️</span>
                                 <h3>Du har ikke fylt ut sikkerhetsplanen ennå</h3>
-                                <p>En sikkerhetsplan hjelper deg å vite hva du skal gjøre i vanskelige øyeblikk. Tjen <strong>+{POINTS.CRISIS_PLAN_COMPLETE} poeng</strong> ved å fylle den ut!</p>
-                                <Button variant="primary" onClick={() => setEditing(true)}>Start nå</Button>
+                                <p>En sikkerhetsplan gjør det enklere å finne neste trygge steg i vanskelige øyeblikk.</p>
+                                <Button variant="primary" onClick={() => setEditing(true)}>Lag sikkerhetsplan</Button>
                             </div>
                         ) : (
                             <div className="safety-fields-view">
