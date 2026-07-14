@@ -38,8 +38,12 @@
 
 
 @media (max-width: 768px) {
+  .main-content {
+    padding-bottom: calc(66px + env(safe-area-inset-bottom));
+  }
+
   .view {
-    padding: var(--space-4) var(--space-2);
+    padding: var(--space-4);
     gap: var(--space-4);
   }
 }

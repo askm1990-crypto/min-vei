@@ -1,27 +1,29 @@
-/* Button styles — Frosted Glass redesign */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: var(--space-2);
-    padding: 12px var(--space-6);
-    border-radius: var(--radius-full);     /* Pill shape */
+    min-height: 44px;
+    padding: 11px var(--space-6);
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    font-family: var(--font-sans);
     font-size: 0.925rem;
     font-weight: 600;
-    font-family: var(--font-sans);
+    letter-spacing: 0.005em;
+    line-height: 1.2;
     cursor: pointer;
-    border: none;
-    letter-spacing: 0.01em;
-    transition:
-        transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1),
-        box-shadow 0.25s cubic-bezier(0.25, 0.8, 0.25, 1),
-        filter 0.2s ease,
-        background 0.2s ease;
+    transition: background var(--transition), border-color var(--transition), box-shadow var(--transition), transform var(--transition);
     white-space: nowrap;
 }
 
+.btn:focus-visible {
+    outline: 3px solid rgba(var(--primary-rgb), 0.24);
+    outline-offset: 3px;
+}
+
 .btn:disabled {
-    opacity: 0.45;
+    opacity: 0.5;
     cursor: not-allowed;
 }
 
@@ -31,89 +33,66 @@
 }
 
 .btn__icon svg {
-    width: 17px;
-    height: 17px;
+    width: 18px;
+    height: 18px;
     stroke: currentColor;
 }
 
-/* ─── Primary ── Solid indigo pill ── */
 .btn--primary {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    background: var(--primary);
     color: var(--primary-fg);
-    box-shadow: 0 4px 16px var(--primary-glow);
+    box-shadow: 0 3px 10px var(--primary-glow);
 }
 
 .btn--primary:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px var(--primary-glow);
-    filter: brightness(1.06);
+    background: var(--primary-dark);
+    box-shadow: 0 6px 16px var(--primary-glow);
+    transform: translateY(-1px);
 }
 
-.btn--primary:active:not(:disabled) {
-    transform: translateY(1px) scale(0.98);
-    box-shadow: 0 2px 8px var(--primary-glow);
+.btn--primary:active:not(:disabled),
+.btn--secondary:active:not(:disabled) {
+    transform: translateY(0);
 }
 
-/* ─── Secondary ── Frosted glass pill ── */
 .btn--secondary {
-    background: var(--glass-bg);
+    background: var(--bg-card-solid);
     color: var(--primary);
-    border: 1px solid var(--glass-border);
+    border-color: var(--border);
     box-shadow: var(--shadow-card);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
 }
 
 .btn--secondary:hover:not(:disabled) {
-    background: rgba(var(--primary-rgb), 0.08);
-    border-color: rgba(var(--primary-rgb), 0.25);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-card-hover);
+    background: var(--primary-light);
+    border-color: rgba(var(--primary-rgb), 0.28);
 }
 
-.btn--secondary:active:not(:disabled) {
-    transform: translateY(1px) scale(0.98);
-}
-
-/* ─── Icon button ── */
 .btn--icon {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     padding: 0;
-    background: var(--glass-bg);
+    background: var(--bg-card-solid);
     color: var(--text-muted);
-    border: 1px solid var(--glass-border);
+    border-color: var(--border);
     flex-shrink: 0;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-card);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
 }
 
 .btn--icon:hover:not(:disabled) {
-    background: rgba(var(--primary-rgb), 0.08);
+    background: var(--primary-light);
     color: var(--primary);
-    transform: scale(1.08) translateY(-2px);
-    border-color: rgba(var(--primary-rgb), 0.2);
-    box-shadow: var(--shadow-card-hover);
 }
 
-.btn--icon:active:not(:disabled) {
-    transform: scale(0.95);
-}
-
-/* ─── Sizes ── */
 .btn--small {
+    min-height: 36px;
     padding: 8px var(--space-4);
     font-size: 0.825rem;
 }
 
 .btn--small.btn--icon {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
 }
 
-/* ─── Modifiers ── */
 .btn--wide {
     width: 100%;
 }
@@ -130,5 +109,5 @@
 .btn--danger.btn--primary {
     background: var(--danger);
     color: white;
-    box-shadow: 0 4px 16px rgba(239, 68, 68, 0.28);
+    box-shadow: 0 3px 10px rgba(239, 68, 68, 0.22);
 }

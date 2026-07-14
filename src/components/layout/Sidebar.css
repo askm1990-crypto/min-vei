@@ -76,6 +76,10 @@
     flex: 1;
 }
 
+.sidebar__nav > li {
+    width: 100%;
+}
+
 .sidebar__item {
     display: flex;
     align-items: center;
@@ -93,6 +97,17 @@
     white-space: nowrap;
     user-select: none;
     position: relative;
+    width: 100%;
+    border: 0;
+    background: transparent;
+    font-family: inherit;
+    text-align: left;
+}
+
+.sidebar__item:focus-visible,
+.bottom-nav__item:focus-visible {
+    outline: 3px solid rgba(var(--primary-rgb), 0.22);
+    outline-offset: 2px;
 }
 
 .sidebar__item svg {
@@ -203,11 +218,17 @@
     z-index: 999;
     opacity: 0;
     transition: opacity 0.3s ease;
+    border: 0;
+    padding: 0;
 }
 
 .sidebar-overlay--active {
     display: block;
     opacity: 1;
+}
+
+.bottom-nav {
+    display: none;
 }
 
 /* ─── Mobile ─────────────────────────────────── */
@@ -220,6 +241,7 @@
         width: 270px;
         min-width: 270px;
         transform: translateX(-100%);
+        visibility: hidden;
         background: var(--bg-sidebar);
         backdrop-filter: var(--glass-blur);
         -webkit-backdrop-filter: var(--glass-blur);
@@ -231,6 +253,7 @@
 
     .sidebar--open {
         transform: translateX(0);
+        visibility: visible;
     }
 
     .sidebar__logo-text,
@@ -275,6 +298,54 @@
     .sidebar__item svg {
         width: 20px;
         height: 20px;
+    }
+
+    .bottom-nav {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 900;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        min-height: 66px;
+        padding: 6px max(6px, env(safe-area-inset-right)) max(6px, env(safe-area-inset-bottom)) max(6px, env(safe-area-inset-left));
+        background: rgba(255, 255, 255, 0.96);
+        border-top: 1px solid var(--border);
+        box-shadow: var(--shadow-nav);
+    }
+
+    .bottom-nav__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        min-width: 0;
+        min-height: 52px;
+        padding: 4px 2px;
+        border: 0;
+        border-radius: var(--radius-sm);
+        background: transparent;
+        color: var(--text-light);
+        font-family: inherit;
+        font-size: 0.66rem;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .bottom-nav__item svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .bottom-nav__item--active {
+        background: rgba(var(--primary-rgb), 0.08);
+        color: var(--primary);
+    }
+
+    body.dark-mode .bottom-nav {
+        background: rgba(20, 24, 35, 0.96);
     }
 
     @media (prefers-reduced-motion: reduce) {

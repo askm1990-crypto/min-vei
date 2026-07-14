@@ -50,18 +50,18 @@ interface RecoveryScoreResult {
 
 // Level thresholds
 const LEVELS: LevelInfo[] = [
-    { level: 1, title: 'Stuegris 🛋️', minPoints: 0 },
-    { level: 2, title: 'Garasjeridder 👟', minPoints: 500 },
-    { level: 3, title: "Kaffekoker'n ☕", minPoints: 2000 },
-    { level: 4, title: 'Sukkerjunkie 🍬', minPoints: 5000 },
-    { level: 5, title: 'Bruspulver-entusiast 🥤', minPoints: 10000 },
-    { level: 6, title: 'Pepsi Max-proff 🏁', minPoints: 18000 },
-    { level: 7, title: 'Endorfin-jeger 🏃‍♂️', minPoints: 28000 },
-    { level: 8, title: 'Tåkeløfter 🌫️', minPoints: 40000 },
-    { level: 9, title: 'Våghals i tøfler 🏠', minPoints: 55000 },
-    { level: 10, title: 'Hobby-filosof 🧠', minPoints: 75000 },
-    { level: 11, title: 'Gummistøvel-Zen 🧘', minPoints: 95000 },
-    { level: 12, title: 'Recovery-Legende 👑', minPoints: 120000 }
+    { level: 1, title: 'Startpunkt', minPoints: 0 },
+    { level: 2, title: 'Første skritt', minPoints: 500 },
+    { level: 3, title: 'I gang', minPoints: 2000 },
+    { level: 4, title: 'Bygger vaner', minPoints: 5000 },
+    { level: 5, title: 'Stødigere', minPoints: 10000 },
+    { level: 6, title: 'Nye mønstre', minPoints: 18000 },
+    { level: 7, title: 'God rytme', minPoints: 28000 },
+    { level: 8, title: 'Mer oversikt', minPoints: 40000 },
+    { level: 9, title: 'Sterkere valg', minPoints: 55000 },
+    { level: 10, title: 'Tryggere verktøy', minPoints: 75000 },
+    { level: 11, title: 'Langsiktig retning', minPoints: 95000 },
+    { level: 12, title: 'Egen mestring', minPoints: 120000 }
 ];
 
 // Point values for actions
