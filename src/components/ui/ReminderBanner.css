@@ -1,15 +1,15 @@
 .reminder-banner {
     position: relative;
     z-index: 50;
-    margin: var(--space-4) var(--space-4) 0 var(--space-4);
-    background: linear-gradient(135deg, var(--primary), hsl(calc(var(--primary-hue, 210) + 30), 70%, 55%));
+    margin: 0;
+    background: var(--hero-mesh);
     color: white;
-    border-radius: var(--radius-lg);
-    padding: var(--space-4);
+    border-radius: var(--radius-xl);
+    padding: var(--space-4) var(--space-5);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 20px 40px -18px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
     gap: var(--space-4);
 }
 
@@ -21,26 +21,28 @@
 }
 
 .reminder-banner-icon {
-    font-size: 2rem;
+    font-size: 1.6rem;
     background: rgba(255, 255, 255, 0.2);
     width: 48px;
     height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+    border-radius: 16px;
     backdrop-filter: blur(8px);
+    flex-shrink: 0;
 }
 
 .reminder-banner-text strong {
     display: block;
-    font-size: 1.1rem;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
     margin-bottom: 2px;
 }
 
 .reminder-banner-text p {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     opacity: 0.9;
 }
 
@@ -54,25 +56,24 @@
     white-space: nowrap;
 }
 
-/* Specific styling for the close button since it's an icon only */
 .reminder-banner-close {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.16);
     border: none;
     color: white;
-    font-size: 1.2rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 1rem;
     cursor: pointer;
-    opacity: 0.7;
-    transition: opacity 0.2s;
-    padding: var(--space-1);
+    transition: background var(--transition);
 }
 
 .reminder-banner-close:hover {
-    opacity: 1;
+    background: rgba(255, 255, 255, 0.3);
 }
 
-/* Animations */
 .bounce-in {
-    animation: slideDownFade 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    animation: slideDownFade 0.6s var(--transition-spring) both;
 }
 
 @keyframes slideDownFade {
@@ -86,19 +87,23 @@
     }
 }
 
-/* Mobile Adjustments */
+.reminder-banner .btn--primary {
+    background: #fff;
+    color: var(--primary-dark);
+    box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.3);
+}
+
 @media (max-width: 600px) {
     .reminder-banner {
         flex-direction: column;
         align-items: flex-start;
-        padding: var(--space-3);
-        margin: var(--space-3) var(--space-3) 0 var(--space-3);
+        padding: var(--space-4);
         gap: var(--space-3);
     }
 
     .reminder-banner-actions {
         width: 100%;
         justify-content: space-between;
-        flex-direction: row-reverse; /* Put Primary button on right */
+        flex-direction: row-reverse;
     }
 }

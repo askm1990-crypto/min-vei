@@ -98,8 +98,8 @@ export default function Strategies() {
             <p className="strategies-subtitle">DBT-inspirerte verktøy for å håndtere sug, følelser og vanskelige situasjoner.</p>
 
             {DBT_MODULES.map(mod => (
-                <div key={mod.id} className="dbt-module">
-                    <div className="dbt-module-header" style={{ borderLeftColor: mod.color }}>
+                <div key={mod.id} className="dbt-module" style={{ '--mod-color': mod.color }}>
+                    <div className="dbt-module-header">
                         <span className="dbt-emoji">{mod.emoji}</span>
                         <div>
                             <h3 className="dbt-title">{mod.title}</h3>

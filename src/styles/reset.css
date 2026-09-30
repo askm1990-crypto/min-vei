@@ -1,4 +1,4 @@
-/* Reset & base styles — Frosted Glass redesign */
+/* Reset & base styles — 2026 refresh */
 *,
 *::before,
 *::after {
@@ -9,10 +9,14 @@
 
 html {
     font-size: 16px;
+    -webkit-tap-highlight-color: transparent;
+    text-size-adjust: 100%;
 }
 
 body {
+    position: relative;
     font-family: var(--font-body);
+    font-optical-sizing: auto;
     background: var(--bg-body);
     color: var(--text-main);
     line-height: 1.6;
@@ -22,19 +26,43 @@ body {
     -moz-osx-font-smoothing: grayscale;
     overflow-wrap: break-word;
     transition: background var(--transition-slow), color var(--transition-slow);
+}
 
-    /* Subtle background blobs for glass effect */
-    background-image:
-        radial-gradient(ellipse 60% 50% at 20% -10%, rgba(67, 82, 165, 0.08) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 40% at 90% 110%, rgba(124, 58, 237, 0.07) 0%, transparent 60%);
-    background-attachment: fixed;
+/* Aurora — slow drifting light behind the glass */
+body::before {
+    content: '';
+    position: fixed;
+    inset: -20%;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(38% 34% at 12% 8%,   var(--aurora-1) 0%, transparent 100%),
+        radial-gradient(34% 32% at 92% 18%,  var(--aurora-2) 0%, transparent 100%),
+        radial-gradient(40% 36% at 78% 96%,  var(--aurora-1) 0%, transparent 100%),
+        radial-gradient(30% 28% at 8% 90%,   var(--aurora-3) 0%, transparent 100%);
+    animation: aurora-drift 32s ease-in-out infinite alternate;
+    will-change: transform;
+}
+
+#root {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes aurora-drift {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to   { transform: translate3d(2%, -3%, 0) scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body::before { animation: none; }
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-sans);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    line-height: 1.25;
+    font-family: var(--font-display);
+    font-weight: 650;
+    letter-spacing: -0.025em;
+    line-height: 1.18;
     text-wrap: balance;
     color: var(--text-main);
 }
@@ -53,21 +81,46 @@ button {
     cursor: pointer;
     border: none;
     background: none;
+    color: inherit;
 }
 
 input,
 textarea,
 select {
     font-family: inherit;
+    font-size: inherit;
+    color: inherit;
 }
 
-/* Slim glass scrollbar */
+::placeholder {
+    color: var(--text-light);
+    opacity: 0.85;
+}
+
+::selection {
+    background: rgba(var(--primary-rgb), 0.25);
+}
+
+/* Accessible, modern focus ring */
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-xs);
+}
+
+/* Slim scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(var(--primary-rgb), 0.25) transparent;
+}
+
 ::-webkit-scrollbar {
-    width: 4px;
+    width: 6px;
+    height: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(67, 82, 165, 0.18);
+    background: rgba(var(--primary-rgb), 0.22);
     border-radius: 99px;
 }
 

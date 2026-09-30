@@ -168,16 +168,16 @@ export default function Progress() {
                     <div className="weekly-bar">
                         <div className="weekly-item">
                             <div className="weekly-bar-fill success" style={{ height: `${trend.resisted ? (trend.resisted / Math.max(trend.total, 1)) * 100 : 0}%` }} />
-                            <span className="weekly-label">✅ {trend.resisted}</span>
+                            <span className="weekly-count">✅ {trend.resisted}</span>
                             <span className="weekly-sublabel">Mestret</span>
                         </div>
                         <div className="weekly-item">
                             <div className="weekly-bar-fill error" style={{ height: `${trend.used ? (trend.used / Math.max(trend.total, 1)) * 100 : 0}%` }} />
-                            <span className="weekly-label">❌ {trend.used}</span>
+                            <span className="weekly-count">❌ {trend.used}</span>
                             <span className="weekly-sublabel">Brukt</span>
                         </div>
                         <div className="weekly-item">
-                            <span className="weekly-label">📊 {trend.total}</span>
+                            <span className="weekly-count">📊 {trend.total}</span>
                             <span className="weekly-sublabel">Totalt</span>
                         </div>
                     </div>

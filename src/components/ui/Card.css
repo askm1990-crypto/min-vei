@@ -1,32 +1,18 @@
-/* Card styles — Frosted Glass redesign */
+/* Card — layered glass surface with hairline highlight */
 .card {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-xl);
     padding: var(--space-6);
-    box-shadow: var(--shadow-glass);
+    box-shadow: var(--shadow-glass), var(--glass-highlight);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     transition:
-        box-shadow var(--transition-spring),
+        box-shadow var(--transition),
         transform var(--transition-spring),
         border-color var(--transition);
     position: relative;
     overflow: hidden;
-}
-
-/* Subtle inner shimmer */
-.card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.35) 0%,
-        rgba(255, 255, 255, 0.00) 60%
-    );
-    pointer-events: none;
-    z-index: 0;
 }
 
 .card > * {
@@ -36,8 +22,8 @@
 
 @media (max-width: 600px) {
     .card {
-        padding: var(--space-4);
-        border-radius: var(--radius-md);
+        padding: var(--space-5);
+        border-radius: var(--radius-lg);
     }
 }
 
@@ -48,16 +34,16 @@
 
 .card--hoverable:hover {
     transform: translateY(-3px);
-    box-shadow: var(--shadow-card-hover);
-    border-color: rgba(var(--primary-rgb), 0.25);
+    box-shadow: var(--shadow-card-hover), var(--glass-highlight);
+    border-color: rgba(var(--primary-rgb), 0.28);
 }
 
 .card--hoverable:active {
-    transform: translateY(1px) scale(0.99);
+    transform: scale(0.985);
     box-shadow: var(--shadow-card);
 }
 
-/* Solid variant (no glass blur, for mobile perf or content-heavy areas) */
+/* Solid variant */
 .card--solid {
     background: var(--bg-card-solid);
     backdrop-filter: none;
@@ -66,19 +52,11 @@
     box-shadow: var(--shadow-card);
 }
 
-/* Hero card (indigo gradient) */
+/* Hero card — mesh gradient */
 .card--hero {
-    background: var(--hero-gradient);
-    border-color: rgba(255, 255, 255, 0.15);
+    background: var(--hero-mesh);
+    border-color: rgba(255, 255, 255, 0.2);
     color: #ffffff;
-}
-
-.card--hero::before {
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.15) 0%,
-        rgba(255, 255, 255, 0.00) 60%
-    );
 }
 
 /* Card header */
@@ -93,20 +71,6 @@
 
 .card__header h3 {
     font-size: 1.05rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-}
-
-/* Dark mode — slightly more opaque */
-body.dark-mode .card {
-    --glass-bg: rgba(22, 27, 44, 0.75);
-    --glass-border: rgba(129, 140, 248, 0.10);
-}
-
-body.dark-mode .card::before {
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.04) 0%,
-        rgba(255, 255, 255, 0.00) 60%
-    );
+    font-weight: 650;
+    letter-spacing: -0.02em;
 }

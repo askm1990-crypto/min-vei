@@ -783,3 +783,241 @@
     font-size: 0.85rem;
     border-radius: var(--radius-sm);
 }
+/* ═══ 2026 refinements ═════════════════════════════════════════ */
+
+.log-wizard {
+    background: transparent;
+    min-height: 100%;
+    animation: fadeSlideIn 0.55s var(--ease-out) both;
+}
+
+.wizard-header {
+    padding: var(--space-3) var(--space-4) var(--space-2);
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.wizard-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: var(--radius-full);
+    background: var(--glass-bg);
+    border: 1px solid var(--border);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: background var(--transition), color var(--transition), transform var(--transition-spring);
+}
+
+.wizard-back-btn:hover {
+    color: var(--text-main);
+    background: var(--bg-hover);
+}
+
+.wizard-back-btn:active {
+    transform: scale(0.95);
+}
+
+.wizard-container {
+    padding: 0 var(--space-4) calc(var(--space-8) + var(--safe-bottom));
+}
+
+.wizard-progress-bar {
+    height: 6px;
+    background: rgba(var(--primary-rgb), 0.12);
+}
+
+.wizard-progress-fill {
+    background: var(--hero-gradient);
+    box-shadow: 0 0 12px var(--primary-glow);
+    transition: width 0.6s var(--ease-out);
+}
+
+.step-title {
+    font-size: clamp(1.7rem, 1.4rem + 1.2vw, 2.1rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+}
+
+.step-subtitle {
+    font-size: 0.98rem;
+}
+
+.lw-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-5);
+    box-shadow: var(--shadow-glass), var(--glass-highlight);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.lw-card-highlight {
+    background: rgba(var(--primary-rgb), 0.08);
+    border-color: rgba(var(--primary-rgb), 0.25);
+}
+
+.lw-label,
+.lw-section-label {
+    color: var(--text-light);
+    letter-spacing: 0.08em;
+}
+
+/* Chips */
+.lw-chip {
+    border: 1.5px solid var(--border);
+    background: var(--bg-card-solid);
+    box-shadow: var(--shadow-sm);
+    padding: 9px 16px;
+    font-weight: 550;
+}
+
+@media (hover: hover) {
+    .lw-chip:hover {
+        box-shadow: var(--shadow-md);
+    }
+}
+
+.lw-chip-selected {
+    background: rgba(var(--primary-rgb), 0.14);
+    border-color: var(--chip-color, var(--primary));
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.14);
+}
+
+.lw-link-btn {
+    background: var(--glass-bg);
+    border: 1px solid var(--border);
+    font-weight: 600;
+}
+
+/* Mood picker: 5 equal tiles */
+.mood-selector {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: var(--space-2);
+}
+
+.mood-btn {
+    min-width: 0;
+    background: var(--bg-card-solid);
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+    padding: var(--space-3) 2px;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-spring), background var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+.mood-btn.selected {
+    transform: translateY(-3px) scale(1.05);
+    background: rgba(var(--primary-rgb), 0.12);
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.18), 0 14px 24px -10px var(--primary-glow);
+}
+
+.mood-emoji {
+    font-size: 2rem;
+}
+
+.mood-label {
+    font-size: 0.66rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.2;
+    padding: 0 2px;
+}
+
+/* Intensity slider */
+.intensity-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 10px;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--mood-5), var(--mood-3) 50%, var(--mood-1));
+    outline: none;
+    margin: var(--space-4) 0 var(--space-2);
+}
+
+.intensity-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid var(--primary);
+    box-shadow: 0 6px 14px -4px var(--primary-glow);
+    cursor: grab;
+}
+
+.intensity-slider::-moz-range-thumb {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid var(--primary);
+    box-shadow: 0 6px 14px -4px var(--primary-glow);
+    cursor: grab;
+}
+
+.sug-number {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 750;
+    letter-spacing: -0.06em;
+    background: var(--hero-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Inputs */
+.text-input,
+.lw-textarea {
+    border: 1.5px solid var(--border);
+    background: var(--bg-card-solid);
+    border-radius: var(--radius-md);
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.text-input:focus,
+.lw-textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.15);
+}
+
+/* Step footer: sticky glass bar so Next is always reachable */
+.step-actions {
+    position: sticky;
+    bottom: 0;
+    z-index: 5;
+    margin-top: auto;
+    padding: var(--space-4) 0 var(--space-2);
+}
+
+.log-wizard .btn-primary,
+.wizard-step .btn-primary {
+    background: var(--hero-gradient);
+    box-shadow: 0 12px 26px -10px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+body.dark-mode .log-wizard .btn-primary,
+body.dark-mode .wizard-step .btn-primary {
+    color: #0d0b24;
+}
+
+.log-wizard .btn-secondary,
+.wizard-step .btn-secondary {
+    background: var(--bg-card-solid);
+    border: 1px solid var(--border-strong);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Cards used in emotion / outcome steps */
+.emotion-card-container,
+.outcome-card {
+    background: var(--bg-card-solid);
+    border-radius: var(--radius-lg);
+}

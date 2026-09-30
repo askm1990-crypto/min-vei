@@ -1,85 +1,142 @@
-/* Header styles — Frosted Glass redesign */
+/* Header — airy, transparent, greeting-first */
 .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--space-4) var(--space-6);
-    background: var(--glass-bg);
-    border-bottom: 1px solid var(--border-glass);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
+    gap: var(--space-3);
+    padding: calc(var(--space-5) + var(--safe-top)) var(--space-8) var(--space-3);
     flex-shrink: 0;
-    min-height: 64px;
-    box-shadow: 0 1px 12px rgba(10, 14, 26, 0.05);
-    position: sticky;
-    top: 0;
+    position: relative;
     z-index: 100;
 }
 
 .header__left {
     display: flex;
     align-items: center;
-    gap: var(--space-4);
+    gap: var(--space-3);
+    min-width: 0;
 }
 
-.header__menu-btn {
-    display: none; /* Hidden on desktop */
+/* Small brand mark — visible on phones only (desktop has the sidebar logo) */
+.header__mark {
+    display: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    place-items: center;
+    flex-shrink: 0;
+    color: #fff;
+    background: var(--hero-mesh);
+    box-shadow: 0 8px 18px -4px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
-@media (max-width: 768px) {
-    .header__menu-btn {
-        display: inline-flex;
-    }
+.header__mark svg {
+    width: 22px;
+    height: 22px;
+}
 
-    .header {
-        padding: var(--space-3) var(--space-4);
-    }
+.header__greeting {
+    min-width: 0;
+}
+
+.header__eyebrow {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text-light);
+    margin: 0;
+    line-height: 1.2;
 }
 
 .header__greeting h1 {
-    font-size: 1.1rem;
+    font-size: 1.75rem;
     font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.025em;
-    margin: 0;
-}
-
-.header__subtitle {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    margin: 1px 0 0 0;
+    line-height: 1.15;
+    letter-spacing: -0.035em;
+    margin: 2px 0 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .header__actions {
     display: flex;
     gap: var(--space-2);
     align-items: center;
+    flex-shrink: 0;
 }
 
 .header__icon-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: var(--radius-full);    /* Pill icon button */
-    background: rgba(var(--primary-rgb), 0.07);
+    display: inline-grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 15px;
+    background: var(--glass-bg);
     color: var(--text-muted);
-    transition:
-        background var(--transition),
-        color var(--transition),
-        transform var(--transition-spring);
-    cursor: pointer;
-    border: 1px solid var(--border-glass);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-card), var(--glass-highlight);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    transition: color var(--transition), transform var(--transition-spring), box-shadow var(--transition);
 }
 
 .header__icon-btn:hover {
-    background: rgba(var(--primary-rgb), 0.12);
     color: var(--primary);
-    transform: scale(1.06);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover), var(--glass-highlight);
+}
+
+.header__icon-btn:active {
+    transform: scale(0.94);
 }
 
 .header__icon-btn svg {
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
+}
+
+/* Quick access to crisis help — phones only, the sidebar covers desktop */
+.header__sos {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    height: 44px;
+    padding: 0 var(--space-4) 0 var(--space-3);
+    border-radius: 15px;
+    color: var(--danger);
+    background: var(--danger-light);
+    border: 1px solid rgba(var(--danger-rgb), 0.22);
+    font-size: 0.8rem;
+    font-weight: 750;
+    letter-spacing: 0.06em;
+    transition: transform var(--transition-spring);
+}
+
+.header__sos svg {
+    width: 18px;
+    height: 18px;
+}
+
+.header__sos:active {
+    transform: scale(0.94);
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: calc(var(--space-3) + var(--safe-top)) var(--space-4) var(--space-2);
+    }
+
+    .header__greeting h1 {
+        font-size: 1.35rem;
+    }
+
+    .header__sos {
+        display: inline-flex;
+    }
+
+    .header__icon-btn {
+        width: 42px;
+        height: 42px;
+    }
 }

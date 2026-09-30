@@ -1,23 +1,25 @@
-/* Button styles — Frosted Glass redesign */
+/* Buttons — pill, tactile, spring press */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: var(--space-2);
-    padding: 12px var(--space-6);
-    border-radius: var(--radius-full);     /* Pill shape */
-    font-size: 0.925rem;
-    font-weight: 600;
+    padding: 13px var(--space-6);
+    border-radius: var(--radius-full);
+    font-size: 0.95rem;
+    font-weight: 650;
     font-family: var(--font-sans);
     cursor: pointer;
     border: none;
-    letter-spacing: 0.01em;
+    letter-spacing: -0.005em;
     transition:
-        transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1),
-        box-shadow 0.25s cubic-bezier(0.25, 0.8, 0.25, 1),
-        filter 0.2s ease,
-        background 0.2s ease;
+        transform var(--transition-spring),
+        box-shadow var(--transition),
+        filter var(--transition),
+        background var(--transition),
+        border-color var(--transition);
     white-space: nowrap;
+    position: relative;
 }
 
 .btn:disabled {
@@ -31,86 +33,91 @@
 }
 
 .btn__icon svg {
-    width: 17px;
-    height: 17px;
+    width: 18px;
+    height: 18px;
     stroke: currentColor;
 }
 
-/* ─── Primary ── Solid indigo pill ── */
+/* ─── Primary ── vivid gradient ── */
 .btn--primary {
     background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     color: var(--primary-fg);
-    box-shadow: 0 4px 16px var(--primary-glow);
+    box-shadow:
+        0 10px 24px -8px var(--primary-glow),
+        inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+body.dark-mode .btn--primary {
+    color: #0d0b24;
 }
 
 .btn--primary:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px var(--primary-glow);
-    filter: brightness(1.06);
+    box-shadow:
+        0 16px 30px -8px var(--primary-glow),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    filter: brightness(1.05) saturate(1.05);
 }
 
 .btn--primary:active:not(:disabled) {
-    transform: translateY(1px) scale(0.98);
-    box-shadow: 0 2px 8px var(--primary-glow);
+    transform: scale(0.97);
+    box-shadow: 0 4px 12px -4px var(--primary-glow);
 }
 
-/* ─── Secondary ── Frosted glass pill ── */
+/* ─── Secondary ── glass pill ── */
 .btn--secondary {
     background: var(--glass-bg);
     color: var(--primary);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--shadow-card);
+    border: 1px solid var(--border-strong);
+    box-shadow: var(--shadow-sm);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
 }
 
 .btn--secondary:hover:not(:disabled) {
-    background: rgba(var(--primary-rgb), 0.08);
-    border-color: rgba(var(--primary-rgb), 0.25);
+    background: rgba(var(--primary-rgb), 0.10);
+    border-color: rgba(var(--primary-rgb), 0.35);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-card-hover);
+    box-shadow: var(--shadow-card);
 }
 
 .btn--secondary:active:not(:disabled) {
-    transform: translateY(1px) scale(0.98);
+    transform: scale(0.97);
 }
 
 /* ─── Icon button ── */
 .btn--icon {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
     padding: 0;
     background: var(--glass-bg);
     color: var(--text-muted);
-    border: 1px solid var(--glass-border);
+    border: 1px solid var(--border);
     flex-shrink: 0;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-card);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
+    border-radius: 14px;
+    box-shadow: var(--shadow-sm);
 }
 
 .btn--icon:hover:not(:disabled) {
-    background: rgba(var(--primary-rgb), 0.08);
+    background: rgba(var(--primary-rgb), 0.10);
     color: var(--primary);
-    transform: scale(1.08) translateY(-2px);
-    border-color: rgba(var(--primary-rgb), 0.2);
-    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+    border-color: rgba(var(--primary-rgb), 0.3);
 }
 
 .btn--icon:active:not(:disabled) {
-    transform: scale(0.95);
+    transform: scale(0.92);
 }
 
 /* ─── Sizes ── */
 .btn--small {
     padding: 8px var(--space-4);
-    font-size: 0.825rem;
+    font-size: 0.85rem;
 }
 
 .btn--small.btn--icon {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
 }
 
 /* ─── Modifiers ── */
@@ -120,7 +127,7 @@
 
 .btn--danger {
     color: var(--danger);
-    border-color: var(--danger-light);
+    border-color: rgba(var(--danger-rgb), 0.3);
 }
 
 .btn--danger:hover:not(:disabled) {
@@ -128,7 +135,8 @@
 }
 
 .btn--danger.btn--primary {
-    background: var(--danger);
+    background: linear-gradient(135deg, #ef4444, #f97316);
     color: white;
-    box-shadow: 0 4px 16px rgba(239, 68, 68, 0.28);
+    border: none;
+    box-shadow: 0 10px 24px -8px rgba(var(--danger-rgb), 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }

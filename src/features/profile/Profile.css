@@ -12,7 +12,7 @@
     align-items: center;
     gap: var(--space-5);
     padding: var(--space-5);
-    background: linear-gradient(135deg, var(--primary), hsl(calc(var(--primary-hue, 210) + 30), 70%, 55%));
+    background: var(--hero-mesh);
     border-radius: var(--radius-lg);
     color: white;
 }
@@ -98,8 +98,8 @@
 }
 
 .tag {
-    background: var(--primary-glow);
-    color: var(--primary-dark);
+    background: rgba(var(--primary-rgb), 0.12);
+    color: var(--primary);
     padding: var(--space-1) var(--space-3);
     border-radius: var(--radius-full);
     font-size: 0.85rem;
@@ -115,10 +115,6 @@ body.dark-mode .tag {
     color: var(--danger);
 }
 
-body.dark-mode .trigger-tag {
-    background: rgba(239, 68, 68, 0.15);
-    color: hsl(0, 80%, 70%);
-}
 
 /* Settings */
 .settings-list {
@@ -137,11 +133,11 @@ body.dark-mode .trigger-tag {
 }
 
 .settings-row:hover {
-    background: var(--bg-body);
+    background: var(--bg-input);
 }
 
 .settings-row.danger strong {
-    color: hsl(0, 70%, 55%);
+    color: var(--danger);
 }
 
 .settings-hint {
@@ -391,4 +387,102 @@ input:checked+.toggle-slider:before {
 
 .profile-edit-cancel-btn:hover {
     background: rgba(255, 255, 255, 0.2);
+}
+
+/* ─── 2026 refinements ─────────────────────── */
+.profile-hero {
+    padding: var(--space-6);
+    border-radius: var(--radius-2xl);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow: 0 28px 50px -22px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.32);
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-avatar {
+    border-radius: 26px;
+    font-family: var(--font-display);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.profile-name {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+    color: #fff;
+}
+
+.profile-progress .hero-progress-bar {
+    height: 10px;
+    background: var(--bg-input);
+    border-radius: 99px;
+    overflow: hidden;
+    position: relative;
+}
+
+.profile-progress .hero-progress-fill {
+    background: var(--hero-gradient);
+    box-shadow: none;
+}
+
+.profile-progress-label {
+    color: var(--text-muted);
+}
+
+.settings-row {
+    gap: var(--space-3);
+}
+
+.settings-row:hover {
+    background: var(--bg-hover);
+}
+
+.settings-row strong {
+    font-weight: 650;
+}
+
+.import-btn {
+    background: var(--glass-bg);
+    border-radius: var(--radius-full);
+    padding: 9px var(--space-4);
+    font-weight: 600;
+}
+
+.privacy-note {
+    background: var(--bg-input);
+    border-radius: var(--radius-lg);
+}
+
+.pin-setup-row {
+    background: var(--bg-input);
+}
+
+.pin-setup-input {
+    background: var(--bg-card-solid);
+    border-radius: var(--radius-md);
+}
+
+.toggle-switch {
+    width: 50px;
+    height: 30px;
+}
+
+.toggle-slider {
+    background-color: var(--border-strong);
+    border-radius: 30px;
+}
+
+.toggle-slider:before {
+    height: 24px;
+    width: 24px;
+    left: 3px;
+    bottom: 3px;
+}
+
+input:checked + .toggle-slider {
+    background: var(--hero-gradient);
+}
+
+input:checked + .toggle-slider:before {
+    transform: translateX(20px);
 }

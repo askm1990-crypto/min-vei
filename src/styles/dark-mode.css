@@ -1,70 +1,87 @@
-/* Dark Mode — token overrides (Frosted Glass redesign) */
+/* Dark Mode — token overrides (2026 refresh): deep ink, luminous iris */
 body.dark-mode {
-    /* Brand */
-    --primary:            #818cf8;
-    --primary-light:      #1e1b4b;
-    --primary-dark:       #6366f1;
-    --primary-glow:       rgba(129, 140, 248, 0.18);
-    --accent:             #a78bfa;
-    --accent-light:       #1e1040;
+    color-scheme: dark;
 
-    /* Secondary */
-    --secondary:          #7c86cf;
-    --secondary-light:    #1a1f5e;
-    --secondary-dark:     #5a60a0;
+    /* Brand */
+    --primary:            #9184ff;
+    --primary-main:       #9184ff;
+    --primary-color:      #9184ff;
+    --primary-light:      rgba(145, 132, 255, 0.16);
+    --primary-dark:       #7a6bff;
+    --primary-glow:       rgba(145, 132, 255, 0.30);
+    --primary-rgb:        145, 132, 255;
+    --accent:             #ff9274;
+    --accent-light:       rgba(255, 146, 116, 0.14);
+
+    --secondary:          #b487ff;
+    --secondary-light:    rgba(180, 135, 255, 0.16);
+    --secondary-dark:     #9a6bf5;
+    --secondary-rgb:      180, 135, 255;
 
     /* Surfaces */
-    --bg-body:            #0d1117;
-    --bg-card:            rgba(22, 27, 44, 0.80);
-    --bg-card-solid:      #161b2c;
-    --bg-sidebar:         rgba(13, 17, 23, 0.90);
-    --bg-input:           #1a2035;
-    --bg-hover:           rgba(129, 140, 248, 0.08);
+    --bg-body:            #0a0a15;
+    --bg-card:            rgba(30, 30, 52, 0.62);
+    --bg-card-solid:      #16162a;
+    --bg-sidebar:         rgba(18, 18, 34, 0.66);
+    --bg-input:           rgba(255, 255, 255, 0.05);
+    --bg-hover:           rgba(145, 132, 255, 0.10);
+    --bg-elevated:        #1c1c34;
+
+    --aurora-1:           rgba(110, 90, 255, 0.24);
+    --aurora-2:           rgba(40, 150, 230, 0.13);
+    --aurora-3:           rgba(255, 110, 80, 0.08);
 
     /* Glass material */
-    --glass-bg:           rgba(22, 27, 44, 0.65);
-    --glass-border:       rgba(129, 140, 248, 0.12);
+    --glass-bg:           rgba(30, 30, 52, 0.58);
+    --glass-border:       rgba(255, 255, 255, 0.08);
+    --glass-highlight:    inset 0 1px 0 rgba(255, 255, 255, 0.07);
 
     /* Borders */
-    --border:             rgba(55, 65, 100, 0.6);
-    --border-focus:       #818cf8;
-    --border-glass:       rgba(129, 140, 248, 0.12);
+    --border:             rgba(255, 255, 255, 0.09);
+    --border-strong:      rgba(255, 255, 255, 0.16);
+    --border-focus:       #9184ff;
+    --border-glass:       rgba(255, 255, 255, 0.08);
 
     /* Text */
-    --text-main:          #e8eaf6;
-    --text-muted:         #9fa8da;
-    --text-light:         #5c6bc0;
+    --text-main:          #f0efff;
+    --text-muted:         #b0afd0;
+    --text-light:         #8583a8;
 
     /* Semantic overrides */
-    --success-light:      #052e16;
-    --warning-light:      #431407;
-    --danger-light:       #450a0a;
-    --info-light:         #0c1d3a;
+    --success:            #34d399;
+    --success-light:      rgba(52, 211, 153, 0.14);
+    --warning-light:      rgba(245, 162, 11, 0.16);
+    --warning-dark:       #fbbf24;
+    --danger:             #ff6b6b;
+    --danger-light:       rgba(255, 107, 107, 0.15);
+    --info-light:         rgba(59, 130, 246, 0.16);
 
     /* Shadows */
-    --shadow-card:        0 1px 8px rgba(0,0,0,0.4), 0 0 0 1px rgba(129,140,248,0.06);
-    --shadow-card-hover:  0 8px 32px rgba(129,140,248,0.16), 0 0 0 1px rgba(129,140,248,0.10);
-    --shadow-glass:       0 8px 32px rgba(0,0,0,0.4);
-    --shadow-nav:         0 -4px 24px rgba(0,0,0,0.3);
+    --shadow-sm:          0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-md:          0 4px 14px rgba(0, 0, 0, 0.4);
+    --shadow-card:        0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px -8px rgba(0, 0, 0, 0.5);
+    --shadow-card-hover:  0 2px 4px rgba(0, 0, 0, 0.3), 0 20px 44px -12px rgba(120, 100, 255, 0.35);
+    --shadow-glass:       0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 36px -10px rgba(0, 0, 0, 0.55);
+    --shadow-nav:         0 12px 40px -8px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.06);
+    --shadow-pop:         0 24px 70px -12px rgba(0, 0, 0, 0.75);
 
-    /* Hero Gradient */
-    --hero-gradient:      linear-gradient(135deg, #1a237e 0%, #283593 50%, #4a148c 100%);
+    /* Hero */
+    --hero-gradient:      linear-gradient(135deg, #6a58f5 0%, #9a5cf5 100%);
+    --hero-mesh:
+        radial-gradient(90% 120% at 0% 0%,    #5a49d8 0%, transparent 55%),
+        radial-gradient(70% 90%  at 100% 0%,  #1d8fa8 0%, transparent 55%),
+        radial-gradient(90% 110% at 70% 115%, #8a3fc0 0%, transparent 60%),
+        linear-gradient(135deg, #2a2075, #33279a);
 
     /* Mood overrides */
-    --mood-1: hsl(0, 50%, 45%);
-    --mood-2: hsl(25, 50%, 45%);
-    --mood-3: hsl(45, 50%, 45%);
-    --mood-4: hsl(140, 40%, 40%);
-    --mood-5: hsl(160, 50%, 35%);
+    --mood-1: hsl(2, 68%, 55%);
+    --mood-2: hsl(24, 75%, 52%);
+    --mood-3: hsl(44, 78%, 50%);
+    --mood-4: hsl(152, 48%, 44%);
+    --mood-5: hsl(170, 55%, 40%);
 
     /* Special UI */
-    --crisis-hero-bg:   linear-gradient(135deg, hsl(0, 40%, 35%), hsl(20, 50%, 35%));
-    --breathing-bg:     linear-gradient(135deg, hsl(240, 50%, 40%), hsl(260, 50%, 30%));
-    --breathing-glow:   hsla(250, 50%, 40%, 0.2);
-
-    /* Body background blobs for dark mode */
-    background-image:
-        radial-gradient(ellipse 60% 50% at 20% -10%, rgba(99, 102, 241, 0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 40% at 90% 110%, rgba(124, 58, 237, 0.10) 0%, transparent 60%);
-    background-attachment: fixed;
+    --crisis-hero-bg:   linear-gradient(135deg, #b42323 0%, #c2570f 100%);
+    --breathing-bg:     linear-gradient(135deg, #3a2fa8, #5b2fa8);
+    --breathing-glow:   rgba(130, 100, 255, 0.28);
 }

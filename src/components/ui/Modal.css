@@ -1,66 +1,66 @@
-/* Modal styles — Frosted Glass redesign */
+/* Modal — centered glass card on desktop, bottom sheet on phones */
 .modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(10, 14, 26, 0.45);
-    backdrop-filter: blur(8px) saturate(150%);
-    -webkit-backdrop-filter: blur(8px) saturate(150%);
+    background: rgba(8, 6, 30, 0.5);
+    backdrop-filter: blur(10px) saturate(140%);
+    -webkit-backdrop-filter: blur(10px) saturate(140%);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+    z-index: 2000;
     animation: fadeIn 200ms ease;
     padding: var(--space-4);
 }
 
 .modal-card {
-    background: var(--glass-bg);
+    background: var(--bg-elevated);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-xl);
     padding: var(--space-8);
-    max-width: 480px;
+    max-width: 500px;
     width: 100%;
-    box-shadow: 0 24px 64px rgba(10, 14, 26, 0.18);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    animation: slideUp 380ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
+    box-shadow: var(--shadow-pop);
+    animation: slideUp 480ms var(--transition-spring);
     position: relative;
-    overflow: hidden;
 }
 
-/* Inner shimmer */
+/* Colour wash at the top of the sheet */
 .modal-card::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.30) 0%,
-        rgba(255, 255, 255, 0.00) 55%
-    );
+    inset: 0 0 auto 0;
+    height: 140px;
+    background: radial-gradient(70% 100% at 20% 0%, rgba(var(--primary-rgb), 0.16), transparent 70%);
     pointer-events: none;
 }
 
 .modal-header h2 {
-    font-size: 1.35rem;
-    font-weight: 600;
-    letter-spacing: -0.025em;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.035em;
     margin-bottom: var(--space-4);
     position: relative;
 }
 
 .modal-body p {
     color: var(--text-muted);
-    font-size: 0.935rem;
+    font-size: 0.95rem;
     margin-bottom: var(--space-3);
     line-height: 1.65;
     position: relative;
 }
 
+.modal-body p strong {
+    color: var(--text-main);
+}
+
 .modal-body ul {
-    margin: var(--space-4) 0 var(--space-4) var(--space-6);
+    margin: var(--space-4) 0 var(--space-4) var(--space-5);
     color: var(--text-muted);
-    font-size: 0.935rem;
+    font-size: 0.95rem;
     position: relative;
 }
 
@@ -68,15 +68,15 @@
     margin-bottom: var(--space-2);
 }
 
-body.dark-mode .modal-card {
-    background: var(--glass-bg);
-    border-color: var(--glass-border);
-}
+@media (max-width: 600px) {
+    .modal-overlay {
+        align-items: flex-end;
+        padding: var(--space-2);
+    }
 
-body.dark-mode .modal-card::before {
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.05) 0%,
-        rgba(255, 255, 255, 0.00) 55%
-    );
+    .modal-card {
+        border-radius: var(--radius-2xl);
+        padding: var(--space-6) var(--space-5) calc(var(--space-5) + var(--safe-bottom));
+        max-width: none;
+    }
 }

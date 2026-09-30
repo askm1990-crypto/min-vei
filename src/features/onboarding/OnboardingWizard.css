@@ -16,8 +16,8 @@
 
 /* Progress bar */
 .onboarding__progress-bar {
-    height: 4px;
-    background: var(--bg-input);
+    height: 6px;
+    background: rgba(var(--primary-rgb), 0.12);
     border-radius: var(--radius-full);
     margin-bottom: var(--space-6);
     overflow: hidden;
@@ -25,9 +25,10 @@
 
 .onboarding__progress-fill {
     height: 100%;
-    background: var(--primary);
+    background: var(--hero-gradient);
+    box-shadow: 0 0 12px var(--primary-glow);
     border-radius: var(--radius-full);
-    transition: width 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: width 600ms var(--ease-out);
 }
 
 /* Step dots */
@@ -54,10 +55,11 @@
 }
 
 .onboarding__step-dot.active {
-    background: var(--primary);
+    background: var(--hero-gradient);
     color: white;
-    border-color: var(--primary);
-    transform: scale(1.1);
+    border-color: transparent;
+    transform: scale(1.12);
+    box-shadow: 0 8px 16px -6px var(--primary-glow);
 }
 
 .onboarding__step-dot.completed {
@@ -78,15 +80,21 @@
 }
 
 .step__icon {
+    width: 96px;
+    height: 96px;
+    border-radius: 32px;
+    display: grid;
+    place-items: center;
     font-size: 3rem;
-    margin-bottom: var(--space-4);
-    display: block;
+    margin: 0 auto var(--space-5);
+    background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.16), rgba(var(--secondary-rgb), 0.16));
+    border: 1px solid rgba(var(--primary-rgb), 0.2);
 }
 
 .step__title {
-    font-size: 1.4rem;
+    font-size: clamp(1.6rem, 1.3rem + 1vw, 2rem);
     font-weight: 700;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
     margin-bottom: var(--space-3);
 }
 
@@ -111,9 +119,8 @@
     .step__actions {
         position: sticky;
         bottom: 0;
-        background: var(--bg-body);
-        padding: var(--space-4) 0;
-        border-top: 1px solid var(--border);
+        background: linear-gradient(to top, var(--bg-body) 60%, transparent);
+        padding: var(--space-4) 0 calc(var(--space-2) + var(--safe-bottom));
         z-index: 10;
     }
 }

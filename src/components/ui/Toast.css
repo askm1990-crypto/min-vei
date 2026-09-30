@@ -1,7 +1,7 @@
-/* Toast styles — Frosted Glass redesign */
+/* Toast — floating glass capsule */
 .toast-container {
     position: fixed;
-    top: var(--space-5);
+    top: calc(var(--space-5) + var(--safe-top));
     right: var(--space-5);
     z-index: 9999;
     display: flex;
@@ -14,45 +14,54 @@
     display: flex;
     align-items: center;
     gap: var(--space-3);
-    padding: var(--space-3) var(--space-5);
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius-full);    /* Pill toast */
-    box-shadow: 0 8px 28px rgba(10, 14, 26, 0.14);
-    font-size: 0.875rem;
-    font-weight: 500;
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    animation: toastIn 380ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    padding: 12px var(--space-5) 12px var(--space-4);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-pop);
+    font-size: 0.9rem;
+    font-weight: 550;
+    animation: toastIn 480ms var(--transition-spring);
     pointer-events: auto;
-    white-space: nowrap;
+    max-width: min(420px, calc(100vw - 32px));
+    position: relative;
+    overflow: hidden;
 }
 
-.toast--success {
-    border-left: 3px solid var(--success);
-    border-radius: var(--radius-lg);     /* Keep left border visible */
+/* Colored accent tab */
+.toast::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--primary);
 }
 
-.toast--error {
-    border-left: 3px solid var(--danger);
-    border-radius: var(--radius-lg);
-}
-
-.toast--info {
-    border-left: 3px solid var(--primary);
-    border-radius: var(--radius-lg);
-}
+.toast--success::before { background: var(--success); }
+.toast--error::before   { background: var(--danger); }
+.toast--warning::before { background: var(--warning); }
+.toast--info::before    { background: var(--primary); }
 
 .toast__icon {
-    font-size: 1rem;
+    font-size: 1.1rem;
     flex-shrink: 0;
 }
 
 .toast__message {
     color: var(--text-main);
+    line-height: 1.4;
 }
 
-body.dark-mode .toast {
-    background: var(--glass-bg);
-    border-color: var(--glass-border);
+@media (max-width: 768px) {
+    .toast-container {
+        left: var(--space-4);
+        right: var(--space-4);
+        align-items: center;
+    }
+
+    .toast {
+        white-space: normal;
+    }
 }

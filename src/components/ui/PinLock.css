@@ -4,7 +4,9 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--bg-body);
+    background:
+        radial-gradient(60% 50% at 50% 0%, rgba(var(--primary-rgb), 0.22), transparent 70%),
+        var(--bg-body);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,8 +15,8 @@
 
 .pin-lock-card {
     text-align: center;
-    padding: var(--space-10);
-    max-width: 340px;
+    padding: var(--space-10) var(--space-6);
+    max-width: 380px;
     width: 100%;
 }
 
@@ -23,13 +25,22 @@
 }
 
 .pin-lock-icon {
-    font-size: 3.5rem;
-    margin-bottom: var(--space-4);
+    width: 92px;
+    height: 92px;
+    border-radius: 32px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto var(--space-5);
+    font-size: 2.6rem;
+    background: var(--hero-mesh);
+    box-shadow: 0 24px 40px -16px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 .pin-lock-title {
-    font-size: 1.6rem;
-    font-weight: 800;
+    font-family: var(--font-display);
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
     color: var(--text-main);
     margin: 0 0 var(--space-2) 0;
 }
@@ -48,14 +59,14 @@
 }
 
 .pin-lock-digit {
-    width: 56px;
-    height: 64px;
+    width: 62px;
+    height: 74px;
     text-align: center;
     font-size: 1.8rem;
     font-weight: 700;
-    border: 2px solid var(--border);
-    border-radius: var(--radius-md);
-    background: var(--bg-card);
+    border: 1.5px solid var(--border-strong);
+    border-radius: 22px;
+    background: var(--bg-card-solid);
     color: var(--text-main);
     outline: none;
     transition: border-color 0.2s, box-shadow 0.2s;
@@ -64,7 +75,7 @@
 
 .pin-lock-digit:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px var(--primary-glow);
+    box-shadow: 0 0 0 5px rgba(var(--primary-rgb), 0.2);
 }
 
 .pin-lock-error {

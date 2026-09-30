@@ -1,5 +1,6 @@
 import Sidebar from './components/layout/Sidebar';
 import Header from './components/layout/Header';
+import TabBar from './components/layout/TabBar';
 import Modal from './components/ui/Modal';
 import Button from './components/ui/Button';
 import AppGuide from './components/ui/AppGuide';
@@ -159,6 +160,8 @@ export default function App() {
           )}
         </main>
       </div>
+
+      {!needsOnboarding && !currentView.startsWith('log-wizard') && <TabBar />}
 
       <ToastContainer />
 

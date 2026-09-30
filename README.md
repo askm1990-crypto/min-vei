@@ -35,7 +35,7 @@ For oss er personvern og sikkerhet det aller viktigste. "Min Vei" lagrer all inf
 - **📊 Avansert Analyse:** GitHub-stil aktivitetskalender, interaktive humørgrafer og 24 samle-badges.
 - **🛡️ Kriseplan:** Umiddelbar tilgang til nødnumre, pusteøvelser og din personlige sikkerhetsplan.
 - **📓 Hendelseslogg & Dagbok:** Reflekter over hverdagen med en guidet "Event Wizard" og privat dagbok.
-- **🎨 Moderne Design:** Glassmorphism, animerte feiringer og full støtte for mørk/lys modus.
+- **🎨 Moderne Design (2026):** Aurora-bakgrunn, glassflater, bento-oppsett på Hjem, flytende bunnmeny med hurtigknapp på mobil, selvhostede fonter (Figtree + Bricolage Grotesque) og full støtte for mørk/lys modus.
 
 ## 🚀 Kom i gang for utviklere
 

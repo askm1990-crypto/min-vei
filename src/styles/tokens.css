@@ -1,83 +1,108 @@
 /*
-  Min Vei v2 — Design Tokens (Frosted Glass Redesign)
-  The Luminous Path — Indigo/Violet palette, glassmorphism, Lexend typography
+  Min Vei — Design Tokens (2026 refresh)
+  Soft-aurora surfaces · vivid iris brand · squircle geometry · layered depth
+  Fonts are self-hosted through @fontsource (see main.jsx) so the PWA stays 100% offline.
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
-
 :root {
-  /* ─── Brand — Deep Indigo / Violet ─────────── */
-  --primary:           #4352a5;
-  --primary-light:     #dee0ff;
-  --primary-dark:      #2f3f92;
+  color-scheme: light;
+
+  /* ─── Brand — Iris ─────────────────────────── */
+  --primary:           #5b47e8;
+  --primary-main:      #5b47e8;
+  --primary-color:     #5b47e8;
+  --primary-light:     #e9e6ff;
+  --primary-dark:      #4633cf;
   --primary-fg:        #ffffff;
-  --primary-glow:      rgba(67, 82, 165, 0.22);
-  --primary-rgb:       67, 82, 165;
+  --primary-glow:      rgba(91, 71, 232, 0.28);
+  --primary-rgb:       91, 71, 232;
+  --primary-hue:       248;
 
-  --accent:            #7c3aed;         /* Vibrant violet accent */
-  --accent-light:      #ede9fe;
+  --accent:            #ff7a59;         /* Warm coral — highlights, streaks */
+  --accent-light:      #ffe9e2;
 
-  /* Secondary — soft indigo tint */
-  --secondary:         #4c56af;
-  --secondary-light:   #e0e0ff;
-  --secondary-dark:    #343d96;
+  --secondary:         #8a4df0;         /* Orchid — gradient partner to iris */
+  --secondary-light:   #efe6ff;
+  --secondary-dark:    #6f33d6;
+  --secondary-rgb:     138, 77, 240;
 
-  /* ─── Mood Colors ───────────────────────────── */
-  --mood-1: hsl(0, 70%, 55%);
-  --mood-2: hsl(25, 70%, 55%);
-  --mood-3: hsl(45, 70%, 55%);
-  --mood-4: hsl(140, 50%, 50%);
-  --mood-5: hsl(160, 60%, 45%);
+  --mint:              #22c6a0;
+  --sky:               #38b6ff;
+
+  /* ─── Mood colors ───────────────────────────── */
+  --mood-1: hsl(2, 78%, 60%);
+  --mood-2: hsl(24, 88%, 58%);
+  --mood-3: hsl(44, 90%, 55%);
+  --mood-4: hsl(152, 56%, 48%);
+  --mood-5: hsl(170, 66%, 42%);
 
   /* ─── Special UI ────────────────────────────── */
-  --crisis-hero-bg:   linear-gradient(135deg, hsl(0, 60%, 50%), hsl(20, 80%, 50%));
-  --breathing-bg:     linear-gradient(135deg, hsl(240, 80%, 60%), hsl(260, 80%, 50%));
-  --breathing-glow:   hsla(250, 80%, 60%, 0.3);
+  --crisis-hero-bg:   linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+  --breathing-bg:     linear-gradient(135deg, #5b47e8, #8a4df0);
+  --breathing-glow:   rgba(120, 90, 255, 0.35);
 
-  /* ─── Hero Gradient (for Dashboard hero card) ─ */
-  --hero-gradient:    linear-gradient(135deg, #4352a5 0%, #5c6bc0 50%, #7c3aed 100%);
+  /* ─── Hero surfaces ─────────────────────────── */
+  --hero-gradient:    linear-gradient(135deg, #5b47e8 0%, #8a4df0 100%);
+  --hero-mesh:
+      radial-gradient(90% 120% at 0% 0%,   #8b7bff 0%, transparent 55%),
+      radial-gradient(70% 90%  at 100% 0%, #35c4dd 0%, transparent 55%),
+      radial-gradient(90% 110% at 70% 115%, #c15af2 0%, transparent 60%),
+      linear-gradient(135deg, #4a37d6, #5b47e8);
 
   /* ─── Surfaces ──────────────────────────────── */
-  --bg-body:          #f7fafd;          /* Lightest blue-white */
-  --bg-card:          rgba(255, 255, 255, 0.72);
+  --bg-body:          #f4f3fb;
+  --bg-card:          rgba(255, 255, 255, 0.78);
   --bg-card-solid:    #ffffff;
-  --bg-sidebar:       rgba(255, 255, 255, 0.82);
-  --bg-input:         #f1f4f7;
-  --bg-hover:         rgba(67, 82, 165, 0.06);
+  --bg-sidebar:       rgba(255, 255, 255, 0.72);
+  --bg-input:         rgba(91, 71, 232, 0.05);
+  --bg-hover:         rgba(91, 71, 232, 0.07);
+  --bg-elevated:      #ffffff;
+
+  /* Aurora blobs behind the whole app */
+  --aurora-1:         rgba(124, 108, 255, 0.28);
+  --aurora-2:         rgba(56, 182, 255, 0.20);
+  --aurora-3:         rgba(255, 122, 89, 0.14);
 
   /* Glass material */
-  --glass-bg:         rgba(255, 255, 255, 0.65);
-  --glass-border:     rgba(255, 255, 255, 0.5);
-  --glass-blur:       blur(20px) saturate(180%);
+  --glass-bg:         rgba(255, 255, 255, 0.70);
+  --glass-border:     rgba(255, 255, 255, 0.85);
+  --glass-blur:       blur(24px) saturate(170%);
+  --glass-highlight:  inset 0 1px 0 rgba(255, 255, 255, 0.9);
 
   /* ─── Borders ───────────────────────────────── */
-  --border:           rgba(198, 197, 211, 0.5);
-  --border-focus:     #4352a5;
-  --border-glass:     rgba(255, 255, 255, 0.5);
+  --border:           rgba(30, 27, 90, 0.09);
+  --border-strong:    rgba(30, 27, 90, 0.16);
+  --border-focus:     #5b47e8;
+  --border-glass:     rgba(255, 255, 255, 0.85);
 
   /* ─── Text ──────────────────────────────────── */
-  --text-main:        #181c1e;
-  --text-muted:       #454651;
-  --text-light:       #767683;
+  --text-main:        #14142b;
+  --text-muted:       #55557a;
+  --text-light:       #7b7b9a;
   --text-invert:      #ffffff;
 
   /* ─── Semantic ──────────────────────────────── */
-  --success:          #10b981;
-  --success-light:    #d1fae5;
-  --warning:          #f59e0b;
-  --warning-light:    #fef3c7;
-  --danger:           #ef4444;
-  --danger-light:     #fee2e2;
+  --success:          #12b981;
+  --success-rgb:      18, 185, 129;
+  --success-light:    #d8f7ea;
+  --warning:          #f5a20b;
+  --warning-rgb:      245, 162, 11;
+  --warning-dark:     #b45309;
+  --warning-light:    #fdf0cf;
+  --danger:           #ef4a4a;
+  --danger-rgb:       239, 74, 74;
+  --error:            #ef4a4a;
+  --danger-light:     #fee4e4;
   --info:             #3b82f6;
   --info-light:       #dbeafe;
 
-  /* ─── Geometry ──────────────────────────────── */
+  /* ─── Geometry — squircle-ish, generous ─────── */
   --radius-xs:  8px;
   --radius-sm:  12px;
-  --radius-md:  16px;
-  --radius-lg:  22px;
-  --radius-xl:  28px;
-  --radius-2xl: 36px;
+  --radius-md:  18px;
+  --radius-lg:  24px;
+  --radius-xl:  32px;
+  --radius-2xl: 40px;
   --radius-full: 9999px;
 
   /* ─── Spacing ───────────────────────────────── */
@@ -92,21 +117,30 @@
   --space-12: 48px;
 
   /* ─── Typography ────────────────────────────── */
-  --font-sans: 'Lexend', 'Inter', system-ui, sans-serif;
-  --font-body: 'Lexend', 'Inter', system-ui, sans-serif;
+  --font-sans:    'Figtree Variable', 'Figtree', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-body:    var(--font-sans);
+  --font-display: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', var(--font-sans);
 
-  /* ─── Shadows — Ambient "cloud" shadows ─────── */
-  --shadow-card:       0 2px 12px rgba(24, 28, 30, 0.05), 0 1px 3px rgba(24, 28, 30, 0.04);
-  --shadow-card-hover: 0 12px 40px rgba(67, 82, 165, 0.14), 0 4px 12px rgba(67, 82, 165, 0.08);
-  --shadow-glass:      0 8px 32px rgba(24, 28, 30, 0.08);
-  --shadow-nav:        0 -4px 24px rgba(24, 28, 30, 0.06);
+  /* ─── Shadows — layered, tinted ─────────────── */
+  --shadow-sm:         0 1px 2px rgba(30, 27, 90, 0.06);
+  --shadow-md:         0 4px 14px -2px rgba(30, 27, 90, 0.10);
+  --shadow-card:       0 1px 2px rgba(30, 27, 90, 0.04), 0 6px 20px -8px rgba(60, 45, 170, 0.14);
+  --shadow-card-hover: 0 2px 4px rgba(30, 27, 90, 0.05), 0 18px 40px -12px rgba(60, 45, 170, 0.28);
+  --shadow-glass:      0 1px 2px rgba(30, 27, 90, 0.04), 0 10px 34px -10px rgba(60, 45, 170, 0.16);
+  --shadow-nav:        0 10px 40px -8px rgba(40, 30, 130, 0.30), 0 2px 6px rgba(30, 27, 90, 0.08);
+  --shadow-pop:        0 24px 70px -12px rgba(30, 20, 110, 0.35);
 
   /* ─── Layout ─────────────────────────────────── */
-  --sidebar-w:        240px;
+  --sidebar-w:        264px;
   --sidebar-w-mobile: 64px;
+  --content-max:      1120px;
+  --dock-h:           72px;
+  --safe-bottom:      env(safe-area-inset-bottom, 0px);
+  --safe-top:         env(safe-area-inset-top, 0px);
 
-  /* ─── Transitions ───────────────────────────── */
-  --transition:        200ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow:   400ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-spring: 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* ─── Motion ────────────────────────────────── */
+  --ease-out:          cubic-bezier(0.22, 1, 0.36, 1);
+  --transition:        220ms cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-slow:   420ms cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-spring: 560ms cubic-bezier(0.34, 1.4, 0.64, 1);
 }

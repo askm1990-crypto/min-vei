@@ -1,0 +1,114 @@
+/* Floating bottom dock — phones only */
+.tabbar {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .tabbar {
+        position: fixed;
+        left: var(--space-3);
+        right: var(--space-3);
+        bottom: calc(var(--space-3) + var(--safe-bottom));
+        z-index: 900;
+        height: var(--dock-h);
+        display: grid;
+        grid-template-columns: 1fr 1fr 76px 1fr 1fr;
+        align-items: center;
+        padding: 0 var(--space-2);
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius-2xl);
+        box-shadow: var(--shadow-nav), var(--glass-highlight);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        animation: dock-in 0.7s var(--transition-spring) both 0.15s;
+    }
+
+    body.dark-mode .tabbar {
+        background: rgba(20, 20, 38, 0.9);
+    }
+
+    .tabbar__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        height: 100%;
+        color: var(--text-light);
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        position: relative;
+        transition: color var(--transition), transform var(--transition);
+    }
+
+    .tabbar__item svg {
+        width: 23px;
+        height: 23px;
+        transition: transform var(--transition-spring);
+    }
+
+    .tabbar__item:active {
+        transform: scale(0.92);
+    }
+
+    .tabbar__item--active {
+        color: var(--primary);
+    }
+
+    .tabbar__item--active svg {
+        transform: translateY(-1px) scale(1.08);
+    }
+
+    /* Active glow dot under the icon label */
+    .tabbar__item--active::after {
+        content: '';
+        position: absolute;
+        bottom: 7px;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--primary);
+        box-shadow: 0 0 8px var(--primary);
+    }
+
+    .tabbar__item--active span {
+        opacity: 0;
+    }
+
+    .tabbar__fab {
+        justify-self: center;
+        width: 58px;
+        height: 58px;
+        margin-top: -26px;
+        border-radius: 22px;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        background: var(--hero-mesh);
+        box-shadow:
+            0 14px 28px -6px var(--primary-glow),
+            0 0 0 5px var(--bg-body),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        transition: transform var(--transition-spring), box-shadow var(--transition);
+    }
+
+    .tabbar__fab svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .tabbar__fab:active {
+        transform: scale(0.9) rotate(90deg);
+    }
+
+    @keyframes dock-in {
+        from { opacity: 0; transform: translateY(40px) scale(0.96); }
+        to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .tabbar { animation: none; }
+    }
+}

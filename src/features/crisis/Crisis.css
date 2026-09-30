@@ -7,16 +7,20 @@
 }
 
 .crisis-hero {
-    text-align: center;
-    padding: var(--space-5);
-    background: var(--crisis-hero-bg);
-    border-radius: var(--radius-lg);
+    text-align: left;
+    padding: var(--space-8);
+    background:
+        radial-gradient(70% 120% at 100% 0%, rgba(255, 255, 255, 0.28), transparent 60%),
+        var(--crisis-hero-bg);
+    border-radius: var(--radius-2xl);
     color: white;
+    box-shadow: 0 28px 50px -22px rgba(var(--danger-rgb), 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
 .crisis-hero h2 {
-    font-size: 1.6rem;
+    font-size: clamp(1.7rem, 1.3rem + 1.5vw, 2.3rem);
     margin-bottom: var(--space-2);
+    color: #fff;
 }
 
 .crisis-hero p {
@@ -35,31 +39,36 @@
     display: flex;
     align-items: center;
     gap: var(--space-3);
-    padding: var(--space-3);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border);
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    box-shadow: var(--shadow-glass), var(--glass-highlight);
     text-decoration: none;
     color: var(--text-main);
-    transition: all 0.2s;
+    transition: transform var(--transition-spring), border-color var(--transition), box-shadow var(--transition);
     flex-wrap: wrap;
 }
 
 .emergency-item:hover {
     border-color: var(--primary);
-    transform: translateX(4px);
+    transform: translateY(-2px);
+    text-decoration: none;
+    box-shadow: var(--shadow-card-hover);
 }
 
 .emergency-item.priority {
-    background: hsl(0, 80%, 97%);
-    border-color: hsl(0, 60%, 80%);
-}
-
-body.dark-mode .emergency-item.priority {
-    background: hsl(0, 30%, 15%);
-    border-color: hsl(0, 30%, 30%);
+    background: var(--danger-light);
+    border-color: rgba(var(--danger-rgb), 0.3);
 }
 
 .emergency-emoji {
+    width: 46px;
+    height: 46px;
+    border-radius: 15px;
+    display: grid;
+    place-items: center;
+    background: var(--bg-input);
     font-size: 1.4rem;
     flex-shrink: 0;
 }
@@ -81,9 +90,9 @@ body.dark-mode .emergency-item.priority {
 }
 
 .emergency-call {
-    background: var(--primary);
+    background: var(--hero-gradient);
     color: white;
-    padding: var(--space-1) var(--space-3);
+    padding: 6px var(--space-4);
     border-radius: 99px;
     font-size: 0.8rem;
     font-weight: 700;
@@ -103,9 +112,10 @@ body.dark-mode .emergency-item.priority {
     align-items: center;
     gap: var(--space-2);
     padding: var(--space-3);
-    background: var(--bg-body);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-glass), var(--glass-highlight);
+    border-radius: var(--radius-lg);
     cursor: pointer;
     font-size: 0.8rem;
     font-weight: 600;
@@ -162,16 +172,10 @@ body.dark-mode .emergency-item.priority {
 
 /* Disclaimer */
 .crisis-disclaimer {
-    background: hsl(45, 100%, 96%);
-    border: 1px solid hsl(45, 80%, 70%);
-    border-radius: var(--radius-md);
-    padding: var(--space-4);
-}
-
-body.dark-mode .crisis-disclaimer {
-    background: hsl(45, 20%, 14%);
-    border-color: hsl(45, 20%, 30%);
-    color: var(--text-main);
+    background: var(--warning-light);
+    border: 1px solid rgba(var(--warning-rgb), 0.35);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4) var(--space-5);
 }
 
 .crisis-disclaimer p {
